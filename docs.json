@@ -82,6 +82,13 @@
                   "es/plantillas/troubleshooting",
                   "es/plantillas/notas-version"
                 ]
+              },
+              {
+                "group": "Salesflow",
+                "icon": "filter",
+                "pages": [
+                  "es/salesflow/introduccion"
+                ]
               }
             ]
           }
