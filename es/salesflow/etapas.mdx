@@ -1,0 +1,89 @@
+---
+title: "Etapas"
+description: "Los tres tipos de etapa, el cierre de negocios y el archivado"
+icon: "layer-group"
+---
+
+Una etapa es una columna de tu pipeline. Un cliente está en **exactamente una etapa por pipeline** — puede estar en varios pipelines a la vez, pero nunca en dos etapas del mismo.
+
+{/* SCREENSHOT: el modal "Editar Etapa" completo, con tipo, color y opciones de etapa final
+  <Frame caption="Configuración de una etapa">
+  <img src="/images/es/salesflow/etapas-modal.png" alt="Modal de configuración de etapa" />
+  </Frame>
+  */}
+
+## Los tres tipos
+
+<CardGroup cols={3}>
+  <Card title="Estándar" icon="square">
+    Etapa regular donde los clientes pueden ser procesados por IA o humanos.
+  </Card>
+
+  <Card title="Solo Humano" icon="user">
+    Las transiciones que salen de esta etapa se fuerzan a **manuales**.
+  </Card>
+
+  <Card title="Final" icon="flag-checkered">
+    Cierra el negocio como ganado o perdido. No admite transiciones salientes.
+  </Card>
+</CardGroup>
+
+<Warning>
+  **"Solo Humano" no pausa a tus agentes de IA.** El tipo hace exactamente dos cosas: obliga a que las transiciones salientes sean manuales, y avisa a los miembros del pipeline. Un agente de WhatsApp o SMS **seguirá respondiendo** a un cliente que esté en una etapa de solo humano. Si necesitas que la IA deje de contestar, páusala desde el agente o marca la conversación para atención humana.
+</Warning>
+
+## Etapas finales: ganado, perdido y archivado
+
+Al marcar una etapa como **Final** aparecen dos ajustes:
+
+| Campo | Qué hace |
+| --- | --- |
+| **Tipo de Resultado** | **Ganado** o **Perdido**. Es como se contabiliza el cierre. |
+| **Días antes de archivar** | Cuántos días espera antes de pasar al cliente de _activo_ a _completado_. Por defecto 14. |
+
+Un cliente que llega a una etapa final **no desaparece de inmediato**: sigue visible y activo durante los días que configures. Pasado ese plazo, un proceso automático lo marca como **completado** y deja de contar como activo.
+
+<Tip>
+  Lo habitual es tener dos etapas finales, `Cerrado ganado` y `Cerrado perdido`, para poder medir la conversión. Si solo tienes una, pierdes esa distinción.
+</Tip>
+
+## Alerta de inactividad
+
+El campo **Alerta de Inactividad** promete avisar a los usuarios asignados cuando un cliente lleva demasiados días quieto en la etapa.
+
+<Warning>
+  **Este ajuste todavía no produce ningún aviso.** El campo se guarda y se puede editar, pero el proceso que envía las alertas no está programado en producción. Si necesitas reaccionar ante clientes estancados, usa un evento de tipo [**Temporizador de Inactividad**](/es/salesflow/eventos-y-secuencias), que sí funciona.
+</Warning>
+
+## Orden, color y posición
+
+- El **orden** de las columnas en el Tablero se cambia arrastrando la columna, o desde el campo **Posición** al crear la etapa.
+- La **posición en el diagrama de Flujo es independiente** del orden del Tablero. Mover una etapa en el diagrama no reordena las columnas.
+- El **color** se elige entre ocho predefinidos o con **Color Personalizado**. Es solo visual, pero ay uda mucho a leer el tablero de un vistazo.
+
+## Borrar una etapa
+
+Al eliminar una etapa que contiene clientes, Salesflow te obliga a decidir qué pasa con ellos:
+
+- **Mover clientes a** otra etapa, o
+- **Eliminar todos los clientes del pipeline** — se marcan como _removidos_, no se borran.
+
+<Warning>
+  La eliminación de una etapa **no se puede deshacer**, y arrastra consigo sus transiciones y sus eventos.
+</Warning>
+
+## Aviso: caminos sin salida
+
+En la vista Flujo aparece un aviso ámbar cuando alguna etapa **no tiene camino hasta una etapa final**. Al pulsarlo, las etapas afectadas parpadean. Vale la pena dejarlo en cero: una etapa sin salida es un lugar donde los leads se quedan atrapados para siempre.
+
+{/* SCREENSHOT: el aviso ámbar "N etapa(s) sin camino a etapa final" en la vista Flujo
+  <Frame caption="Aviso de etapas sin camino a una etapa final">
+  <img src="/images/es/salesflow/etapas-sin-camino.png" alt="Aviso de etapas sin salida" />
+  </Frame>
+  */}
+
+## Siguiente paso
+
+<Card title="Nodos de entrada" icon="door-open" href="/es/salesflow/nodos-de-entrada">
+  Define cómo llegan los clientes a estas etapas.
+</Card>

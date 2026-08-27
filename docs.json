@@ -88,7 +88,8 @@
                 "icon": "filter",
                 "pages": [
                   "es/salesflow/introduccion",
-                  "es/salesflow/crear-pipeline"
+                  "es/salesflow/crear-pipeline",
+                  "es/salesflow/etapas"
                 ]
               }
             ]
