@@ -1,0 +1,120 @@
+---
+title: "Crear tu primer pipeline"
+description: "De cero a un pipeline que recibe leads y los mueve solo"
+icon: "plus"
+---
+
+Al terminar esta guía tendrás un pipeline activo, con etapas, una puerta de entrada conectada a tus conversaciones y al menos una transición automática.
+
+## Antes de empezar
+
+## Pasos
+
+<Steps>
+  <Step title="Crea el pipeline" icon="plus">
+    Ve a **CRM → Salesflow** y crea un pipeline nuevo. Dale un **Nombre del Pipeline** y una **Descripción**.
+
+    <Tip>
+      La descripción no es decorativa: si más adelante activas el orquestador, la IA la lee como contexto para decidir los movimientos. Describe el proceso comercial de verdad, no pongas "pipeline de ventas".
+    </Tip>
+
+    También puedes partir de una **plantilla** en lugar de una hoja en blanco.
+
+    {/* SCREENSHOT: el modal de creación de pipeline con nombre y descripción
+    <Frame caption="Crear un pipeline nuevo">
+      <img src="/images/es/salesflow/crear-01-pipeline.png" alt="Modal de creación de pipeline" />
+    </Frame>
+    */}
+  </Step>
+  <Step title="Define las etapas" icon="layer-group">
+    Cambia a la vista **Flujo** y usa **Agregar Etapa** en la barra de herramientas.
+
+    Un buen punto de partida son cuatro o cinco etapas que reflejen decisiones reales de tu proceso, no tareas internas. Por ejemplo: `Nuevo` → `Contactado` → `Calificado` → `Propuesta` → `Cerrado`.
+
+    La última debe ser de tipo **Final**, con **Tipo de Resultado** _Ganado_ o _Perdido_. Lo habitual es tener dos etapas finales: una ganada y una perdida.
+
+    <Card title="Etapas" icon="layer-group" href="/es/salesflow/etapas">
+      Los tres tipos de etapa y qué hace cada uno.
+    </Card>
+
+    {/* SCREENSHOT: la vista Flujo con cuatro o cinco etapas creadas, aún sin conexiones
+    <Frame caption="Las etapas del pipeline en la vista Flujo">
+      <img src="/images/es/salesflow/crear-02-etapas.png" alt="Etapas en el diagrama de flujo" />
+    </Frame>
+    */}
+  </Step>
+  <Step title="Abre la puerta de entrada" icon="door-open">
+    Sin un nodo de entrada, el pipeline solo se llena a mano.
+
+    Pulsa **Agregar Nodo de Entrada**, elige el **Tipo de Fuente** (por ejemplo _Chat de WhatsApp_), y **arrastra desde el nodo hacia una etapa** para conectarlo. Un nodo sin conexión aparece como **Sin Conexión** y no hace nada.
+
+    Luego configúralo: **Condiciones de Entrada** (qué agentes, qué etiquetas, en qué momento) y **Etapa Destino**.
+
+    <Warning>
+      Si dejas las condiciones vacías, **entra todo el mundo**. Si las llenas y nada coincide, no entra nadie y **no verás ningún error** — el no-match es silencioso. Revísalas con cuidado.
+    </Warning>
+
+    <Card title="Nodos de entrada" icon="door-open" href="/es/salesflow/nodos-de-entrada">
+      Las cinco fuentes y todos sus filtros.
+    </Card>
+
+    {/* SCREENSHOT: el panel "Configurar Nodo de Entrada" con tipo de fuente y condiciones
+    <Frame caption="Configurar el nodo de entrada">
+      <img src="/images/es/salesflow/crear-03-nodo-entrada.png" alt="Panel de configuración de nodo de entrada" />
+    </Frame>
+    */}
+  </Step>
+  <Step title="Conecta las etapas con transiciones" icon="arrow-right-arrow-left">
+    Arrastra desde el borde de una etapa hasta otra para crear una transición. Se abre **Configurar Transición**, donde eliges el **Tipo de Activador**:
+
+    - **Manual** — solo una persona mueve la tarjeta.
+    - **Estático** — reglas exactas sobre el resultado de la llamada o el chat.
+    - **Orquestador** — la IA decide, según un prompt que tú escribes.
+
+    Empieza con transiciones **estáticas** donde tengas criterios claros: son gratuitas, inmediatas y predecibles.
+
+    <Card title="Transiciones" icon="arrow-right-arrow-left" href="/es/salesflow/transiciones">
+      Los tres tipos, la prioridad y el modo estricto.
+    </Card>
+
+    {/* SCREENSHOT: el panel "Configurar Transición" mostrando los tres tipos de activador
+    <Frame caption="Configurar una transición">
+      <img src="/images/es/salesflow/crear-04-transicion.png" alt="Panel de configuración de transición" />
+    </Frame>
+    */}
+  </Step>
+  <Step title="Activa el pipeline" icon="circle-check">
+    Cambia el **Estado** del pipeline a **Activo**.
+
+    <Warning>
+      Mientras el pipeline no esté activo verás el aviso _"Este pipeline no está activo. Los nodos de entrada, transiciones y acciones no se ejecutarán."_ Los nodos de entrada y los temporizadores de inactividad respetan ese estado.
+    </Warning>
+  </Step>
+  <Step title="Comprueba que entra gente" icon="magnifying-glass">
+    Genera una conversación real que cumpla las condiciones de tu nodo de entrada — por ejemplo, escríbele a tu agente de WhatsApp y resuelve la sesión.
+
+    La entrada por chat y por llamada ocurre **al terminar la conversación**, y el procesamiento corre cada minuto, así que puede tardar hasta ~1 minuto en aparecer la tarjeta. La entrada por **Cliente** se revisa cada 2 minutos.
+
+    Si no aparece, revisa el **Historial de Procesamiento** y la página de [solución de problemas](/es/salesflow/historial).
+  </Step>
+</Steps>
+
+## Siguientes pasos
+
+<CardGroup cols={2}>
+  <Card title="Eventos y secuencias" icon="bolt" href="/es/salesflow/eventos-y-secuencias">
+    Automatiza lo que pasa dentro de cada etapa.
+  </Card>
+
+  <Card title="El orquestador" icon="robot" href="/es/salesflow/orquestador">
+    Deja que la IA mueva los leads que no encajan en una regla exacta.
+  </Card>
+
+  <Card title="Asignación de leads" icon="users" href="/es/salesflow/asignacion">
+    Reparte los leads entre tu equipo automáticamente.
+  </Card>
+
+  <Card title="Historial y diagnóstico" icon="clock-rotate-left" href="/es/salesflow/historial">
+    Qué pasó, por qué, y qué hacer cuando algo no se mueve.
+  </Card>
+</CardGroup>

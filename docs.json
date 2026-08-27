@@ -87,7 +87,8 @@
                 "group": "Salesflow",
                 "icon": "filter",
                 "pages": [
-                  "es/salesflow/introduccion"
+                  "es/salesflow/introduccion",
+                  "es/salesflow/crear-pipeline"
                 ]
               }
             ]
