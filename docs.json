@@ -90,7 +90,8 @@
                   "es/salesflow/introduccion",
                   "es/salesflow/crear-pipeline",
                   "es/salesflow/etapas",
-                  "es/salesflow/nodos-de-entrada"
+                  "es/salesflow/nodos-de-entrada",
+                  "es/salesflow/transiciones"
                 ]
               }
             ]
