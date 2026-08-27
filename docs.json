@@ -89,7 +89,8 @@
                 "pages": [
                   "es/salesflow/introduccion",
                   "es/salesflow/crear-pipeline",
-                  "es/salesflow/etapas"
+                  "es/salesflow/etapas",
+                  "es/salesflow/nodos-de-entrada"
                 ]
               }
             ]

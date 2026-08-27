@@ -1,0 +1,109 @@
+---
+title: "Nodos de entrada"
+description: "Cómo entran los clientes al pipeline y con qué filtros"
+icon: "door-open"
+---
+
+Un nodo de entrada es la puerta de tu pipeline. Define **de dónde vienen** los clientes, **qué condiciones** deben cumplir y **en qué etapa** aterrizan.
+
+Se crea desde la vista **Flujo** con **Agregar Nodo de Entrada**, y hay que **arrastrar desde el nodo hasta una etapa** para conectarlo. Un nodo sin conectar muestra la insignia **Sin Conexión** y no hace absolutamente nada.
+
+{/* SCREENSHOT: el panel "Configurar Nodo de Entrada" con el tipo de fuente y las condiciones
+  <Frame caption="Configurar un nodo de entrada">
+  <img src="/images/es/salesflow/nodos-panel.png" alt="Panel de configuración de nodo de entrada" />
+  </Frame>
+  */}
+
+## Las cinco fuentes
+
+| Tipo de Fuente | Cuándo se evalúa |
+| --- | --- |
+| **Chat de WhatsApp** | Al iniciar o al resolverse una conversación de WhatsApp |
+| **Chat SMS** | Al iniciar o al resolverse una sesión de SMS |
+| **Cliente** | Un barrido cada ~2 minutos sobre contactos creados o modificados en los últimos 10 minutos |
+| **API** | Cuando un sistema externo hace una petición al endpoint del nodo |
+| **Resultado de llamada** | Cuando termina una llamada de voz |
+
+<Note>
+  Los nodos de chat y de llamada se evalúan **al terminar la conversación**, no en cada mensaje. El procesamiento corre cada minuto, así que la tarjeta puede tardar hasta ~1 minuto en aparecer en el tablero.
+</Note>
+
+## Condiciones de entrada por fuente
+
+<AccordionGroup>
+  <Accordion title="Chat de WhatsApp">
+    - **Modo de Activación** — _Al iniciar conversación_ o _Al resolverse conversación_.
+    - **Filtrar por Agente** — "Solo ingresar clientes cuando el chat sea atendido por estos agentes (dejar vacío para todos)".
+
+    Estos son los **únicos** filtros disponibles para WhatsApp. No hay filtro por etiqueta de disposición ni por palabra clave en esta fuente.
+  </Accordion>
+
+  <Accordion title="Chat SMS">
+    - **Modo de activación** — al iniciar o al resolver.
+    - **Filtrar por Agente**.
+    - **Filtros de Palabras Clave**.
+    - **Etiquetas de Disposición**.
+    - **Modo de Coincidencia** — todos los filtros (Y) o cualquiera (O).
+  </Accordion>
+
+  <Accordion title="Cliente">
+    Primero eliges el **Modo de Búsqueda**: _Creados Recientemente_, _Modificados Recientemente_, o ambos. Luego un **Modo de Filtro**, que son mutuamente excluyentes:
+
+    - **Agente de Insight** — el cliente fue procesado por cualquiera de los agentes de extracción de datos que elijas.
+    - **Propiedades del Cliente** — **Etiquetas del Cliente** (con _tiene al menos una_ o _tiene todas_), **Correo Electrónico** (cualquiera / requerido / sin correo) y **Nombre del Cliente**.
+  </Accordion>
+
+  <Accordion title="API">
+    Sin condiciones: lo que envías, entra. El panel te muestra el **Endpoint**, cómo autenticarte con tu clave API, y el **Cuerpo de Solicitud** con todos los campos aceptados (`phone_number`, `client_id`, `first_name`, `last_name`, `email`, `company`, `timezone`, `area_code`, `data`, `update`).
+
+    Si el nodo está inactivo, la API rechaza las peticiones: _"Habilita el nodo de entrada para aceptar solicitudes API"_.
+  </Accordion>
+
+  <Accordion title="Resultado de llamada">
+    Las mismas condiciones que una transición estática de llamada: etiquetas de disposición, respondido por, estado, duración, requiere seguimiento, quién colgó y dirección.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  **Dos formas de equivocarse, ambas silenciosas:**
+
+  Si dejas las condiciones **vacías**, entra todo el mundo.
+
+  Si las condiciones **no coinciden con nadie**, no entra nadie y no verás ningún error, ni aviso, ni entrada en el historial. Esta es la causa más común de "mi pipeline no recibe leads".
+
+  El caso clásico: **borraste un agente de WhatsApp** que seguía listado en _Filtrar por Agente_. El filtro queda apuntando a un agente que ya no existe y rechaza a todos los clientes. Revisa los agentes seleccionados cada vez que elimines uno.
+</Warning>
+
+## Prioridad de entrada
+
+Cuando un mismo cliente coincide con varios nodos, gana el de menor número: **números más bajos = mayor prioridad**.
+
+Dentro de un pipeline solo entra **por un nodo**. Pero un cliente sí puede entrar a **varios pipelines** en la misma pasada.
+
+## Política de reingreso
+
+Controla qué pasa con alguien que ya estuvo en el pipeline:
+
+- **Permitir que clientes eliminados reingresen** — los que quitaste a mano.
+- **Permitir que clientes completados reingresen** — los que llegaron al final.
+- **Período de espera** — cuánto hay que esperar antes de que puedan volver.
+
+Al reingresar, el cliente **reinicia en la etapa destino de ese nodo**, y Salesflow lleva la cuenta de cuántas veces ha entrado.
+
+<Note>
+  En los nodos de WhatsApp y SMS, los textos de este bloque **aparecen en inglés** ("Allow removed clients to re-enter", "Cooldown", "min / hrs / days") por un fallo de traducción. Funcionan igual.
+</Note>
+
+## Valor predeterminado del lead
+
+**Valor predeterminado del lead** asigna un importe a los clientes que entren por este nodo. Solo se aplica **si el cliente todavía no tiene valor** — nunca sobrescribe uno existente.
+
+## Sobreescribir la asignación
+
+Por defecto se usa la estrategia de asignación del pipeline. Con **Sobreescribir Asignación** puedes darle a este nodo su propia estrategia, y con **Asignación de Equipo** limitar el reparto a ciertos miembros. Ver [Asignación de leads](/es/salesflow/asignacion).
+
+## Siguiente paso
+
+<Card title="Transiciones" icon="arrow-right-arrow-left" href="/es/salesflow/transiciones">
+  Ya entran clientes. Ahora define cómo se mueven.
+</Card>
