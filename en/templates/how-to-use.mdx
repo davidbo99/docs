@@ -1,0 +1,53 @@
+---
+title: "How to use these templates"
+description: "Quick guide to writing Dialtu documentation without starting from scratch"
+icon: "circle-info"
+---
+
+<Note>
+  This section is a **template library**. Copy the template that best fits what you're writing, paste it into a new page, and replace the text in `[brackets]`. The `{/* ... */}` comments are notes for you and are **not published**.
+</Note>
+
+## Which template should I use?
+
+<CardGroup cols={2}>
+  <Card title="Step-by-step guide" icon="list-check" href="/en/templates/guide">
+    To teach a concrete task: "Create an agent", "Connect WhatsApp".
+  </Card>
+
+  <Card title="Concept" icon="lightbulb" href="/en/templates/concept">
+    To explain what something is and how it works, no steps: "What is a funnel?".
+  </Card>
+
+  <Card title="Reference / FAQ" icon="table-list" href="/en/templates/reference">
+    For lookup data: parameters, limits, frequently asked questions.
+  </Card>
+
+  <Card title="Troubleshooting" icon="wrench" href="/en/templates/troubleshooting">
+    To resolve common errors and issues.
+  </Card>
+
+  <Card title="Release notes" icon="rocket" href="/en/templates/release-notes">
+    To announce changes, improvements, and fixes by date.
+  </Card>
+</CardGroup>
+
+## Dialtu style rules
+
+- Write in the **second person** ("click", "you'll see") and active voice.
+- One idea per sentence. Keep sentences short.
+- Sentence case for headings ("Create an agent", not "Create An Agent").
+- Bold UI elements: click **Save**.
+- Use `code formatting` for file names, commands, paths, and fields.
+- Start each page by stating **what the reader achieves** by the end.
+
+## Components you can use
+
+| Component | What it's for |
+| --- | --- |
+| `<Steps>` | Numbered steps in a process |
+| `<Card>` / `<CardGroup>` | Highlighted links to other pages |
+| `<Note><Tip><Warning>` | Callouts and tips |
+| `<Accordion>` | Collapsible content (FAQs, optional details) |
+| `<Tabs>` | Variants (for example, by channel or OS) |
+| `<CodeGroup>` | Multiple code blocks in tabs |

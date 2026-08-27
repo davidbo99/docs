@@ -1,0 +1,178 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Dialtu",
+  "colors": {
+    "primary": "#16A34A",
+    "light": "#07C983",
+    "dark": "#15803D"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "languages": [
+      {
+        "language": "es",
+        "tabs": [
+          {
+            "tab": "Guías",
+            "groups": [
+              {
+                "group": "Introducción",
+                "icon": "rocket",
+                "pages": [
+                  "es/introduccion/que-es-dialtu",
+                  "es/introduccion/primeros-pasos",
+                  "es/introduccion/conceptos-clave"
+                ]
+              },
+              {
+                "group": "Embudos",
+                "icon": "filter",
+                "pages": [
+                  "es/embudos/introduccion",
+                  "es/embudos/crear-embudo"
+                ]
+              },
+              {
+                "group": "Bases de datos",
+                "icon": "database",
+                "pages": [
+                  "es/bases-de-datos/introduccion",
+                  "es/bases-de-datos/crear-base"
+                ]
+              },
+              {
+                "group": "Agentes de voz",
+                "icon": "microphone",
+                "pages": [
+                  "es/agentes-de-voz/introduccion",
+                  "es/agentes-de-voz/crear-agente",
+                  "es/agentes-de-voz/crear-herramientas",
+                  "es/agentes-de-voz/configurar",
+                  "es/agentes-de-voz/probar-publicar"
+                ]
+              },
+              {
+                "group": "Canales",
+                "icon": "comments",
+                "pages": [
+                  "es/canales/whatsapp",
+                  "es/canales/sms"
+                ]
+              },
+              {
+                "group": "Plantillas",
+                "icon": "copy",
+                "pages": [
+                  "es/plantillas/como-usar",
+                  "es/plantillas/guia",
+                  "es/plantillas/concepto",
+                  "es/plantillas/referencia",
+                  "es/plantillas/troubleshooting",
+                  "es/plantillas/notas-version"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "tabs": [
+          {
+            "tab": "Guides",
+            "groups": [
+              {
+                "group": "Getting started",
+                "icon": "rocket",
+                "pages": [
+                  "en/getting-started/what-is-dialtu",
+                  "en/getting-started/quickstart",
+                  "en/getting-started/key-concepts"
+                ]
+              },
+              {
+                "group": "Funnels",
+                "icon": "filter",
+                "pages": [
+                  "en/funnels/introduction",
+                  "en/funnels/create-funnel"
+                ]
+              },
+              {
+                "group": "Databases",
+                "icon": "database",
+                "pages": [
+                  "en/databases/introduction",
+                  "en/databases/create-database"
+                ]
+              },
+              {
+                "group": "Voice agents",
+                "icon": "microphone",
+                "pages": [
+                  "en/voice-agents/introduction",
+                  "en/voice-agents/create-agent",
+                  "en/voice-agents/create-tools",
+                  "en/voice-agents/configure",
+                  "en/voice-agents/test-publish"
+                ]
+              },
+              {
+                "group": "Channels",
+                "icon": "comments",
+                "pages": [
+                  "en/channels/whatsapp",
+                  "en/channels/sms"
+                ]
+              },
+              {
+                "group": "Templates",
+                "icon": "copy",
+                "pages": [
+                  "en/templates/how-to-use",
+                  "en/templates/guide",
+                  "en/templates/concept",
+                  "en/templates/reference",
+                  "en/templates/troubleshooting",
+                  "en/templates/release-notes"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Ir al panel",
+      "href": "https://app.dialtu.com"
+    }
+  },
+  "contextual": {
+    "options": [
+     "copy",
+     "view",
+     "chatgpt",
+     "claude",
+     "perplexity",
+     "mcp",
+     "cursor",
+     "vscode"
+   ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/mintlify",
+      "github": "https://github.com/mintlify",
+      "linkedin": "https://linkedin.com/company/mintlify"
+    }
+  },
+  "description": "Documentación de Dialtu, la plataforma de automatización comercial con IA"
+}
