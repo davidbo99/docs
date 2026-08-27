@@ -63,7 +63,10 @@
                     "icon": "whatsapp",
                     "pages": [
                       "es/canales/whatsapp/requisitos",
-                      "es/canales/whatsapp/conectar"
+                      "es/canales/whatsapp/conectar",
+                      "es/canales/whatsapp/modo-onboarding",
+                      "es/canales/whatsapp/numeros",
+                      "es/canales/whatsapp/solucion-de-problemas"
                     ]
                   }
                 ]
