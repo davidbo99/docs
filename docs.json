@@ -26,11 +26,19 @@
                 ]
               },
               {
-                "group": "Embudos",
+                "group": "Salesflow",
                 "icon": "filter",
                 "pages": [
-                  "es/embudos/introduccion",
-                  "es/embudos/crear-embudo"
+                  "es/salesflow/introduccion",
+                  "es/salesflow/crear-pipeline",
+                  "es/salesflow/etapas",
+                  "es/salesflow/nodos-de-entrada",
+                  "es/salesflow/transiciones",
+                  "es/salesflow/orquestador",
+                  "es/salesflow/eventos-y-secuencias",
+                  "es/salesflow/acciones",
+                  "es/salesflow/asignacion",
+                  "es/salesflow/historial"
                 ]
               },
               {
@@ -81,17 +89,6 @@
                   "es/plantillas/referencia",
                   "es/plantillas/troubleshooting",
                   "es/plantillas/notas-version"
-                ]
-              },
-              {
-                "group": "Salesflow",
-                "icon": "filter",
-                "pages": [
-                  "es/salesflow/introduccion",
-                  "es/salesflow/crear-pipeline",
-                  "es/salesflow/etapas",
-                  "es/salesflow/nodos-de-entrada",
-                  "es/salesflow/transiciones"
                 ]
               }
             ]

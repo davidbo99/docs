@@ -1,0 +1,114 @@
+---
+title: "Eventos y secuencias"
+description: "Automatiza lo que ocurre dentro de cada etapa"
+icon: "bolt"
+---
+
+Las transiciones mueven clientes **entre** etapas. Los eventos automatizan lo que pasa **dentro** de una etapa: llamar, escribir, esperar, etiquetar, avisar.
+
+La estructura es siempre la misma:
+
+**Un evento** (el disparador) → **condiciones** (opcionales) → **una secuencia** (la lista ordenada de acciones).
+
+<Note>
+  Los eventos se configuran **solo desde la vista Flujo**: selecciona una etapa y pulsa **Eventos** en la barra inferior. Desde el Tablero no hay forma de llegar a ellos — el menú de la columna solo ofrece _Editar_ y _Eliminar_.
+</Note>
+
+{/* SCREENSHOT: el modal "Eventos de Etapa" con la lista de eventos, el formulario y la secuencia
+  <Frame caption="El editor de eventos de una etapa">
+  <img src="/images/es/salesflow/eventos-modal.png" alt="Modal de eventos de etapa" />
+  </Frame>
+  */}
+
+## Los seis disparadores
+
+| Disparador | Se dispara cuando | Configuración propia |
+| --- | --- | --- |
+| **Al Llegar** | Un cliente llega a esta etapa | Filtrar por fuente de entrada: Manual, Disparador de Transición, Orquestador, Entrada Automática, Acción de Secuencia |
+| **Al Salir** | Un cliente abandona esta etapa | Filtrar por etapa destino |
+| **Temporizador de Inactividad** | El cliente lleva un tiempo sin moverse | Duración \+ modo de detección |
+| **Llamada Completada** | Termina una llamada de un cliente en esta etapa | Filtrar por agente \+ condiciones de la llamada |
+| **Chat de WhatsApp Completado** | Termina una sesión de WhatsApp | Filtrar por agente \+ condiciones del chat |
+| **SMS Chat Completed** | Termina una sesión de SMS | Filtrar por agente \+ condiciones del chat |
+
+<Note>
+  El disparador de SMS aparece en la interfaz en español como **"SMS Chat Completed"**, sin traducir. Es el mismo evento.
+</Note>
+
+### Temporizador de inactividad
+
+Tiene dos modos, y la diferencia importa:
+
+- **Tiempo en etapa** — cuenta desde que el cliente **entró en esta etapa**. Es el que quieres para "lleva 3 días en Propuesta sin avanzar".
+- **Inactivo después de actividad** — cuenta desde la última acción, transición o llamada. Es el que quieres para "nadie ha hecho nada con este lead en una semana".
+
+<Warning>
+  La duración debe ser **mayor que cero**. Un temporizador con duración 0 no se dispara nunca, y al guardar verás _"El disparador de inactividad requiere una duración mayor a cero."_
+</Warning>
+
+## Condiciones
+
+Las **Condiciones** son un filtro extra que se evalúa antes de lanzar la secuencia. Se construyen como **grupos**: dentro de un grupo las condiciones se combinan con **Y**, y los grupos entre sí con **O**.
+
+Hay tres tipos:
+
+- **Rango Horario** — hora de inicio y fin, días de la semana y zona horaria. Soporta rangos que cruzan la medianoche.
+- **Campo del Cliente** — nombre, apellido, email, teléfono, empresa o un campo personalizado.
+- **Campo de Llamada** — disposición, respondido por, estado, duración, quién colgó, entrante, requiere seguimiento, conteo de reintentos.
+
+Operadores: _es igual a, no es igual a, contiene, no contiene, está vacío, no está vacío, mayor que, menor que_.
+
+<Tip>
+  El **Rango Horario** es la condición más útil de todas: evita que una secuencia llame o escriba a un cliente a las 3 de la madrugada.
+</Tip>
+
+## Secuencia única o secuencias condicionales
+
+- **Secuencia Única** — una sola lista de acciones, siempre la misma.
+- **Secuencias Condicionales** — varias ramas con sus propias condiciones. Se evalúan de arriba abajo y **la primera que coincida se ejecuta**. Puedes añadir una rama **Por Defecto (Sino)** como alternativa.
+
+<Warning>
+  Si usas secuencias condicionales y **ninguna rama coincide** — y no definiste una rama por defecto — **no se ejecuta nada en absoluto**. Añade siempre una alternativa si esperas que todos los clientes reciban algún tratamiento.
+</Warning>
+
+Las ramas se resuelven **una sola vez, en el momento del disparo**. No puedes ramificar a mitad de una secuencia según el resultado de una acción anterior.
+
+## Cómo se ejecuta una secuencia
+
+Las acciones corren **en orden**. Las inmediatas (etiquetar, mover, webhook, actualizar) se encadenan al instante; las que esperan algo (llamada, chat SMS, **Esperar**) dejan la secuencia en pausa hasta que se resuelvan.
+
+<Warning>
+  **Si una acción falla, la secuencia entera falla** y las acciones restantes se cancelan. **No hay reintento automático**: hay que relanzarla a mano desde el historial del cliente, con _Reintentar desde el fallo_ o _Reintentar todo_.
+</Warning>
+
+## Límites y protecciones
+
+| Ajuste | Qué controla |
+| --- | --- |
+| **Límite de Ejecución** | Cuántas veces puede dispararse este evento para un mismo cliente. Por defecto **1**. |
+| **Cancelar al Salir** | Cancela las secuencias en vuelo cuando el cliente abandona la etapa. Activado por defecto. |
+| **Prioridad** | Los eventos se evalúan de arriba abajo; arrástralos en la lista para reordenarlos. |
+
+<Warning>
+  **Cuidado con los bucles.** La acción **Mover a Etapa** dispara los eventos _Al Llegar_ de la etapa destino de inmediato. Si la etapa A mueve a B y la etapa B mueve a A, tienes un ciclo.
+
+  Lo único que hoy lo detiene es el **Límite de Ejecución** — con el valor por defecto de 1 el caso común es seguro, pero **si lo subes en dos etapas que se mueven mutuamente, el bucle se repetirá tantas veces como permita ese límite**. No hay detector de ciclos.
+</Warning>
+
+<Note>
+  **Los movimientos masivos no disparan automatizaciones.** Si seleccionas varias tarjetas y las mueves a la vez, no se ejecuta ningún evento _Al Salir_ ni _Al Llegar_. Arrastrar una sola tarjeta sí los dispara. Es una diferencia real y fácil de pasar por alto.
+</Note>
+
+<Warning>
+  Las entradas al pipeline **desde una llamada** no disparan los eventos _Al Llegar_ de la etapa destino, a diferencia de las entradas por WhatsApp, SMS, Cliente o API. Si tu automatización de bienvenida depende de _Al Llegar_, no se ejecutará para los leads que entren por llamada.
+</Warning>
+
+## Variables
+
+Cualquier campo de configuración de una acción admite variables del tipo `{'{{'}client.first_name{'}}'}`. Puedes usar datos del cliente, de la etapa, del pipeline, de la llamada que disparó el evento y de la acción anterior de la secuencia.
+
+## Siguiente paso
+
+<Card title="Referencia de acciones" icon="list-check" href="/es/salesflow/acciones">
+  Las nueve acciones disponibles, con toda su configuración.
+</Card>

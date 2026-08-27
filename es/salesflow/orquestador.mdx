@@ -1,0 +1,173 @@
+---
+title: "El orquestador"
+description: "La IA que lee cada conversación y mueve los leads por ti"
+icon: "robot"
+---
+
+El orquestador es la pieza que hace que Salesflow sea un CRM que se actualiza solo. Cuando una conversación termina, lee lo que pasó y decide si el cliente debe cambiar de etapa — con un **nivel de confianza** que tú controlas.
+
+<Note>
+  El orquestador **no es un agente que esté corriendo todo el tiempo**. Se despierta al terminar una conversación, evalúa a ese cliente, y vuelve a dormirse. No consume nada mientras no hay actividad.
+</Note>
+
+## Cuándo se ejecuta
+
+Se dispara al **finalizar** una conversación de cualquiera de los tres canales:
+
+| Canal | Momento exacto |
+| --- | --- |
+| Voz | Cuando la llamada termina y se analiza |
+| WhatsApp | Cuando la sesión se **resuelve** o **expira** |
+| SMS | Cuando la sesión termina |
+
+Las evaluaciones se procesan cada minuto, así que entre el final de la conversación y el movimiento de la tarjeta pasa hasta **1 minuto aproximadamente**.
+
+<Warning>
+  **No se evalúa mensaje a mensaje.** Mientras la conversación sigue abierta, el orquestador no interviene. Si tus sesiones de WhatsApp nunca se resuelven, nunca se evalúan.
+</Warning>
+
+## Cómo decide
+
+Para cada cliente, el orquestador toma **todas** las transiciones de orquestador que salen de su etapa actual y las evalúa **en una sola consulta**, eligiendo la mejor — o ninguna.
+
+Lo que ve la IA:
+
+- El **nombre y la descripción del pipeline** y de las etapas de origen y destino.
+- El **prompt de cada transición** como criterio a evaluar.
+- Los **datos de la conversación**: en chat, los **últimos 20 mensajes**, más resumen, sentimiento, estado y disposición; en voz, la transcripción completa y ~27 campos de la llamada.
+- El **cliente**: nombre, empresa y sus etiquetas.
+- Su **recorrido reciente**: los últimos 5 movimientos de etapa.
+
+<Warning>
+  En conversaciones de chat, la IA solo ve los **últimos 20 mensajes**. Si tu criterio depende de algo dicho al principio de una conversación muy larga, no se evaluará de forma fiable.
+</Warning>
+
+El orquestador está diseñado para ser **conservador**: su respuesta por defecto es _no mover_. Solo mueve cuando hay evidencia concreta en la conversación, y tiene instrucción explícita de no inventar ni inferir datos que no estén ahí. Una llamada sin contestar o un buzón de voz casi nunca bastan para mover a nadie.
+
+## Activarlo y configurarlo
+
+El orquestador se activa **por pipeline**, desde **Agente Orquestador** en la barra superior.
+
+<Warning>
+  **Desactivarlo desactiva todas tus transiciones de orquestador.** Al apagarlo, Dialtu te avisa de cuántas transiciones se van a desactivar.
+
+  Al volver a encenderlo **no se reactivan solas**: tienes que marcar la casilla _"Reactivar N transición(es) de orquestador"_. Si no la marcas, las transiciones siguen ahí pero inertes, y el pipeline parece roto sin motivo aparente.
+</Warning>
+
+{/* SCREENSHOT: el modal de configuración del orquestador con prompt del sistema, modelo y umbrales
+  <Frame caption="Configuración del Agente Orquestador">
+  <img src="/images/es/salesflow/orquestador-config.png" alt="Modal de configuración del orquestador" />
+  </Frame>
+  */}
+
+### Prompt del Sistema
+
+Instrucciones que se aplican a **todas** las transiciones de este pipeline. Es el lugar para el contexto de negocio que no cambia:
+
+```text
+Vendemos software de gestión a clínicas dentales en España y México.
+Un lead está calificado solo si es el dueño o el gerente de la clínica —
+no un recepcionista pidiendo información.
+Trata cualquier mención de "lo tengo que consultar con mi socio" como señal
+de que todavía no está calificado.
+```
+
+### Modelo de IA
+
+| Nivel | Coste | Cuándo usarlo |
+| --- | --- | --- |
+| **Estándar** | **Gratis** | La opción por defecto. Funciona bien para la mayoría de los casos. |
+| **Pro** | Usa créditos | Decisiones más precisas, para criterios sutiles o conversaciones ambiguas. |
+
+### Umbrales de confianza
+
+La IA devuelve una confianza de 0 a 100 %. Dos umbrales la parten en tres zonas:
+
+| Zona | Qué pasa |
+| --- | --- |
+| Por debajo del **Umbral de Omisión** | **Se omite** — no se hace nada. |
+| Entre ambos umbrales | **Revisión** — el cliente se marca con la insignia ámbar _Revisar_. |
+| Por encima del **Umbral de Auto-movimiento** | **Se mueve solo**. |
+
+Por defecto: omisión 60 %, auto-movimiento 80 %.
+
+<Warning>
+  **La zona de Revisión hoy solo funciona en llamadas de voz.** En WhatsApp y SMS, una evaluación que caiga en la banda intermedia **no marca al cliente para revisión** — se comporta igual que una omisión. La interfaz presenta las tres zonas como universales, pero el marcado para revisión solo se genera desde el canal de voz.
+</Warning>
+
+## Qué cuesta
+
+- **Estándar es gratis de verdad.** No se descuentan créditos y no se genera transacción.
+- **Pro consume créditos**, y **solo cuando el cliente efectivamente se mueve**. Una evaluación Pro que decide _no mover_ no se cobra.
+- Antes de cada evaluación Pro se comprueba tu saldo. Sin créditos suficientes, la evaluación se registra como _Créditos insuficientes_ y no se ejecuta.
+
+Puedes revisar el gasto con **Ver Costos** en la configuración del orquestador.
+
+<Note>
+  El modal de costes está rotulado **"Últimos 30 días"**, pero en realidad muestra el **histórico completo** desde que activaste el orquestador.
+</Note>
+
+## Escribir buenos prompts de transición
+
+El prompt de una transición describe **el criterio para ese salto concreto**. Unas reglas que funcionan:
+
+<AccordionGroup>
+  <Accordion title="Sé concreto sobre la evidencia, no sobre la intención">
+    **Mal:** `Mover si el cliente está interesado.`
+
+    **Bien:** `Mover si el cliente pidió una demo, dio una fecha para reunirse, o preguntó
+    por precios concretos para su caso.`
+  </Accordion>
+
+  <Accordion title="Di también cuándo NO mover">
+    El orquestador es conservador por defecto, pero las exclusiones explícitas evitan los falsos positivos más caros:
+
+    `No mover si solo pidió el catálogo, ni si dijo que volvería a contactar más adelante.`
+  </Accordion>
+
+  <Accordion title="Una transición, un criterio">
+    Si un prompt intenta cubrir tres situaciones distintas, la confianza baja y el cliente acaba en la zona de omisión. Crea transiciones separadas.
+  </Accordion>
+
+  <Accordion title="Deja lo genérico en el Prompt del Sistema">
+    El tono, el negocio y las definiciones compartidas van una sola vez en el prompt del sistema, no repetidas en cada transición.
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  Una transición de orquestador **con el prompt vacío se sigue evaluando**: la IA la recibe como _"sin criterios especificados"_. No da error y no se salta.
+</Note>
+
+## Cosas que conviene saber
+
+<AccordionGroup>
+  <Accordion title="Pausar el pipeline NO detiene al orquestador">
+    Los nodos de entrada y los temporizadores de inactividad respetan el estado del pipeline, pero **las transiciones no**. Un pipeline en pausa — o incluso eliminado — sigue evaluando y moviendo clientes, y en el nivel Pro sigue gastando créditos.
+
+    Para detener de verdad el movimiento por IA, desactiva el **Agente Orquestador**.
+  </Accordion>
+
+  <Accordion title="Las transiciones estáticas siempre van primero">
+    Si una transición estática coincide, el orquestador ni siquiera se ejecuta. Es la razón más común de "la IA no hizo nada".
+  </Accordion>
+
+  <Accordion title="No hay filtro por agente">
+    A diferencia de las transiciones estáticas, las de orquestador **no se pueden limitar a ciertos agentes**. Cualquier conversación que termine, del agente que sea, dispara la evaluación. Pausar un agente tampoco lo impide.
+  </Accordion>
+
+  <Accordion title="Mover no reasigna">
+    El dueño del lead se asigna **al entrar al pipeline** y no cambia cuando el orquestador lo mueve. Un lead que la IA empuja hasta una etapa de cierre conserva el responsable que tenía al principio, o ninguno.
+  </Accordion>
+
+  <Accordion title="Si la IA falla">
+    Los errores del proveedor no se muestran en crudo: verás _Error de Evaluación_ en el historial. En WhatsApp y SMS el evento se reintenta automáticamente; **en voz no hay reintento**, aunque el mensaje diga lo contrario.
+  </Accordion>
+</AccordionGroup>
+
+## Ver qué decidió y por qué
+
+Cada evaluación queda registrada, se mueva el cliente o no. Desde la tarjeta, en **Historial de Procesamiento**, verás el resultado, la confianza y el razonamiento en texto.
+
+<Card title="Historial y solución de problemas" icon="clock-rotate-left" href="/es/salesflow/historial">
+  Cómo leer el historial y qué hacer cuando un lead no se mueve.
+</Card>
