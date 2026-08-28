@@ -4,55 +4,42 @@ description: "Dialtu's CRM: a staged pipeline that moves itself"
 icon: "filter"
 ---
 
-Salesflow is Dialtu's CRM. It represents your sales process as a **pipeline**: a series of
-**stages** your customers move through, from first contact to won or lost.
+Salesflow is the Dialtu CRM. It represents your sales process as a **pipeline**: a series of **stages** your customers move through, from first contact to won or lost.
 
-What sets it apart from a traditional CRM is that **it doesn't depend on someone dragging
-cards**. Your AI agents talk over voice, WhatsApp, and SMS; when a conversation ends,
-Salesflow analyzes it and decides whether the customer should move forward.
+What sets it apart from a traditional CRM is that **it doesn't depend on someone dragging cards**. Your AI agents talk over voice, WhatsApp, and SMS; when a conversation ends, Salesflow analyzes it and decides whether the customer should move forward.
 
 {/* SCREENSHOT: the Kanban board of a pipeline with several stages and client cards
-<Frame caption="A Salesflow pipeline in Board view">
+  <Frame caption="A Salesflow pipeline in Board view">
   <img src="/images/en/salesflow/introduction-board.png" alt="Salesflow Kanban board" />
-</Frame>
-*/}
+  </Frame>
+  */}
 
 ## A lead's journey
 
 <Steps>
   <Step title="It enters">
-    An **input node** detects the customer — a call ended, a WhatsApp chat was resolved, a
-    contact was created, a record arrived via API — and places them in a stage.
+    An **input node** detects the customer — a call ended, a WhatsApp chat was resolved, a contact was created, a record arrived via API — and places them in a stage.
   </Step>
-
   <Step title="It gets an owner">
-    If you configured an assignment strategy, Salesflow distributes the lead across your team
-    members at that moment.
+    If you configured an assignment strategy, Salesflow distributes the lead across your team members at that moment.
   </Step>
-
   <Step title="It moves">
-    Every time a conversation ends, the **transitions** leaving its stage are evaluated. Static
-    ones first (exact rules), and if none match, the **orchestrator** AI decides.
+    Every time a conversation ends, the **transitions** leaving its stage are evaluated. Static ones first (exact rules), and if none match, the **orchestrator** AI decides.
   </Step>
-
   <Step title="It triggers automations">
-    On arriving in a stage — or on sitting still too long — that stage's **events** launch
-    **sequences**: call, send a WhatsApp, wait, tag, move.
+    On arriving in a stage — or on sitting still too long — that stage's **events** launch **sequences**: call, send a WhatsApp, wait, tag, move.
   </Step>
-
   <Step title="It finishes">
-    On reaching a **final stage** it's marked won or lost, and after a few days it becomes
-    **completed**.
+    On reaching a **final stage** it's marked won or lost, and after a few days it becomes **completed**.
   </Step>
 </Steps>
 
 ## Vocabulary
 
-Worth pinning down these terms before going further — they're used throughout this section
-and in the interface.
+Worth pinning down these terms before going further — they're used throughout this section and in the interface.
 
 | Term | What it is |
-|---|---|
+| --- | --- |
 | **Pipeline** | The whole process. You can have as many as you want: sales, support, collections. |
 | **Stage** | A column of the pipeline. A customer sits in exactly one stage per pipeline. |
 | **Input node** | The doorway: defines which channel customers come from, which filters they must match, and which stage they land in. |
@@ -63,29 +50,26 @@ and in the interface.
 | **Action** | A concrete step: call, send WhatsApp, wait, tag, move stage, call a webhook. |
 
 <Note>
-  In older documentation and some internal documents you'll see the words *funnel* and
-  *board*. The correct term, and the one the interface uses, is **pipeline**.
+  In older documentation and some internal documents you'll see the words _funnel_ and _board_. The correct term, and the one the interface uses, is **pipeline**.
 </Note>
 
 ## Two views of the same pipeline
 
 <CardGroup cols={2}>
   <Card title="Board" icon="table-columns">
-    The Kanban view: one column per stage, one card per customer. This is the day-to-day view —
-    where you work leads and move them by hand.
+    The Kanban view: one column per stage, one card per customer. This is the day-to-day view — where you work leads and move them by hand.
   </Card>
 
   <Card title="Flow" icon="diagram-project">
-    The diagram: stages, input nodes, and the arrows between them. This is the design view —
-    where you define how the pipeline works.
+    The diagram: stages, input nodes, and the arrows between them. This is the design view — where you define how the pipeline works.
   </Card>
 </CardGroup>
 
 {/* SCREENSHOT: the Flow view with stages, an input node, and transitions
-<Frame caption="The Flow view: this is where you design the pipeline">
+  <Frame caption="The Flow view: this is where you design the pipeline">
   <img src="/images/en/salesflow/introduction-flow.png" alt="Flow diagram view" />
-</Frame>
-*/}
+  </Frame>
+  */}
 
 ## What to read next
 
