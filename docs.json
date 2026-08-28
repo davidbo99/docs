@@ -42,14 +42,6 @@
                 ]
               },
               {
-                "group": "Bases de datos",
-                "icon": "database",
-                "pages": [
-                  "es/bases-de-datos/introduccion",
-                  "es/bases-de-datos/crear-base"
-                ]
-              },
-              {
                 "group": "Agentes de voz",
                 "icon": "microphone",
                 "pages": [
@@ -124,14 +116,6 @@
                   "en/salesflow/actions",
                   "en/salesflow/assignment",
                   "en/salesflow/history"
-                ]
-              },
-              {
-                "group": "Databases",
-                "icon": "database",
-                "pages": [
-                  "en/databases/introduction",
-                  "en/databases/create-database"
                 ]
               },
               {
