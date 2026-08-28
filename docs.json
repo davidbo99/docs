@@ -110,7 +110,6 @@
                 "icon": "filter",
                 "pages": [
                   "en/salesflow/introduction",
-                  "en/salesflow/create-pipeline",
                   "en/salesflow/stages",
                   "en/salesflow/input-nodes",
                   "en/salesflow/transitions",
@@ -121,10 +120,11 @@
                   "en/salesflow/history",
                   "en/salesflow/create-pipeline",
                   "en/salesflow/introduction",
+                  "en/salesflow/create-pipeline",
                   "en/salesflow/stages",
                   "en/salesflow/input-nodes",
-                  "en/salesflow/orchestrator",
                   "en/salesflow/transitions",
+                  "en/salesflow/orchestrator",
                   "en/salesflow/events-and-sequences",
                   "en/salesflow/actions",
                   "en/salesflow/assignment",
@@ -166,6 +166,7 @@
                       "en/channels/whatsapp/requirements",
                       "en/channels/whatsapp/connect",
                       "en/channels/whatsapp/onboarding-mode",
+                      "en/channels/whatsapp/numbers",
                       "en/channels/whatsapp/troubleshooting"
                     ]
                   }
