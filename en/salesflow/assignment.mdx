@@ -4,4 +4,79 @@ description: "Automatically distribute leads across your team"
 icon: "users"
 ---
 
-Content in preparation.
+Every customer in a pipeline can have an **owner**. Salesflow can distribute them automatically
+on entry, or you can assign them by hand from the card.
+
+## The pipeline team
+
+First define who can receive leads: in the pipeline settings, the **team** section lists the
+members. Each one has a **weight**, used only by the weighted strategy.
+
+{/* SCREENSHOT: the team section in the pipeline settings
+<Frame caption="The pipeline members">
+  <img src="/images/en/salesflow/assignment-team.png" alt="Pipeline team" />
+</Frame>
+*/}
+
+## Strategies
+
+| Strategy | How it distributes |
+|---|---|
+| **None** | Doesn't assign. Leads enter with no owner. |
+| **Round robin** | In turn, in order, one to each member. |
+| **Weighted round robin** | In turn, but respecting each member's **weight**. |
+| **Least load** | To whoever has the fewest active customers in the pipeline. |
+| **Random** | At random. |
+
+<Tip>
+  **Least load** is usually the best default for sales teams: it self-balances when someone is
+  away or piles up too many open leads.
+
+  **Weighted round robin** makes sense when you have different profiles — for example, weight 2
+  for senior reps and 1 for juniors.
+</Tip>
+
+## When assignment happens
+
+<Warning>
+  **Assignment happens once: when the customer enters the pipeline.**
+
+  Changing stage **does not reassign**. A lead the AI pushes from the first stage all the way to
+  closing keeps the owner it got on entry — or stays unowned if it entered while the strategy
+  was *None*.
+
+  If you need someone different to take over at a specific stage, reassign by hand from the
+  card.
+</Warning>
+
+It also assigns on **re-entry** for a customer who had left, and when adding customers in bulk
+from the board.
+
+## Overriding per input node
+
+Each [input node](/en/salesflow/input-nodes) can have its own strategy and its own pool of
+people, via **Assignment override** and **Team assignment**.
+
+This is useful when leads from different sources should go to different teams — for example,
+WhatsApp leads to the support team and API leads to the sales team.
+
+## Assigning by hand
+
+From the customer's card, the owner avatar opens a menu with **Assign to me**, **Assign**,
+**Unassign**, and a member search.
+
+The board can also be filtered by owner with **Filter by assignee**, including the **Unassigned**
+option — the best way to spot orphaned leads.
+
+<Note>
+  A member's auto-assign toggle **only affects the manual picker**. A member with auto-assign
+  turned off disappears from the manual assignment dropdown, but **automatic assignment can
+  still give them leads**. If you need to genuinely take someone out of the rotation, mark them
+  inactive in the pipeline team.
+</Note>
+
+## Next step
+
+<Card title="History and troubleshooting" icon="clock-rotate-left" href="/en/salesflow/history">
+  What happened to each lead, and what to do when something doesn't move.
+</Card>

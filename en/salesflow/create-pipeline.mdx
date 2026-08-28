@@ -4,4 +4,144 @@ description: "From zero to a pipeline that receives leads and moves them itself"
 icon: "plus"
 ---
 
-Content in preparation.
+By the end of this guide you'll have an active pipeline, with stages, a doorway connected to
+your conversations, and at least one automatic transition.
+
+## Before you start
+
+<Check>**Salesflow** write permissions (`salesflow.write` and `salesflow.edit_structure`).</Check>
+<Check>At least one working agent — WhatsApp, SMS, or voice — so there are conversations feeding the pipeline.</Check>
+
+## Steps
+
+<Steps>
+  <Step title="Create the pipeline" icon="plus">
+    Go to **CRM → Salesflow** and create a new pipeline. Give it a **Pipeline name** and a
+    **Description**.
+
+    <Tip>
+      The description isn't decorative: if you later enable the orchestrator, the AI reads it
+      as context for its decisions. Describe the actual sales process — don't just write
+      "sales pipeline".
+    </Tip>
+
+    You can also start from a **template** instead of a blank slate.
+
+    {/* SCREENSHOT: the pipeline creation modal with name and description
+    <Frame caption="Creating a new pipeline">
+      <img src="/images/en/salesflow/create-01-pipeline.png" alt="Pipeline creation modal" />
+    </Frame>
+    */}
+  </Step>
+
+  <Step title="Define the stages" icon="layer-group">
+    Switch to the **Flow** view and use **Add Stage** in the toolbar.
+
+    A good starting point is four or five stages that reflect real decisions in your process,
+    not internal tasks. For example: `New` → `Contacted` → `Qualified` → `Proposal` →
+    `Closed`.
+
+    The last one should be type **Final**, with **Outcome type** *Won* or *Lost*. It's common
+    to have two final stages: one won and one lost.
+
+    <Card title="Stages" icon="layer-group" href="/en/salesflow/stages">
+      The three stage types and what each one does.
+    </Card>
+
+    {/* SCREENSHOT: the Flow view with four or five stages created, still unconnected
+    <Frame caption="The pipeline stages in Flow view">
+      <img src="/images/en/salesflow/create-02-stages.png" alt="Stages in the flow diagram" />
+    </Frame>
+    */}
+  </Step>
+
+  <Step title="Open the doorway" icon="door-open">
+    Without an input node, the pipeline only fills by hand.
+
+    Click **Add Input Node**, choose the **Source type** (for example *WhatsApp Chat*), and
+    **drag from the node to a stage** to connect it. An unconnected node shows as **Not
+    connected** and does nothing.
+
+    Then configure it: **Entry conditions** (which agents, which tags, at what moment) and
+    **Target stage**.
+
+    <Warning>
+      If you leave the conditions empty, **everyone enters**. If you fill them in and nothing
+      matches, nobody enters and **you'll see no error** — the non-match is silent. Review them
+      carefully.
+    </Warning>
+
+    <Card title="Input nodes" icon="door-open" href="/en/salesflow/input-nodes">
+      The five sources and all their filters.
+    </Card>
+
+    {/* SCREENSHOT: the "Configure Input Node" panel with source type and conditions
+    <Frame caption="Configuring the input node">
+      <img src="/images/en/salesflow/create-03-input-node.png" alt="Input node configuration panel" />
+    </Frame>
+    */}
+  </Step>
+
+  <Step title="Connect stages with transitions" icon="arrow-right-arrow-left">
+    Drag from the edge of one stage to another to create a transition. **Configure Transition**
+    opens, where you pick the **Trigger type**:
+
+    - **Manual** — only a person moves the card.
+    - **Static** — exact rules about the call or chat outcome.
+    - **Orchestrator** — the AI decides, based on a prompt you write.
+
+    Start with **static** transitions wherever you have clear criteria: they're free, instant,
+    and predictable.
+
+    <Card title="Transitions" icon="arrow-right-arrow-left" href="/en/salesflow/transitions">
+      The three types, priority, and strict mode.
+    </Card>
+
+    {/* SCREENSHOT: the "Configure Transition" panel showing the three trigger types
+    <Frame caption="Configuring a transition">
+      <img src="/images/en/salesflow/create-04-transition.png" alt="Transition configuration panel" />
+    </Frame>
+    */}
+  </Step>
+
+  <Step title="Activate the pipeline" icon="circle-check">
+    Change the pipeline **Status** to **Active**.
+
+    <Warning>
+      While the pipeline isn't active, input nodes and idle timers won't run. The status pill is
+      the only in-product signal — there's no banner warning you.
+    </Warning>
+  </Step>
+
+  <Step title="Check that people are entering" icon="magnifying-glass">
+    Generate a real conversation that matches your input node's conditions — for example, write
+    to your WhatsApp agent and resolve the session.
+
+    Chat and call entry happens **when the conversation ends**, and processing runs every
+    minute, so the card can take up to ~1 minute to appear. **Client** entry is scanned every
+    2 minutes.
+
+    If it doesn't show up, check the **Processing History** and the
+    [troubleshooting page](/en/salesflow/history).
+  </Step>
+</Steps>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Events and sequences" icon="bolt" href="/en/salesflow/events-and-sequences">
+    Automate what happens inside each stage.
+  </Card>
+
+  <Card title="The orchestrator" icon="robot" href="/en/salesflow/orchestrator">
+    Let the AI move the leads that don't fit an exact rule.
+  </Card>
+
+  <Card title="Lead assignment" icon="users" href="/en/salesflow/assignment">
+    Distribute leads across your team automatically.
+  </Card>
+
+  <Card title="History and troubleshooting" icon="clock-rotate-left" href="/en/salesflow/history">
+    What happened, why, and what to do when something doesn't move.
+  </Card>
+</CardGroup>
