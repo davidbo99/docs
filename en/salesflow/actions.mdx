@@ -4,17 +4,16 @@ description: "The nine actions a sequence can run"
 icon: "list-check"
 ---
 
-These are all the actions you can chain in a sequence. The ones that **consume credits** are
-marked.
+These are all the actions you can chain in a sequence. The ones that **consume credits** are marked.
 
 {/* SCREENSHOT: the "Add Action" dropdown listing all nine actions
-<Frame caption="The actions available in a sequence">
+  <Frame caption="The actions available in a sequence">
   <img src="/images/en/salesflow/actions-menu.png" alt="Actions menu" />
-</Frame>
-*/}
+  </Frame>
+  */}
 
 | Action | What it does | Consumes credits |
-|---|---|---|
+| --- | --- | --- |
 | **Outbound call** | Calls the customer with a voice agent | **Yes** |
 | **Send SMS chat** | Opens an SMS conversation | **Yes** |
 | **Send WhatsApp message** | Sends a template to open a conversation | Not by Dialtu <sup>1</sup> |
@@ -25,8 +24,7 @@ marked.
 | **Add tag** | Adds a tag | No |
 | **Remove tag** | Removes a tag | No |
 
-<sup>1</sup> WhatsApp templates are billed by **Meta directly to your account**, not by Dialtu.
-See the note at the end.
+<sup>1</sup> WhatsApp templates are billed by **Meta directly to your account**, not by Dialtu. See the note at the end.
 
 ---
 
@@ -34,33 +32,30 @@ See the note at the end.
 
 Places a call with one of your voice agents. The sequence waits until the call ends.
 
-**Main configuration:** agent, max duration, wait for greeting, record call, detect who
-answers, voicemail action (hang up, leave message, ignore), disposition tags, and request data.
+**Main configuration:** agent, max duration, wait for greeting, record call, detect who answers, voicemail action (hang up, leave message, ignore), disposition tags, and request data.
 
-**Retry block:** max retries, days between them, a time slot or a specific hour, and in which
-cases to retry (not answered, or certain disposition tags).
+**Retry block:** max retries, days between them, a time slot or a specific hour, and in which cases to retry (not answered, or certain disposition tags).
 
 <Warning>
-  Requires the customer to **have a phone number**. Without one, the action fails and takes the
-  whole sequence with it.
+  Requires the customer to **have a phone number**. Without one, the action fails and takes the whole sequence with it.
 </Warning>
 
 <Note>
-  The call is placed on behalf of the **user who created the pipeline**. If that person no
-  longer exists in the organization, the action fails.
+  The call is placed on behalf of the **user who created the pipeline**. If that person no longer exists in the organization, the action fails.
 
-  The field label reads "Max Duration (minutes)", but the value is in **seconds** (300 = 5
-  minutes).
+  The field label reads "Max Duration (minutes)", but the value is in **seconds** (300 = 5 minutes).
 </Note>
 
 ---
 
 ## Send SMS chat
 
-Opens an SMS conversation with an agent. By default the sequence **waits for it to finish**
-before continuing.
+Opens an SMS conversation with an agent. By default the sequence **waits for it to finish** before continuing.
 
 The **opening message** can be:
+
+- **Static message** — the text you write, with client variables.
+- **Generate with AI** — you write a prompt and the AI drafts the first SMS.
 
 - **Static message** — the text you write, with variables like `{'{{'}first_name{'}}'}`.
 - **Generate with AI** — you write a prompt and the AI drafts the first SMS.
@@ -73,19 +68,14 @@ If you leave it empty, the agent's default opening message is used.
 
 Sends an **approved template** to open a WhatsApp conversation.
 
-**Configuration:** outbound WhatsApp agent, template, language code, template variables, and
-what to do **if a session is already active**: skip, send as text, or send as template.
+**Configuration:** outbound WhatsApp agent, template, language code, template variables, and what to do **if a session is already active**: skip, send as text, or send as template.
 
 <Note>
-  Only templates **approved within the chosen agent's WhatsApp Business account** are shown. If
-  you don't see yours, check that the agent has a phone number assigned and that the template is
-  approved in that same account.
+  Only templates **approved within the chosen agent's WhatsApp Business account** are shown. If you don't see yours, check that the agent has a phone number assigned and that the template is approved in that same account.
 </Note>
 
 <Warning>
-  Although Dialtu doesn't charge you for the template, **sending still requires a credit
-  balance** and respects your plan's daily and hourly limits. An account with no credits won't
-  be able to send the template even though the message itself is free for Dialtu.
+  Although Dialtu doesn't charge you for the template, **sending still requires a credit balance** and respects your plan's daily and hourly limits. An account with no credits won't be able to send the template even though the message itself is free for Dialtu.
 </Warning>
 
 ---
@@ -94,12 +84,10 @@ what to do **if a session is already active**: skip, send as text, or send as te
 
 Makes an HTTP request to a URL of yours.
 
-**Configuration:** URL, method, headers, body (visual builder or manual JSON), timeout in
-seconds, retry on failure, and authentication (none, basic, bearer, or header).
+**Configuration:** URL, method, headers, body (visual builder or manual JSON), timeout in seconds, retry on failure, and authentication (none, basic, bearer, or header).
 
 <Note>
-  By default, **an error response from the server does not stop the sequence** — it's considered
-  completed anyway. Enable *Retry on failure* if you want an error to count as a real failure.
+  By default, **an error response from the server does not stop the sequence** — it's considered completed anyway. Enable _Retry on failure_ if you want an error to count as a real failure.
 </Note>
 
 ---
@@ -109,55 +97,45 @@ seconds, retry on failure, and authentication (none, basic, bearer, or header).
 Pauses the sequence. Two modes:
 
 - **Fixed duration** — minutes, hours, or days.
-- **Scheduled time** — a specific hour (`09:00`) on a relative day: same day, next day, next
-  weekday, next Monday… or next week. With a timezone.
+- **Scheduled time** — a specific hour (`09:00`) on a relative day: same day, next day, next weekday, next Monday… or next week. With a timezone.
 
 <Tip>
-  There's no per-step delay. **Wait is the only way to separate two actions in time**; without
-  it, everything immediate runs at once.
+  There's no per-step delay. **Wait is the only way to separate two actions in time**; without it, everything immediate runs at once.
 </Tip>
 
 ---
 
 ## Move to stage
 
-Moves the customer to another stage in the same pipeline. Optionally cancels any sequences that
-were running.
+Moves the customer to another stage in the same pipeline. Optionally cancels any sequences that were running.
 
 <Warning>
-  This action **immediately** fires the current stage's *On departure* events and the target's
-  *On arrival* events. It's the usual way to create a loop by accident — see the warning in
-  [Events and sequences](/en/salesflow/events-and-sequences).
+  This action **immediately** fires the current stage's _On departure_ events and the target's _On arrival_ events. It's the usual way to create a loop by accident — see the warning in [Events and sequences](/en/salesflow/events-and-sequences).
 </Warning>
 
 ---
 
 ## Update client
 
-Modifies contact fields: first name, last name, email, company, phone, timezone, and area code.
-Any other field you define is stored as custom client data.
+Modifies contact fields: first name, last name, email, company, phone, timezone, and area code. Any other field you define is stored as custom client data.
 
 ---
 
 ## Add tag / Remove tag
 
-Adds or removes tags. If the tag doesn't exist, **Add tag creates it**. Removing a tag the
-customer doesn't have doesn't error.
+Adds or removes tags. If the tag doesn't exist, **Add tag creates it**. Removing a tag the customer doesn't have doesn't error.
 
 <Tip>
-  Tags are the bridge between pipelines: tag in one, and use that tag as an entry condition in
-  another.
+  Tags are the bridge between pipelines: tag in one, and use that tag as an entry condition in another.
 </Tip>
 
 ---
 
 ## WhatsApp billing
 
-Dialtu **does not charge you** for sending WhatsApp templates. You connect your own WhatsApp
-Business account and **Meta bills you directly** for those conversations.
+Dialtu **does not charge you** for sending WhatsApp templates. You connect your own WhatsApp Business account and **Meta bills you directly** for those conversations.
 
-The only thing Dialtu charges for on WhatsApp is **AI-generated messages** during a
-conversation — not templates.
+The only thing Dialtu charges for on WhatsApp is **AI-generated messages** during a conversation — not templates.
 
 ## Next step
 
