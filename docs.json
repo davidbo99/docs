@@ -111,11 +111,19 @@
                 ]
               },
               {
-                "group": "Funnels",
+                "group": "Salesflow",
                 "icon": "filter",
                 "pages": [
-                  "en/funnels/introduction",
-                  "en/funnels/create-funnel"
+                  "en/salesflow/introduction",
+                  "en/salesflow/create-pipeline",
+                  "en/salesflow/stages",
+                  "en/salesflow/input-nodes",
+                  "en/salesflow/transitions",
+                  "en/salesflow/orchestrator",
+                  "en/salesflow/events-and-sequences",
+                  "en/salesflow/actions",
+                  "en/salesflow/assignment",
+                  "en/salesflow/history"
                 ]
               },
               {
@@ -142,7 +150,18 @@
                 "icon": "comments",
                 "pages": [
                   "en/channels/whatsapp",
-                  "en/channels/sms"
+                  "en/channels/sms",
+                  {
+                    "group": "Connect WhatsApp",
+                    "icon": "whatsapp",
+                    "pages": [
+                      "en/channels/whatsapp/requirements",
+                      "en/channels/whatsapp/connect",
+                      "en/channels/whatsapp/onboarding-mode",
+                      "en/channels/whatsapp/numbers",
+                      "en/channels/whatsapp/troubleshooting"
+                    ]
+                  }
                 ]
               },
               {
@@ -176,15 +195,15 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
