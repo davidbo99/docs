@@ -24,8 +24,7 @@
                 "icon": "rocket",
                 "pages": [
                   "es/introduccion/que-es-dialtu",
-                  "es/introduccion/primeros-pasos",
-                  "es/introduccion/conceptos-clave"
+                  "es/introduccion/primeros-pasos"
                 ]
               },
               {
@@ -101,8 +100,7 @@
                 "icon": "rocket",
                 "pages": [
                   "en/getting-started/what-is-dialtu",
-                  "en/getting-started/quickstart",
-                  "en/getting-started/key-concepts"
+                  "en/getting-started/quickstart"
                 ]
               },
               {
