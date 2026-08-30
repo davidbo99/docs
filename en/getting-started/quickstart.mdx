@@ -42,82 +42,9 @@ You need four things:
 
     When you're done, come back here. You should see your account under **Connected accounts** and your number with status **Connected**.
 
-    <Info>
-      **📷 Screenshot needed** — Settings → WhatsApp Business with the number showing status "Connected".
-
-      Save to `/images/en/getting-started/01-number-connected.png`
-    </Info>
-  </Step>
-  <Step title="Create your agent" icon="robot">
-    Go to **Chat → WhatsApp → Agents** and click **Create agent**.
-
-    The agent workspace opens: a single screen with three columns — **Settings** on the left, the **prompt** in the middle, and **Atlas / Test / Summary** on the right.
-
-    Start by giving it a **name** in the top bar (for example, `Front desk` or `Lead qualification`). The **description** is optional and only you and your team see it.
-
-    <Info>
-      **📷 Screenshot needed** — the freshly opened workspace, highlighting the three columns.
-
-      Save to `/images/en/getting-started/02-workspace.png`
-    </Info>
-  </Step>
-  <Step title="Write the agent prompt" icon="pen-to-square">
-    The middle column holds the **Agent prompt** — a single document where you define who the agent is and how it should behave. It's the only required content field.
-
-    Structure it in three sections:
-
-    ```markdown
-    ## Context
-    You are the assistant for [your business]. We sell [product or service] to [customer type].
-    Our support hours are [hours]. You reply over WhatsApp.
-    
-    ## Conversation flow
-    1. Greet the person and ask how you can help.
-    2. Identify whether they're after [case A] or [case B].
-    3. If it's [case A], ask for [detail 1] and [detail 2] before continuing.
-    4. Once you have the details, offer to book a call.
-    
-    ## Rules
-    - Always reply in English, warm tone, short sentences.
-    - Never invent prices or delivery dates. If you don't know, say so and offer a human.
-    - Never ask for card details or passwords.
-    ```
-
-    <Tip>
-      You can paste text and formatting is preserved. Use the **Variables** tray to insert contact data: `{'{{client_var}}'}` for client variables and `[[global_var]]` for global ones.
-    </Tip>
-
-    You can also ask **Atlas**, the copilot in the right-hand tab: describe the agent you need and it builds it for you.
-
-  </Step>
-  <Step title="Connect it to your number and set routing" icon="route">
-    In the **Settings** column, open the **WhatsApp channel** group:
-
-    <AccordionGroup>
-      <Accordion title="WhatsApp phone number">
-        Select the number you connected in step 1.
-      </Accordion>
-
-      <Accordion title="Agent type">
-        Choose **Inbound** if it should only reply to incoming messages, or **Omnichannel** if it should also be able to start conversations. **Outbound** does not reply to incoming messages.
-      </Accordion>
-
-      <Accordion title="Routing">
-        Turn on **Default** so this agent handles every message to the number. Alternatively, define a **weekly schedule** so it only covers certain time slots.
-      </Accordion>
-    </AccordionGroup>
-
-    <Warning>
-      Routing is required for inbound and omnichannel agents. If the number already has another default agent, Dialtu will ask you to give that agent a time range before taking its place.
-    </Warning>
-
-    Check the **Summary** tab on the right: it shows the **Required to create** checklist (Name, Agent prompt, WhatsApp phone number, Routing) and what's still missing.
-
-    <Info>
-      **📷 Screenshot needed** — the "WhatsApp channel" group expanded with number, type, and routing.
-
-      Save to `/images/en/getting-started/04-channel.png`
-    </Info>
+    <Frame caption="Settings → WhatsApp channel">
+      <img src="/images/en/getting-started/04-channel.png" alt="WhatsApp channel group showing phone number, agent type, routing and audience" />
+    </Frame>
 
   </Step>
   <Step title="Test it before activating" icon="flask">
@@ -129,11 +56,9 @@ You need four things:
 
     Walk through your typical cases: the greeting, the common question, the one that should escalate to a human. If the agent ends the conversation, click **Reset** to start over.
 
-    <Info>
-      **📷 Screenshot needed** — the "Test" tab with a test conversation and the real-tools warning visible.
-
-      Save to `/images/en/getting-started/05-test.png`
-    </Info>
+    <Frame caption="The Test tab, with the warning that tools run for real">
+      <img src="/images/en/getting-started/05-test.png" alt="Agent test panel showing a conversation and a tool execution" />
+    </Frame>
   </Step>
   <Step title="Activate it" icon="circle-check">
     In the top bar, confirm the status indicator reads **Active** (new agents are created active; click the indicator to toggle between **Active** and **Paused**).
