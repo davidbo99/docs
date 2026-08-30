@@ -4,20 +4,17 @@ description: "Connect WhatsApp and get your first AI agent running"
 icon: "play"
 ---
 
-By the end of this guide you'll have your WhatsApp Business account connected and an AI agent
-replying to real messages. It takes about 15 minutes.
+By the end of this guide you'll have your WhatsApp Business account connected and an AI agent replying to real messages. It takes about 15 minutes.
 
 <Note>
-  We start with WhatsApp because it's the shortest path to a working agent: no phone number to
-  buy, no telephony to configure. If voice is your priority, go straight to
-  [Create your first AI voice agent](/en/voice-agents/create-agent).
+  We start with WhatsApp because it's the shortest path to a working agent: no phone number to buy, no telephony to configure. If voice is your priority, go straight to [Create your first AI voice agent](/en/voice-agents/create-agent).
 </Note>
 
 {/* SCREENSHOT: overview of the WhatsApp agent workspace, as a "here's what you're building"
-<Frame caption="What you'll have at the end: an active WhatsApp agent">
+  <Frame caption="What you'll have at the end: an active WhatsApp agent">
   <img src="/images/en/getting-started/final-result.png" alt="Configured and active WhatsApp agent" />
-</Frame>
-*/}
+  </Frame>
+  */}
 
 ## Before you start
 
@@ -43,17 +40,13 @@ You need four things:
 
 <Steps>
   <Step title="Connect your WhatsApp Business account" icon="whatsapp">
-    In the sidebar, open **Settings** → **WhatsApp Business** and click **Connect WhatsApp**.
-    A Meta popup window opens where you sign in, pick your WhatsApp Business account, and
-    verify your number.
+    In the sidebar, open **Settings** → **WhatsApp Business** and click **Connect WhatsApp**. A Meta popup window opens where you sign in, pick your WhatsApp Business account, and verify your number.
 
     <Card title="Connect your WhatsApp Business account" icon="link" href="/en/channels/whatsapp/connect">
-      The full process, screen by screen: Meta requirements, the two onboarding modes, number
-      management, and troubleshooting.
+      The full process, screen by screen: Meta requirements, the two onboarding modes, number management, and troubleshooting.
     </Card>
 
-    When you're done, come back here. You should see your account under **Connected accounts**
-    and your number with status **Connected**.
+    When you're done, come back here. You should see your account under **Connected accounts** and your number with status **Connected**.
 
     {/* SCREENSHOT: Settings → WhatsApp Business with the number showing status "Connected"
     <Frame caption="Number connected and ready to use">
@@ -61,15 +54,12 @@ You need four things:
     </Frame>
     */}
   </Step>
-
   <Step title="Create your agent" icon="robot">
     Go to **Chat → WhatsApp → Agents** and click **Create agent**.
 
-    The agent workspace opens: a single screen with three columns — **Settings** on the left,
-    the **prompt** in the middle, and **Atlas / Test / Summary** on the right.
+    The agent workspace opens: a single screen with three columns — **Settings** on the left, the **prompt** in the middle, and **Atlas / Test / Summary** on the right.
 
-    Start by giving it a **name** in the top bar (for example, `Front desk` or
-    `Lead qualification`). The **description** is optional and only you and your team see it.
+    Start by giving it a **name** in the top bar (for example, `Front desk` or `Lead qualification`). The **description** is optional and only you and your team see it.
 
     {/* SCREENSHOT: the freshly opened workspace, highlighting the three columns
     <Frame caption="The agent workspace: settings, prompt, and side panel">
@@ -77,10 +67,8 @@ You need four things:
     </Frame>
     */}
   </Step>
-
   <Step title="Write the agent prompt" icon="pen-to-square">
-    The middle column holds the **Agent prompt** — a single document where you define who the
-    agent is and how it should behave. It's the only required content field.
+    The middle column holds the **Agent prompt** — a single document where you define who the agent is and how it should behave. It's the only required content field.
 
     Structure it in three sections:
 
@@ -88,13 +76,13 @@ You need four things:
     ## Context
     You are the assistant for [your business]. We sell [product or service] to [customer type].
     Our support hours are [hours]. You reply over WhatsApp.
-
+    
     ## Conversation flow
     1. Greet the person and ask how you can help.
     2. Identify whether they're after [case A] or [case B].
     3. If it's [case A], ask for [detail 1] and [detail 2] before continuing.
     4. Once you have the details, offer to book a call.
-
+    
     ## Rules
     - Always reply in English, warm tone, short sentences.
     - Never invent prices or delivery dates. If you don't know, say so and offer a human.
@@ -102,13 +90,10 @@ You need four things:
     ```
 
     <Tip>
-      You can paste text and formatting is preserved. Use the **Variables** tray to insert
-      contact data: `{'{{client_var}}'}` for client variables and `[[global_var]]` for global
-      ones.
+      You can paste text and formatting is preserved. Use the **Variables** tray to insert contact data: `{'{{client_var}}'}` for client variables and `[[global_var]]` for global ones.
     </Tip>
 
-    You can also ask **Atlas**, the copilot in the right-hand tab: describe the agent you need
-    and it builds it for you.
+    You can also ask **Atlas**, the copilot in the right-hand tab: describe the agent you need and it builds it for you.
 
     {/* SCREENSHOT: the prompt editor with a real prompt written and the Variables tray open
     <Frame caption="The agent prompt, with the variables tray">
@@ -116,7 +101,6 @@ You need four things:
     </Frame>
     */}
   </Step>
-
   <Step title="Connect it to your number and set routing" icon="route">
     In the **Settings** column, open the **WhatsApp channel** group:
 
@@ -126,25 +110,19 @@ You need four things:
       </Accordion>
 
       <Accordion title="Agent type">
-        Choose **Inbound** if it should only reply to incoming messages, or **Omnichannel** if
-        it should also be able to start conversations. **Outbound** does not reply to incoming
-        messages.
+        Choose **Inbound** if it should only reply to incoming messages, or **Omnichannel** if it should also be able to start conversations. **Outbound** does not reply to incoming messages.
       </Accordion>
 
       <Accordion title="Routing">
-        Turn on **Default** so this agent handles every message to the number. Alternatively,
-        define a **weekly schedule** so it only covers certain time slots.
+        Turn on **Default** so this agent handles every message to the number. Alternatively, define a **weekly schedule** so it only covers certain time slots.
       </Accordion>
     </AccordionGroup>
 
     <Warning>
-      Routing is required for inbound and omnichannel agents. If the number already has another
-      default agent, Dialtu will ask you to give that agent a time range before taking its
-      place.
+      Routing is required for inbound and omnichannel agents. If the number already has another default agent, Dialtu will ask you to give that agent a time range before taking its place.
     </Warning>
 
-    Check the **Summary** tab on the right: it shows the **Required to create** checklist
-    (Name, Agent prompt, WhatsApp phone number, Routing) and what's still missing.
+    Check the **Summary** tab on the right: it shows the **Required to create** checklist (Name, Agent prompt, WhatsApp phone number, Routing) and what's still missing.
 
     {/* SCREENSHOT 1: the "WhatsApp channel" group expanded with number, type, and routing
     <Frame caption="Settings → WhatsApp channel">
@@ -158,18 +136,14 @@ You need four things:
     </Frame>
     */}
   </Step>
-
   <Step title="Test it before activating" icon="flask">
-    Open the **Test** tab in the right column and write to it as if you were the customer. The
-    agent responds using the prompt and tools currently on screen, saved or not.
+    Open the **Test** tab in the right column and write to it as if you were the customer. The agent responds using the prompt and tools currently on screen, saved or not.
 
     <Warning>
-      **API and integration tools run for real.** If your agent has a tool that books
-      appointments or writes to your CRM, testing it will create real records. Use test data.
+      **API and integration tools run for real.** If your agent has a tool that books appointments or writes to your CRM, testing it will create real records. Use test data.
     </Warning>
 
-    Walk through your typical cases: the greeting, the common question, the one that should
-    escalate to a human. If the agent ends the conversation, click **Reset** to start over.
+    Walk through your typical cases: the greeting, the common question, the one that should escalate to a human. If the agent ends the conversation, click **Reset** to start over.
 
     {/* SCREENSHOT: the "Test" tab with a test conversation and the real-tools warning visible
     <Frame caption="Testing the agent against the current draft">
@@ -177,13 +151,10 @@ You need four things:
     </Frame>
     */}
   </Step>
-
   <Step title="Activate it" icon="circle-check">
-    In the top bar, confirm the status indicator reads **Active** (new agents are created
-    active; click the indicator to toggle between **Active** and **Paused**).
+    In the top bar, confirm the status indicator reads **Active** (new agents are created active; click the indicator to toggle between **Active** and **Paused**).
 
-    Click **Create Agent**. From that moment the agent handles messages arriving at your number
-    according to the routing you defined.
+    Click **Create Agent**. From that moment the agent handles messages arriving at your number according to the routing you defined.
 
     {/* SCREENSHOT: the editor top bar with the "Active" indicator and the "Create Agent" button
     <Frame caption="Active status and the Create Agent button">
@@ -202,22 +173,16 @@ Send a WhatsApp message from your personal phone to the number you connected. Yo
 3. The contact created automatically under **CRM → Clients**.
 
 {/* SCREENSHOT: side by side, the chat on the phone and the same conversation in CRM → Conversations
-<Frame caption="The same conversation, on the customer's phone and in Dialtu">
+  <Frame caption="The same conversation, on the customer's phone and in Dialtu">
   <img src="/images/en/getting-started/07-verification.png" alt="Conversation mirrored in Dialtu" />
-</Frame>
-*/}
+  </Frame>
+  */}
 
-If no reply arrives, check that the number is **Connected** in Settings, that the agent is
-**Active**, and that the routing covers the time you wrote. If the problem is with the
-connection, see [Troubleshooting](/en/channels/whatsapp/troubleshooting).
+If no reply arrives, check that the number is **Connected** in Settings, that the agent is **Active**, and that the routing covers the time you wrote. If the problem is with the connection, see [Troubleshooting](/en/channels/whatsapp/troubleshooting).
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Key concepts" icon="lightbulb" href="/en/getting-started/key-concepts">
-    Understand the terms you'll use in Dialtu.
-  </Card>
-
   <Card title="Create tools" icon="plug" href="/en/voice-agents/create-tools">
     Give your agent real actions: book, query your CRM, call your API.
   </Card>
