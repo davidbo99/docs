@@ -48,6 +48,7 @@
                 "pages": [
                   "es/agentes-de-voz/introduccion",
                   "es/agentes-de-voz/crear-agente",
+                  "es/agentes-de-voz/prompt",
                   "es/agentes-de-voz/crear-herramientas",
                   "es/agentes-de-voz/configurar",
                   "es/agentes-de-voz/probar-publicar"
@@ -126,6 +127,7 @@
                 "pages": [
                   "en/voice-agents/introduction",
                   "en/voice-agents/create-agent",
+                  "en/voice-agents/prompt",
                   "en/voice-agents/create-tools",
                   "en/voice-agents/configure",
                   "en/voice-agents/test-publish"
