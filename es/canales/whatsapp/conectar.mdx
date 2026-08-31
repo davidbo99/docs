@@ -4,44 +4,140 @@ description: "Vincula tu cuenta de WhatsApp Business a Dialtu paso a paso"
 icon: "link"
 ---
 
-<Info>
-  **Página en construcción.** Estamos preparando este contenido.
-</Info>
+Esta guía cubre el método de **Coexistencia**, que te permite **seguir usando tu app de
+WhatsApp de siempre** mientras el número queda conectado a Dialtu.
 
-{/* PENDIENTE DE REDACTAR. Esquema propuesto:
+<Note>
+  Si prefieres un número nuevo y dedicado, sin la app en el teléfono, consulta
+  [Cloud API o Coexistencia](/es/canales/whatsapp/modo-onboarding).
+</Note>
 
-  ## Dónde empieza
-  Configuración → Configuración empresarial → WhatsApp Business → botón "Conectar WhatsApp"
+## Antes de empezar
 
-  ## La ventana de Meta, pantalla por pantalla
-  - Inicio de sesión en Facebook
-  - Selección o creación del portafolio de negocio
-  - Selección o creación de la cuenta de WhatsApp Business
-  - Alta y verificación del número
-  - Pantalla de permisos
+<Check>La **cuenta de Facebook** asociada a tu número de WhatsApp Business.</Check>
+<Check>Acceso a la **app de WhatsApp en el teléfono** donde está ese número — la necesitarás para escanear un código QR.</Check>
+<Check>Permisos para gestionar WhatsApp dentro de Dialtu.</Check>
 
-  ## Volver a Dialtu
-  - Mensaje de éxito y dónde aparece la cuenta ("Cuentas conectadas")
-  - Cómo confirmar que el número quedó en estado "Conectado"
+<Tip>
+  Ten el teléfono a mano desde el principio. El proceso se interrumpe a mitad para escanear un
+  QR, y la ventana de Meta no debe cerrarse mientras tanto.
+</Tip>
 
-  ## Conectar cuentas o números adicionales
-  - "Agregar cuenta de WhatsApp" / "Agregar Número de Teléfono"
-  */}
+## Pasos
 
-{/* SCREENSHOT 1: Configuración → WhatsApp Business, estado vacío con el botón "Conectar WhatsApp"
-  <Frame caption="Configuración → WhatsApp Business">
-  <img src="/images/es/whatsapp/conectar-estado-vacio.png" alt="Panel de WhatsApp Business sin cuentas conectadas" />
-  </Frame>
-  */}
+<Steps>
+  <Step title="Ir a Configuración" icon="gear">
+    En el menú lateral de Dialtu, baja hasta la parte inferior y haz clic en **Configuración**.
 
-{/* SCREENSHOT 2: la ventana emergente de Meta — pantalla de selección de portafolio de negocio
-  <Frame caption="Ventana de Meta: selecciona tu portafolio de negocio">
-  <img src="/images/es/whatsapp/conectar-meta-portafolio.png" alt="Ventana emergente de Meta" />
-  </Frame>
-  */}
+    <Frame caption="El acceso a Configuración, al final del menú lateral">
+      <img src="/images/es/whatsapp/01-configuracion.png" alt="Menú lateral de Dialtu con la opción Configuración al final" />
+    </Frame>
+  </Step>
 
-{/* SCREENSHOT 3: "Cuentas conectadas" ya con la cuenta y el número en estado "Conectado"
-  <Frame caption="Cuenta conectada correctamente">
-  <img src="/images/es/whatsapp/conectar-cuentas-conectadas.png" alt="Lista de cuentas conectadas" />
-  </Frame>
-  */}
+  <Step title="Abrir WhatsApp Business" icon="whatsapp">
+    Dentro de **Configuración empresarial**, selecciona **WhatsApp Business**.
+
+    <Frame caption="Configuración empresarial → WhatsApp Business">
+      <img src="/images/es/whatsapp/02-whatsapp-business.png" alt="Menú de Configuración empresarial con la opción WhatsApp Business" />
+    </Frame>
+  </Step>
+
+  <Step title="Conectar WhatsApp" icon="plug">
+    En la pantalla **Conecta tu cuenta de WhatsApp Business**, haz clic en **Conectar
+    WhatsApp**.
+
+    <Frame caption="La pantalla inicial, antes de conectar ninguna cuenta">
+      <img src="/images/es/whatsapp/03-conectar-whatsapp.png" alt="Pantalla Conecta tu cuenta de WhatsApp Business con el botón Conectar WhatsApp" />
+    </Frame>
+  </Step>
+
+  <Step title="Elegir Coexistencia" icon="code-compare">
+    En la ventana **Conectar una nueva WABA**, elige **App de WhatsApp Business
+    (Coexistencia)** y haz clic en **Continuar**.
+
+    <Frame caption="Elegir el método de incorporación">
+      <img src="/images/es/whatsapp/04-coexistencia.png" alt="Modal Conectar una nueva WABA con las opciones Cloud API y App de WhatsApp Business (Coexistencia)" />
+    </Frame>
+
+    <Note>
+      Si no ves esta ventana y pasas directamente a Meta, tu cuenta está configurada solo para
+      Cloud API. Escribe a soporte si necesitas Coexistencia.
+    </Note>
+  </Step>
+
+  <Step title="Iniciar sesión en Meta" icon="facebook">
+    Se abre una ventana emergente de Meta. Inicia sesión con la **cuenta de Facebook asociada
+    al número** que quieres conectar y haz clic en **Continuar**.
+
+    <Frame caption="La ventana de Meta, con el inicio del proceso de incorporación">
+      <img src="/images/es/whatsapp/05-meta-login.png" alt="Ventana emergente de Meta para conectar la cuenta con Dialtu" />
+    </Frame>
+
+    <Warning>
+      **No cierres la ventana de Meta** hasta terminar. Si tu navegador bloquea las ventanas
+      emergentes, permítelas para este sitio y vuelve a empezar.
+    </Warning>
+  </Step>
+
+  <Step title="Seleccionar portafolio y app" icon="briefcase">
+    Elige tu **portafolio comercial** y, en **Cuenta de WhatsApp Business**, selecciona
+    **Conecta una aplicación de WhatsApp Business**. Luego **Siguiente**.
+
+    <Frame caption="Selección del portafolio y de la app de WhatsApp Business">
+      <img src="/images/es/whatsapp/06-portafolio.png" alt="Pantalla de Meta para seleccionar el portafolio empresarial y la cuenta de WhatsApp Business" />
+    </Frame>
+  </Step>
+
+  <Step title="Introducir país y número" icon="phone">
+    Introduce el **código de país** y tu **número de WhatsApp Business**. Luego **Siguiente**.
+
+    <Frame caption="País y número de teléfono">
+      <img src="/images/es/whatsapp/07-pais-numero.png" alt="Pantalla de Meta para introducir el país y el número de teléfono de WhatsApp Business" />
+    </Frame>
+  </Step>
+
+  <Step title="Confirmar datos y aceptar términos" icon="file-signature">
+    Revisa que los datos sean correctos, acepta los términos y condiciones y continúa.
+  </Step>
+
+  <Step title="Vincular desde tu app de WhatsApp" icon="qrcode">
+    Cuando aparezca el **código QR** en la ventana emergente, abre la app de WhatsApp en el
+    teléfono de ese número y escanéalo desde:
+
+    **Configuración → Cuenta → Conectar a una plataforma de negocios**
+
+    <Warning>
+      Este es el paso que más se atasca. El QR se escanea **desde la app de WhatsApp**, no desde
+      la cámara del teléfono ni desde WhatsApp Web.
+    </Warning>
+  </Step>
+
+  <Step title="Continuar y finalizar" icon="circle-check">
+    Vuelve a la ventana emergente y haz clic en **Continuar** y luego en **Finalizar**.
+  </Step>
+
+  <Step title="Verificar la conexión en Dialtu" icon="list-check">
+    Confirma que tu número aparece en **Cuentas conectadas**.
+
+    <Frame caption="La cuenta ya conectada en Dialtu">
+      <img src="/images/es/whatsapp/11-cuentas-conectadas.png" alt="Sección Cuentas conectadas mostrando la cuenta de WhatsApp Business vinculada" />
+    </Frame>
+
+    <Note>
+      La conexión puede tardar **unos minutos** en reflejarse. Si no aparece, actualiza la
+      página antes de volver a intentarlo.
+    </Note>
+  </Step>
+</Steps>
+
+## Si algo sale mal
+
+<Card title="Solución de problemas" icon="circle-question" href="/es/canales/whatsapp/solucion-de-problemas">
+  Ventana bloqueada, registro cancelado, número en estado Pendiente y otros casos.
+</Card>
+
+## Siguiente paso
+
+<Card title="Construye tu primer agente de WhatsApp" icon="whatsapp" href="/es/introduccion/primeros-pasos">
+  Con el número conectado, ya puedes poner un agente a responder.
+</Card>

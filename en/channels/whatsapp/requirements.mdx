@@ -1,32 +1,67 @@
 ---
 title: "Requirements"
-description: "What you need from Meta before connecting WhatsApp to Dialtu"
+description: "What you need before connecting WhatsApp to Dialtu"
 icon: "list-check"
 ---
 
-<Info>
-  **Page under construction.** We're preparing this content.
-</Info>
+Gather these before you start. The connection pauses halfway to scan a QR code, so it's worth
+having everything to hand.
 
-{/* TO BE WRITTEN. Proposed outline:
+## The essentials
 
-## Meta Business account
-- Business portfolio and admin role
-- Business verification: when it's needed and how long it takes
+<Check>
+  **The Facebook account linked to your WhatsApp Business number.** This is the account you'll
+  sign in with in the Meta window, and it needs permissions on the business's portfolio.
+</Check>
 
-## The phone number
-- Number requirements (not linked to another WABA, able to receive SMS/call)
-- What happens if the number already uses the WhatsApp Business app
+<Check>
+  **The phone holding that number, with the WhatsApp app installed.** You need it to scan the QR
+  code that links the number. Without physical access to that phone you can't complete a
+  Coexistence connection.
+</Check>
 
-## Permissions inside Dialtu
-- Which role the connecting user needs
+<Check>
+  **A Meta business portfolio.** If your business already uses WhatsApp Business, you usually
+  have one.
+</Check>
 
-## Initial limits
-- Starting messaging tier and how it scales
-*/}
+<Check>
+  **WhatsApp permissions inside Dialtu.** If you can't see the WhatsApp Business section under
+  Settings, ask your administrator to check your role.
+</Check>
 
-{/* SCREENSHOT: Meta Business Suite — business portfolio screen showing the admin role
-<Frame caption="Your business portfolio in Meta">
-  <img src="/images/en/whatsapp/requirements-portfolio.png" alt="Business portfolio in Meta Business Suite" />
-</Frame>
-*/}
+## About the number
+
+<Warning>
+  The number **must not already be linked to another WhatsApp Business API account**. A number
+  can only be connected to one platform at a time.
+</Warning>
+
+If your team already uses the number from the phone app, that's **not a problem** — it's exactly
+the case [Coexistence](/en/channels/whatsapp/onboarding-mode) solves.
+
+## What you don't need
+
+<Note>
+  - **You don't need to buy a number from Dialtu.** You bring the WhatsApp number yourself, on
+    your own Meta account. The [phone numbers](/en/getting-started/phone-numbers) Dialtu provides
+    are for **voice and SMS**, not WhatsApp.
+  - **You don't need to configure anything technical.** There are no webhooks or keys to copy —
+    the process is guided from start to finish.
+</Note>
+
+## About billing
+
+<Check>
+  WhatsApp conversations are **billed by Meta directly to your account**, not by Dialtu. You
+  connect your own WhatsApp Business account and Meta charges you for them.
+
+  Dialtu only charges credits for **AI-generated messages**. See
+  [Credits](/en/getting-started/credits).
+</Check>
+
+## Next step
+
+<Card title="Cloud API or Coexistence" icon="code-compare" href="/en/channels/whatsapp/onboarding-mode">
+  Decide how to onboard the number before you start.
+</Card>

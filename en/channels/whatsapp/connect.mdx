@@ -4,44 +4,137 @@ description: "Link your WhatsApp Business account to Dialtu, step by step"
 icon: "link"
 ---
 
-<Info>
-  **Page under construction.** We're preparing this content.
-</Info>
+This guide covers the **Coexistence** method, which lets you **keep using your everyday
+WhatsApp app** while the number is connected to Dialtu.
 
-{/* TO BE WRITTEN. Proposed outline:
+<Note>
+  If you'd rather have a new, dedicated number with no app on a phone, see
+  [Cloud API or Coexistence](/en/channels/whatsapp/onboarding-mode).
+</Note>
 
-## Where it starts
-Settings → Business settings → WhatsApp Business → "Connect WhatsApp" button
+## Before you start
 
-## The Meta window, screen by screen
-- Facebook sign-in
-- Selecting or creating the business portfolio
-- Selecting or creating the WhatsApp Business account
-- Adding and verifying the number
-- The permissions screen
+<Check>The **Facebook account** linked to your WhatsApp Business number.</Check>
+<Check>Access to the **WhatsApp app on the phone** holding that number — you'll need it to scan a QR code.</Check>
+<Check>Permission to manage WhatsApp inside Dialtu.</Check>
 
-## Back in Dialtu
-- Success message and where the account appears ("Connected accounts")
-- How to confirm the number reached "Connected" status
+<Tip>
+  Have the phone with you from the start. The process pauses halfway to scan a QR code, and the
+  Meta window must stay open while you do it.
+</Tip>
 
-## Connecting additional accounts or numbers
-- "Add WhatsApp account" / "Add phone number"
-*/}
+## Steps
 
-{/* SCREENSHOT 1: Settings → WhatsApp Business, empty state with the "Connect WhatsApp" button
-<Frame caption="Settings → WhatsApp Business">
-  <img src="/images/en/whatsapp/connect-empty-state.png" alt="WhatsApp Business panel with no connected accounts" />
-</Frame>
-*/}
+<Steps>
+  <Step title="Go to Settings" icon="gear">
+    In the Dialtu sidebar, scroll to the bottom and click **Settings**.
 
-{/* SCREENSHOT 2: the Meta popup — business portfolio selection screen
-<Frame caption="Meta window: select your business portfolio">
-  <img src="/images/en/whatsapp/connect-meta-portfolio.png" alt="Meta popup window" />
-</Frame>
-*/}
+    <Info>
+      **📷 Screenshot needed** — the Settings entry at the bottom of the sidebar, English UI.
 
-{/* SCREENSHOT 3: "Connected accounts" with the account and number in "Connected" status
-<Frame caption="Account connected successfully">
-  <img src="/images/en/whatsapp/connect-connected-accounts.png" alt="List of connected accounts" />
-</Frame>
-*/}
+      Save to `/images/en/whatsapp/01-settings.png`
+    </Info>
+  </Step>
+
+  <Step title="Open WhatsApp Business" icon="whatsapp">
+    Under **Business settings**, select **WhatsApp Business**.
+
+    <Info>
+      **📷 Screenshot needed** — Business settings → WhatsApp Business, English UI.
+
+      Save to `/images/en/whatsapp/02-whatsapp-business.png`
+    </Info>
+  </Step>
+
+  <Step title="Connect WhatsApp" icon="plug">
+    On the **Connect your WhatsApp Business account** screen, click **Connect WhatsApp**.
+
+    <Info>
+      **📷 Screenshot needed** — the empty state before any account is connected, English UI.
+
+      Save to `/images/en/whatsapp/03-connect-whatsapp.png`
+    </Info>
+  </Step>
+
+  <Step title="Choose Coexistence" icon="code-compare">
+    In the **Connect a new WABA** window, choose **WhatsApp Business App (Coexistence)** and
+    click **Continue**.
+
+    <Info>
+      **📷 Screenshot needed** — the onboarding-mode modal with both options, English UI.
+
+      Save to `/images/en/whatsapp/04-coexistence.png`
+    </Info>
+
+    <Note>
+      If you don't see this window and go straight to Meta, your account is set up for Cloud API
+      only. Contact support if you need Coexistence.
+    </Note>
+  </Step>
+
+  <Step title="Sign in to Meta" icon="facebook">
+    A Meta popup opens. Sign in with the **Facebook account linked to the number** you want to
+    connect, then click **Continue**.
+
+    <Warning>
+      **Don't close the Meta window** until you're done. If your browser blocks popups, allow
+      them for this site and start again.
+    </Warning>
+  </Step>
+
+  <Step title="Select the portfolio and app" icon="briefcase">
+    Choose your **business portfolio** and, under **WhatsApp Business Account**, select
+    **Connect a WhatsApp Business app**. Then **Next**.
+  </Step>
+
+  <Step title="Enter country and number" icon="phone">
+    Enter the **country code** and your **WhatsApp Business number**. Then **Next**.
+  </Step>
+
+  <Step title="Confirm details and accept the terms" icon="file-signature">
+    Check the details are correct, accept the terms and conditions, and continue.
+  </Step>
+
+  <Step title="Link from your WhatsApp app" icon="qrcode">
+    When the **QR code** appears in the popup, open the WhatsApp app on the phone holding that
+    number and scan it from:
+
+    **Settings → Account → Linked devices → Link a business platform**
+
+    <Warning>
+      This is the step people get stuck on. The QR is scanned **from inside the WhatsApp app**,
+      not with the phone's camera and not from WhatsApp Web.
+    </Warning>
+  </Step>
+
+  <Step title="Continue and finish" icon="circle-check">
+    Go back to the popup and click **Continue**, then **Finish**.
+  </Step>
+
+  <Step title="Verify the connection in Dialtu" icon="list-check">
+    Confirm your number appears under **Connected accounts**.
+
+    <Info>
+      **📷 Screenshot needed** — the Connected accounts list with the linked account, English UI.
+
+      Save to `/images/en/whatsapp/11-connected-accounts.png`
+    </Info>
+
+    <Note>
+      The connection can take **a few minutes** to show up. If it doesn't appear, refresh the
+      page before trying again.
+    </Note>
+  </Step>
+</Steps>
+
+## If something goes wrong
+
+<Card title="Troubleshooting" icon="circle-question" href="/en/channels/whatsapp/troubleshooting">
+  Blocked popup, cancelled signup, a number stuck on Pending, and other cases.
+</Card>
+
+## Next step
+
+<Card title="Build your first WhatsApp agent" icon="whatsapp" href="/en/getting-started/quickstart">
+  With the number connected, you can put an agent to work.
+</Card>

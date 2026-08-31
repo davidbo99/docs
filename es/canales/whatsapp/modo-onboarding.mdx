@@ -4,35 +4,63 @@ description: "Elige cómo incorporar tu número y qué implica cada modo"
 icon: "code-compare"
 ---
 
-<Info>
-  **Página en construcción.** Estamos preparando este contenido.
-</Info>
+Al conectar una cuenta, Dialtu te pregunta **cómo quieres incorporarla**. La decisión es
+importante: determina si puedes seguir usando la app de WhatsApp en el teléfono.
 
-{/* PENDIENTE DE REDACTAR. Esquema propuesto:
+<Frame caption="La elección aparece al pulsar Conectar WhatsApp">
+  <img src="/images/es/whatsapp/04-coexistencia.png" alt="Modal Conectar una nueva WABA con las opciones Cloud API y App de WhatsApp Business (Coexistencia)" />
+</Frame>
 
-  ## Los dos modos
-  - **Cloud API**: número nuevo, rendimiento total. Ideal para campañas salientes.
-  - **Coexistencia**: sigues usando tu número actual de la app de WhatsApp Business;
-  el historial se sincroniza.
+## Las dos opciones
 
-  ## Tabla comparativa
-  ¿Puedo seguir usando la app del teléfono? · ¿Se importa el historial? · Límite de
-  mensajes por segundo · Campañas salientes · Requisitos de mantenimiento
+<CardGroup cols={2}>
+  <Card title="Cloud API" icon="cloud">
+    Número nuevo, dedicado a la plataforma. Rendimiento completo.
+  </Card>
 
-  ## Limitaciones de Coexistencia
-  - Límite de 20 mensajes/segundo
-  - La app móvil debe permanecer instalada y abrirse al menos una vez cada 14 días
-  - Aprobación desde el teléfono durante la conexión
+  <Card title="App de WhatsApp Business (Coexistencia)" icon="mobile">
+    Sigues usando tu número actual y tu app de siempre.
+  </Card>
+</CardGroup>
 
-  ## Cómo cambiar de modo después
-  - Botón "Cambiar modo de onboarding"
+## Comparación
 
-  NOTA INTERNA: el selector de modo solo aparece cuando la coexistencia está habilitada
-  para el tenant. Si no lo está, la conexión va directo a Cloud API sin preguntar.
-  */}
+| | Cloud API | Coexistencia |
+|---|---|---|
+| **¿Puedo seguir usando la app del teléfono?** | No | **Sí** |
+| **¿Se sincroniza el historial?** | No | Sí |
+| **Rendimiento de envío** | Completo | Limitado a **20 mensajes por segundo** |
+| **Campañas salientes de gran volumen** | Recomendado | Menos indicado |
+| **Mantenimiento** | Ninguno | La app debe seguir instalada y abrirse al menos **una vez cada 14 días** |
+| **Ideal para** | Un número nuevo dedicado a automatización | Un número que ya usa tu equipo a diario |
 
-{/* SCREENSHOT: el modal "Conectar una nueva WABA" con las dos opciones
-  <Frame caption="Elige cómo incorporar tu cuenta">
-  <img src="/images/es/whatsapp/modo-onboarding.png" alt="Modal de selección de modo de onboarding" />
-  </Frame>
-  */}
+## Cuál elegir
+
+<Tip>
+  **Elige Coexistencia** si el número ya lo usa tu equipo desde el teléfono y no quieres perder
+  esa forma de trabajar. Es lo más habitual cuando se automatiza un número existente.
+
+  **Elige Cloud API** si vas a dedicar un número nuevo a la automatización, sobre todo si
+  planeas campañas salientes de volumen.
+</Tip>
+
+<Warning>
+  **Coexistencia exige mantener la app viva.** Si el teléfono se pierde, se formatea, o
+  simplemente nadie abre la app en más de 14 días, la conexión puede caerse. Si nadie de tu
+  equipo va a usar ese teléfono con regularidad, Cloud API es más robusto.
+</Warning>
+
+## Cambiar de modo después
+
+En el detalle de la cuenta conectada existe el botón **Cambiar modo de onboarding**.
+
+<Note>
+  Si al conectar no ves esta ventana y pasas directamente a Meta, tu cuenta está habilitada solo
+  para **Cloud API**. Escribe a soporte si necesitas Coexistencia.
+</Note>
+
+## Siguiente paso
+
+<Card title="Conectar tu cuenta de WhatsApp Business" icon="link" href="/es/canales/whatsapp/conectar">
+  La guía paso a paso, con el método de Coexistencia.
+</Card>

@@ -4,35 +4,65 @@ description: "Choose how to onboard your number and what each mode means"
 icon: "code-compare"
 ---
 
+When you connect an account, Dialtu asks **how you want to onboard it**. The choice matters: it
+determines whether you can keep using the WhatsApp app on the phone.
+
 <Info>
-  **Page under construction.** We're preparing this content.
+  **📷 Screenshot needed** — the "Connect a new WABA" modal with both options, English UI.
+
+  Save to `/images/en/whatsapp/04-coexistence.png`
 </Info>
 
-{/* TO BE WRITTEN. Proposed outline:
+## The two options
 
-## The two modes
-- **Cloud API**: new number, full performance. Best for new outbound campaigns.
-- **Coexistence**: keep using your current number from the WhatsApp Business app;
-  history is synced.
+<CardGroup cols={2}>
+  <Card title="Cloud API" icon="cloud">
+    A new number, dedicated to the platform. Full performance.
+  </Card>
 
-## Comparison table
-Can I keep using the phone app? · Is history imported? · Messages-per-second limit ·
-Outbound campaigns · Maintenance requirements
+  <Card title="WhatsApp Business App (Coexistence)" icon="mobile">
+    Keep using your current number and your everyday app.
+  </Card>
+</CardGroup>
 
-## Coexistence limitations
-- 20 messages/second limit
-- The mobile app must stay installed and be opened at least once every 14 days
-- Approval from the phone during connection
+## Comparison
 
-## How to switch modes later
-- The "Change onboarding mode" button
+| | Cloud API | Coexistence |
+|---|---|---|
+| **Can I keep using the phone app?** | No | **Yes** |
+| **Is history synced?** | No | Yes |
+| **Send throughput** | Full | Capped at **20 messages per second** |
+| **High-volume outbound campaigns** | Recommended | Less suitable |
+| **Maintenance** | None | The app must stay installed and be opened at least **once every 14 days** |
+| **Best for** | A new number dedicated to automation | A number your team already uses daily |
 
-INTERNAL NOTE: the mode selector only appears when coexistence is enabled for the tenant.
-If it isn't, the connection goes straight to Cloud API without asking.
-*/}
+## Which to choose
 
-{/* SCREENSHOT: the "Connect a new WABA" modal with both options
-<Frame caption="Choose how to onboard your account">
-  <img src="/images/en/whatsapp/onboarding-mode.png" alt="Onboarding mode selection modal" />
-</Frame>
-*/}
+<Tip>
+  **Choose Coexistence** if your team already uses the number from the phone and you don't want
+  to lose that way of working. This is the common case when automating an existing number.
+
+  **Choose Cloud API** if you're dedicating a new number to automation, especially if you plan
+  high-volume outbound campaigns.
+</Tip>
+
+<Warning>
+  **Coexistence requires keeping the app alive.** If the phone is lost, wiped, or simply nobody
+  opens the app for more than 14 days, the connection can drop. If nobody on your team will use
+  that phone regularly, Cloud API is more robust.
+</Warning>
+
+## Changing mode later
+
+The connected account's detail view has a **Change onboarding mode** button.
+
+<Note>
+  If you don't see this window when connecting and go straight to Meta, your account is enabled
+  for **Cloud API** only. Contact support if you need Coexistence.
+</Note>
+
+## Next step
+
+<Card title="Connect your WhatsApp Business account" icon="link" href="/en/channels/whatsapp/connect">
+  The step-by-step guide, using the Coexistence method.
+</Card>
