@@ -4,4 +4,163 @@ description: "What they are, what they're worth, and what consumes them"
 icon: "coins"
 ---
 
-Content in preparation.
+Credits are Dialtu's internal currency. Everything that uses AI — calls, messages, analysis — is paid for in credits, and so are phone numbers.
+
+<Card title="1 credit = $0.01 USD" icon="equals" horizontal>
+  In other words, **100 credits = \$1 USD**. The rate is fixed and doesn't change.
+</Card>
+
+## Where your credits come from
+
+There are two sources, and they behave differently:
+
+| Source | When they arrive | Do they expire? |
+| --- | --- | --- |
+| **Plan credits** | Every billing cycle, according to your plan | **Yes** — they expire at the end of the cycle |
+| **Purchased credits** | When you buy a pack or auto-refill triggers | **No** — they never expire |
+
+<Warning>
+  **Plan credits don't roll over.** Anything you don't use within the cycle is lost at renewal. Credits you buy separately stay indefinitely.
+</Warning>
+
+### The order they're spent in
+
+Dialtu always consumes in this order, so you never lose credits that were about to expire:
+
+<Steps>
+  <Step title="Credits assigned to a feature">
+    Some plans include credits reserved for a specific feature (Atlas, for example). These are used first, and only for that feature.
+  </Step>
+  <Step title="Credits expiring soonest">
+    Of the general pool, the ones closest to expiring go first.
+  </Step>
+  <Step title="Purchased credits">
+    Last, the ones that never expire — oldest first.
+  </Step>
+</Steps>
+
+## What consumes credits
+
+<AccordionGroup>
+  <Accordion title="Voice calls" icon="phone">
+    Billed **per second, pro-rated to minutes** — not rounded up to the whole minute.
+
+    The per-minute price combines two things: the **AI model** the agent uses and the **carrier cost**. If the agent uses a premium voice, a per-minute extra is added on top.
+
+    Every call has a **minimum billable amount**, so a three-second call doesn't cost essentially nothing.
+
+    <Tip>
+      On any call's detail view you can open the breakdown and see exactly how much came from the model, the premium voice, and the carrier.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="AI-generated WhatsApp messages" icon="whatsapp">
+    Charged **per message the AI writes**, at a rate that depends on the agent's model.
+
+    **Not charged:** messages your customer sends you, or messages a person on your team writes from the inbox.
+  </Accordion>
+
+  <Accordion title="SMS chats" icon="comment-sms">
+    Charged **when the session closes**, combining three parts: a base rate per message, the AI model's cost per message, and the carrier's cost per message.
+
+    Some plans include an allowance of free messages; the carrier component is always charged.
+  </Accordion>
+
+  <Accordion title="The Salesflow orchestrator" icon="robot">
+    Only the **Pro** tier consumes credits, and **only when the customer actually moves** stage. A Pro evaluation that decides not to move is not charged.
+
+    The **Standard tier is free**, with no cap on evaluations.
+  </Accordion>
+
+  <Accordion title="Insight agents" icon="chart-line">
+    Charged per execution, based on tokens actually consumed. The cost is estimated before running and blocked if there isn't enough balance.
+  </Accordion>
+
+  <Accordion title="Atlas" icon="sparkles">
+    Charged per copilot turn, based on tokens consumed. The dashboard's executive summary is billed the same way.
+
+    Some plans include credits reserved for Atlas only.
+  </Accordion>
+
+  <Accordion title="Phone numbers" icon="phone-office">
+    A fixed monthly fee, plus a one-off setup fee in some countries. See [Phone numbers](/en/getting-started/phone-numbers).
+  </Accordion>
+</AccordionGroup>
+
+## What does NOT consume credits
+
+Worth being clear about, because it usually surprises people:
+
+<Check>
+  **WhatsApp templates.** These are billed by **Meta directly to your account**, not by Dialtu. You connect your own WhatsApp Business account and Meta charges you for those conversations.
+</Check>
+
+<Check>
+  **Inbound WhatsApp messages** and messages written by a person on your team.
+</Check>
+
+<Check>
+  **The orchestrator on the Standard tier.**
+</Check>
+
+<Check>
+  **The agent test panel.** Testing an agent before activating it is free; there's an hourly usage limit instead.
+</Check>
+
+<Check>
+  **AI analysis of images and PDFs** received over WhatsApp.
+</Check>
+
+<Check>
+  **Automatic contact memory.** You're only charged if you press _Regenerate_ by hand.
+</Check>
+
+## What happens when you run out
+
+Not everything stops at once. Operations that can be checked **before** they start are blocked; ones already under way complete and can push the balance negative.
+
+**Blocked up front:**
+
+- Outbound calls and campaigns.
+- Inbound calls — rejected at routing.
+- SMS chats.
+- Atlas, Insight agents and the Pro orchestrator.
+
+**Completed even with no balance:**
+
+- A call already in progress: charged when it ends, even if the balance goes negative.
+- The monthly phone number fee.
+
+<Note>
+  Some accounts have an **overdraft allowance** configured, letting them keep operating up to a certain debt before being blocked. When new credits arrive, the debt is settled automatically before you can spend them.
+</Note>
+
+### Notifications
+
+Dialtu sends an **email when an operation is blocked** for lack of balance, at most once every 24 hours. You can also configure daily or monthly **spend limits**, with a warning as you approach the limit.
+
+<Warning>
+  There is no persistent low-balance banner in the interface. If you don't want to rely on email, turn on **auto-refill** or keep an eye on the balance in the dashboard.
+</Warning>
+
+## Buying credits
+
+Under **Settings → Credits** you can buy packs or enter a custom amount (minimum \$10). Purchased credits **never expire**.
+
+The same screen lets you turn on **auto-refill**: when the balance drops below a threshold you set, Dialtu automatically charges your payment method up to a target amount. It requires a saved card.
+
+## Where to see your balance
+
+| Where | What it shows |
+| --- | --- |
+| **Dashboard home** | Balance, this month's consumption, and progress against your plan's credits |
+| **Settings → Billing** | Balance, its USD equivalent, and the full transaction history |
+| **Settings → Credits** | Buying packs and auto-refill |
+| **Analytics** | Consumption by channel: voice, WhatsApp, Salesflow, Atlas, Insight and phone numbers |
+| **A call's detail view** | The exact breakdown for that call |
+
+## Next step
+
+<Card title="Phone numbers" icon="phone" href="/en/getting-started/phone-numbers">
+  How to request a number, what it costs, and how it's billed.
+</Card>

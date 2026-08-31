@@ -4,4 +4,131 @@ description: "How to request one, what it costs, and how it's billed"
 icon: "phone"
 ---
 
-Content in preparation.
+For an agent to **place or receive calls**, or send **SMS**, it needs a phone number assigned to it.
+
+<Note>
+  **WhatsApp** numbers work differently: you don't request them from Dialtu. You connect your own WhatsApp Business account under **Settings → WhatsApp Business**, and Meta bills you for those conversations directly. See [Connect your WhatsApp Business account](/en/channels/whatsapp/connect).
+</Note>
+
+## How to request one
+
+<Warning>
+  **Numbers are not purchased from the platform.** There's no self-serve screen — they're provisioned by the Dialtu team.
+</Warning>
+
+Write to [**support@dialtu.com**](mailto:support@dialtu.com) — or use the support channel that comes with your plan — telling us:
+
+<Steps>
+  <Step title="Country and city">
+    The area code you need. Availability and price vary a lot between countries.
+  </Step>
+  <Step title="What you'll use it for">
+    Voice only, SMS only, or both. This determines the carrier and the type of number.
+  </Step>
+  <Step title="How many numbers">
+    If you're splitting campaigns or separating teams, say so up front.
+  </Step>
+</Steps>
+
+Once the number is ready it appears in the platform and you can **assign it to an agent** from the agent editor.
+
+## Carriers
+
+| Channel | Carriers |
+| --- | --- |
+| **Voice** | Telnyx or Twilio, depending on the country |
+| **SMS** | Twilio |
+
+Dialtu picks the carrier based on the country and the capabilities you need. It isn't something you configure.
+
+## What a number costs
+
+A number has up to three costs, all in credits:
+
+<AccordionGroup>
+  <Accordion title="Monthly fee" icon="calendar">
+    Charged **every month** for as long as the number stays active. The amount depends on the country and carrier — a US number costs considerably less than a Colombian one.
+  </Accordion>
+
+  <Accordion title="Setup fee (one-off)" icon="receipt">
+    Some countries charge a one-time fee when the number is set up. It's charged **once only**, together with the first monthly fee.
+  </Accordion>
+
+  <Accordion title="Per-minute and per-message cost" icon="clock">
+    Every call adds the carrier's cost **on top of** the AI model's cost, and every SMS adds a per-message cost.
+
+    **Inbound and outbound rates differ**, and not always in the same direction: in some countries receiving is cheaper than calling, in others it's the reverse.
+  </Accordion>
+</AccordionGroup>
+
+### About the prices
+
+<Warning>
+  **Telephony rates are pass-through: we charge you what the carrier charges us.** That means they **change when Twilio or Telnyx change their pricing**, without advance notice from us.
+
+  Any telephony price table on our site is **indicative**. The real reference is the carrier's published rates:
+
+  - [Twilio pricing](https://www.twilio.com/en-us/pricing)
+  - [Telnyx pricing](https://telnyx.com/pricing)
+
+  If you need an exact figure for a specific country before committing, ask support and we'll confirm it at the current rate.
+</Warning>
+
+## How it's billed
+
+<Steps>
+  <Step title="Charged from your credits" icon="coins">
+    The fee is **deducted directly from the account's credit balance**. It isn't a separate invoice or an extra charge to your card.
+  </Step>
+  <Step title="The first charge is almost immediate" icon="bolt">
+    It's taken on the next billing pass, which runs **once a day**. In practice, within 24 hours of the number being set up.
+  </Step>
+  <Step title="Then every month" icon="rotate">
+    From there it's charged **on the same day each month**, on the anniversary of the setup date. If that day doesn't exist in a given month (the 31st, say), it's charged on the last day of that month.
+  </Step>
+</Steps>
+
+<Note>
+  **There's no proration.** Every charge is for a full month, the first one included.
+</Note>
+
+### If you don't have enough balance
+
+The fee **is charged anyway** and the balance goes negative. From there:
+
+- If you have **auto-refill** on, it triggers a charge to your payment method.
+- If not, the balance stays negative until you buy credits, and the debt is settled automatically as soon as they arrive.
+
+<Check>
+  **The number isn't suspended or lost** because you ran out of balance. It stays yours and keeps working; what gets blocked are the operations checked up front, like outbound calls.
+</Check>
+
+## Releasing a number
+
+<Warning>
+  **Cancelling also goes through support.** There's no button to release a number from the platform.
+</Warning>
+
+Write to [**support@dialtu.com**](mailto:support@dialtu.com), or use your plan's support channel, asking to release the number. When it's released:
+
+- The monthly fee stops.
+- Any agents it was assigned to **stop receiving and placing calls** on it. Reassign those agents to another number before requesting the release if you don't want a gap in service.
+- The number goes back to the carrier and generally **cannot be recovered** once released.
+
+<Tip>
+  If you only want to stop using it temporarily, don't release it: unassign it from the agent and keep it. You'll keep paying the fee, but you keep the number.
+</Tip>
+
+## Country availability
+
+Today Dialtu operates mainly with **United States** and **Colombia** numbers. Other countries are possible but need confirming case by case — availability, price and regulatory requirements vary considerably.
+
+<Note>
+  Some countries require **regulatory documentation** — identity, a local address, proof of intended use — before a number can be activated. That process can take several days and support handles it with you.
+</Note>
+
+## Next step
+
+<Card title="Credits" icon="coins" href="/en/getting-started/credits">
+  How credits work, what consumes them, and how to buy more.
+</Card>

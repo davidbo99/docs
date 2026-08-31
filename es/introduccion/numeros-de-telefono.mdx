@@ -4,4 +4,131 @@ description: "Cómo se solicitan, qué cuestan y cómo se facturan"
 icon: "phone"
 ---
 
-Contenido en preparación.
+Para que un agente pueda **llamar o recibir llamadas**, o enviar **SMS**, necesita un número de teléfono asignado.
+
+<Note>
+  Los números de **WhatsApp** funcionan distinto: no se solicitan a Dialtu. Conectas tu propia cuenta de WhatsApp Business desde **Configuración → WhatsApp Business**, y Meta te factura esas conversaciones directamente. Ver [Conectar tu cuenta de WhatsApp Business](/es/canales/whatsapp/conectar).
+</Note>
+
+## Cómo se solicita
+
+<Warning>
+  **Los números no se compran desde la plataforma.** No hay una pantalla de autoservicio: los aprovisiona el equipo de Dialtu.
+</Warning>
+
+Escribe a [**support@dialtu.com**](mailto:support@dialtu.com) —o usa el canal de soporte que corresponda a tu plan— indicando:
+
+<Steps>
+  <Step title="País y ciudad">
+    El indicativo que necesitas. La disponibilidad y el precio cambian mucho de un país a otro.
+  </Step>
+  <Step title="Para qué lo vas a usar">
+    Solo voz, solo SMS, o ambos. Determina el operador y el tipo de número.
+  </Step>
+  <Step title="Cuántos números">
+    Si vas a repartir campañas o separar equipos, dilo desde el principio.
+  </Step>
+</Steps>
+
+Cuando el número esté listo aparecerá en la plataforma y podrás **asignarlo a un agente** desde el editor del agente.
+
+## Operadores
+
+| Canal | Operadores |
+| --- | --- |
+| **Voz** | Telnyx o Twilio, según el país |
+| **SMS** | Twilio |
+
+El operador lo elige Dialtu según el país y las capacidades que necesitas. No es algo que configures tú.
+
+## Qué cuesta un número
+
+Un número tiene hasta tres costes, todos en créditos:
+
+<AccordionGroup>
+  <Accordion title="Cuota mensual" icon="calendar">
+    Se cobra **todos los meses** mientras el número siga activo. El importe depende del país y del operador — un número de Estados Unidos cuesta bastante menos que uno de Colombia.
+  </Accordion>
+
+  <Accordion title="Alta (una sola vez)" icon="receipt">
+    Algunos países cobran una cuota única al dar de alta el número. Se cobra **una sola vez**, junto con la primera cuota mensual.
+  </Accordion>
+
+  <Accordion title="Coste por minuto y por mensaje" icon="clock">
+    Cada llamada suma el coste del operador **por encima** del coste del modelo de IA, y cada SMS suma el coste por mensaje.
+
+    Las tarifas de **entrada y salida son distintas**, y no siempre en el mismo sentido: en algunos países recibir es más barato que llamar, y en otros es al revés.
+  </Accordion>
+</AccordionGroup>
+
+### Sobre los precios
+
+<Warning>
+  **Las tarifas de telefonía son de traspaso: te cobramos lo que nos cobra el operador.** Eso significa que **cambian cuando Twilio o Telnyx cambian sus precios**, sin previo aviso por nuestra parte.
+
+  Cualquier tabla de precios de telefonía en nuestro sitio es **orientativa**. La referencia real son las tarifas publicadas por el operador:
+
+  - [Precios de Twilio](https://www.twilio.com/en-us/pricing)
+  - [Precios de Telnyx](https://telnyx.com/pricing)
+
+  Si necesitas una cifra exacta para un país concreto antes de comprometerte, pídela a soporte y te la confirmamos con el precio vigente.
+</Warning>
+
+## Cómo se factura
+
+<Steps>
+  <Step title="Se cobra desde tus créditos" icon="coins">
+    La cuota **se descuenta directamente del saldo de créditos** de la cuenta. No es una factura aparte ni un cargo separado a tu tarjeta.
+  </Step>
+  <Step title="El primer cobro es casi inmediato" icon="bolt">
+    Se cobra en la siguiente pasada de facturación, que corre **una vez al día**. En la práctica, dentro de las 24 horas siguientes al alta.
+  </Step>
+  <Step title="Y se repite cada mes" icon="rotate">
+    A partir de ahí se cobra **el mismo día de cada mes**, en la fecha de aniversario del alta. Si ese día no existe en el mes (por ejemplo el 31), se cobra el último día del mes.
+  </Step>
+</Steps>
+
+<Note>
+  **No hay prorrateo.** Cada cobro es de un mes completo, tanto el primero como los siguientes.
+</Note>
+
+### Si no tienes saldo suficiente
+
+La cuota **se cobra igualmente** y el saldo queda en negativo. A partir de ahí:
+
+- Si tienes **recarga automática** activada, se dispara un cobro a tu método de pago.
+- Si no, el saldo se queda negativo hasta que compres créditos, y la deuda se salda automáticamente en cuanto entren.
+
+<Check>
+  **El número no se suspende ni se pierde** por quedarte sin saldo. Sigue siendo tuyo y sigue funcionando; lo que se bloquean son las operaciones que se comprueban por adelantado, como las llamadas salientes.
+</Check>
+
+## Dar de baja un número
+
+<Warning>
+  **La baja también se gestiona por soporte.** No hay un botón para liberar un número desde la plataforma.
+</Warning>
+
+Escribe a [**support@dialtu.com**](mailto:support@dialtu.com), o usa el canal de soporte de tu plan, pidiendo la baja del número. Al liberarlo:
+
+- Deja de cobrarse la cuota mensual.
+- Los agentes que lo tuvieran asignado **dejan de recibir y hacer llamadas** por él. Reasigna esos agentes a otro número antes de pedir la baja si no quieres cortar el servicio.
+- El número vuelve al operador y, en general, **no se puede recuperar** una vez liberado.
+
+<Tip>
+  Si solo quieres dejar de usarlo temporalmente, no pidas la baja: quita la asignación del agente y consérvalo. Seguirás pagando la cuota, pero mantienes el número.
+</Tip>
+
+## Disponibilidad por país
+
+Hoy Dialtu opera principalmente con números de **Estados Unidos** y **Colombia**. Otros países son posibles, pero hay que confirmarlos caso por caso: la disponibilidad, el precio y los requisitos regulatorios cambian mucho.
+
+<Note>
+  Algunos países exigen **documentación regulatoria** —identidad, dirección local, justificación de uso— antes de poder activar un número. Ese trámite puede tardar varios días y lo gestiona soporte contigo.
+</Note>
+
+## Siguiente paso
+
+<Card title="Créditos" icon="coins" href="/es/introduccion/creditos">
+  Cómo funcionan los créditos, qué los consume y cómo comprar más.
+</Card>
