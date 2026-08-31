@@ -1,30 +1,162 @@
 ---
-title: "Primeros pasos"
-description: "Configura tu cuenta de Dialtu y lanza tu primera automatización"
-icon: "play"
+title: "Construye tu primer agente de WhatsApp"
+description: "De cero a un agente de IA respondiendo mensajes reales por WhatsApp"
+icon: "whatsapp"
 ---
 
-{/* Plantilla: Guía paso a paso. */}
+Al terminar esta guía tendrás tu cuenta de WhatsApp Business conectada y un agente de IA respondiendo mensajes reales. Toma unos 15 minutos.
 
-\[Al terminar esta guía tendrás tu cuenta lista y una primera automatización funcionando.\]
+<Note>
+  Empezamos por WhatsApp porque es el camino más corto a un agente funcionando: no requiere comprar un número ni configurar telefonía. Si lo tuyo es voz, ve directo a [Crear tu primer agente de IA de voz](/es/agentes-de-voz/crear-agente).
+</Note>
 
 ## Antes de empezar
 
-- \[Requisito: por ejemplo, una cuenta de Dialtu activa.\]
+Necesitas cuatro cosas:
+
+<Check>
+  **Una cuenta de Dialtu activa.** Las cuentas se aprovisionan tras una demo — [agenda una](https://www.dialtu.com/es/) si aún no tienes acceso a la plataforma.
+</Check>
+
+<Check>
+  **Un usuario con permisos de escritura** sobre WhatsApp y sobre agentes. Si no ves la sección WhatsApp en el menú, pídele a tu administrador que revise tu rol.
+</Check>
+
+<Check>
+  **Una cuenta de WhatsApp Business en Meta**, y ser administrador del portafolio de negocio al que pertenece.
+</Check>
+
+<Check>
+  **Un número de teléfono** que no esté ya vinculado a otra cuenta de WhatsApp Business API.
+</Check>
 
 ## Pasos
 
 <Steps>
-  <Step title="Crea tu cuenta">
-    \[Cómo registrarse y acceder al panel.\]
+  <Step title="Conecta tu cuenta de WhatsApp Business" icon="whatsapp">
+    En el menú lateral, abre **Configuración** → **WhatsApp Business** y pulsa **Conectar WhatsApp**. Se abrirá una ventana emergente de Meta donde inicias sesión, eliges tu cuenta de WhatsApp Business y verificas el número.
+
+    <Card title="Conectar tu cuenta de WhatsApp Business" icon="link" href="/es/canales/whatsapp/conectar">
+      El proceso completo, pantalla por pantalla: requisitos de Meta, los dos modos de incorporación, gestión de números y solución de problemas.
+    </Card>
+
+    Cuando termines, vuelve aquí. Debes ver tu cuenta en **Cuentas conectadas** y tu número con estado **Conectado**.
+
+    <Frame caption="La cuenta conectada, con el número en estado Conectado">
+      <img src="/images/es/primeros-pasos/01-numero-conectado.png" alt="Panel de WhatsApp Business mostrando la cuenta conectada y el número en estado Conectado" />
+    </Frame>
   </Step>
-  <Step title="Conecta tu primer canal">
-    \[Cómo vincular WhatsApp o SMS.\]
+  <Step title="Crea tu agente" icon="robot">
+    Ve a **Chat → WhatsApp → Agentes** y pulsa **Crear agente**.
+
+    Se abre el espacio de trabajo del agente: una sola pantalla con tres columnas — los **Ajustes** a la izquierda, el **prompt** en el centro, y **Atlas / Probar / Resumen** a la derecha.
+
+    Empieza por darle un **nombre** en la barra superior (por ejemplo, `Recepción` o `Calificación de leads`). La **descripción** es opcional y solo la ven tú y tu equipo.
+
+    <Frame caption="El espacio de trabajo del agente: ajustes, prompt y panel derecho">
+      <img src="/images/es/primeros-pasos/02-espacio-de-trabajo.png" alt="Editor de agente de WhatsApp con sus tres columnas: ajustes, prompt y el panel de Atlas, Probar y Resumen" />
+    </Frame>
+  </Step>
+  <Step title="Escribe el prompt del agente" icon="pen-to-square">
+    En la columna central está el **Prompt del agente** — un solo documento donde defines quién es el agente y cómo debe comportarse. Es el único campo de contenido obligatorio.
+
+    Estructúralo en tres secciones:
+
+    ```markdown
+    ## Contexto
+    Eres el asistente de [tu negocio]. Vendemos [producto o servicio] a [tipo de cliente].
+    Nuestro horario de atención es [horario]. Respondes por WhatsApp.
+    
+    ## Flujo de conversación
+    1. Saluda y pregunta en qué puedes ayudar.
+    2. Identifica si la persona busca [caso A] o [caso B].
+    3. Si busca [caso A], pide [dato 1] y [dato 2] antes de continuar.
+    4. Cuando tengas los datos, ofrece agendar una llamada.
+    
+    ## Reglas
+    - Responde siempre en español, con tono cercano y frases cortas.
+    - Nunca inventes precios ni plazos. Si no lo sabes, dilo y ofrece escalar a una persona.
+    - No pidas datos de tarjeta ni contraseñas.
+    ```
+
+    <Tip>
+      Puedes pegar texto y se conserva el formato. Usa la bandeja de **Variables** para insertar datos del contacto: `{'{{client_var}}'}` para variables de cliente y `[[global_var]]` para variables globales.
+    </Tip>
+
+    También puedes pedírselo a **Atlas**, el copiloto de la pestaña derecha: descríbele el agente que necesitas y lo arma por ti.
+
+  </Step>
+  <Step title="Conéctalo a tu número y define el enrutamiento" icon="route">
+    En la columna de **Ajustes**, abre el grupo **Canal de WhatsApp**:
+
+    <AccordionGroup>
+      <Accordion title="Número de Teléfono de WhatsApp">
+        Selecciona el número que conectaste en el paso 1.
+      </Accordion>
+
+      <Accordion title="Tipo de Agente">
+        Elige **Entrante** si solo debe responder mensajes que le llegan, u **Omnicanal** si además debe poder iniciar conversaciones. **Saliente** no responde mensajes entrantes.
+      </Accordion>
+
+      <Accordion title="Enrutamiento">
+        Activa **Predeterminado** para que este agente atienda todos los mensajes del número. Alternativamente, define un **horario semanal** para que solo atienda en ciertas franjas.
+      </Accordion>
+    </AccordionGroup>
+
+    <Warning>
+      El enrutamiento es obligatorio para agentes entrantes y omnicanal. Si el número ya tiene otro agente predeterminado, Dialtu te pedirá asignarle a ese agente un rango horario antes de tomar su lugar.
+    </Warning>
+
+    Revisa la pestaña **Resumen** a la derecha: te muestra la lista **Obligatorio para crear** (Nombre, Prompt del agente, Número de Teléfono de WhatsApp, Enrutamiento) y qué te falta.
+
+    <Frame caption="Ajustes → Canal de WhatsApp">
+      <img src="/images/es/primeros-pasos/04-canal-whatsapp.png" alt="Grupo Canal de WhatsApp con número de teléfono, tipo de agente, enrutamiento y audiencia" />
+    </Frame>
+
+  </Step>
+  <Step title="Pruébalo antes de activarlo" icon="flask">
+    Abre la pestaña **Probar** en la columna derecha y escríbele como si fueras el cliente. El agente responde con el prompt y las herramientas que tienes en pantalla ahora mismo, guardados o no.
+
+    <Warning>
+      **Las herramientas de API e integración se ejecutan de verdad.** Si tu agente tiene una herramienta para agendar citas o escribir en tu CRM, probarla creará registros reales. Usa datos de prueba.
+    </Warning>
+
+    Recorre tus casos típicos: el saludo, la pregunta frecuente, el caso que debe escalar a una persona. Si el agente cierra la conversación, pulsa **Reiniciar** para empezar de nuevo.
+
+    <Frame caption="La pestaña Probar, con el aviso de que las herramientas se ejecutan de verdad">
+      <img src="/images/es/primeros-pasos/05-probar.png" alt="Panel de prueba del agente con una conversación y una herramienta ejecutada" />
+    </Frame>
+  </Step>
+  <Step title="Actívalo" icon="circle-check">
+    En la barra superior, confirma que el indicador de estado diga **Activo** (los agentes nuevos se crean activos; pulsa el indicador para alternar entre **Activo** y **Pausado**).
+
+    Pulsa **Crear Agente**. A partir de ese momento el agente atiende los mensajes que lleguen a tu número según el enrutamiento que definiste.
+
   </Step>
 </Steps>
 
+## Verifica que funciona
+
+Envía un WhatsApp desde tu teléfono personal al número que conectaste. Deberías ver:
+
+1. La respuesta del agente en tu teléfono, en segundos.
+2. La conversación en **CRM → Conversaciones**, dentro de Dialtu.
+3. El contacto creado automáticamente en **CRM → Clientes**.
+
+Si no llega respuesta, revisa que el número esté **Conectado** en Configuración, que el agente esté **Activo**, y que el enrutamiento cubra la hora a la que escribiste. Si el problema está en la conexión, ve a [Solución de problemas](/es/canales/whatsapp/solucion-de-problemas).
+
 ## Siguientes pasos
 
-<Card title="Conceptos clave" icon="lightbulb" href="/es/introduccion/conceptos-clave">
-  Entiende los términos que usarás en Dialtu.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Crear herramientas" icon="plug" href="/es/agentes-de-voz/crear-herramientas">
+    Dale acciones reales a tu agente: agendar, consultar tu CRM, llamar a tu API.
+  </Card>
+
+  <Card title="Crear tu primer pipeline" icon="filter" href="/es/salesflow/crear-pipeline">
+    Deja que Salesflow mueva por sí solo los leads que genere tu agente.
+  </Card>
+
+  <Card title="Agentes de voz" icon="microphone" href="/es/agentes-de-voz/introduccion">
+    Suma el canal de voz para atender y hacer llamadas con IA.
+  </Card>
+</CardGroup>

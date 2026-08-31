@@ -1,0 +1,135 @@
+---
+title: "Referencia de acciones"
+description: "Las nueve acciones que puede ejecutar una secuencia"
+icon: "list-check"
+---
+
+Estas son todas las acciones que puedes encadenar en una secuencia. Las que **consumen créditos** están marcadas.
+
+| Acción | Qué hace | Consume créditos |
+| --- | --- | --- |
+| **Llamada Saliente** | Llama al cliente con un agente de voz | **Sí** |
+| **Enviar Chat SMS** | Abre una conversación de SMS | **Sí** |
+| **Enviar Mensaje de WhatsApp** | Envía una plantilla para abrir conversación | No por Dialtu <sup>1</sup> |
+| **Webhook** | Llama a una URL externa | No |
+| **Esperar** | Pausa la secuencia | No |
+| **Mover a Etapa** | Cambia al cliente de etapa | No |
+| **Actualizar Cliente** | Modifica campos del contacto | No |
+| **Agregar Etiqueta** | Añade una etiqueta | No |
+| **Quitar Etiqueta** | Elimina una etiqueta | No |
+
+<sup>1</sup> Las plantillas de WhatsApp las factura **Meta directamente a tu cuenta**, no Dialtu. Ver la nota al final.
+
+---
+
+## Llamada Saliente
+
+Lanza una llamada con uno de tus agentes de voz. La secuencia queda en espera hasta que la llamada termina.
+
+**Configuración principal:** agente, duración máxima, esperar saludo, grabar llamada, detectar quién responde, acción de buzón de voz (colgar, dejar mensaje, ignorar), etiquetas de disposición y datos de solicitud.
+
+**Bloque de reintentos:** número máximo de reintentos, días de espera entre ellos, franja horaria o una hora concreta, y en qué casos reintentar (no contestada, o ciertas etiquetas de disposición).
+
+<Warning>
+  Requiere que el cliente **tenga número de teléfono**. Sin él, la acción falla y con ella la secuencia entera.
+</Warning>
+
+<Note>
+  La llamada se realiza en nombre del **usuario que creó el pipeline**. Si esa persona ya no existe en la organización, la acción falla.
+
+  La etiqueta del campo dice "Duración Máxima (minutos)", pero el valor está en **segundos** (300 = 5 minutos).
+</Note>
+
+---
+
+## Enviar Chat SMS
+
+Abre una conversación de SMS con un agente. Por defecto la secuencia **espera a que termine** antes de continuar.
+
+El **mensaje de apertura** puede ser:
+
+- **Mensaje estático** — el texto que escribas, con variables como `{'{{'}first_name{'}}'}`.
+- **Generar con IA** — escribes una indicación y la IA redacta el primer SMS.
+
+Si lo dejas vacío, se usa el mensaje de apertura predeterminado del agente.
+
+---
+
+## Enviar Mensaje de WhatsApp
+
+Envía una **plantilla aprobada** para abrir una conversación de WhatsApp.
+
+**Configuración:** agente de WhatsApp saliente, plantilla, código de idioma, variables de la plantilla, y qué hacer **si ya hay una sesión activa**: omitir, enviar como texto, o enviar como plantilla.
+
+<Note>
+  Solo se muestran plantillas **aprobadas dentro de la cuenta de WhatsApp Business del agente** que elijas. Si no ves las tuyas, revisa que el agente tenga un número asignado y que la plantilla esté aprobada en esa misma cuenta.
+</Note>
+
+<Warning>
+  Aunque Dialtu no te cobra por la plantilla, **el envío sí requiere saldo de créditos** y respeta los límites diarios y horarios de tu plan. Una cuenta sin créditos no podrá enviar la plantilla aunque el mensaje en sí sea gratuito para Dialtu.
+</Warning>
+
+---
+
+## Webhook
+
+Hace una petición HTTP a una URL tuya.
+
+**Configuración:** URL, método, encabezados, cuerpo (constructor visual o JSON manual), tiempo límite en segundos, reintentar en caso de fallo, y autenticación (ninguna, básica, bearer o por encabezado).
+
+<Note>
+  Por defecto, **una respuesta de error del servidor no detiene la secuencia** — se considera completada igualmente. Activa _Reintentar en caso de fallo_ si quieres que un error cuente como fallo real.
+</Note>
+
+---
+
+## Esperar
+
+Pausa la secuencia. Dos modos:
+
+- **Duración fija** — minutos, horas o días.
+- **Hora programada** — una hora concreta (`09:00`) en un día relativo: mismo día, día siguiente, próximo día laborable, próximo lunes… o la próxima semana. Con zona horaria.
+
+<Tip>
+  No existe un retardo por paso. **Esperar es la única forma de separar dos acciones en el tiempo**; sin ella, todo lo inmediato se ejecuta de golpe.
+</Tip>
+
+---
+
+## Mover a Etapa
+
+Mueve al cliente a otra etapa del mismo pipeline. Opcionalmente cancela las secuencias que estuvieran corriendo.
+
+<Warning>
+  Esta acción dispara **inmediatamente** los eventos _Al Salir_ de la etapa actual y _Al Llegar_ de la destino. Es la vía habitual para crear un bucle sin darse cuenta — ver la advertencia en [Eventos y secuencias](/es/salesflow/eventos-y-secuencias).
+</Warning>
+
+---
+
+## Actualizar Cliente
+
+Modifica campos del contacto: nombre, apellido, email, empresa, teléfono, zona horaria y código de área. Cualquier otro campo que definas se guarda como dato personalizado del cliente.
+
+---
+
+## Agregar Etiqueta / Quitar Etiqueta
+
+Añade o quita etiquetas. Si la etiqueta no existe, **Agregar Etiqueta la crea**. Quitar una etiqueta que el cliente no tiene no da error.
+
+<Tip>
+  Las etiquetas son el puente entre pipelines: etiqueta en uno y usa esa etiqueta como condición de entrada de otro.
+</Tip>
+
+---
+
+## Facturación de WhatsApp
+
+Dialtu **no te cobra** por enviar plantillas de WhatsApp. Tú conectas tu propia cuenta de WhatsApp Business y **Meta te factura directamente** esas conversaciones.
+
+Lo único que Dialtu cobra en WhatsApp son los **mensajes generados por IA** durante una conversación — no las plantillas.
+
+## Siguiente paso
+
+<Card title="Asignación de leads" icon="users" href="/es/salesflow/asignacion">
+  Reparte automáticamente los leads entre tu equipo.
+</Card>

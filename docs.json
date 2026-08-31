@@ -7,7 +7,10 @@
     "light": "#07C983",
     "dark": "#15803D"
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/images/favicon.ico",
+    "dark": "/favicon.svg"
+  },
   "navigation": {
     "languages": [
       {
@@ -21,24 +24,23 @@
                 "icon": "rocket",
                 "pages": [
                   "es/introduccion/que-es-dialtu",
-                  "es/introduccion/primeros-pasos",
-                  "es/introduccion/conceptos-clave"
+                  "es/introduccion/primeros-pasos"
                 ]
               },
               {
-                "group": "Embudos",
+                "group": "Salesflow",
                 "icon": "filter",
                 "pages": [
-                  "es/embudos/introduccion",
-                  "es/embudos/crear-embudo"
-                ]
-              },
-              {
-                "group": "Bases de datos",
-                "icon": "database",
-                "pages": [
-                  "es/bases-de-datos/introduccion",
-                  "es/bases-de-datos/crear-base"
+                  "es/salesflow/introduccion",
+                  "es/salesflow/crear-pipeline",
+                  "es/salesflow/etapas",
+                  "es/salesflow/nodos-de-entrada",
+                  "es/salesflow/transiciones",
+                  "es/salesflow/orquestador",
+                  "es/salesflow/eventos-y-secuencias",
+                  "es/salesflow/acciones",
+                  "es/salesflow/asignacion",
+                  "es/salesflow/historial"
                 ]
               },
               {
@@ -57,7 +59,18 @@
                 "icon": "comments",
                 "pages": [
                   "es/canales/whatsapp",
-                  "es/canales/sms"
+                  "es/canales/sms",
+                  {
+                    "group": "Conectar WhatsApp",
+                    "icon": "whatsapp",
+                    "pages": [
+                      "es/canales/whatsapp/requisitos",
+                      "es/canales/whatsapp/conectar",
+                      "es/canales/whatsapp/modo-onboarding",
+                      "es/canales/whatsapp/numeros",
+                      "es/canales/whatsapp/solucion-de-problemas"
+                    ]
+                  }
                 ]
               },
               {
@@ -87,24 +100,23 @@
                 "icon": "rocket",
                 "pages": [
                   "en/getting-started/what-is-dialtu",
-                  "en/getting-started/quickstart",
-                  "en/getting-started/key-concepts"
+                  "en/getting-started/quickstart"
                 ]
               },
               {
-                "group": "Funnels",
+                "group": "Salesflow",
                 "icon": "filter",
                 "pages": [
-                  "en/funnels/introduction",
-                  "en/funnels/create-funnel"
-                ]
-              },
-              {
-                "group": "Databases",
-                "icon": "database",
-                "pages": [
-                  "en/databases/introduction",
-                  "en/databases/create-database"
+                  "en/salesflow/introduction",
+                  "en/salesflow/create-pipeline",
+                  "en/salesflow/stages",
+                  "en/salesflow/input-nodes",
+                  "en/salesflow/transitions",
+                  "en/salesflow/orchestrator",
+                  "en/salesflow/events-and-sequences",
+                  "en/salesflow/actions",
+                  "en/salesflow/assignment",
+                  "en/salesflow/history"
                 ]
               },
               {
@@ -123,7 +135,18 @@
                 "icon": "comments",
                 "pages": [
                   "en/channels/whatsapp",
-                  "en/channels/sms"
+                  "en/channels/sms",
+                  {
+                    "group": "Connect WhatsApp",
+                    "icon": "whatsapp",
+                    "pages": [
+                      "en/channels/whatsapp/requirements",
+                      "en/channels/whatsapp/connect",
+                      "en/channels/whatsapp/onboarding-mode",
+                      "en/channels/whatsapp/numbers",
+                      "en/channels/whatsapp/troubleshooting"
+                    ]
+                  }
                 ]
               },
               {
@@ -145,7 +168,7 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
+    "light": "/images/Dialtufulllogopng.png",
     "dark": "/logo/dark.svg"
   },
   "navbar": {
@@ -157,15 +180,15 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {

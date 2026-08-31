@@ -1,0 +1,88 @@
+---
+title: "Qué es Salesflow"
+description: "El CRM de Dialtu: un pipeline por etapas que se mueve solo"
+icon: "filter"
+---
+
+Salesflow es el CRM de Dialtu. Representa tu proceso comercial como un **pipeline**: una serie de **etapas** por las que avanzan tus clientes, desde el primer contacto hasta que ganas o pierdes el negocio.
+
+Lo que lo distingue de un CRM tradicional es que **no depende de que alguien arrastre tarjetas**. Tus agentes de IA conversan por voz, WhatsApp y SMS; cuando una conversación termina, Salesflow la analiza y decide si el cliente debe avanzar de etapa.
+
+<Frame caption="Un pipeline de Salesflow en la vista Tablero">
+  <img src="/images/es/salesflow/introduccion-tablero.png" alt="Tablero Kanban con las etapas Lead, Proposal, Negotiation, Closed Won y Closed Lost, con tarjetas de clientes" />
+</Frame>
+
+## El recorrido de un lead
+
+<Steps>
+  <Step title="Entra">
+    Un **nodo de entrada** detecta al cliente — terminó una llamada, se resolvió un chat de WhatsApp, se creó un contacto, llegó un registro por API — y lo coloca en una etapa.
+  </Step>
+  <Step title="Se le asigna un dueño">
+    Si configuraste una estrategia de asignación, Salesflow reparte el lead entre los miembros del equipo en ese momento.
+  </Step>
+  <Step title="Se mueve">
+    Cada vez que termina una conversación, las **transiciones** que salen de su etapa se evalúan. Primero las estáticas (reglas exactas), y si ninguna coincide, el **orquestador** de IA decide.
+  </Step>
+  <Step title="Dispara automatizaciones">
+    Al llegar a una etapa — o al quedarse quieto demasiado tiempo — los **eventos** de esa etapa lanzan **secuencias**: llamar, mandar un WhatsApp, esperar, etiquetar, moverlo.
+  </Step>
+  <Step title="Termina">
+    Al llegar a una **etapa final** queda marcado como ganado o perdido, y después de unos días pasa a **completado**.
+  </Step>
+</Steps>
+
+## Vocabulario
+
+Vale la pena fijar estos términos antes de seguir — se usan en toda la sección y en la interfaz.
+
+| Término | Qué es |
+| --- | --- |
+| **Pipeline** | El proceso completo. Puedes tener todos los que quieras: ventas, soporte, cobranza. |
+| **Etapa** | Una columna del pipeline. Un cliente está en exactamente una etapa por pipeline. |
+| **Nodo de entrada** | La puerta de entrada: define de qué canal vienen los clientes, qué filtros deben cumplir y en qué etapa aterrizan. |
+| **Transición** | Una flecha entre dos etapas. Define cómo se permite (o se automatiza) ese movimiento. |
+| **Orquestador** | La IA que lee la conversación y decide si mover al cliente, con un nivel de confianza. |
+| **Evento** | Un disparador dentro de una etapa: al llegar, al salir, tras X tiempo inactivo, al terminar una llamada o un chat. |
+| **Secuencia** | La lista ordenada de acciones que ejecuta un evento. |
+| **Acción** | Un paso concreto: llamar, enviar WhatsApp, esperar, etiquetar, mover de etapa, llamar un webhook. |
+
+<Note>
+  En versiones anteriores de la documentación y en algunos documentos internos verás las palabras _embudo_ y _tablero_. El término correcto, y el que usa la interfaz, es **pipeline**.
+</Note>
+
+## Dos vistas del mismo pipeline
+
+<CardGroup cols={2}>
+  <Card title="Tablero" icon="table-columns">
+    La vista Kanban: una columna por etapa, una tarjeta por cliente. Es la vista del día a día — aquí trabajas los leads y los mueves a mano.
+  </Card>
+
+  <Card title="Flujo" icon="diagram-project">
+    El diagrama: etapas, nodos de entrada y las flechas entre ellas. Es la vista de diseño — aquí defines cómo funciona el pipeline.
+  </Card>
+</CardGroup>
+
+<Frame caption="La vista Flujo: así se diseña el pipeline">
+  <img src="/images/es/salesflow/introduccion-flujo.png" alt="Diagrama de flujo con un nodo de entrada, cinco etapas y las transiciones entre ellas" />
+</Frame>
+
+## Qué leer después
+
+<CardGroup cols={2}>
+  <Card title="Crear tu primer pipeline" icon="plus" href="/es/salesflow/crear-pipeline">
+    De cero a un pipeline funcionando, paso a paso.
+  </Card>
+
+  <Card title="Etapas" icon="layer-group" href="/es/salesflow/etapas">
+    Tipos de etapa, colores, cierre y archivado.
+  </Card>
+
+  <Card title="Nodos de entrada" icon="door-open" href="/es/salesflow/nodos-de-entrada">
+    Cómo entran los clientes y con qué filtros.
+  </Card>
+
+  <Card title="El orquestador" icon="robot" href="/es/salesflow/orquestador">
+    La IA que mueve los leads por ti.
+  </Card>
+</CardGroup>

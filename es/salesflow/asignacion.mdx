@@ -1,0 +1,61 @@
+---
+title: "Asignación de leads"
+description: "Reparte automáticamente los leads entre tu equipo"
+icon: "users"
+---
+
+Cada cliente de un pipeline puede tener un **responsable**. Salesflow puede repartirlos automáticamente al entrar, o puedes asignarlos a mano desde la tarjeta.
+
+## El equipo del pipeline
+
+Primero define quién puede recibir leads: en la configuración del pipeline, la sección de **equipo** lista los miembros. Cada uno tiene un **peso**, que solo se usa en la estrategia ponderada.
+
+## Estrategias
+
+| Estrategia | Cómo reparte |
+| --- | --- |
+| **Ninguna** | No asigna. Los leads entran sin responsable. |
+| **Round Robin** | Por turnos, en orden, uno a cada miembro. |
+| **Round Robin Ponderado** | Por turnos, pero respetando el **peso** de cada miembro. |
+| **Menor Carga** | Al miembro que tenga menos clientes activos en el pipeline. |
+| **Aleatorio** | Al azar. |
+
+<Tip>
+  **Menor Carga** suele ser la mejor opción por defecto para equipos de venta: se autoequilibra cuando alguien se ausenta o acumula demasiados leads abiertos.
+
+  **Round Robin Ponderado** tiene sentido cuando hay perfiles distintos — por ejemplo, dar peso 2 a los comerciales senior y 1 a los junior.
+</Tip>
+
+## Cuándo se asigna
+
+<Warning>
+  **La asignación ocurre una sola vez: al entrar el cliente al pipeline.**
+
+  Cambiar de etapa **no reasigna**. Un lead que la IA empuja desde la primera etapa hasta el cierre conserva el responsable que se le dio al entrar — o sigue sin responsable si entró cuando la estrategia era _Ninguna_.
+
+  Si necesitas que alguien distinto se haga cargo en una etapa concreta, reasígnalo a mano desde la tarjeta.
+</Warning>
+
+También se asigna al **reingresar** un cliente que había salido, y al añadir clientes en bloque desde el tablero.
+
+## Sobreescribir por nodo de entrada
+
+Cada [nodo de entrada](/es/salesflow/nodos-de-entrada) puede tener su propia estrategia y su propio grupo de personas, con **Sobreescribir Asignación** y **Asignación de Equipo**.
+
+Es útil cuando los leads de distintos orígenes deben ir a equipos distintos — por ejemplo, los de WhatsApp al equipo de atención y los de la API al equipo comercial.
+
+## Asignar a mano
+
+Desde la tarjeta del cliente, el avatar del responsable abre un menú con **Asignarme**, **Asignar**, **Desasignar** y un buscador de miembros.
+
+El tablero también se puede filtrar por responsable con **Filtrar por asignado**, incluyendo la opción **Sin asignar** — la mejor forma de detectar leads huérfanos.
+
+<Note>
+  El interruptor de auto-asignación de un miembro **solo afecta al selector manual**. Un miembro con la auto-asignación desactivada desaparece del desplegable de asignación manual, pero **la asignación automática puede seguir dándole leads**. Si necesitas sacar a alguien del reparto de verdad, márcalo como inactivo en el equipo del pipeline.
+</Note>
+
+## Siguiente paso
+
+<Card title="Historial y solución de problemas" icon="clock-rotate-left" href="/es/salesflow/historial">
+  Qué pasó con cada lead, y qué hacer cuando algo no se mueve.
+</Card>

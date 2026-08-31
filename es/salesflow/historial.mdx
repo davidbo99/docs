@@ -1,0 +1,115 @@
+---
+title: "Historial y solución de problemas"
+description: "Qué pasó con cada lead y qué hacer cuando algo no se mueve"
+icon: "clock-rotate-left"
+---
+
+Salesflow registra **todo** lo que le ocurre a un cliente, incluidas las decisiones de no hacer nada. Cuando algo no funciona como esperabas, la respuesta casi siempre está aquí.
+
+## Dónde mirar
+
+Desde el menú de una tarjeta tienes tres vistas:
+
+<CardGroup cols={3}>
+  <Card title="Ver Actividad" icon="timeline">
+    La línea de tiempo completa del cliente: entradas, movimientos, llamadas, chats, secuencias y evaluaciones.
+  </Card>
+
+  <Card title="Historial de Movimientos" icon="arrow-right-arrow-left">
+    Solo los cambios de etapa, con el tipo de movimiento y quién lo hizo.
+  </Card>
+
+  <Card title="Historial de Procesamiento" icon="magnifying-glass">
+    Cada evaluación de transición, incluidas las que decidieron **no** mover.
+  </Card>
+</CardGroup>
+
+<Frame caption="Historial de Procesamiento de un cliente">
+  <img src="/images/es/salesflow/historial-procesamiento.png" alt="Drawer de historial de procesamiento con una evaluación Movido al 93% de confianza y varias con resultado IA: No Debería Moverse" />
+</Frame>
+
+## Los resultados posibles
+
+Cada evaluación termina con uno de estos ocho resultados:
+
+| Resultado | Qué significa |
+| --- | --- |
+| **Movido** | El cliente cambió de etapa. |
+| **Marcado para Revisión** | La IA tuvo confianza intermedia. El cliente lleva la insignia ámbar _Revisar_. |
+| **Condiciones No Cumplidas** | Una transición estática se evaluó y sus filtros no coincidieron. |
+| **Orquestador Deshabilitado** | Hay transiciones de IA, pero el orquestador está apagado. |
+| **IA: No Debería Moverse** | La IA evaluó y decidió que no procede mover. |
+| **Confianza Baja** | La IA no llegó al umbral de omisión. |
+| **Error de Evaluación** | Falló la llamada a la IA. |
+| **Movimiento Fallido** | La IA decidió mover, pero la validación lo impidió. |
+
+En las estáticas el panel muestra qué criterios se **Cumplieron** y cuáles **No**, con los valores reales de la llamada. En las de IA, muestra la **confianza** y el **razonamiento**.
+
+---
+
+## Problemas frecuentes
+
+<AccordionGroup>
+  <Accordion title="No entra ningún cliente al pipeline">
+    En orden de probabilidad:
+
+    1. **El nodo de entrada no está conectado.** Si muestra _Sin Conexión_, arrastra desde el nodo hasta una etapa.
+    2. **El nodo está inactivo**, o el **pipeline no está en estado Activo**.
+    3. **Las condiciones no coinciden con nadie.** El caso más común con diferencia: el filtro _Filtrar por Agente_ apunta a un **agente que borraste**. Revísalo.
+    4. **La conversación no ha terminado.** La entrada por chat ocurre al resolverse la sesión, no al empezar (salvo que hayas elegido _Al iniciar_).
+    5. **El cliente ya estuvo** en el pipeline y la política de reingreso lo bloquea, o sigue en período de espera.
+
+    Recuerda que un no-match **no genera ningún error visible**. El silencio es el síntoma.
+  </Accordion>
+
+  <Accordion title="Los clientes entran pero no se mueven">
+    1. Mira el **Historial de Procesamiento**. Si no hay entradas, la evaluación no llegó a ejecutarse — la conversación probablemente no terminó.
+    2. Si ves **Condiciones No Cumplidas**, el panel te dice exactamente qué criterio falló.
+    3. Si ves **Orquestador Deshabilitado**, actívalo — y acuérdate de marcar _Reactivar transiciones_.
+    4. Si ves **Confianza Baja** repetidamente, tu prompt de transición es demasiado vago o demasiado amplio. Ver [escribir buenos prompts](/es/salesflow/orquestador).
+    5. Comprueba que la transición esté **Activa** y que salga de la etapa donde está el cliente.
+  </Accordion>
+
+  <Accordion title="Se mueven, pero por la transición equivocada">
+    Las **estáticas siempre se evalúan antes que las de orquestador**, y dentro de cada grupo manda la **Prioridad** — la primera coincidencia gana y detiene la evaluación.
+
+    Si una estática demasiado amplia se está llevando todos los casos, acota sus condiciones o baja su prioridad.
+  </Accordion>
+
+  <Accordion title="Una secuencia no se ejecutó">
+    1. **¿Fue un movimiento masivo?** Los movimientos en bloque **no disparan** eventos _Al Salir_ ni _Al Llegar_. Solo el arrastre individual.
+    2. **¿Entró por llamada?** Las entradas desde una llamada no disparan los eventos _Al Llegar_.
+    3. **¿Se agotó el Límite de Ejecución?** Por defecto es 1 por cliente, para toda su estancia en el pipeline.
+    4. **¿Usas secuencias condicionales sin rama por defecto?** Si ninguna rama coincide, no se ejecuta nada.
+    5. **¿Las condiciones del evento incluyen un rango horario** que no cubre el momento del disparo?
+  </Accordion>
+
+  <Accordion title="Una secuencia falló a mitad">
+    Cuando una acción falla, **la secuencia entera falla** y el resto se cancela. No hay reintento automático.
+
+    Abre **Ver Actividad** en el cliente, localiza la ejecución fallida y usa **Reintentar desde el fallo** (continúa desde donde se rompió) o **Reintentar todo** (empieza de cero).
+
+    Causas habituales: el cliente no tiene teléfono para una llamada, una URL de webhook inválida, o una plantilla de WhatsApp que dejó de estar aprobada.
+  </Accordion>
+
+  <Accordion title="Veo clientes que ya había borrado">
+    Es un comportamiento conocido: **borrar un contacto no lo retira de los pipelines**. Su tarjeta sigue en el tablero, cuenta en el total de la columna, y sigue siendo elegible para temporizadores y secuencias.
+
+    Mientras tanto, quítalo del pipeline explícitamente con **Quitar de la Etapa** además de borrar el contacto.
+  </Accordion>
+
+  <Accordion title="La IA sigue moviendo clientes con el pipeline pausado">
+    Correcto, y es esperado: **pausar el pipeline no detiene las transiciones**. Solo detiene los nodos de entrada y los temporizadores de inactividad.
+
+    Para parar el movimiento por IA, desactiva el **Agente Orquestador**. Para parar las estáticas, desactívalas una a una.
+  </Accordion>
+</AccordionGroup>
+
+## Qué NO existe todavía
+
+Para evitar búsquedas inútiles:
+
+- **No hay informes de conversión por etapa, tiempo en etapa ni caída de embudo.** El widget del dashboard muestra el conteo por etapa y una tasa de conversión global.
+- **La Alerta de Inactividad de una etapa no envía avisos.** Usa un evento de tipo _Temporizador de Inactividad_.
+- **No hay integración con campañas.** Una etapa puede lanzar una llamada suelta, pero no una campaña.
+- **Los movimientos de etapa no aparecen en la línea de tiempo de Conversaciones**; están en la actividad del cliente dentro de Salesflow.

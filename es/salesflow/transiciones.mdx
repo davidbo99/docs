@@ -1,0 +1,115 @@
+---
+title: "Transiciones"
+description: "Manuales, estáticas y de orquestador: cómo se mueven los clientes entre etapas"
+icon: "arrow-right-arrow-left"
+---
+
+Una transición es una flecha entre dos etapas. Define **cómo** se permite ese movimiento y, si es automático, **bajo qué condiciones**.
+
+Se crea arrastrando desde el conector derecho de una etapa hasta otra. Al hacer clic sobre la flecha se abre **Configurar Transición**.
+
+<Frame caption="Los tres tipos de activador">
+  <img src="/images/es/salesflow/transiciones-panel.png" alt="Panel de configuración de transición con Manual, Estático y Orquestador, y el prompt de transición" />
+</Frame>
+
+## Los tres tipos de activador
+
+<CardGroup cols={3}>
+  <Card title="Manual" icon="hand">
+    El usuario mueve clientes manualmente entre etapas. Línea gris punteada.
+  </Card>
+
+  <Card title="Estático" icon="bolt">
+    Automático según reglas exactas sobre la llamada o el chat. Línea azul sólida. Gratis.
+  </Card>
+
+  <Card title="Orquestador" icon="brain">
+    La IA decide según un prompt que tú escribes. Línea morada animada.
+  </Card>
+</CardGroup>
+
+Todas se evalúan **cuando termina una conversación** — una llamada que se completa, un chat de SMS o de WhatsApp que finaliza — para un cliente que esté en la etapa de origen.
+
+## Transiciones estáticas
+
+Son reglas exactas, sin IA. Se configuran en tres pestañas independientes — **Llamadas**, **Chat SMS** y **Chat de WhatsApp** — y **una misma transición puede dispararse por cualquiera de los tres canales**.
+
+El **Modo de Coincidencia** decide cómo se combinan los filtros:
+
+- **Todos los filtros (AND)** — todos los tipos de filtro deben coincidir.
+- **Cualquier filtro (OR)** — basta con que coincida uno.
+
+En ambos casos, seleccionar varios valores dentro de un mismo filtro significa "cualquiera de estos".
+
+<AccordionGroup>
+  <Accordion title="Filtros de llamada">
+    Etiquetas de Disposición · Respondido Por (Humano / Buzón de Voz / Desconocido / Sin Respuesta) · Estado de Llamada (Completada / Fallida / Cancelada) · Duración de Llamada (mín–máx en segundos) · Requiere Seguimiento · Llamada Terminada Por (Usuario / Asistente / Error / Transferencia / Tiempo Agotado) · Dirección de Llamada · Es Reintento · Conteo de Reintentos.
+  </Accordion>
+
+  <Accordion title="Filtros de chat (SMS y WhatsApp)">
+    Filtrar por Agente · Estado del Chat · Sentimiento · Etiquetas de Disposición · Mínimo de Mensajes · Tiene Resumen · Modo de Coincidencia.
+
+    Los valores de **Estado del Chat** y **Sentimiento** se muestran todavía en inglés (`completed`, `ended`, `active` / `positive`, `neutral`, `negative`).
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  Una transición estática **sin condiciones** se dispara con _cualquier_ evento de ese canal. El panel te lo advierte: _"Sin condiciones configuradas — cualquier evento de llamada activará esta transición"_.
+</Warning>
+
+## Transiciones de orquestador
+
+Se configuran con un solo campo: el **Prompt de Transición**, en lenguaje natural.
+
+```text
+Mueve al cliente cuando haya confirmado explícitamente que tiene presupuesto asignado
+y haya dado una fecha aproximada de decisión. No lo muevas si solo pidió información
+de precios sin comprometerse.
+```
+
+Solo están disponibles si el **Agente Orquestador** está activado en el pipeline. Ver [El orquestador](/es/salesflow/orquestador) para el detalle completo.
+
+## Prioridad y orden de evaluación
+
+El campo **Prioridad** (0–100) ordena las transiciones: las de mayor prioridad se evalúan primero, y **la primera coincidencia detiene la evaluación**. Con prioridad 0 se usa el orden de creación.
+
+<Warning>
+  **Las estáticas siempre se evalúan antes que las del orquestador**, sin importar la prioridad. La prioridad ordena dentro de cada grupo, no entre grupos. Una transición de orquestador con prioridad 100 sigue perdiendo frente a cualquier estática que coincida.
+
+  Eso es intencional — las estáticas son gratis e inmediatas — pero explica por qué a veces "la IA no decidió": nunca llegó a ejecutarse.
+</Warning>
+
+## Opciones comunes
+
+| Opción | Qué hace |
+| --- | --- |
+| **Transición Activa** | Desactivarla la deja dibujada pero inerte. |
+| **Permitir Movimientos Manuales** | Habilita arrastrar y soltar a lo largo de esta transición, además de su automatismo. |
+| **Cancelar secuencias al mover** | Cancela las secuencias en ejecución en la etapa de origen cuando se dispare. Activado por defecto. |
+| **Prioridad** | El orden de evaluación descrito arriba. |
+
+## El modo estricto
+
+En la barra superior hay un candado. Cuando está activado, **los clientes solo pueden moverse entre etapas que tengan una transición definida**.
+
+- **Desactivado** (por defecto) — cualquiera puede arrastrar una tarjeta a donde sea. Las transiciones funcionan solo como reglas de automatización.
+- **Activado** — al arrastrar, las etapas no permitidas se muestran con un candado y el mensaje **Movimiento no permitido**.
+
+## Reglas al crear transiciones
+
+- No se puede crear una transición **desde una etapa final**.
+- No se puede crear una transición de una etapa **hacia sí misma**.
+- No puede haber **dos transiciones entre el mismo par** de etapas: _"Ya existe una transición entre estas etapas"_.
+- Desde una etapa **Solo Humano**, la transición se fuerza a manual.
+
+## Puntos de ruta
+
+Los **puntos de ruta** sirven para que las flechas no se crucen. Aparecen al seleccionar una línea: arrastra los puntos huecos para crear uno, los sólidos para moverlos, y `Supr` para borrarlos.
+
+Son **puramente estéticos** y no afectan a ninguna decisión.
+
+## Siguiente paso
+
+<Card title="El orquestador" icon="robot" href="/es/salesflow/orquestador">
+  Cómo decide la IA, cómo se configura la confianza y cuánto cuesta.
+</Card>
