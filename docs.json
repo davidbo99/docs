@@ -21,7 +21,9 @@
                 "icon": "rocket",
                 "pages": [
                   "es/introduccion/que-es-dialtu",
-                  "es/introduccion/primeros-pasos"
+                  "es/introduccion/primeros-pasos",
+                  "es/introduccion/creditos",
+                  "es/introduccion/numeros-de-telefono"
                 ]
               },
               {
@@ -97,7 +99,9 @@
                 "icon": "rocket",
                 "pages": [
                   "en/getting-started/what-is-dialtu",
-                  "en/getting-started/quickstart"
+                  "en/getting-started/quickstart",
+                  "en/getting-started/credits",
+                  "en/getting-started/phone-numbers"
                 ]
               },
               {

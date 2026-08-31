@@ -1,0 +1,166 @@
+---
+title: "Créditos"
+description: "Qué son, cuánto valen y qué los consume"
+icon: "coins"
+---
+
+Los créditos son la moneda interna de Dialtu. Todo lo que consume inteligencia artificial —llamadas, mensajes, análisis— se paga en créditos, y también los números de teléfono.
+
+<Card title="1 crédito = 0,01 USD" icon="equals" horizontal>
+  Es decir, **100 créditos = 1 USD**. La equivalencia es fija y no cambia.
+</Card>
+
+## De dónde salen tus créditos
+
+Hay dos orígenes, y se comportan de forma distinta:
+
+| Origen | Cuándo llegan | ¿Caducan? |
+| --- | --- | --- |
+| **Créditos del plan** | Cada ciclo de facturación, según tu plan | **Sí** — caducan al terminar el ciclo |
+| **Créditos comprados** | Cuando compras un paquete o se dispara la recarga automática | **No** — no tienen vencimiento |
+
+<Warning>
+  **Los créditos del plan no se acumulan.** Los que no uses dentro del ciclo se pierden al renovarse. Los créditos que compras aparte sí se quedan indefinidamente.
+</Warning>
+
+### En qué orden se gastan
+
+Dialtu consume siempre en este orden, para que nunca pierdas créditos que iban a caducar:
+
+<Steps>
+  <Step title="Créditos asignados a una función">
+    Algunos planes incluyen créditos reservados para una función concreta (por ejemplo Atlas). Se usan primero, y solo para esa función.
+  </Step>
+  <Step title="Créditos que caducan antes">
+    De los generales, primero los que están más cerca de vencer.
+  </Step>
+  <Step title="Créditos comprados">
+    Al final, los que no caducan — empezando por los más antiguos.
+  </Step>
+</Steps>
+
+## Qué consume créditos
+
+<AccordionGroup>
+  <Accordion title="Llamadas de voz" icon="phone">
+    Se cobran **por segundo, prorrateado a minutos** — no se redondea al minuto completo.
+
+    El precio por minuto combina dos cosas: el **modelo de IA** que usa el agente y el **coste del operador telefónico**. Si el agente usa una voz premium, se suma un extra por minuto.
+
+    Cada llamada tiene un **mínimo facturable**, así que una llamada de tres segundos no cuesta prácticamente cero.
+
+    <Tip>
+      En el detalle de cada llamada puedes abrir el desglose y ver exactamente cuánto fue del modelo, cuánto de la voz premium y cuánto del operador.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Mensajes de WhatsApp generados por IA" icon="whatsapp">
+    Se cobra **por cada mensaje que escribe la IA**, a una tarifa que depende del modelo del agente.
+
+    **No se cobran** los mensajes que te envía el cliente, ni los que escribe una persona de tu equipo desde la bandeja.
+  </Accordion>
+
+  <Accordion title="Chats de SMS" icon="comment-sms">
+    Se cobran **al cerrarse la sesión**, sumando tres partes: una tarifa base por mensaje, el coste del modelo de IA por mensaje, y el coste del operador por mensaje.
+
+    Algunos planes incluyen una cantidad de mensajes sin coste; el componente del operador se cobra siempre.
+  </Accordion>
+
+  <Accordion title="El orquestador de Salesflow" icon="robot">
+    Solo el nivel **Pro** consume créditos, y **solo cuando el cliente efectivamente se mueve** de etapa. Una evaluación Pro que decide no mover no se cobra.
+
+    El nivel **Estándar es gratuito**, sin límite de evaluaciones.
+  </Accordion>
+
+  <Accordion title="Agentes de Insight" icon="chart-line">
+    Se cobra por ejecución, según los tokens realmente consumidos. Antes de ejecutar se estima el coste y se bloquea si no hay saldo suficiente.
+  </Accordion>
+
+  <Accordion title="Atlas" icon="sparkles">
+    Se cobra por cada intervención del copiloto, según los tokens consumidos. El resumen ejecutivo del panel se cobra igual.
+
+    Algunos planes incluyen créditos reservados solo para Atlas.
+  </Accordion>
+
+  <Accordion title="Números de teléfono" icon="phone-office">
+    Cuota mensual fija, y en algunos países una cuota única de alta. Ver [Números de teléfono](/es/introduccion/numeros-de-telefono).
+  </Accordion>
+</AccordionGroup>
+
+## Qué NO consume créditos
+
+Vale la pena tenerlo claro, porque suele sorprender:
+
+<Check>
+  **Las plantillas de WhatsApp.** Las factura **Meta directamente a tu cuenta**, no Dialtu. Tú conectas tu propia cuenta de WhatsApp Business y Meta te cobra esas conversaciones.
+</Check>
+
+<Check>
+  **Los mensajes entrantes de WhatsApp** y los que escribe una persona de tu equipo.
+</Check>
+
+<Check>
+  **El orquestador en nivel Estándar.**
+</Check>
+
+<Check>
+  **El panel de prueba de los agentes.** Probar un agente antes de activarlo es gratis; en su lugar hay un límite de uso por hora.
+</Check>
+
+<Check>
+  **El análisis de imágenes y PDF** que llegan por WhatsApp.
+</Check>
+
+<Check>
+  **La memoria de contactos automática.** Solo se cobra si pulsas _Regenerar_ a mano.
+</Check>
+
+## Qué pasa si te quedas sin saldo
+
+No todo se detiene de golpe. Las operaciones que se pueden comprobar **antes** de empezar se bloquean; las que ya están en marcha se completan y pueden dejar el saldo en negativo.
+
+**Se bloquean por adelantado:**
+
+- Llamadas salientes y campañas.
+- Llamadas entrantes — se rechazan en el enrutamiento.
+- Chats de SMS.
+- Atlas, agentes de Insight y el orquestador Pro.
+
+**Se completan aunque no haya saldo:**
+
+- Una llamada ya en curso: se cobra al terminar, aunque el saldo quede negativo.
+- La cuota mensual de los números de teléfono.
+
+<Note>
+  Algunas cuentas tienen un **margen de sobregiro** configurado, que permite seguir operando hasta cierta deuda antes de bloquear. Cuando entran créditos nuevos, la deuda se salda automáticamente antes de que puedas gastarlos.
+</Note>
+
+### Avisos
+
+Dialtu te envía un **correo cuando una operación se bloquea** por falta de saldo, como máximo una vez cada 24 horas. También puedes configurar **límites de gasto** diarios o mensuales con un aviso al acercarte al límite.
+
+<Warning>
+  No hay un aviso permanente de saldo bajo en la interfaz. Si no quieres depender del correo, activa la **recarga automática** o revisa el saldo en el panel.
+</Warning>
+
+## Comprar créditos
+
+En **Configuración → Créditos** puedes comprar paquetes o indicar un importe a medida (mínimo 10 USD). Los créditos comprados **no caducan**.
+
+Ahí mismo puedes activar la **recarga automática**: cuando el saldo baje de un umbral que tú defines, Dialtu cobra automáticamente a tu método de pago hasta llegar al objetivo. Requiere tener una tarjeta guardada.
+
+## Dónde ver tu saldo
+
+| Dónde | Qué muestra |
+| --- | --- |
+| **Panel principal** | Saldo, consumo del mes y avance sobre los créditos del plan |
+| **Configuración → Facturación** | Saldo, su equivalente en USD e historial completo de movimientos |
+| **Configuración → Créditos** | Compra de paquetes y recarga automática |
+| **Analíticas** | Consumo por canal: voz, WhatsApp, Salesflow, Atlas, Insight y teléfonos |
+| **Detalle de una llamada** | Desglose exacto de esa llamada |
+
+## Siguiente paso
+
+<Card title="Números de teléfono" icon="phone" href="/es/introduccion/numeros-de-telefono">
+  Cómo solicitar un número, qué cuesta y cómo se factura.
+</Card>
