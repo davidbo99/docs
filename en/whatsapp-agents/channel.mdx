@@ -1,0 +1,117 @@
+---
+title: "Channel, audience and behaviour"
+description: "Which number it answers, who it serves, when, and how it writes"
+icon: "sliders"
+---
+
+## WhatsApp channel
+
+<Info>
+  **📷 Screenshot needed** — the WhatsApp Channel group expanded, with number, type, routing and audience.
+
+  Save to `/images/en/whatsapp-agents/channel-group.png`
+</Info>
+
+### Number and type
+
+The **WhatsApp phone number** is required, and **Agent Type** decides what it can do:
+
+| Type | Answers inbound | Starts conversations |
+|---|---|---|
+| **Omnichannel** (default) | Yes | Yes |
+| **Inbound** | Yes | No |
+| **Outbound** | No | Yes |
+
+### Routing
+
+Required for inbound and omnichannel agents. Two ways:
+
+- **Default** — handles every message on the number that no other agent covers.
+- **Weekly schedule** — covers only the ranges you define, up to **4 per day**.
+
+Several agents can share a number as long as their schedules **don't overlap**. If they clash,
+the editor warns you and blocks the save.
+
+<Warning>
+  If a number has **no default agent**, messages outside scheduled hours **aren't routed to
+  anyone**.
+</Warning>
+
+<Note>
+  Times always display in 12-hour format with `AM`/`PM`, including in Spanish.
+</Note>
+
+### Audience
+
+Limits which customers this agent serves, based on their **tags**:
+
+| Field | What it does |
+|---|---|
+| **Only attend clients with these tags** | Leave empty to serve everyone |
+| **Never attend clients with these tags** | Exclusions |
+| **Reply sent to clients this agent doesn't attend** | Fixed text for excluded customers |
+
+<Warning>
+  **Exclusions always win.** A customer carrying an excluded tag is never served, even if they
+  also carry an included one.
+</Warning>
+
+<Note>
+  Variables are **not substituted** in the message for unattended customers. Use fixed text.
+</Note>
+
+<Tip>
+  Two agents can share the same hours on the same number **if their audiences don't overlap** —
+  for example one for VIP customers and one for everyone else.
+</Tip>
+
+## Conversation behaviour
+
+The third settings group. Defines **how the agent writes**.
+
+### Conversation style
+
+| Style | What it does |
+|---|---|
+| **Standard** | One reply per turn |
+| **Natural** | Splits the reply across several messages, the way a person types |
+
+<Check>
+  **Natural style doesn't cost more.** You aren't charged per split message — the reply is
+  billed, not the pieces.
+</Check>
+
+### Response length
+
+**Concise**, **Balanced** or **Detailed**. On WhatsApp, *Concise* or *Balanced* usually work
+better — long blocks read badly on a phone.
+
+### Message batching
+
+On by default. When a customer sends several messages in a row, the agent **waits for them to
+finish** instead of answering each line separately.
+
+The **batching window** sets how many seconds it waits.
+
+<Tip>
+  Leave it on. Without it, a customer typing "Hi" / "quick question" / "about my order" gets
+  three separate replies.
+</Tip>
+
+## Disposition tags
+
+The last group. They classify the conversation when it closes.
+
+<Note>
+  On WhatsApp only the **Standard** type is available. *Retry* and *No Answer* are call-specific
+  and don't appear here.
+</Note>
+
+As with voice, these are **account-wide templates**: they save instantly and affect every
+agent.
+
+## Next step
+
+<Card title="Contact memory" icon="brain" href="/en/whatsapp-agents/memory">
+  What the agent remembers between conversations.
+</Card>

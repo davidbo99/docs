@@ -1,0 +1,119 @@
+---
+title: "The prompt, FAQs and variables"
+description: "How you instruct the agent and how to personalise it"
+icon: "pen-to-square"
+---
+
+The prompt is **a single document** in the centre column. Everything goes there: who the agent
+is, how it opens, what it should achieve, and what it must not do.
+
+<Info>
+  **📷 Screenshot needed** — the prompt editor with content and the variables tray.
+
+  Save to `/images/en/whatsapp-agents/prompt-editor.png`
+</Info>
+
+## How to structure it
+
+```markdown
+## Context
+You are Mila, the assistant for [your business]. We sell [product] to [customer type].
+We're open Monday to Friday, 9 to 6. You reply over WhatsApp.
+
+## Conversation flow
+1. Greet them and ask how you can help.
+2. Identify whether they want [case A] or [case B].
+3. If it's [case A], ask for [detail 1] and [detail 2].
+4. Once you have the details, offer to book.
+
+## Rules
+- Reply in English, short sentences, warm tone.
+- Never invent prices or delivery dates. If you don't know, say so and offer a human.
+- Never ask for card details or passwords.
+```
+
+<Tip>
+  WhatsApp is conversation, not email. Short messages, one question at a time.
+</Tip>
+
+## The template
+
+**Use Template** fills the document with a starter script. If you've written something, it asks
+before replacing it.
+
+<Warning>
+  **The Spanish template is incomplete.** The English version includes an AI safeguards block —
+  rules against jailbreaking and hallucination — that's **missing from the Spanish one**. If
+  your team works in Spanish, add your own safety rules.
+</Warning>
+
+## Variables
+
+<AccordionGroup>
+  <Accordion title="Client variables — {{name}}">
+    Replaced with the contact's real data. Name, first name, last name, email and phone resolve,
+    along with their aliases (`{{first_name}}`, `{{name}}`, `{{email}}`, `{{phone}}`…).
+
+    If a value is missing, a neutral phrase is substituted rather than leaving a gap.
+  </Accordion>
+
+  <Accordion title="Global variables — [[name]]">
+    <Warning>
+      **They aren't substituted with any value.** There's nowhere to define their content — they
+      reach the agent exactly as written. Use them as notes to yourself, not as data.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Memory variables — {{memory_...}}">
+    Nine tokens that insert what the agent remembers about the contact. They only appear if you
+    enable memory in *Variables* mode.
+
+    See [Contact memory](/en/whatsapp-agents/memory).
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  **Variables are NOT substituted everywhere.** They work in the prompt and in FAQs, but **not**
+  in:
+
+  - the conversation **closing message**,
+  - the reminders' **auto-resolve message**,
+  - the **reply sent to customers this agent doesn't serve**,
+  - **template values** in follow-up sequences.
+
+  In those four places a `{{client_name}}` reaches the customer written literally. Use fixed
+  text.
+</Warning>
+
+## FAQs
+
+The **FAQ** button in the top bar. Questions and answers appended **after the prompt**, as a
+fallback.
+
+- No limit on count or length.
+- **None can be left half-finished**: saving with a question but no answer blocks the save and
+  reopens the modal.
+- Variables **are** substituted here.
+
+<Note>
+  **There is no knowledge base.** You can't upload documents or PDFs — FAQs are simply more
+  prompt text. Keep them short.
+</Note>
+
+## Atlas, inside the editor
+
+The first tab of the right panel. Ask for changes in plain language and it applies them to the
+agent: adjust the tone, add FAQs, configure follow-ups.
+
+<Warning>
+  **Atlas consumes credits**, unlike the test panel.
+</Warning>
+
+If Atlas changes the agent while you have unsaved edits, a notice lets you choose between
+**Reload** and **Keep my edits**.
+
+## Next step
+
+<Card title="Channel, audience and behaviour" icon="sliders" href="/en/whatsapp-agents/channel">
+  Who it serves, when, and how it writes.
+</Card>

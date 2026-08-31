@@ -1,0 +1,101 @@
+---
+title: "Create an SMS agent"
+description: "From zero to an SMS agent answering messages"
+icon: "plus"
+---
+
+## Before you start
+
+<Check>A **phone number** with SMS capability. [Ask support](/en/getting-started/phone-numbers).</Check>
+<Check>**SMS** write permissions.</Check>
+<Check>**A2P 10DLC registration** under way. See [Compliance](/en/sms-agents/compliance) — it takes days to weeks, so start early.</Check>
+
+<Note>
+  **Default roles don't include SMS access.** Only Admin and Super Admin have it.
+</Note>
+
+## Steps
+
+<Steps>
+  <Step title="Open the editor and choose Lumina" icon="plus">
+    **Chat → SMS → Agents**, then create an agent. You're asked to pick the **engine**: choose
+    **Lumina**.
+
+    <Warning>
+      **The engine can't be changed later.** It's fixed when the agent is created.
+    </Warning>
+
+    <Info>
+      **📷 Screenshot needed** — the SMS engine selection modal.
+
+      Save to `/images/en/sms-agents/create-01-engine.png`
+    </Info>
+  </Step>
+
+  <Step title="Name and description" icon="pen">
+    In the top bar.
+  </Step>
+
+  <Step title="Model and language" icon="microchip">
+    **AI Model & Responses** group, the only one that starts open.
+
+    - **LLM Model** — each option shows its cost **per message**. The default is a compact,
+      inexpensive model.
+    - **Language** — English, Spanish (Latin America), Spanish (Spain) or Multilingual.
+
+    <Note>
+      The language selector shows helper text written for calls ("the language in which the
+      agent will make calls"). On SMS it means the language of the messages.
+    </Note>
+  </Step>
+
+  <Step title="Channel: number, type and routing" icon="comment-sms">
+    **SMS Channel** group.
+
+    - **Phone Number** — required for inbound agents.
+    - **Agent Type** — **Inbound** or **Outbound**.
+    - **Routing** — inbound only: a weekly schedule, or mark it as the number's default.
+
+    <Warning>
+      **Choose Inbound.** Lumina only handles inbound conversations for now. If you choose
+      Outbound you'll see this notice, and the agent won't be able to start conversations:
+
+      *"Lumina agents can only handle inbound conversations for now. An outbound Lumina agent
+      can be saved, but it will not be able to start a conversation."*
+    </Warning>
+  </Step>
+
+  <Step title="Write the prompt" icon="pen-to-square">
+    The centre column: **a single document** with context, conversation flow and rules.
+
+    ```markdown
+    ## Context
+    You are the assistant for [your business]. You reply over SMS, so be very brief.
+
+    ## Conversation flow
+    1. Greet them and identify what they need.
+    2. Ask only for essential details, one at a time.
+    3. Confirm before closing.
+
+    ## Rules
+    - Two sentences per message, maximum.
+    - Never invent prices or delivery dates.
+    - If they ask to stop receiving messages, confirm it and end.
+    ```
+
+    <Tip>
+      SMS is billed per message and read on a small screen. Be shorter than you would on
+      WhatsApp: one idea per message.
+    </Tip>
+  </Step>
+
+  <Step title="Save" icon="circle-check">
+    Press create. The agent is **live immediately** — there's no draft and no version history.
+  </Step>
+</Steps>
+
+## Next step
+
+<Card title="Configuration" icon="sliders" href="/en/sms-agents/configuration">
+  Schedule, behaviour, memory and outcome tags.
+</Card>

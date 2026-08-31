@@ -1,0 +1,166 @@
+---
+title: "Memoria del contacto"
+description: "Qué recuerda el agente y qué aporta a la memoria compartida"
+icon: "brain"
+---
+
+Dialtu mantiene una **memoria por contacto**, compartida entre canales: lo que aprende un
+agente de WhatsApp queda disponible para tus llamadas, tus SMS y tus otros agentes.
+
+El grupo **Memoria IA** del editor controla dos cosas distintas: **qué lee** este agente y
+**qué escribe**.
+
+<Warning>
+  **Leer es opcional; escribir viene activado.**
+
+  *Usar memoria* está **desactivado** por defecto, pero *Guardar en memoria* está **activado**
+  — en todos los agentes, nuevos y existentes. Si nunca abriste esta sección, tu agente ya
+  está aportando todo lo que aprende a la memoria compartida del contacto.
+</Warning>
+
+<Info>
+  **📷 Captura pendiente** — el grupo Memoria IA desplegado, con los dos interruptores y el enlace Configurar.
+
+  Guardar en `/images/es/agentes-de-whatsapp/memoria-grupo.png`
+</Info>
+
+## Leer: qué sabe el agente
+
+### Usar memoria
+
+Desactivado por defecto. Al activarlo, el agente recibe lo que ya se sabe del contacto:
+datos, preferencias y temas pendientes recogidos de WhatsApp, llamadas, SMS y notas.
+
+### Cómo recibe la memoria
+
+| Modo | Qué hace |
+|---|---|
+| **Automático** (por defecto) | Dialtu inyecta la memoria en el prompt, con reglas para que el agente **no la recite** |
+| **Variables** | Tú decides dónde va, colocando tokens `{{memory_...}}` en el prompt |
+
+<Warning>
+  En modo **Variables**, si no colocas ningún token, **el agente no recibe memoria** — y no hay
+  ningún aviso visible en el editor. Si eliges este modo, coloca al menos uno.
+</Warning>
+
+Los nueve tokens disponibles:
+
+| Token | Qué inserta |
+|---|---|
+| `{{memory}}` | Todo lo recordado, en un bloque |
+| `{{memory_one_line}}` | Una frase que resume al contacto |
+| `{{memory_summary}}` | El resumen acumulado |
+| `{{memory_facts}}` | Datos concretos, en lista |
+| `{{memory_preferences}}` | Cómo le gusta que lo traten |
+| `{{memory_open_items}}` | Lo que quedó pendiente |
+| `{{memory_journey}}` | Hitos recientes |
+| `{{memory_last_seen}}` | Hace cuánto fue el último contacto |
+| `{{memory_last_sentiment}}` | Cómo se sintió la última conversación |
+
+<Warning>
+  **Con un contacto nuevo, los tokens llegan escritos tal cual.** Si el contacto no tiene aún
+  memoria —cualquier cliente que escribe por primera vez— un prompt que diga
+  `Contexto: {{memory_facts}}` envía exactamente ese texto al modelo.
+
+  En modo **Automático** esto no pasa. Es una razón fuerte para preferirlo salvo que necesites
+  control fino.
+</Warning>
+
+### Búsqueda profunda
+
+Desactivada por defecto, y anidada bajo *Usar memoria*. Permite al agente **consultar
+conversaciones anteriores** del contacto a mitad del chat cuando mencionan algo puntual.
+
+- Busca en historial de WhatsApp, voz y SMS, hasta **18 meses atrás**.
+- **No consume créditos adicionales**, pero las respuestas tardan un poco más.
+
+<Note>
+  Desactivar *Usar memoria* apaga también la búsqueda profunda, y volver a activarlo **no la
+  restaura**.
+</Note>
+
+## Escribir: qué aporta el agente
+
+El interruptor **Guardar en memoria** (activado por defecto) y su enlace **Configurar** abren
+el modal *Qué registra este agente*.
+
+<Info>
+  **📷 Captura pendiente** — el modal "Qué registra este agente", con las cuatro categorías.
+
+  Guardar en `/images/es/agentes-de-whatsapp/memoria-modal.png`
+</Info>
+
+### Qué registrar
+
+Cuatro categorías, **todas activadas** por defecto:
+
+| Categoría | Qué guarda |
+|---|---|
+| **Datos** | Detalles concretos y duraderos: qué compró, quién decide, su dirección |
+| **Preferencias** | Cómo quiere que lo traten: idioma, canal, horarios, tono |
+| **Pendientes** | Lo que quedó sin resolver, para que el siguiente agente lo retome |
+| **Hitos** | Momentos notables: un presupuesto enviado, una cita agendada, una compra |
+
+Cada una permite una instrucción propia (máx. 300 caracteres) explicando **qué cuenta como eso
+para este agente**.
+
+### Contexto y exclusiones
+
+- **Contexto del negocio** (máx. 600 caracteres) — contexto compartido por todas las
+  categorías. Por ejemplo: *"Vendemos al por mayor a tiendas, no al público."*
+- **Nunca registrar** (máx. 600) — una **exclusión estricta**: nada que coincida se guarda,
+  aunque el cliente lo diga explícitamente. Es donde van números de tarjeta, documentos de
+  identidad o datos de salud.
+
+<Tip>
+  Usa **Nunca registrar** antes de activar la memoria en un sector regulado. Es la única
+  barrera dura.
+</Tip>
+
+### Cuándo registrar
+
+| Opción | Cuándo escribe |
+|---|---|
+| **Durante la conversación** (por defecto) | Tras unos 30 minutos **de silencio**, y otra vez al resolverse |
+| **Cuando termina** | Solo al resolverse o expirar |
+
+<Note>
+  *Durante la conversación* significa 30 minutos **sin actividad**, no cada 30 minutos. Un chat
+  continuo no escribe nada hasta que se calma o se cierra.
+</Note>
+
+## Cosas que conviene saber
+
+<AccordionGroup>
+  <Accordion title="El agente no ve lo que aprendió en la conversación actual">
+    La memoria se consulta al empezar. Durante las 24 horas de la sesión, lo que el cliente
+    cuente **no aparece** en la memoria del propio agente. Parece un fallo en el panel de
+    prueba, pero es intencionado.
+  </Accordion>
+
+  <Accordion title="Desactivar la escritura también apaga el sentimiento">
+    El sentimiento de la conversación se guarda en la misma ficha. Al desactivar *Guardar en
+    memoria*, dejas de registrarlo — y la interfaz no lo menciona.
+  </Accordion>
+
+  <Accordion title="Las llamadas y las notas ignoran esta configuración">
+    Estos ajustes aplican solo a **este agente de WhatsApp**. La extracción desde llamadas de
+    voz y desde notas de cliente ocurre siempre, con sus propias reglas.
+  </Accordion>
+
+  <Accordion title="Los datos antiguos se van depurando">
+    La memoria tiene un presupuesto de tamaño y una antigüedad máxima. "El agente olvidó algo
+    que veo en la ficha del contacto" es comportamiento esperado, no un error.
+  </Accordion>
+
+  <Accordion title="El resumen del contacto es compartido">
+    No se puede desactivar para un solo agente: se reconstruye a partir de lo que aportan
+    todos. Lo que cambias aquí es **qué aporta este agente**.
+  </Accordion>
+</AccordionGroup>
+
+## Siguiente paso
+
+<Card title="Seguimiento, recordatorios y cierre" icon="bell" href="/es/agentes-de-whatsapp/seguimiento">
+  Qué pasa cuando el cliente deja de responder.
+</Card>

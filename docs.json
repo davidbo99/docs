@@ -55,6 +55,29 @@
                 ]
               },
               {
+                "group": "Agentes de WhatsApp",
+                "icon": "whatsapp",
+                "pages": [
+                  "es/agentes-de-whatsapp/introduccion",
+                  "es/agentes-de-whatsapp/crear-agente",
+                  "es/agentes-de-whatsapp/prompt",
+                  "es/agentes-de-whatsapp/canal",
+                  "es/agentes-de-whatsapp/memoria",
+                  "es/agentes-de-whatsapp/seguimiento",
+                  "es/agentes-de-whatsapp/herramientas"
+                ]
+              },
+              {
+                "group": "Agentes de SMS",
+                "icon": "comment-sms",
+                "pages": [
+                  "es/agentes-de-sms/introduccion",
+                  "es/agentes-de-sms/crear-agente",
+                  "es/agentes-de-sms/configuracion",
+                  "es/agentes-de-sms/cumplimiento"
+                ]
+              },
+              {
                 "group": "Canales",
                 "icon": "comments",
                 "pages": [
@@ -131,6 +154,29 @@
                   "en/voice-agents/configure",
                   "en/voice-agents/create-tools",
                   "en/voice-agents/test-publish"
+                ]
+              },
+              {
+                "group": "WhatsApp agents",
+                "icon": "whatsapp",
+                "pages": [
+                  "en/whatsapp-agents/introduction",
+                  "en/whatsapp-agents/create-agent",
+                  "en/whatsapp-agents/prompt",
+                  "en/whatsapp-agents/channel",
+                  "en/whatsapp-agents/memory",
+                  "en/whatsapp-agents/follow-up",
+                  "en/whatsapp-agents/tools"
+                ]
+              },
+              {
+                "group": "SMS agents",
+                "icon": "comment-sms",
+                "pages": [
+                  "en/sms-agents/introduction",
+                  "en/sms-agents/create-agent",
+                  "en/sms-agents/configuration",
+                  "en/sms-agents/compliance"
                 ]
               },
               {

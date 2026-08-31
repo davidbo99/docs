@@ -1,0 +1,100 @@
+---
+title: "Cumplimiento y bajas"
+description: "STOP, HELP, START y el registro A2P 10DLC"
+icon: "shield-check"
+---
+
+El SMS está mucho más regulado que WhatsApp. Dos cosas son obligatorias: **respetar las bajas**
+y **registrar tu tráfico** antes de enviar.
+
+## Palabras clave
+
+Lumina reconoce tres grupos de palabras clave **antes** de que el mensaje llegue al modelo. No
+son configurables.
+
+| Palabras | Qué hace |
+|---|---|
+| `stop`, `stopall`, `unsubscribe`, `cancel`, `end`, `quit` | Da de baja al contacto y confirma |
+| `help`, `info` | Envía el mensaje de ayuda |
+| `start`, `yes`, `unstop` | Vuelve a suscribir al contacto |
+
+<Warning>
+  **Las palabras clave están solo en inglés.** No existe una lista en español: un cliente que
+  escriba "BAJA" o "PARAR" **no** activa la baja automática.
+
+  En ese caso depende de que tu prompt lo detecte. Añade una regla explícita, por ejemplo:
+  *"Si el cliente pide dejar de recibir mensajes en cualquier idioma, confírmalo y ejecuta la
+  baja."*
+</Warning>
+
+### La coincidencia es exacta
+
+La palabra tiene que ser **el mensaje completo**, no una parte. `"Por favor deja de
+escribirme"` **no** activa la baja.
+
+<Note>
+  Es deliberado: si bastara con contener la palabra, un mensaje como *"pasa por la tienda a las
+  5, stop by anytime"* silenciaría al cliente sin que nadie se enterase ni pudiera deshacerlo.
+
+  Para el lenguaje natural está la IA, que puede ejecutar la baja al detectar la intención.
+</Note>
+
+### La baja es por contacto
+
+No es por conversación: una vez dado de baja, **ese contacto** deja de recibir mensajes de
+este canal, incluidas futuras conversaciones. Retirarla se hace manualmente desde
+configuración.
+
+Las confirmaciones de baja sí se envían, aunque el contacto ya esté suprimido — es lo que exige
+la normativa.
+
+## Registro A2P 10DLC
+
+En Estados Unidos, todo el tráfico de empresa a persona por números locales debe estar
+registrado. **No se gestiona desde Dialtu**: es un trámite con el operador.
+
+<Warning>
+  **Empieza antes que nada.** La aprobación tarda **de días a semanas**. Es el camino crítico de
+  cualquier proyecto de SMS.
+</Warning>
+
+Lo que conviene saber antes de enviar el formulario:
+
+<AccordionGroup>
+  <Accordion title="El EIN debe coincidir exactamente con el registro fiscal">
+    Es la causa de rechazo más frecuente. El nombre legal y el número deben coincidir carácter
+    por carácter con lo que consta en Hacienda; no vale el nombre comercial.
+  </Accordion>
+
+  <Accordion title="Registra el caso de uso correcto">
+    Regístralo como **conversacional / atención al cliente**, no como marketing.
+
+    <Warning>
+      Registrar mal el caso de uso es motivo de **suspensión**.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Cuidado con la doble confirmación de baja">
+    Si dejas activada la gestión automática de bajas del operador, el cliente recibirá **dos
+    confirmaciones**: la del operador y la de Dialtu.
+  </Accordion>
+
+  <Accordion title="Una baja registrada en el operador es definitiva a nivel de red">
+    Cuando el operador registra la baja, los envíos fallan a nivel de red aunque en Dialtu el
+    contacto figure como activo. Para volver a recibir mensajes, el cliente tiene que escribir
+    **START al propio operador**, no solo a ti.
+  </Accordion>
+</AccordionGroup>
+
+## Buenas prácticas
+
+<Check>**Identifícate en el primer mensaje.** Quién eres y por qué escribes.</Check>
+<Check>**Menciona cómo darse de baja** en el primer mensaje de una conversación iniciada por ti.</Check>
+<Check>**Respeta el horario.** Usa el enrutamiento por horario para no escribir de madrugada.</Check>
+<Check>**Sé breve.** Cada segmento se cobra, y los mensajes largos se fragmentan.</Check>
+
+## Volver al principio
+
+<Card title="Introducción a los agentes de SMS" icon="comment-sms" href="/es/agentes-de-sms/introduccion">
+  El recorrido completo de la sección.
+</Card>

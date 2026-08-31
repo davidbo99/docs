@@ -1,0 +1,112 @@
+---
+title: "Configuration"
+description: "Channel, schedule, behaviour, memory and outcomes"
+icon: "sliders"
+---
+
+## SMS channel
+
+<Info>
+  **📷 Screenshot needed** — the SMS Channel group expanded, with number, type and routing.
+
+  Save to `/images/en/sms-agents/channel-group.png`
+</Info>
+
+### Agent type
+
+| Type | What it does |
+|---|---|
+| **Inbound** | Answers incoming texts on a dedicated number; never texts first |
+| **Outbound** | Starts conversations by texting first |
+
+<Warning>
+  With Lumina, choose **Inbound**. An outbound agent will save, but won't be able to start
+  conversations.
+</Warning>
+
+### Time-based routing
+
+Inbound agents only. Defines the windows it covers, with up to **4 ranges per day**, or marks
+it as the number's **default agent**.
+
+- Ranges are evaluated in the **agent's timezone**.
+- Windows are **half-open**: at exactly 17:00, a 09:00–17:00 agent is off duty and a
+  17:00–21:00 agent is on. That way adjacent windows tile the week without overlapping.
+- A range that ends before it starts **wraps past midnight**.
+
+<Warning>
+  **SMS routing is by schedule only.** There are no tag audiences: two agents on the same number
+  can't share even a minute of the week. Any overlap is a conflict and blocks the save.
+</Warning>
+
+<Warning>
+  If the number has **no default agent**, messages outside scheduled hours **aren't routed to
+  anyone**.
+</Warning>
+
+## Conversation behaviour
+
+Only **two** controls:
+
+| Control | Range | Default | What it does |
+|---|---|---|---|
+| **Inactivity timeout** | 2 – 1440 min | 60 min | Auto-ends the chat after this much user silence |
+| **Auto Close Message** | text | empty | Sent when the conversation closes from inactivity |
+
+<Note>
+  There is no **response length** control, no **conversation style**, no **message batching**,
+  and no reply-delay setting. All of that is defined by writing it into the prompt.
+</Note>
+
+<Tip>
+  Since there's no length control, put an explicit limit in the prompt rules: *"Two sentences per
+  message, maximum."*
+</Tip>
+
+## AI Memory
+
+Works the same as WhatsApp, and **Lumina does receive it**.
+
+| Setting | Default |
+|---|---|
+| **Use memory** | Off |
+| **How the agent gets the memory** | Automatic |
+| **Deep recall** | Off |
+| **Record to memory** | **On** |
+
+<Warning>
+  **Reading is opt-in; writing is on by default.** If you've never opened this section, your
+  agent is already contributing what it learns to the contact's shared memory.
+</Warning>
+
+The **Configure** modal defines what it records: **Facts**, **Preferences**, **Open items** and
+**Milestones**, plus a **business context** and a **Never record** list — a hard exclusion for
+card numbers, ID documents or health data.
+
+<Card title="Contact memory" icon="brain" href="/en/whatsapp-agents/memory">
+  The full explanation of how memory works. It applies equally to SMS.
+</Card>
+
+## Outcomes
+
+Disposition tags classify the conversation when it closes. On SMS all five types are available:
+Standard, Retry, Interested, Not Interested and Voicemail.
+
+<Note>
+  The **Analysis Prompt** field is badged *Aurora Only*: on a Lumina agent it's saved but not
+  used for classification.
+</Note>
+
+## Testing
+
+The editor's test panel lets you talk to the agent before exposing it.
+
+<Warning>
+  As on the other channels, **API and integration tools run for real**. Use test data.
+</Warning>
+
+## Next step
+
+<Card title="Compliance and opt-outs" icon="shield-check" href="/en/sms-agents/compliance">
+  STOP, HELP, START and A2P 10DLC registration.
+</Card>

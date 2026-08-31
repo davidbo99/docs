@@ -1,0 +1,165 @@
+---
+title: "Contact memory"
+description: "What the agent remembers and what it contributes to shared memory"
+icon: "brain"
+---
+
+Dialtu keeps a **per-contact memory**, shared across channels: what a WhatsApp agent learns is
+available to your calls, your SMS and your other agents.
+
+The **AI Memory** group controls two separate things: what this agent **reads**, and what it
+**writes**.
+
+<Warning>
+  **Reading is opt-in; writing is on by default.**
+
+  *Use memory* is **off** by default, but *Record to memory* is **on** — on every agent, new and
+  existing. If you've never opened this section, your agent is already contributing everything
+  it learns to the contact's shared memory.
+</Warning>
+
+<Info>
+  **📷 Screenshot needed** — the AI Memory group expanded, with both toggles and the Configure link.
+
+  Save to `/images/en/whatsapp-agents/memory-group.png`
+</Info>
+
+## Reading: what the agent knows
+
+### Use memory
+
+Off by default. Turning it on gives the agent what's already known about the contact: facts,
+preferences and open items gathered from WhatsApp, calls, SMS and notes.
+
+### How the agent gets the memory
+
+| Mode | What it does |
+|---|---|
+| **Automatic** (default) | Dialtu injects the memory into the prompt, with rules stopping the agent **reciting it back** |
+| **Variables** | You decide where it goes, by placing `{{memory_...}}` tokens in the prompt |
+
+<Warning>
+  In **Variables** mode, if you place no tokens, **the agent gets no memory at all** — and
+  there's no visible warning in the editor. If you pick this mode, place at least one.
+</Warning>
+
+The nine available tokens:
+
+| Token | What it inserts |
+|---|---|
+| `{{memory}}` | Everything remembered, as one block |
+| `{{memory_one_line}}` | A single sentence summing the contact up |
+| `{{memory_summary}}` | The rolling summary |
+| `{{memory_facts}}` | Concrete facts, as a list |
+| `{{memory_preferences}}` | How they like to be treated |
+| `{{memory_open_items}}` | What was left pending |
+| `{{memory_journey}}` | Recent milestones |
+| `{{memory_last_seen}}` | How long since the last contact |
+| `{{memory_last_sentiment}}` | How the last conversation felt |
+
+<Warning>
+  **For a brand-new contact, the tokens reach the model written literally.** If the contact has
+  no memory yet — every first-time customer — a prompt saying `Context: {{memory_facts}}` sends
+  exactly that text to the model.
+
+  This doesn't happen in **Automatic** mode. It's a strong reason to prefer it unless you need
+  fine control.
+</Warning>
+
+### Deep recall
+
+Off by default, nested under *Use memory*. Lets the agent **look up earlier conversations**
+mid-chat when the customer mentions something specific.
+
+- Searches WhatsApp, voice and SMS history, up to **18 months** back.
+- **Costs no extra credits**, but replies take a little longer.
+
+<Note>
+  Turning off *Use memory* also turns off deep recall, and re-enabling it **doesn't restore**
+  it.
+</Note>
+
+## Writing: what the agent contributes
+
+The **Record to memory** toggle (on by default) and its **Configure** link open the *What this
+agent records* modal.
+
+<Info>
+  **📷 Screenshot needed** — the "What this agent records" modal, showing the four categories.
+
+  Save to `/images/en/whatsapp-agents/memory-modal.png`
+</Info>
+
+### What to record
+
+Four categories, **all on** by default:
+
+| Category | What it stores |
+|---|---|
+| **Facts** | Concrete, durable details: what they bought, who signs off, their address |
+| **Preferences** | How they want to be treated: language, channel, schedule, tone |
+| **Open items** | What was left unresolved, so the next agent can pick it up |
+| **Milestones** | Notable moments: a quote sent, a visit booked, a purchase |
+
+Each one takes its own instruction (max 300 characters) explaining **what counts as that, for
+this agent**.
+
+### Context and exclusions
+
+- **Business context** (max 600 characters) — shared context for every category. For example:
+  *"We sell wholesale to shops, not to the public."*
+- **Never record** (max 600) — a **hard exclusion**: nothing matching it is stored, even if the
+  customer states it outright. This is where card numbers, national IDs and health data go.
+
+<Tip>
+  Fill in **Never record** before enabling memory in a regulated industry. It's the only hard
+  barrier.
+</Tip>
+
+### When to record
+
+| Option | When it writes |
+|---|---|
+| **During the conversation** (default) | After roughly 30 minutes **of silence**, and again on resolution |
+| **When it ends** | Only on resolution or expiry |
+
+<Note>
+  *During the conversation* means 30 minutes of **inactivity**, not every 30 minutes. A
+  continuously busy chat writes nothing until it goes quiet or is closed.
+</Note>
+
+## Things worth knowing
+
+<AccordionGroup>
+  <Accordion title="The agent can't see what it learned in the current conversation">
+    Memory is read at the start. For the session's 24 hours, whatever the customer says
+    **doesn't appear** in that agent's own memory. It looks like a bug in the test panel, but
+    it's deliberate.
+  </Accordion>
+
+  <Accordion title="Turning off writing also turns off sentiment">
+    Conversation sentiment lives on the same record. Switching off *Record to memory* stops it
+    being captured — and the interface doesn't mention it.
+  </Accordion>
+
+  <Accordion title="Calls and notes ignore this configuration">
+    These settings apply to **this WhatsApp agent** only. Extraction from voice calls and client
+    notes always happens, under its own rules.
+  </Accordion>
+
+  <Accordion title="Old data gets trimmed">
+    Memory has a size budget and a maximum age. "The agent forgot something I can see on the
+    contact's memory page" is expected behaviour, not a fault.
+  </Accordion>
+
+  <Accordion title="The contact summary is shared">
+    It can't be switched off for one agent: it's rebuilt from what every agent contributes. What
+    you change here is **what this agent feeds into it**.
+  </Accordion>
+</AccordionGroup>
+
+## Next step
+
+<Card title="Follow-up, reminders and closing" icon="bell" href="/en/whatsapp-agents/follow-up">
+  What happens when the customer stops replying.
+</Card>

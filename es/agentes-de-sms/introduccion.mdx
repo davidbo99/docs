@@ -1,0 +1,83 @@
+---
+title: "Introducción a los agentes de SMS"
+description: "Qué es Lumina y qué puede hacer un agente de SMS"
+icon: "comment-sms"
+---
+
+Un agente de SMS conversa por mensaje de texto: responde, ejecuta acciones, recuerda al
+contacto entre conversaciones y cierra la sesión cuando termina.
+
+<Warning>
+  **Lumina atiende conversaciones entrantes.** Por ahora **no puede iniciar** una conversación:
+  puedes guardar un agente Lumina de tipo saliente, pero no escribirá primero.
+
+  Si tu caso de uso es enviar el primer mensaje —campañas, recordatorios programados—, esa
+  capacidad todavía no está disponible.
+</Warning>
+
+<Info>
+  **📷 Captura pendiente** — el editor de agente de SMS completo, con las tres columnas.
+
+  Guardar en `/images/es/agentes-de-sms/editor-general.png`
+</Info>
+
+## Qué es Lumina
+
+**Lumina es el motor de SMS de Dialtu.** A diferencia de otros canales, aquí Dialtu controla
+toda la conversación de extremo a extremo: el prompt, el turno del modelo, las herramientas y
+el historial. El operador telefónico solo transporta el mensaje.
+
+En la práctica eso significa dos cosas para ti:
+
+<CardGroup cols={2}>
+  <Card title="Memoria del contacto" icon="brain">
+    Un agente Lumina **sí recibe** la memoria del contacto, igual que WhatsApp.
+  </Card>
+
+  <Card title="Palabras clave de baja" icon="hand">
+    Lumina reconoce **STOP**, **HELP** y **START** automáticamente, antes de que el modelo vea
+    el mensaje.
+  </Card>
+</CardGroup>
+
+## El editor, de un vistazo
+
+Una sola pantalla con tres columnas, igual que en los otros canales.
+
+| Columna | Qué contiene |
+|---|---|
+| **Ajustes** (izquierda) | Cinco grupos: modelo, canal, comportamiento, memoria y resultados |
+| **Prompt** (centro) | Un único documento con las instrucciones |
+| **Panel derecho** | Atlas, prueba y resumen |
+
+## Qué NO existe en SMS
+
+Conviene decirlo pronto, porque son diferencias reales con WhatsApp:
+
+| No disponible | Detalle |
+|---|---|
+| **Audiencias por etiqueta** | No se puede limitar el agente a ciertos clientes. El enrutamiento es **solo por horario** |
+| **Recordatorios y secuencias de seguimiento** | No existen para SMS |
+| **Estilo de conversación y longitud de respuesta** | No hay controles; se define todo en el prompt |
+| **Agrupación de mensajes** | No es configurable |
+| **Plantillas** | No hay plantillas aprobadas como en WhatsApp |
+
+## Qué encontrarás aquí
+
+<CardGroup cols={2}>
+  <Card title="Crear un agente de SMS" icon="plus" href="/es/agentes-de-sms/crear-agente">
+    Los campos mínimos para dejarlo respondiendo.
+  </Card>
+
+  <Card title="Configuración" icon="sliders" href="/es/agentes-de-sms/configuracion">
+    Canal, horario, comportamiento, memoria y resultados.
+  </Card>
+
+  <Card title="Cumplimiento y bajas" icon="shield-check" href="/es/agentes-de-sms/cumplimiento">
+    STOP, HELP, START y el registro A2P 10DLC.
+  </Card>
+
+  <Card title="Números de teléfono" icon="phone" href="/es/introduccion/numeros-de-telefono">
+    Cómo conseguir el número que el agente necesita.
+  </Card>
+</CardGroup>

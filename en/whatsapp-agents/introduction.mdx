@@ -1,0 +1,98 @@
+---
+title: "Introduction to WhatsApp agents"
+description: "What they are, what they can do, and how the editor is laid out"
+icon: "whatsapp"
+---
+
+A WhatsApp agent holds chat conversations with your customers: it replies, runs actions —
+querying your system, booking, sending a template — remembers the contact between
+conversations, and hands the chat to a person when needed.
+
+<Info>
+  **📷 Screenshot needed** — the full WhatsApp agent editor, with its three columns.
+
+  Save to `/images/en/whatsapp-agents/editor-overview.png`
+</Info>
+
+## First, the number
+
+A WhatsApp agent needs a **connected WhatsApp Business number**. Dialtu doesn't provide it —
+you connect your own Meta account.
+
+<Card title="Connect your WhatsApp Business account" icon="link" href="/en/channels/whatsapp/connect">
+  The full process, screen by screen.
+</Card>
+
+## The editor at a glance
+
+A single screen with three columns. There's no step-by-step wizard.
+
+| Column | What's in it |
+|---|---|
+| **Settings** (left) | Six collapsible groups: model, channel, behaviour, **memory**, follow-up, and tags |
+| **Prompt** (centre) | A single document holding the agent's instructions |
+| **Right panel** | Three tabs: **Atlas**, **Test** and **Summary** |
+
+The top bar holds the name, agent type, the **Active / Paused** state, and the **FAQ** and
+**Tools** buttons.
+
+## The three agent types
+
+**Agent Type** decides what it can do, and it's one of the first things to choose:
+
+<CardGroup cols={3}>
+  <Card title="Omnichannel" icon="arrows-left-right">
+    Receives and can also start conversations. This is the default.
+  </Card>
+
+  <Card title="Inbound" icon="inbox">
+    Only replies. Can't start conversations or send itself follow-ups.
+  </Card>
+
+  <Card title="Outbound" icon="paper-plane">
+    Only starts conversations. Doesn't answer incoming messages.
+  </Card>
+</CardGroup>
+
+## What's in this section
+
+<CardGroup cols={2}>
+  <Card title="Create your first agent" icon="plus" href="/en/whatsapp-agents/create-agent">
+    The minimum fields to get it replying.
+  </Card>
+
+  <Card title="The prompt, FAQs and variables" icon="pen-to-square" href="/en/whatsapp-agents/prompt">
+    How you instruct it and how to personalise it.
+  </Card>
+
+  <Card title="Channel, audience and behaviour" icon="sliders" href="/en/whatsapp-agents/channel">
+    Number, schedule, which customers it serves, and how it writes.
+  </Card>
+
+  <Card title="Contact memory" icon="brain" href="/en/whatsapp-agents/memory">
+    What the agent remembers and what it contributes to shared memory.
+  </Card>
+
+  <Card title="Follow-up, reminders and closing" icon="bell" href="/en/whatsapp-agents/follow-up">
+    Reminders, sequences, opt-out and human handover.
+  </Card>
+
+  <Card title="Tools and testing" icon="screwdriver-wrench" href="/en/whatsapp-agents/tools">
+    Real actions, the test panel, and going live.
+  </Card>
+</CardGroup>
+
+## Two things that surprise people
+
+<Warning>
+  **Saving publishes immediately.** There's no server-side draft and no version history. The
+  *Draft saved* chip is a browser autosave, nothing more.
+</Warning>
+
+<Warning>
+  **Your agent is already contributing to contact memory.** *Record to memory* is **on by
+  default** on every agent, new and existing. Reading memory is opt-in; writing it is on unless
+  you turn it off.
+
+  See [Contact memory](/en/whatsapp-agents/memory).
+</Warning>

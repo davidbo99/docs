@@ -1,0 +1,115 @@
+---
+title: "Configuración"
+description: "Canal, horario, comportamiento, memoria y resultados"
+icon: "sliders"
+---
+
+## Canal de SMS
+
+<Info>
+  **📷 Captura pendiente** — el grupo Canal de SMS desplegado, con número, tipo y enrutamiento.
+
+  Guardar en `/images/es/agentes-de-sms/canal-grupo.png`
+</Info>
+
+### Tipo de agente
+
+| Tipo | Qué hace |
+|---|---|
+| **Entrante** | Responde los mensajes entrantes en un número dedicado; nunca escribe primero |
+| **Saliente** | Inicia conversaciones escribiendo primero |
+
+<Warning>
+  Con Lumina, elige **Entrante**. Un agente saliente se guarda, pero no podrá iniciar
+  conversaciones.
+</Warning>
+
+### Enrutamiento por horario
+
+Solo para agentes entrantes. Define las franjas en las que atiende, con hasta **4 por día**, o
+márcalo como **agente predeterminado** del número.
+
+- Las franjas se evalúan en la **zona horaria del agente**.
+- Los tramos son **medio abiertos**: a las 17:00 exactas, un agente de 09:00–17:00 ya no
+  atiende y uno de 17:00–21:00 sí. Así encajan sin solaparse.
+- Una franja que termina antes de empezar **cruza la medianoche**.
+
+<Warning>
+  **El enrutamiento de SMS es solo por horario.** No existen audiencias por etiqueta: dos
+  agentes en el mismo número no pueden compartir ni un minuto de la semana. Cualquier solape es
+  un conflicto y bloquea el guardado.
+</Warning>
+
+<Warning>
+  Si el número **no tiene agente predeterminado**, los mensajes fuera de horario **no se enrutan
+  a nadie**.
+</Warning>
+
+## Comportamiento de conversación
+
+Solo **dos** controles:
+
+| Control | Rango | Por defecto | Qué hace |
+|---|---|---|---|
+| **Tiempo de inactividad** | 2 – 1440 min | 60 min | Cierra el chat tras ese silencio del usuario |
+| **Mensaje de Cierre Automático** | texto | vacío | Lo que se envía al cerrar por inactividad |
+
+<Note>
+  No hay control de **longitud de respuesta**, ni de **estilo de conversación**, ni de
+  **agrupación de mensajes**, ni de retardo de respuesta. Todo eso se define escribiéndolo en
+  el prompt.
+</Note>
+
+<Tip>
+  Como no hay control de longitud, pon un límite explícito en las reglas del prompt: *"Máximo
+  dos frases por mensaje."*
+</Tip>
+
+## Memoria IA
+
+Funciona igual que en WhatsApp, y **Lumina sí la recibe**.
+
+| Ajuste | Por defecto |
+|---|---|
+| **Usar memoria** | Desactivado |
+| **Cómo recibe la memoria** | Automático |
+| **Búsqueda profunda** | Desactivada |
+| **Guardar en memoria** | **Activado** |
+
+<Warning>
+  **Leer es opcional; escribir viene activado.** Si nunca abriste esta sección, tu agente ya
+  está aportando lo que aprende a la memoria compartida del contacto.
+</Warning>
+
+El modal **Configurar** define qué registra: **Datos**, **Preferencias**, **Pendientes** e
+**Hitos**, más un **contexto del negocio** y una lista de **Nunca registrar** — una exclusión
+estricta para números de tarjeta, documentos o datos de salud.
+
+<Card title="Memoria del contacto" icon="brain" href="/es/agentes-de-whatsapp/memoria">
+  La explicación completa de cómo funciona la memoria. Aplica igual a SMS.
+</Card>
+
+## Resultados
+
+Etiquetas de disposición para clasificar la conversación al cerrarse. En SMS están disponibles
+los cinco tipos: Estándar, Reintentar, Interesado, No Interesado y Buzón de Voz.
+
+<Note>
+  El campo **Prompt de Análisis** está marcado como *Solo Aurora*: en un agente Lumina se guarda
+  pero no se usa para clasificar.
+</Note>
+
+## Probar
+
+El panel de prueba del editor permite conversar con el agente antes de exponerlo.
+
+<Warning>
+  Igual que en los demás canales, las herramientas de **API e integración se ejecutan de
+  verdad**. Usa datos de prueba.
+</Warning>
+
+## Siguiente paso
+
+<Card title="Cumplimiento y bajas" icon="shield-check" href="/es/agentes-de-sms/cumplimiento">
+  STOP, HELP, START y el registro A2P 10DLC.
+</Card>

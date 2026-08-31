@@ -1,0 +1,115 @@
+---
+title: "Tools and testing"
+description: "Real actions, the test panel, and going live"
+icon: "screwdriver-wrench"
+---
+
+## Tools
+
+A tool is an **action the agent can run during the chat**. They're an **account-wide library**:
+created once under **Chat → WhatsApp → Tools**, then attached to whichever agents need them.
+
+<Info>
+  **📷 Screenshot needed** — the agent's tools modal, with one attached.
+
+  Save to `/images/en/whatsapp-agents/tools-modal.png`
+</Info>
+
+### Types available on WhatsApp
+
+| Type | What it does |
+|---|---|
+| **API** | Calls an external service. `{{token}}`s in the URL, params or headers become input variables |
+| **Integration** | Reads and manages a connected system |
+| **Calendar** | Checks availability and books on the Dialtu calendar |
+| **Send template** | Sends an approved Meta template |
+| **End chat** | Closes the conversation |
+| **Handoff** | Passes the chat to a person |
+
+<Note>
+  **Transfer**, **end call** and **agent swap** are voice-only and don't appear here. The chat
+  equivalent of a transfer is **handoff**.
+</Note>
+
+### The description is the trigger
+
+**The AI decides when to use a tool by reading its description.** Don't describe what it does;
+describe **when it should be used**, and when it shouldn't.
+
+<Warning>
+  The **type can't be changed** once the tool is created.
+</Warning>
+
+### Integrations
+
+There's currently **one provider available: AgendaPro**.
+
+<Warning>
+  **There's no screen for you to connect integrations yourself.** The Dialtu team makes the
+  connection. In the builder you'll only see a status indicator — if it says *Not connected*,
+  ask your Dialtu contact before going live.
+</Warning>
+
+<Note>
+  Saving the agent sends the full list of attached tools. If you open the modal and remove one
+  by accident, it's detached on save.
+</Note>
+
+## Testing
+
+The second tab of the right panel. You type as if you were the customer.
+
+<Info>
+  **📷 Screenshot needed** — the Test tab with a conversation and the real-tools warning.
+
+  Save to `/images/en/whatsapp-agents/test-panel.png`
+</Info>
+
+<Warning>
+  **API, integration and calendar tools run for real.** A calendar tool that writes will **book a
+  real appointment**. Use test data.
+</Warning>
+
+What is **not** executed for real: ending the chat, opt-out, handoff and template sends render
+as terminal cards, because they need a real session.
+
+<Check>**It's free.** The test panel consumes no credits, and unlike the voice one it works **before you save**: it tests the draft on your screen.</Check>
+
+There's an hourly usage limit. You can also **test as a real contact**, to see how it responds
+with their memory and history.
+
+## Summary
+
+The third tab. The **Required to create** checklist — name, prompt, number and routing — plus a
+recap of the configuration, including the **AI Memory** row.
+
+## Going live
+
+<Warning>
+  **Saving publishes immediately.** There's no server-side draft and no version history.
+</Warning>
+
+The only control is the **Active / Paused** indicator in the top bar.
+
+<Warning>
+  **Pausing an agent doesn't stop its reminders.** The process that sends them doesn't check
+  whether the agent is active. To stop it writing entirely, turn reminders off too.
+</Warning>
+
+<Tip>
+  For big changes to a live agent, **duplicate** it, work on the copy, then swap which one is
+  active.
+</Tip>
+
+## What doesn't exist
+
+- **Version history** or rollback.
+- **Knowledge base** or document upload.
+- **Analytics inside the agent** — they're under **Analytics**, filtered by that agent.
+- **Bulk actions** on the agent list.
+
+## Back to the start
+
+<Card title="Introduction to WhatsApp agents" icon="whatsapp" href="/en/whatsapp-agents/introduction">
+  The full path through this section.
+</Card>

@@ -1,0 +1,104 @@
+---
+title: "Crear un agente de SMS"
+description: "De cero a un agente de SMS respondiendo mensajes"
+icon: "plus"
+---
+
+## Antes de empezar
+
+<Check>Un **número de teléfono** con capacidad SMS. [Pídelo a soporte](/es/introduccion/numeros-de-telefono).</Check>
+<Check>Permisos de **SMS** con escritura.</Check>
+<Check>El **registro A2P 10DLC** en marcha. Ver [Cumplimiento](/es/agentes-de-sms/cumplimiento) — tarda días o semanas, empieza pronto.</Check>
+
+<Note>
+  **Los roles por defecto no incluyen acceso a SMS.** Solo Administrador y Super Administrador
+  lo tienen.
+</Note>
+
+## Pasos
+
+<Steps>
+  <Step title="Abre el editor y elige Lumina" icon="plus">
+    **Chat → SMS → Agentes**, y crea un agente. Se te pide elegir el **motor**: selecciona
+    **Lumina**.
+
+    <Warning>
+      **El motor no se puede cambiar después.** Queda fijado al crear el agente.
+    </Warning>
+
+    <Info>
+      **📷 Captura pendiente** — el modal de selección de motor de SMS.
+
+      Guardar en `/images/es/agentes-de-sms/crear-01-motor.png`
+    </Info>
+  </Step>
+
+  <Step title="Nombre y descripción" icon="pen">
+    En la barra superior.
+  </Step>
+
+  <Step title="Modelo e idioma" icon="microchip">
+    Grupo **Modelo IA y Respuestas**, el único que empieza abierto.
+
+    - **Modelo LLM** — cada opción muestra su coste **por mensaje**. El valor por defecto es
+      un modelo compacto y económico.
+    - **Idioma** — Inglés, Español (Latinoamérica), Español (España) o Multilenguaje.
+
+    <Note>
+      El selector de idioma muestra un texto de ayuda escrito para llamadas ("el idioma en el
+      que el agente realizará las llamadas"). En SMS se refiere al idioma de los mensajes.
+    </Note>
+  </Step>
+
+  <Step title="Canal: número, tipo y enrutamiento" icon="comment-sms">
+    Grupo **Canal de SMS**.
+
+    - **Número de Teléfono** — obligatorio para agentes entrantes.
+    - **Tipo de Agente** — **Entrante** o **Saliente**.
+    - **Enrutamiento** — solo para entrantes: horario semanal, o marcarlo como predeterminado
+      del número.
+
+    <Warning>
+      **Elige Entrante.** Lumina solo gestiona conversaciones entrantes por ahora. Si eliges
+      Saliente, verás este aviso y el agente no podrá iniciar conversaciones:
+
+      *"Por ahora, los agentes Lumina solo pueden gestionar conversaciones entrantes. Puedes
+      guardar un agente Lumina saliente, pero no podrá iniciar una conversación."*
+    </Warning>
+  </Step>
+
+  <Step title="Escribe el prompt" icon="pen-to-square">
+    La columna central: **un único documento** con contexto, flujo de conversación y reglas.
+
+    ```markdown
+    ## Contexto
+    Eres la asistente de [tu negocio]. Respondes por SMS, así que sé muy breve.
+
+    ## Flujo de conversación
+    1. Saluda e identifica qué necesita.
+    2. Pide solo los datos imprescindibles, de uno en uno.
+    3. Confirma antes de cerrar.
+
+    ## Reglas
+    - Máximo dos frases por mensaje.
+    - Nunca inventes precios ni plazos.
+    - Si piden dejar de recibir mensajes, confírmalo y termina.
+    ```
+
+    <Tip>
+      SMS cobra por mensaje y se lee en una pantalla pequeña. Sé más breve que en WhatsApp: una
+      idea por mensaje.
+    </Tip>
+  </Step>
+
+  <Step title="Guarda" icon="circle-check">
+    Pulsa crear. El agente queda **activo y en producción de inmediato** — no hay borrador ni
+    historial de versiones.
+  </Step>
+</Steps>
+
+## Siguiente paso
+
+<Card title="Configuración" icon="sliders" href="/es/agentes-de-sms/configuracion">
+  Horario, comportamiento, memoria y etiquetas de resultado.
+</Card>

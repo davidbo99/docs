@@ -1,0 +1,120 @@
+---
+title: "El prompt, FAQ y variables"
+description: "Cómo se le dan instrucciones al agente y cómo se personalizan"
+icon: "pen-to-square"
+---
+
+El prompt es **un único documento** en la columna central. Ahí va todo: quién es el agente,
+cómo abre la conversación, qué debe conseguir y qué no puede hacer.
+
+<Info>
+  **📷 Captura pendiente** — el editor de prompt con contenido y la bandeja de variables.
+
+  Guardar en `/images/es/agentes-de-whatsapp/prompt-editor.png`
+</Info>
+
+## Cómo estructurarlo
+
+```markdown
+## Contexto
+Eres Mila, la asistente de [tu negocio]. Vendemos [producto] a [tipo de cliente].
+Atendemos de lunes a viernes de 9 a 18. Respondes por WhatsApp.
+
+## Flujo de conversación
+1. Saluda y pregunta en qué puedes ayudar.
+2. Identifica si busca [caso A] o [caso B].
+3. Si busca [caso A], pide [dato 1] y [dato 2].
+4. Cuando tengas los datos, ofrece agendar.
+
+## Reglas
+- Responde en español, con frases cortas y tono cercano.
+- Nunca inventes precios ni plazos. Si no lo sabes, dilo y ofrece pasar con una persona.
+- No pidas datos de tarjeta ni contraseñas.
+```
+
+<Tip>
+  WhatsApp es conversación, no correo. Mensajes cortos, una pregunta a la vez.
+</Tip>
+
+## La plantilla
+
+**Usar Plantilla** rellena el documento con un guion base. Si ya escribiste algo, pide
+confirmación antes de reemplazarlo.
+
+<Warning>
+  **La plantilla en español está incompleta.** La versión en inglés incluye un bloque de
+  salvaguardas de IA —reglas contra jailbreak y alucinaciones— que **falta en la española**.
+  Si trabajas en español, añade tus propias reglas de seguridad.
+</Warning>
+
+## Variables
+
+<AccordionGroup>
+  <Accordion title="Variables de cliente — {{nombre}}">
+    Se sustituyen por datos reales del contacto. Resuelven el nombre, nombre de pila,
+    apellido, correo y teléfono, junto con sus alias (`{{first_name}}`, `{{name}}`,
+    `{{email}}`, `{{phone}}`…).
+
+    Si el dato falta, se sustituye por un texto neutro en lugar de dejar un hueco.
+  </Accordion>
+
+  <Accordion title="Variables globales — [[nombre]]">
+    <Warning>
+      **No se sustituyen por ningún valor.** No hay dónde definir su contenido: llegan al
+      agente tal cual. Úsalas como notas para ti, no como datos.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Variables de memoria — {{memory_...}}">
+    Nueve tokens que insertan lo que el agente recuerda del contacto. Solo aparecen si activas
+    la memoria en modo *Variables*.
+
+    Ver [Memoria del contacto](/es/agentes-de-whatsapp/memoria).
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  **Las variables NO se sustituyen en todas partes.** Funcionan en el prompt y en las FAQ,
+  pero **no** en:
+
+  - el **mensaje de cierre** de conversación,
+  - el mensaje de **resolución automática** de los recordatorios,
+  - la **respuesta a clientes no atendidos** por filtros de audiencia,
+  - los **valores de las plantillas** de las secuencias de seguimiento.
+
+  En esos cuatro sitios, un `{{client_name}}` llega al cliente escrito tal cual. Escribe texto
+  fijo.
+</Warning>
+
+## Las FAQ
+
+El botón **FAQ** de la barra superior. Preguntas y respuestas que se añaden **después del
+prompt**, como respaldo.
+
+- Sin límite de cantidad ni longitud.
+- **Ninguna puede quedar a medias**: si guardas con una pregunta sin respuesta, no se guarda y
+  se reabre el modal.
+- Las variables **sí** se sustituyen aquí.
+
+<Note>
+  **No hay base de conocimiento.** No se pueden subir documentos ni PDF; las FAQ son
+  simplemente más texto del prompt. Mantenlas cortas.
+</Note>
+
+## Atlas, en el editor
+
+Primera pestaña del panel derecho. Pídele cambios en lenguaje natural y los aplica sobre el
+agente: ajustar el tono, añadir FAQ, configurar los seguimientos.
+
+<Warning>
+  **Atlas consume créditos**, a diferencia del panel de prueba.
+</Warning>
+
+Si Atlas modifica el agente mientras tienes cambios sin guardar, aparece un aviso para elegir
+entre **Recargar** y **Conservar mis cambios**.
+
+## Siguiente paso
+
+<Card title="Canal, audiencia y comportamiento" icon="sliders" href="/es/agentes-de-whatsapp/canal">
+  A quién atiende, cuándo, y cómo escribe.
+</Card>

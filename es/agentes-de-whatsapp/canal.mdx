@@ -1,0 +1,119 @@
+---
+title: "Canal, audiencia y comportamiento"
+description: "A qué número responde, a quién atiende, cuándo y cómo escribe"
+icon: "sliders"
+---
+
+## Canal de WhatsApp
+
+<Info>
+  **📷 Captura pendiente** — el grupo Canal de WhatsApp desplegado, con número, tipo, enrutamiento y audiencia.
+
+  Guardar en `/images/es/agentes-de-whatsapp/canal-grupo.png`
+</Info>
+
+### Número y tipo
+
+El **Número de Teléfono de WhatsApp** es obligatorio, y el **Tipo de Agente** decide qué puede
+hacer:
+
+| Tipo | Responde entrantes | Inicia conversaciones |
+|---|---|---|
+| **Omnicanal** (por defecto) | Sí | Sí |
+| **Entrante** | Sí | No |
+| **Saliente** | No | Sí |
+
+### Enrutamiento
+
+Obligatorio para agentes entrantes y omnicanal. Dos formas:
+
+- **Predeterminado** — atiende todos los mensajes del número que ningún otro agente cubra.
+- **Horario semanal** — atiende solo en las franjas que definas, hasta **4 por día**.
+
+Varios agentes pueden compartir un número si sus horarios **no se solapan**. Si chocan, el
+editor lo avisa y no deja guardar.
+
+<Warning>
+  Si un número **no tiene agente predeterminado**, los mensajes fuera de horario **no se
+  enrutan a nadie**.
+</Warning>
+
+<Note>
+  Las horas se muestran siempre en formato de 12 horas con `AM`/`PM`, también en español.
+</Note>
+
+### Audiencia
+
+Limita a qué clientes atiende este agente, según sus **etiquetas**:
+
+| Campo | Qué hace |
+|---|---|
+| **Atender solo a clientes con estas etiquetas** | Si lo dejas vacío, atiende a todos |
+| **Nunca atender a clientes con estas etiquetas** | Exclusiones |
+| **Respuesta enviada a los clientes que este agente no atiende** | Texto fijo para los excluidos |
+
+<Warning>
+  **Las exclusiones siempre mandan.** Un cliente con una etiqueta excluida no es atendido
+  aunque también tenga una incluida.
+</Warning>
+
+<Note>
+  Las variables **no se sustituyen** en el mensaje para clientes no atendidos. Escribe texto
+  fijo.
+</Note>
+
+<Tip>
+  Dos agentes pueden compartir el mismo horario en el mismo número **si sus audiencias no se
+  solapan** — por ejemplo, uno para clientes VIP y otro para el resto.
+</Tip>
+
+## Comportamiento de conversación
+
+Tercer grupo de ajustes. Define **cómo escribe** el agente.
+
+### Estilo de conversación
+
+| Estilo | Qué hace |
+|---|---|
+| **Estándar** | Una sola respuesta por turno |
+| **Natural** | Divide la respuesta en varios mensajes, como escribiría una persona |
+
+<Check>
+  **El estilo Natural no cuesta más.** No se cobra por mensaje dividido: se factura la
+  respuesta, no los trozos.
+</Check>
+
+### Longitud de respuesta
+
+**Concisa**, **Equilibrada** o **Detallada**. En WhatsApp, *Concisa* o *Equilibrada* suelen
+funcionar mejor — los bloques largos se leen mal en el móvil.
+
+### Agrupación de mensajes
+
+Activada por defecto. Cuando un cliente envía varios mensajes seguidos, el agente **espera a
+que termine** antes de responder, en lugar de contestar a cada línea suelta.
+
+La **ventana de agrupación** define cuántos segundos espera.
+
+<Tip>
+  Déjala activada. Sin ella, un cliente que escribe "Hola" / "tengo una duda" / "sobre mi
+  pedido" recibe tres respuestas separadas.
+</Tip>
+
+## Etiquetas de disposición
+
+Último grupo. Clasifican la conversación al cerrarse.
+
+<Note>
+  En WhatsApp solo está disponible el tipo **Standard**. Los tipos *Retry* y *No Answer* son
+  específicos de llamadas y no aparecen aquí.
+</Note>
+
+Como en voz, son **plantillas de toda la cuenta**: se guardan al instante y afectan a todos
+los agentes.
+
+## Siguiente paso
+
+<Card title="Memoria del contacto" icon="brain" href="/es/agentes-de-whatsapp/memoria">
+  Qué recuerda el agente entre conversaciones.
+</Card>

@@ -1,0 +1,117 @@
+---
+title: "Herramientas y pruebas"
+description: "Acciones reales, el panel de prueba y cómo activar el agente"
+icon: "screwdriver-wrench"
+---
+
+## Herramientas
+
+Una herramienta es una **acción que el agente puede ejecutar durante el chat**. Son una
+**biblioteca de la cuenta**: se crean una vez en **Chat → WhatsApp → Herramientas** y se
+adjuntan a los agentes que las necesiten.
+
+<Info>
+  **📷 Captura pendiente** — el modal de herramientas del agente, con una adjunta.
+
+  Guardar en `/images/es/agentes-de-whatsapp/herramientas-modal.png`
+</Info>
+
+### Tipos disponibles en WhatsApp
+
+| Tipo | Qué hace |
+|---|---|
+| **API** | Llama a un servicio externo. Los `{{token}}` en URL, parámetros o cabeceras se vuelven variables de entrada |
+| **Integración** | Consulta y gestiona un sistema conectado |
+| **Calendario** | Consulta disponibilidad y agenda sobre el calendario de Dialtu |
+| **Enviar plantilla** | Envía una plantilla de Meta aprobada |
+| **Fin de chat** | Cierra la conversación |
+| **Traspaso a humano** | Pasa el chat a una persona |
+
+<Note>
+  **Transferencia**, **fin de llamada** y **cambio de agente** son de voz, y no aparecen aquí.
+  El equivalente en chat de una transferencia es el **traspaso a humano**.
+</Note>
+
+### La descripción es el disparador
+
+**La IA decide cuándo usar una herramienta leyendo su descripción.** No describas qué hace;
+describe **cuándo debe usarse**, y también cuándo no.
+
+<Warning>
+  El **tipo no se puede cambiar** una vez creada la herramienta.
+</Warning>
+
+### Integraciones
+
+Hoy hay **un proveedor disponible: AgendaPro**.
+
+<Warning>
+  **No hay pantalla para conectar integraciones tú mismo.** La conexión la hace el equipo de
+  Dialtu. En el constructor verás solo un indicador de estado; si dice *Sin conexión*, pídelo a
+  tu contacto en Dialtu antes de salir a producción.
+</Warning>
+
+<Note>
+  Al guardar el agente, se envía la lista completa de herramientas adjuntas. Si abres el modal
+  y quitas una sin querer, se desadjunta al guardar.
+</Note>
+
+## Probar
+
+Segunda pestaña del panel derecho. Escribes como si fueras el cliente.
+
+<Info>
+  **📷 Captura pendiente** — la pestaña Probar con una conversación y el aviso de herramientas reales.
+
+  Guardar en `/images/es/agentes-de-whatsapp/probar-panel.png`
+</Info>
+
+<Warning>
+  **Las herramientas de API, integración y calendario se ejecutan de verdad.** Una herramienta
+  de calendario que escriba **agenda una cita real**. Usa datos de prueba.
+</Warning>
+
+Lo que **no** se ejecuta de verdad: cerrar el chat, el opt-out, el traspaso a humano y el envío
+de plantillas se muestran como tarjetas terminales, porque necesitan una sesión real.
+
+<Check>**Es gratis.** El panel de prueba no consume créditos, y a diferencia del de voz funciona **antes de guardar**: prueba tu borrador en pantalla.</Check>
+
+Tiene un límite de uso por hora. Además puedes elegir **probar como un contacto real**, para
+ver cómo responde con su memoria y su historial.
+
+## Resumen
+
+Tercera pestaña. La lista **Obligatorio para crear** —nombre, prompt, número y enrutamiento— y
+un repaso de la configuración, incluida la fila de **Memoria IA**.
+
+## Activar
+
+<Warning>
+  **Guardar publica de inmediato.** No hay borrador en el servidor ni historial de versiones.
+</Warning>
+
+El único control es el indicador **Activo / Pausado** de la barra superior.
+
+<Warning>
+  **Pausar un agente no detiene sus recordatorios.** El proceso que los envía no comprueba si
+  el agente está activo. Si quieres que deje de escribir del todo, desactiva también los
+  recordatorios.
+</Warning>
+
+<Tip>
+  Para cambios grandes en un agente en producción, **duplícalo**, trabaja sobre la copia y
+  luego intercambia cuál está activo.
+</Tip>
+
+## Qué no existe
+
+- **Historial de versiones** ni vuelta atrás.
+- **Base de conocimiento** o subida de documentos.
+- **Analíticas dentro del agente** — están en **Analíticas**, filtrando por ese agente.
+- **Acciones en lote** en la lista de agentes.
+
+## Volver al principio
+
+<Card title="Introducción a los agentes de WhatsApp" icon="whatsapp" href="/es/agentes-de-whatsapp/introduccion">
+  El recorrido completo de la sección.
+</Card>

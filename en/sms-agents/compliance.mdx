@@ -1,0 +1,99 @@
+---
+title: "Compliance and opt-outs"
+description: "STOP, HELP, START and A2P 10DLC registration"
+icon: "shield-check"
+---
+
+SMS is far more regulated than WhatsApp. Two things are mandatory: **honouring opt-outs** and
+**registering your traffic** before you send.
+
+## Keywords
+
+Lumina recognises three keyword groups **before** the message reaches the model. They aren't
+configurable.
+
+| Keywords | What it does |
+|---|---|
+| `stop`, `stopall`, `unsubscribe`, `cancel`, `end`, `quit` | Unsubscribes the contact and confirms |
+| `help`, `info` | Sends the help message |
+| `start`, `yes`, `unstop` | Resubscribes the contact |
+
+<Warning>
+  **The keywords are English only.** There's no Spanish list: a customer texting "BAJA" or
+  "PARAR" does **not** trigger the automatic opt-out.
+
+  In that case it depends on your prompt catching it. Add an explicit rule, for example: *"If
+  the customer asks to stop receiving messages in any language, confirm it and perform the
+  opt-out."*
+</Warning>
+
+### Matching is exact
+
+The keyword has to be **the entire message**, not part of it. `"Please stop texting me"` does
+**not** trigger it.
+
+<Note>
+  That's deliberate: if containing the word were enough, a message like *"stop by the shop at
+  5"* would silently mute the customer, with no way for them to notice or undo it.
+
+  Natural language is the AI's job — it can perform the opt-out when it detects the intent.
+</Note>
+
+### Opt-out is per contact
+
+Not per conversation: once opted out, **that contact** stops receiving messages on this channel,
+including future conversations. Releasing it is done manually from settings.
+
+Opt-out confirmations are still sent even when the contact is already suppressed — that's what
+regulation requires.
+
+## A2P 10DLC registration
+
+In the United States, all business-to-person traffic on local numbers must be registered. **It
+isn't handled inside Dialtu**: it's a process with the carrier.
+
+<Warning>
+  **Start this before anything else.** Approval takes **days to weeks**. It's the critical path
+  of any SMS project.
+</Warning>
+
+Things worth knowing before you submit:
+
+<AccordionGroup>
+  <Accordion title="The EIN must match tax records exactly">
+    This is the most common rejection reason. The legal name and number must match what the tax
+    authority holds, character for character — a trading name won't do.
+  </Accordion>
+
+  <Accordion title="Register the correct use case">
+    Register it as **conversational / customer care**, not as marketing.
+
+    <Warning>
+      Misregistering the use case is grounds for **suspension**.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Watch out for double opt-out confirmations">
+    If you leave the carrier's automatic opt-out handling switched on, the customer receives
+    **two confirmations**: the carrier's and Dialtu's.
+  </Accordion>
+
+  <Accordion title="A carrier-registered opt-out is final at the network level">
+    Once the carrier records the opt-out, sends fail at the network level even if Dialtu still
+    shows the contact as active. To receive messages again, the customer has to text **START to
+    the carrier**, not just to you.
+  </Accordion>
+</AccordionGroup>
+
+## Good practice
+
+<Check>**Identify yourself in the first message.** Who you are and why you're writing.</Check>
+<Check>**Mention how to opt out** in the first message of any conversation you start.</Check>
+<Check>**Respect the hours.** Use time-based routing so you're not texting at 3am.</Check>
+<Check>**Be brief.** Every segment is billed, and long messages get split.</Check>
+
+## Back to the start
+
+<Card title="Introduction to SMS agents" icon="comment-sms" href="/en/sms-agents/introduction">
+  The full path through this section.
+</Card>

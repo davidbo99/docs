@@ -1,0 +1,91 @@
+---
+title: "Crear tu primer agente"
+description: "De cero a un agente de WhatsApp respondiendo"
+icon: "plus"
+---
+
+## Antes de empezar
+
+<Check>Un **número de WhatsApp Business conectado**. Ver [Conectar tu cuenta](/es/canales/whatsapp/conectar).</Check>
+<Check>Permisos de **WhatsApp** con escritura.</Check>
+
+<Note>
+  **Los roles por defecto no incluyen acceso a WhatsApp.** Solo Administrador y Super
+  Administrador lo tienen. Si un miembro de tu equipo no ve la sección WhatsApp en el menú,
+  necesita un rol personalizado.
+</Note>
+
+## Pasos
+
+<Steps>
+  <Step title="Abre el editor" icon="plus">
+    **Chat → WhatsApp → Agentes**, y pulsa **Crear agente**. Entras directamente al editor.
+  </Step>
+
+  <Step title="Nombre y descripción" icon="pen">
+    En la barra superior. La descripción solo la ve tu equipo.
+  </Step>
+
+  <Step title="Modelo de IA e idioma" icon="microchip">
+    Primer grupo de ajustes, **Modelo IA y Respuestas**. Es el único que empieza abierto.
+
+    - **Modelo LLM** — determina el coste por mensaje y la calidad de las respuestas.
+    - **Idioma de respuesta** — `EN`, `ES` o `Multi`. Fuerza el idioma **sin importar** en qué
+      idioma escriba el cliente.
+    - **Temperatura** — más bajo es más predecible. Algunos modelos la tienen fija y el control
+      aparece bloqueado.
+
+    <Info>
+      **📷 Captura pendiente** — el grupo Modelo IA y Respuestas desplegado.
+
+      Guardar en `/images/es/agentes-de-whatsapp/crear-01-modelo.png`
+    </Info>
+  </Step>
+
+  <Step title="Canal: número, tipo y enrutamiento" icon="whatsapp">
+    Grupo **Canal de WhatsApp**:
+
+    - **Número de Teléfono de WhatsApp** — obligatorio.
+    - **Tipo de Agente** — Omnicanal, Entrante o Saliente.
+    - **Enrutamiento** — obligatorio para entrantes y omnicanal. O marcas **Predeterminado**, o
+      defines un horario semanal.
+
+    <Warning>
+      Solo puede haber **un agente predeterminado por número**. Si ya existe otro, Dialtu te
+      pedirá darle a ese un horario antes de tomar su lugar.
+    </Warning>
+
+    <Card title="Canal, audiencia y comportamiento" icon="sliders" href="/es/agentes-de-whatsapp/canal">
+      El detalle completo del enrutamiento y los filtros de audiencia.
+    </Card>
+  </Step>
+
+  <Step title="Escribe el prompt" icon="pen-to-square">
+    La columna central. Es el único campo de contenido obligatorio.
+
+    <Card title="El prompt, FAQ y variables" icon="pen-to-square" href="/es/agentes-de-whatsapp/prompt">
+      Cómo estructurarlo y personalizarlo.
+    </Card>
+  </Step>
+
+  <Step title="Revisa el Resumen y guarda" icon="circle-check">
+    La pestaña **Resumen** del panel derecho lista lo que falta bajo **Obligatorio para crear**:
+    nombre, prompt, número y enrutamiento.
+
+    Pulsa **Crear Agente**. Queda **activo y en producción de inmediato**.
+  </Step>
+</Steps>
+
+## Comprueba que funciona
+
+Escríbele por WhatsApp al número desde tu teléfono. Deberías ver la respuesta en segundos y la
+conversación en **CRM → Conversaciones**.
+
+Si no responde, revisa que el agente esté **Activo**, que el enrutamiento cubra la hora
+actual, y que el cliente no esté excluido por los filtros de audiencia.
+
+## Siguiente paso
+
+<Card title="El prompt, FAQ y variables" icon="pen-to-square" href="/es/agentes-de-whatsapp/prompt">
+  Ya responde. Ahora define exactamente qué dice.
+</Card>

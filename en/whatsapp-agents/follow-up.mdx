@@ -1,0 +1,172 @@
+---
+title: "Follow-up, reminders and closing"
+description: "What happens when the customer stops replying, and how a conversation closes"
+icon: "bell"
+---
+
+The **Follow-up & Engagement** group bundles five behaviours. They're toggled separately, but
+**some are mutually exclusive**, so it's worth reading them together.
+
+<Info>
+  **📷 Screenshot needed** — the Follow-up & Engagement group with its toggles.
+
+  Save to `/images/en/whatsapp-agents/follow-up-group.png`
+</Info>
+
+<Warning>
+  **Reminders and auto-closing are incompatible.** If you enable reminders, idle auto-close
+  **stops working entirely**. The interface doesn't warn you.
+
+  Pick one: either you chase, or you close.
+</Warning>
+
+## Reminders
+
+These re-contact a customer who **didn't reply**.
+
+### Simple mode
+
+One message and cadence for the whole sequence: how many reminders (1–10, default 3) and how
+often (default 60 minutes).
+
+### Advanced mode
+
+Up to **5 steps**, each with its own delay and message. A new step starts at 1 day.
+
+<Note>
+  In advanced mode the maximum reminder count is **ignored**: the cap is the number of steps.
+</Note>
+
+### The message
+
+| Strategy | What it does |
+|---|---|
+| **Automatic** (default) | The AI writes a reminder from the chat history |
+| **Guide the AI** | You describe what to achieve — tone, offer, urgency — and the AI writes it |
+| **Static text** | The exact message, with insertable client variables |
+
+<Note>
+  Switching to **Automatic** clears any text you'd written.
+</Note>
+
+### Auto-resolve at the end
+
+Optional: closes the conversation once all reminders are sent, with an AI-generated or static
+message.
+
+### How they actually behave
+
+<AccordionGroup>
+  <Accordion title="The clock runs from the last message, whoever sent it">
+    Including the agent's own reminder. It does **not** count from the customer's last message.
+  </Accordion>
+
+  <Accordion title="Outside the 24-hour window nothing is sent">
+    WhatsApp only allows free-form messages for 24 hours after the customer's last message. Past
+    that, the reminder is **silently skipped** — there's no template fallback. An internal note
+    is left on the thread that the customer never sees.
+
+    This is the most common cause of "I set up reminders and they never arrive".
+  </Accordion>
+
+  <Accordion title="A paused agent still sends reminders">
+    The process that sends them **doesn't check whether the agent is active**. Pausing an agent
+    doesn't stop its reminders.
+  </Accordion>
+
+  <Accordion title="Any customer reply resets the count">
+    And cancels active follow-ups.
+  </Accordion>
+
+  <Accordion title="Every reminder is billed">
+    Like any AI-generated message.
+  </Accordion>
+</AccordionGroup>
+
+## Follow-up sequence
+
+Different from reminders: it fires **after the conversation is resolved**, and sends **approved
+Meta templates**.
+
+- Every step needs an **approved template** — there's no free-form follow-up.
+- **Minimum 24-hour delay** per step. It's a validation: less than that won't save.
+- A **cool-down period** prevents repeat follow-ups to the same customer.
+- An **inbound agent can't send itself follow-ups**: you must pick an outbound or omnichannel
+  agent on the same number.
+
+<Warning>
+  **A session that merely expires doesn't trigger the sequence.** It only fires on
+  **resolution**: by the agent, by opt-out, by a manual close, by auto-close, or at the end of
+  the reminders. If your conversations die from 24 h of inactivity without being resolved,
+  there'll never be a follow-up.
+</Warning>
+
+<Note>
+  **Variables are not substituted** in follow-up template values. A `{{client_name}}` would
+  arrive written literally.
+</Note>
+
+<Warning>
+  The **"Scheduled"** wait mode (a specific time and day) **does not work**: it's saved but never
+  applied. Always use **Fixed Delay**.
+</Warning>
+
+<Check>
+  Follow-up templates **don't consume Dialtu credits** — Meta bills your account directly. The
+  interface's note about a "separate billing charge" refers to Meta's conversation window, not
+  your credits.
+</Check>
+
+## Conversation closing
+
+Closes sessions after a period of inactivity, with an **AI-generated** or **static** message.
+
+<Warning>
+  Remember: **if reminders are on, this never runs**.
+</Warning>
+
+<Note>
+  This option's helper text renders **in English** even in the Spanish interface — a known
+  translation bug.
+
+  Variables are also **not substituted** in the closing message.
+</Note>
+
+<Check>
+  Closing messages **are not billed**.
+</Check>
+
+## Opt-out
+
+When a customer asks to stop receiving messages, the AI closes that conversation and **doesn't
+write to them again**.
+
+<Check>
+  **Opt-out persists.** It isn't just for that conversation: it's recorded **per contact** and
+  blocks AI replies, reminders, follow-ups and reconnect campaigns. Releasing it is done
+  manually from settings.
+</Check>
+
+<Note>
+  **WhatsApp does not automatically recognise the word "STOP".** Unlike SMS, there are no
+  keywords here: the AI detects the intent and performs the opt-out. Make this explicit in your
+  prompt so it recognises it reliably.
+</Note>
+
+## Human handling
+
+When someone on your team steps into a chat, that customer's future conversations **stay with a
+person** instead of restarting the AI.
+
+**Resume AI after** sets how many hours that hold lasts. Default **48**; `0` means **never**.
+
+<Warning>
+  Steps in a **follow-up sequence** create new sessions that **bypass this hold**. A customer
+  flagged for human handling can still receive a follow-up template.
+</Warning>
+
+## Next step
+
+<Card title="Tools and testing" icon="screwdriver-wrench" href="/en/whatsapp-agents/tools">
+  Give it real actions and test before going live.
+</Card>

@@ -1,0 +1,90 @@
+---
+title: "Create your first agent"
+description: "From zero to a WhatsApp agent replying"
+icon: "plus"
+---
+
+## Before you start
+
+<Check>A **connected WhatsApp Business number**. See [Connect your account](/en/channels/whatsapp/connect).</Check>
+<Check>**WhatsApp** write permissions.</Check>
+
+<Note>
+  **Default roles don't include WhatsApp access.** Only Admin and Super Admin have it. If
+  someone on your team can't see the WhatsApp section in the menu, they need a custom role.
+</Note>
+
+## Steps
+
+<Steps>
+  <Step title="Open the editor" icon="plus">
+    **Chat → WhatsApp → Agents**, then press **Create agent**. You land straight in the editor.
+  </Step>
+
+  <Step title="Name and description" icon="pen">
+    In the top bar. Only your team sees the description.
+  </Step>
+
+  <Step title="AI model and language" icon="microchip">
+    First settings group, **AI Model & Responses**. It's the only one that starts open.
+
+    - **LLM Model** — determines cost per message and answer quality.
+    - **Response language** — `EN`, `ES` or `Multi`. Forces the reply language **regardless** of
+      what the customer writes in.
+    - **Temperature** — lower is more predictable. Some models fix it and the control appears
+      locked.
+
+    <Info>
+      **📷 Screenshot needed** — the AI Model & Responses group expanded.
+
+      Save to `/images/en/whatsapp-agents/create-01-model.png`
+    </Info>
+  </Step>
+
+  <Step title="Channel: number, type and routing" icon="whatsapp">
+    **WhatsApp Channel** group:
+
+    - **WhatsApp phone number** — required.
+    - **Agent Type** — Omnichannel, Inbound or Outbound.
+    - **Routing** — required for inbound and omnichannel. Either tick **Default**, or set a
+      weekly schedule.
+
+    <Warning>
+      There can only be **one default agent per number**. If one already exists, Dialtu asks you
+      to give it a time range before taking its place.
+    </Warning>
+
+    <Card title="Channel, audience and behaviour" icon="sliders" href="/en/whatsapp-agents/channel">
+      Full detail on routing and audience filters.
+    </Card>
+  </Step>
+
+  <Step title="Write the prompt" icon="pen-to-square">
+    The centre column. It's the only required content field.
+
+    <Card title="The prompt, FAQs and variables" icon="pen-to-square" href="/en/whatsapp-agents/prompt">
+      How to structure and personalise it.
+    </Card>
+  </Step>
+
+  <Step title="Check the Summary and save" icon="circle-check">
+    The **Summary** tab lists what's missing under **Required to create**: name, prompt, number
+    and routing.
+
+    Press **Create Agent**. It goes **live immediately**.
+  </Step>
+</Steps>
+
+## Check that it works
+
+Message the number from your phone over WhatsApp. You should see a reply within seconds and
+the conversation under **CRM → Conversations**.
+
+If it doesn't reply, check the agent is **Active**, that routing covers the current time, and
+that the customer isn't excluded by audience filters.
+
+## Next step
+
+<Card title="The prompt, FAQs and variables" icon="pen-to-square" href="/en/whatsapp-agents/prompt">
+  It replies. Now define exactly what it says.
+</Card>

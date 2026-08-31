@@ -1,0 +1,177 @@
+---
+title: "Seguimiento, recordatorios y cierre"
+description: "Qué pasa cuando el cliente deja de responder, y cómo se cierra una conversación"
+icon: "bell"
+---
+
+El grupo **Seguimiento y Re-contacto** reúne cinco comportamientos. Se activan por separado,
+pero **algunos se excluyen entre sí**, así que conviene leerlos juntos.
+
+<Info>
+  **📷 Captura pendiente** — el grupo Seguimiento y Re-contacto con sus interruptores.
+
+  Guardar en `/images/es/agentes-de-whatsapp/seguimiento-grupo.png`
+</Info>
+
+<Warning>
+  **Los recordatorios y el cierre automático son incompatibles.** Si activas los recordatorios,
+  el cierre por inactividad **deja de funcionar** por completo. La interfaz no lo advierte.
+
+  Elige uno: o insistes, o cierras.
+</Warning>
+
+## Recordatorios
+
+Vuelven a escribir al cliente que **no respondió**.
+
+### Modo simple
+
+Un solo mensaje y ritmo para toda la secuencia: cuántos recordatorios (1–10, por defecto 3) y
+cada cuánto (por defecto 60 minutos).
+
+### Modo avanzado
+
+Hasta **5 pasos**, cada uno con su propio retraso y mensaje. Un paso nuevo empieza con 1 día
+de espera.
+
+<Note>
+  En modo avanzado, el número máximo de recordatorios **se ignora**: el límite es la cantidad
+  de pasos.
+</Note>
+
+### El mensaje
+
+| Estrategia | Qué hace |
+|---|---|
+| **Automático** (por defecto) | La IA redacta un recordatorio según el historial del chat |
+| **Guiar a la IA** | Tú describes qué lograr —tono, oferta, urgencia— y la IA redacta |
+| **Texto fijo** | El mensaje exacto, con variables de cliente insertables |
+
+<Note>
+  Cambiar a **Automático** borra el texto que hubieras escrito.
+</Note>
+
+### Cerrar automáticamente al terminar
+
+Opcional: cierra la conversación cuando se envían todos los recordatorios, con un mensaje
+generado por IA o un texto fijo.
+
+### Cómo funcionan en realidad
+
+<AccordionGroup>
+  <Accordion title="El reloj cuenta desde el último mensaje, sea de quien sea">
+    Incluido el propio recordatorio del agente. No cuenta desde el último mensaje **del
+    cliente**.
+  </Accordion>
+
+  <Accordion title="Fuera de la ventana de 24 horas no se envía nada">
+    WhatsApp solo permite escribir libremente durante 24 horas tras el último mensaje del
+    cliente. Pasado ese plazo el recordatorio **se omite en silencio** — no hay plantilla de
+    respaldo. Queda una nota interna en el hilo que el cliente nunca ve.
+
+    Es la razón más común de "configuré recordatorios y no llegan".
+  </Accordion>
+
+  <Accordion title="Un agente pausado sigue enviando recordatorios">
+    El proceso que los envía **no comprueba si el agente está activo**. Pausar un agente no
+    detiene sus recordatorios en curso.
+  </Accordion>
+
+  <Accordion title="Cualquier respuesta del cliente reinicia la cuenta">
+    Y cancela los seguimientos activos.
+  </Accordion>
+
+  <Accordion title="Cada recordatorio se cobra">
+    Como cualquier mensaje generado por IA.
+  </Accordion>
+</AccordionGroup>
+
+## Secuencia de seguimiento
+
+Distinta de los recordatorios: se dispara **después de resolver** la conversación, y envía
+**plantillas de Meta aprobadas**.
+
+- Cada paso necesita una **plantilla aprobada** — no hay texto libre.
+- **Retraso mínimo de 24 horas** por paso. Es una validación: si pones menos, no guarda.
+- Un **período de enfriamiento** evita repetir seguimientos al mismo cliente.
+- Un agente **entrante no puede enviarse seguimientos a sí mismo**: hay que elegir un agente
+  saliente u omnicanal del mismo número.
+
+<Warning>
+  **Una sesión que simplemente expira no dispara la secuencia.** Solo se dispara al
+  **resolverse**: por el agente, por opt-out, por cierre manual, por cierre automático o al
+  terminar los recordatorios. Si tus conversaciones mueren por inactividad de 24 h sin
+  resolverse, nunca habrá seguimiento.
+</Warning>
+
+<Note>
+  **Las variables no se sustituyen** en los valores de las plantillas de seguimiento. Un
+  `{{client_name}}` llegaría escrito tal cual.
+</Note>
+
+<Warning>
+  El modo de espera **"Programado"** (hora y día concretos) **no funciona**: se guarda pero no
+  se aplica. Usa siempre **Retraso Fijo**.
+</Warning>
+
+<Check>
+  Las plantillas de seguimiento **no consumen créditos de Dialtu** — las factura Meta
+  directamente a tu cuenta. La nota de la interfaz sobre "cargo de facturación separado" se
+  refiere a la ventana de conversación de Meta, no a tus créditos.
+</Check>
+
+## Cierre de conversación
+
+Cierra sesiones tras un período de inactividad, con un mensaje **generado por IA** o **estático**.
+
+<Warning>
+  Recuerda: **si los recordatorios están activados, esto no se ejecuta**.
+</Warning>
+
+<Note>
+  El texto de ayuda de esta opción aparece **en inglés** aunque uses la interfaz en español. Es
+  un error de traducción conocido.
+
+  Además, las variables **no se sustituyen** en el mensaje de cierre.
+</Note>
+
+<Check>
+  Los mensajes de cierre **no se cobran**.
+</Check>
+
+## Exclusión (opt-out)
+
+Cuando un cliente pide dejar de recibir mensajes, la IA cierra esa conversación y **no vuelve
+a escribirle**.
+
+<Check>
+  **La exclusión persiste.** No es solo para esa conversación: queda registrada **por contacto**
+  y bloquea respuestas de IA, recordatorios, seguimientos y campañas de reconexión. Retirarla
+  se hace manualmente desde configuración.
+</Check>
+
+<Note>
+  **WhatsApp no reconoce automáticamente la palabra "STOP".** A diferencia de SMS, aquí no hay
+  palabras clave: es la IA quien detecta la intención y ejecuta la exclusión. Deja esto claro
+  en tu prompt para que la reconozca bien.
+</Note>
+
+## Atención humana
+
+Cuando una persona de tu equipo interviene en un chat, las conversaciones futuras de ese
+cliente **siguen con una persona** en vez de reiniciar la IA.
+
+El campo **Reanudar la IA después de** define cuántas horas dura ese bloqueo. Por defecto
+**48**; `0` significa **nunca**.
+
+<Warning>
+  Los pasos de una **secuencia de seguimiento** crean sesiones nuevas que **saltan este
+  bloqueo**. Un cliente marcado para atención humana puede recibir igualmente una plantilla de
+  seguimiento.
+</Warning>
+
+## Siguiente paso
+
+<Card title="Herramientas y pruebas" icon="screwdriver-wrench" href="/es/agentes-de-whatsapp/herramientas">
+  Dale acciones reales y pruébalo antes de activarlo.
+</Card>

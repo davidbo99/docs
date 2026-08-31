@@ -1,0 +1,98 @@
+---
+title: "Introducción a los agentes de WhatsApp"
+description: "Qué son, qué pueden hacer y cómo está organizado el editor"
+icon: "whatsapp"
+---
+
+Un agente de WhatsApp conversa por chat con tus clientes: responde, ejecuta acciones
+—consultar tu sistema, agendar, enviar una plantilla— recuerda al contacto entre
+conversaciones y, si hace falta, pasa el chat a una persona.
+
+<Info>
+  **📷 Captura pendiente** — el editor de agente de WhatsApp completo, con las tres columnas.
+
+  Guardar en `/images/es/agentes-de-whatsapp/editor-general.png`
+</Info>
+
+## Antes de nada: el número
+
+Un agente de WhatsApp necesita un **número de WhatsApp Business conectado**. Ese número no lo
+provee Dialtu: conectas tu propia cuenta de Meta.
+
+<Card title="Conectar tu cuenta de WhatsApp Business" icon="link" href="/es/canales/whatsapp/conectar">
+  El proceso completo, pantalla por pantalla.
+</Card>
+
+## El editor, de un vistazo
+
+Una sola pantalla con tres columnas. No hay asistente por pasos.
+
+| Columna | Qué contiene |
+|---|---|
+| **Ajustes** (izquierda) | Seis grupos plegables: modelo, canal, comportamiento, **memoria**, seguimiento y etiquetas |
+| **Prompt** (centro) | Un único documento con las instrucciones del agente |
+| **Panel derecho** | Tres pestañas: **Atlas**, **Probar** y **Resumen** |
+
+En la barra superior: nombre, tipo de agente, estado **Activo / Pausado**, y los botones de
+**FAQ** y **Herramientas**.
+
+## Los tres tipos de agente
+
+El **Tipo de Agente** decide qué puede hacer, y es de lo primero que hay que elegir:
+
+<CardGroup cols={3}>
+  <Card title="Omnicanal" icon="arrows-left-right">
+    Recibe y también puede iniciar conversaciones. Es el valor por defecto.
+  </Card>
+
+  <Card title="Entrante" icon="inbox">
+    Solo responde. No puede iniciar conversaciones ni enviarse seguimientos a sí mismo.
+  </Card>
+
+  <Card title="Saliente" icon="paper-plane">
+    Solo inicia conversaciones. No responde a los mensajes entrantes.
+  </Card>
+</CardGroup>
+
+## Qué encontrarás en esta sección
+
+<CardGroup cols={2}>
+  <Card title="Crear tu primer agente" icon="plus" href="/es/agentes-de-whatsapp/crear-agente">
+    Los campos mínimos para dejarlo respondiendo.
+  </Card>
+
+  <Card title="El prompt, FAQ y variables" icon="pen-to-square" href="/es/agentes-de-whatsapp/prompt">
+    Cómo se le dan instrucciones y cómo se personaliza.
+  </Card>
+
+  <Card title="Canal, audiencia y comportamiento" icon="sliders" href="/es/agentes-de-whatsapp/canal">
+    Número, horario, a qué clientes atiende y cómo escribe.
+  </Card>
+
+  <Card title="Memoria del contacto" icon="brain" href="/es/agentes-de-whatsapp/memoria">
+    Qué recuerda el agente y qué aporta a la memoria compartida.
+  </Card>
+
+  <Card title="Seguimiento, recordatorios y cierre" icon="bell" href="/es/agentes-de-whatsapp/seguimiento">
+    Recordatorios, secuencias, opt-out y traspaso a una persona.
+  </Card>
+
+  <Card title="Herramientas y pruebas" icon="screwdriver-wrench" href="/es/agentes-de-whatsapp/herramientas">
+    Acciones reales, el panel de prueba y cómo activarlo.
+  </Card>
+</CardGroup>
+
+## Dos cosas que sorprenden
+
+<Warning>
+  **Guardar publica de inmediato.** No hay borrador en el servidor ni historial de versiones.
+  La etiqueta *Borrador guardado* es un autoguardado de tu navegador, nada más.
+</Warning>
+
+<Warning>
+  **Tu agente ya está aportando a la memoria de contactos.** La opción *Guardar en memoria*
+  viene **activada por defecto** en todos los agentes, nuevos y existentes. Leer memoria es
+  opcional; escribirla está activo salvo que lo desactives.
+
+  Ver [Memoria del contacto](/es/agentes-de-whatsapp/memoria).
+</Warning>

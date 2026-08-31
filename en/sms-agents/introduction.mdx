@@ -1,0 +1,83 @@
+---
+title: "Introduction to SMS agents"
+description: "What Lumina is and what an SMS agent can do"
+icon: "comment-sms"
+---
+
+An SMS agent holds text-message conversations: it replies, runs actions, remembers the contact
+between conversations, and closes the session when it's done.
+
+<Warning>
+  **Lumina handles inbound conversations.** For now it **cannot start** one: you can save an
+  outbound Lumina agent, but it won't text first.
+
+  If your use case is sending the first message — campaigns, scheduled reminders — that
+  capability isn't available yet.
+</Warning>
+
+<Info>
+  **📷 Screenshot needed** — the full SMS agent editor, with its three columns.
+
+  Save to `/images/en/sms-agents/editor-overview.png`
+</Info>
+
+## What Lumina is
+
+**Lumina is Dialtu's SMS engine.** Unlike other channels, Dialtu controls the whole
+conversation end to end here: the prompt, the model turn, the tools and the history. The
+carrier only transports the message.
+
+In practice that means two things for you:
+
+<CardGroup cols={2}>
+  <Card title="Contact memory" icon="brain">
+    A Lumina agent **does receive** the contact's memory, just like WhatsApp.
+  </Card>
+
+  <Card title="Opt-out keywords" icon="hand">
+    Lumina recognises **STOP**, **HELP** and **START** automatically, before the model ever sees
+    the message.
+  </Card>
+</CardGroup>
+
+## The editor at a glance
+
+A single screen with three columns, same as the other channels.
+
+| Column | What's in it |
+|---|---|
+| **Settings** (left) | Five groups: model, channel, behaviour, memory and outcomes |
+| **Prompt** (centre) | A single document holding the instructions |
+| **Right panel** | Atlas, testing and summary |
+
+## What SMS does NOT have
+
+Worth saying early, because these are real differences from WhatsApp:
+
+| Not available | Detail |
+|---|---|
+| **Tag audiences** | You can't restrict an agent to certain customers. Routing is **by schedule only** |
+| **Reminders and follow-up sequences** | They don't exist for SMS |
+| **Conversation style and response length** | No controls; it's all defined in the prompt |
+| **Message batching** | Not configurable |
+| **Templates** | There are no approved templates as in WhatsApp |
+
+## What's in this section
+
+<CardGroup cols={2}>
+  <Card title="Create an SMS agent" icon="plus" href="/en/sms-agents/create-agent">
+    The minimum fields to get it replying.
+  </Card>
+
+  <Card title="Configuration" icon="sliders" href="/en/sms-agents/configuration">
+    Channel, schedule, behaviour, memory and outcomes.
+  </Card>
+
+  <Card title="Compliance and opt-outs" icon="shield-check" href="/en/sms-agents/compliance">
+    STOP, HELP, START and A2P 10DLC registration.
+  </Card>
+
+  <Card title="Phone numbers" icon="phone" href="/en/getting-started/phone-numbers">
+    How to get the number the agent needs.
+  </Card>
+</CardGroup>
