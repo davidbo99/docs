@@ -1,26 +1,128 @@
 ---
-title: "Probar y publicar"
-description: "Prueba tu agente y ponlo en producción"
+title: "Probar y activar"
+description: "El panel de prueba, y cómo un agente pasa a producción"
 icon: "circle-play"
 ---
 
-{/* Plantilla: Guía paso a paso. */}
+## Probar llamada
 
-\[Verifica que tu agente funciona y actívalo para llamadas reales.\]
+Segunda pestaña del panel derecho. Es un **chat de texto**, no una llamada de voz: escribes como si fueras la persona que llama y recorres el flujo.
 
-## Pasos
+<Info>
+  **📷 Captura pendiente** — la pestaña Probar llamada con una conversación de prueba y una herramienta ejecutada.
 
-<Steps>
-  <Step title="Haz una llamada de prueba">
-    \[Cómo probar el agente contigo mismo.\]
-  </Step>
-  <Step title="Revisa la transcripción">
-    \[Qué revisar para detectar errores.\]
-  </Step>
-  <Step title="Publica el agente">
-  </Step>
-</Steps>
+  Guardar en `/images/es/agentes-de-voz/probar-panel.png`
+</Info>
 
 <Warning>
-  \[Recuerda revisar los límites de llamadas y el cumplimiento legal antes de publicar.\]
+  **Las herramientas adjuntas se ejecutan de verdad.** No es una simulación:
+
+  - Una herramienta de **calendario o integración** que escriba **crea, mueve o cancela una cita real**.
+  - Una **transferencia** marca un número real.
+  - **Enviar plantilla de WhatsApp** envía un WhatsApp real.
+  - **Fin de llamada** termina la sesión de prueba.
+
+  Usa datos de prueba, o desconecta temporalmente las herramientas que escriben.
 </Warning>
+
+### Cuándo se puede probar
+
+El panel exige tres cosas:
+
+<Check>
+  El agente debe estar **creado** — no se puede probar antes de guardarlo por primera vez.
+</Check>
+
+<Check>
+  Debe estar **sincronizado** con Aurora.
+</Check>
+
+<Check>
+  **No debe haber cambios sin guardar.** La prueba usa la configuración guardada, no lo que tienes en pantalla.
+</Check>
+
+<Note>
+  Esa última es la que más confunde: si editas el prompt y pruebas sin guardar, estarías probando la versión anterior. Por eso el panel se bloquea y te pide guardar primero.
+</Note>
+
+### Coste y límites
+
+<Check>
+  **Es gratis.** El panel de prueba no consume créditos: es una conversación de texto, no minutos de voz.
+</Check>
+
+Tiene un **límite de 60 turnos por hora** por usuario. Al alcanzarlo verás _"Límite de chats de prueba alcanzado por esta hora"_.
+
+<Note>
+  Probar requiere **permisos de escritura** sobre agentes, precisamente porque las herramientas se ejecutan de verdad y pueden crear registros en tus sistemas conectados.
+</Note>
+
+### Qué verás
+
+Las llamadas a herramientas aparecen como tarjetas desplegables con los **argumentos** que usó el agente y el **resultado**. Es la forma más rápida de ver por qué el agente decidió usar —o no usar— una herramienta.
+
+Si el agente cuelga, la conversación termina y hay que **Reiniciar** para probar de nuevo.
+
+## Resumen
+
+Tercera pestaña. Una lista de comprobación de lo que falta —nombre, descripción, modelo, idioma, voz y prompt— y un resumen de la configuración: precio por minuto, número asignado, dirección, modo de transcripción, detección de buzón, herramientas y etiquetas.
+
+Útil como última revisión antes de activar.
+
+## El precio por minuto
+
+En la barra superior, junto al nombre. Se recalcula mientras editas e incluye el modelo, la voz y la longitud del prompt.
+
+<Warning>
+  **El prompt afecta al precio.** Un prompt muy largo puede superar el límite de tokens del modelo, y a partir de ahí la tarifa por minuto **escala hacia arriba**. La barra de tokens del chip se llena, pero **no aparece ningún aviso explícito**.
+
+  Si ves la barra al máximo, acorta el prompt o las FAQ.
+</Warning>
+
+<Note>
+  Las FAQ cuentan para este cálculo, porque se envían junto al prompt.
+</Note>
+
+## Activar el agente
+
+<Warning>
+  **Guardar publica de inmediato.** No hay borrador en el servidor ni historial de versiones: cuando pulsas **Actualizar Agente**, el agente que está atendiendo llamadas cambia en ese momento.
+</Warning>
+
+El único control de ciclo de vida es el interruptor **Activo / Pausado** de la barra superior.
+
+| Estado | Qué implica |
+| --- | --- |
+| **Activo** | Recibe y realiza llamadas normalmente |
+| **Pausado** | **No atiende ninguna llamada entrante**, ni siquiera como agente predeterminado del número |
+
+<Tip>
+  Para cambios grandes en un agente en producción, **duplícalo**, trabaja sobre la copia, pruébala y luego intercambia cuál está activo.
+</Tip>
+
+<Warning>
+  Al **duplicar** un agente, la copia pierde parte de su configuración en el proveedor —el prompt y los ajustes de voz— hasta que la **guardas una primera vez**. Abre siempre la copia y pulsa guardar antes de usarla.
+</Warning>
+
+## Importar y exportar
+
+Desde la lista de agentes puedes **exportar** un agente a JSON (eligiendo qué herramientas incluir) e **importarlo** después. Al importar un agente Aurora, el número de teléfono es **obligatorio**, y si es entrante también hay que darle un horario.
+
+<Note>
+  El asistente de importación aparece **en inglés** aunque uses la interfaz en español.
+</Note>
+
+## Qué no existe
+
+Para que no lo busques:
+
+- **Historial de versiones** ni volver a una configuración anterior.
+- **Base de conocimiento** o subida de documentos.
+- **Grabación de llamadas**, **duración máxima** o **reintentos** como ajustes del agente.
+- **Analíticas dentro del agente** — las métricas por agente están en **Analíticas**, filtrando por ese agente.
+
+## Volver al principio
+
+<Card title="Introducción a los agentes de voz" icon="microphone" href="/es/agentes-de-voz/introduccion">
+  El recorrido completo de la sección.
+</Card>

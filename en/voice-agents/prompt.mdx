@@ -1,0 +1,129 @@
+---
+title: "The prompt and variables"
+description: "How you instruct the agent and how to personalise it"
+icon: "pen-to-square"
+---
+
+The prompt is **a single document** in the centre column of the editor. Everything goes there: who the agent is, how it greets, what it should achieve, and what it must not do.
+
+<Info>
+  **📷 Screenshot needed** — the prompt editor with content and the variables tray open.
+
+  Save to `/images/en/voice-agents/prompt-editor.png`
+</Info>
+
+## How to structure it
+
+The editor suggests three sections. They aren't separate fields — just headings inside the same document:
+
+```markdown
+## Context
+You are Mila, calling on behalf of [your company]. We sell [product] to [customer type].
+You're on the phone, so keep it short and natural.
+
+## Call Flow
+1. Greet them, say your name and who you're calling for.
+2. Confirm you're speaking to the right person.
+3. Explain the reason in one sentence.
+4. If they show interest, offer to book an appointment.
+5. Close by confirming the next step.
+
+## Rules
+- Never quote prices that aren't in this document.
+- If asked something you don't know, say so and offer a callback from a person.
+- If they ask not to be called again, apologise, confirm it, and end the call.
+```
+
+<Warning>
+  **The greeting goes here.** Voice agents have **no first-message field**. If you don't write how the call should open, the agent will improvise.
+</Warning>
+
+<Tip>
+  Write to be **heard, not read**. Short sentences, no long lists, and no heavy markdown in anything the agent will say out loud.
+</Tip>
+
+## The template
+
+The **Use Template** button fills the document with a structured customer-service script, using `[COMPANY NAME]` placeholders you replace.
+
+If you've already written something, it asks for confirmation first.
+
+<Warning>
+  **The Spanish template is incomplete.** The English version includes an AI safeguards block (rules against jailbreaking and hallucination) that is **missing from the Spanish version**.
+
+  If your team works in Spanish, add your own safety rules manually, or copy the block across from the English template.
+</Warning>
+
+## The editor
+
+| Feature | How |
+| --- | --- |
+| **Formatting** | Bold, italic, heading and bullet list in the toolbar |
+| **Pasting** | Formatting is preserved; pasted text that looks like markdown converts automatically |
+| **Search** | `Ctrl` / `Cmd` \+ `F` inside the document |
+| **Insert variable** | The **Insert Variable** button, or type `{{` or `[[` |
+| **Detect variables** | Scans the document and registers any it finds |
+
+## Variables
+
+There are two kinds, with different syntax:
+
+<AccordionGroup>
+  <Accordion title="Client variables — {{name}}">
+    Replaced with real data about the contact being called.
+
+    The ones that resolve automatically are the contact's: name, first name, email and phone, plus their aliases. If the data is missing, a neutral phrase is substituted rather than leaving a gap.
+  </Accordion>
+
+  <Accordion title="Global variables — [[name]]">
+    Intended for fixed values from your operation.
+
+    <Warning>
+      **Global variables are not substituted with any value.** There's no field anywhere to define their content: they reach the agent exactly as written.
+
+      Use them as labels or reminders for yourself, not as data. If you need a value to reach the agent, write it directly into the prompt.
+    </Warning>
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  The `(( ))` and `<< >>` syntaxes come from an older version of the editor and are no longer used. If you see them in an old agent, you can replace them.
+</Note>
+
+### The variables tray
+
+Below the document. It shows declared variables, lets you create new ones with **\+ Add** (type, name, colour and description), drag them into the text, and **Clean Unused** to remove ones that no longer appear.
+
+### The date, automatically
+
+Dialtu always appends a block with the current **day of week, date, time and timezone** to the end of the prompt. You don't have to do anything — the agent knows what day it is.
+
+## FAQs
+
+The **FAQ** button in the top bar opens a list of questions and answers. They're appended **after the prompt**, as a fallback for anything your script doesn't cover.
+
+- No limit on count or length.
+- **None can be left half-finished**: saving with a question but no answer blocks the save and reopens the modal.
+- FAQs **count towards the per-minute price**, because they're part of the prompt that gets sent.
+
+<Note>
+  **There is no knowledge base.** You can't upload documents or PDFs. FAQs are simply more prompt text, so keep them short and specific.
+</Note>
+
+## Atlas, inside the editor
+
+The first tab of the right panel. You can ask for changes in plain language — "make the tone warmer", "add an FAQ about opening hours" — and it applies them to the agent.
+
+In create mode, **Atlas can build the entire agent** for you from a description.
+
+<Warning>
+  **Atlas consumes credits**, unlike the test panel, which is free.
+</Warning>
+
+If Atlas changes the agent while you have unsaved edits, a notice appears letting you choose between **Reload** and **Keep my edits**.
+
+## Next step
+
+<Card title="Voice, call and AI features" icon="sliders" href="/en/voice-agents/configure">
+  How the agent sounds, and what it does when the call ends.
+</Card>

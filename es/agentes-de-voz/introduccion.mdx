@@ -4,27 +4,90 @@ description: "Qué son los agentes de voz de Dialtu y qué pueden hacer"
 icon: "microphone"
 ---
 
-{/* Plantilla: Concepto. */}
+Un agente de voz atiende y realiza **llamadas telefónicas** con IA. Escucha, responde en voz alta, ejecuta acciones a mitad de la llamada —consultar tu sistema, agendar una cita, transferir a una persona— y al colgar deja la conversación clasificada y transcrita.
 
-Un agente de voz es \[definición: un agente de IA que realiza o atiende llamadas por ti\].
+<Info>
+  **📷 Captura pendiente** — el editor de agente de voz completo, mostrando las tres columnas.
 
-## Para qué sirve
+  Guardar en `/images/es/agentes-de-voz/editor-general.png`
+</Info>
 
-\[Casos de uso: calificar leads, agendar, recordatorios, soporte...\]
+## El motor: Aurora
 
-## Cómo funciona
+Los agentes de voz nuevos usan el motor **Aurora**. Es el único disponible: el motor anterior, **Solara**, aparece marcado como _No disponible_ al crear un agente y solo sigue activo para los agentes que ya lo usaban.
 
-- **\[Voz y comportamiento\]**: \[cómo habla y qué personalidad tiene\].
-- **\[Herramientas\]**: \[acciones que puede ejecutar durante la llamada\].
+Toda esta sección describe agentes **Aurora**.
 
-## Empieza aquí
+## Qué puede hacer un agente de voz
 
 <CardGroup cols={2}>
-  <Card title="Crear un agente" icon="plus" href="/es/agentes-de-voz/crear-agente">
-    Crea tu primer agente de voz.
+  <Card title="Atender llamadas entrantes" icon="phone-arrow-down-left">
+    Con enrutamiento por horario: varios agentes pueden compartir un número si sus franjas no se solapan.
   </Card>
 
-  <Card title="Crear herramientas" icon="screwdriver-wrench" href="/es/agentes-de-voz/crear-herramientas">
-    Dale acciones a tu agente.
+  <Card title="Llamar" icon="phone-arrow-up-right">
+    Desde campañas, desde Salesflow o de una en una.
+  </Card>
+
+  <Card title="Ejecutar acciones" icon="screwdriver-wrench">
+    Consultar una API, agendar en tu calendario, transferir la llamada, colgar, o incluso enviar un WhatsApp a mitad de la llamada.
+  </Card>
+
+  <Card title="Clasificar y extraer" icon="tags">
+    Al colgar, etiqueta la llamada, puede crear el contacto automáticamente y detectar si hace falta un seguimiento.
+  </Card>
+</CardGroup>
+
+## El editor, de un vistazo
+
+Al crear o abrir un agente entras directamente al editor. **No hay asistente por pasos**: es una sola pantalla con tres columnas.
+
+| Columna | Qué contiene |
+| --- | --- |
+| **Ajustes** (izquierda) | Cinco grupos plegables: motor, voz, comunicación, voz y llamada, y etiquetas de disposición |
+| **Prompt** (centro) | Un único documento con las instrucciones del agente |
+| **Panel derecho** | Tres pestañas: **Atlas**, **Probar llamada** y **Resumen** |
+
+En la barra superior están el nombre, el estado **Activo / Pausado**, el precio estimado por minuto, y los botones de **FAQ**, **Herramientas** y **Funciones de IA**.
+
+Ambas columnas laterales se pueden plegar, y el editor recuerda cómo las dejaste.
+
+## Lo que conviene saber antes de empezar
+
+<Warning>
+  **Guardar publica de inmediato.** No existe un modo borrador en el servidor: en cuanto pulsas _Actualizar Agente_, el agente en producción cambia.
+
+  La etiqueta **Borrador guardado** que ves en el editor es un autoguardado **de tu navegador**, no una versión en el servidor. Sirve para no perder lo que escribiste si cierras la pestaña, nada más.
+</Warning>
+
+<Note>
+  Tampoco hay **historial de versiones**: no se puede volver a una configuración anterior. Si vas a hacer cambios grandes en un agente que está atendiendo llamadas, considera **duplicarlo** y trabajar sobre la copia.
+</Note>
+
+## Recorrido recomendado
+
+<CardGroup cols={2}>
+  <Card title="Crear tu primer agente de voz" icon="plus" href="/es/agentes-de-voz/crear-agente">
+    Los campos mínimos para tener un agente que pueda llamar.
+  </Card>
+
+  <Card title="El prompt y las variables" icon="pen-to-square" href="/es/agentes-de-voz/prompt">
+    Cómo se le dan las instrucciones y cómo se personaliza por cliente.
+  </Card>
+
+  <Card title="Voz, llamada y funciones de IA" icon="sliders" href="/es/agentes-de-voz/configurar">
+    Idioma, voz, silencio, buzón de voz y extracción posterior.
+  </Card>
+
+  <Card title="Herramientas" icon="screwdriver-wrench" href="/es/agentes-de-voz/crear-herramientas">
+    Los siete tipos de herramienta y cómo se conectan al agente.
+  </Card>
+
+  <Card title="Probar y activar" icon="circle-play" href="/es/agentes-de-voz/probar-publicar">
+    El panel de prueba y cómo el agente pasa a producción.
+  </Card>
+
+  <Card title="Números de teléfono" icon="phone" href="/es/introduccion/numeros-de-telefono">
+    Cómo conseguir el número que el agente necesita para llamar.
   </Card>
 </CardGroup>
