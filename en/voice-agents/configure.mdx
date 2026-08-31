@@ -4,20 +4,150 @@ description: "Language, voice, silence, voicemail, and what the agent extracts a
 icon: "sliders"
 ---
 
-{/* Template: Step-by-step guide. */}
+Everything that defines **how the agent sounds** and **how it behaves** during and after the call.
 
-\[Customize how your agent sounds and behaves during calls.\]
+## Language and voice
 
-## Steps
+<Info>
+  **📷 Screenshot needed** — the Voice Configuration group expanded, with language, voice and the three advanced sliders.
 
-<Steps>
-  <Step title="Choose the voice">
-    \[How to select language and voice.\]
-  </Step>
-  <Step title="Adjust tone and pace">
-    \[Personality and speed parameters.\]
-  </Step>
-  <Step title="Define conversation rules">
-    \[What the agent can and can't do.\]
-  </Step>
-</Steps>
+  Save to `/images/en/voice-agents/configure-voice.png`
+</Info>
+
+### Language
+
+Four options: **English**, **Spanish (Latin America)**, **Spanish (Spain)** and **Multilingual**.
+
+<Warning>
+  Changing the language **clears the selected voice**, because voices are filtered by language. Always pick the language first.
+</Warning>
+
+**Multilingual** lets the agent switch language to match the caller. Use it only if you need it — an agent with a fixed language usually sounds more consistent.
+
+### The voice
+
+The list is filtered by the chosen language, and each card shows the gender and lets you play a sample.
+
+<Note>
+  **Premium voices aren't marked in this selector.** Some voices cost an extra **2.5 credits per minute**, but that only shows in the **Voices** module, not here. If cost matters, check the voice there before assigning it.
+
+  The price in the top bar **does** include the surcharge, but without breaking it out.
+</Note>
+
+### Advanced controls
+
+Three sliders, all defaulting to **1.0**:
+
+| Control | Range | What it does |
+| --- | --- | --- |
+| **Voice Temperature** | 0 – 2 | Stability. Lower = more consistent; higher = more variation |
+| **Voice Speed** | 0.5 – 2 | Rate of speech |
+| **Volume** | 0 – 2 | Output level |
+
+<Tip>
+  For business calls, nudging the speed down (0.9) usually improves comprehension, especially for numbers and addresses.
+</Tip>
+
+## Communication: number and schedule
+
+### The number
+
+Chosen in the **Communication** group. One agent can hold several numbers, and one number can serve several agents.
+
+### Inbound agent
+
+Turn on **Inbound Agent** for it to receive calls. Doing so **clears the selected number** and reloads the list, because the eligible numbers change.
+
+### Time-based routing
+
+Inbound agents only. Defines the windows it covers, with up to **4 ranges per day**.
+
+| Concept | What it means |
+| --- | --- |
+| **Quick presets** | Morning, Business, Evening, After Hours. They **replace** the current schedule |
+| **Timezone** | Ranges are evaluated in this timezone, not the customer's |
+| **Default agent** | Handles whatever no other agent covers. Ticking it **clears its schedule** |
+| **Conflicts** | If your range clashes with another agent on the same number, the editor warns you and **blocks the save** |
+
+<Warning>
+  If a number has **no default agent**, calls outside scheduled hours **aren't routed to anyone**. The editor warns you but still lets you save.
+</Warning>
+
+<Note>
+  **A paused agent takes no calls**, not even as the number's default agent.
+</Note>
+
+<Info>
+  **📷 Screenshot needed** — the time-based routing modal with several ranges configured.
+
+  Save to `/images/en/voice-agents/configure-schedule.png`
+</Info>
+
+## Speech & Call
+
+The fourth settings group.
+
+| Setting | Default | What it does |
+| --- | --- | --- |
+| **Normalize for Speech** | Off | Reads numbers and dates in spoken form ("twenty-five" instead of "25") |
+| **End Call After Silence** | 600 s | Hangs up after that much caller silence. **Minimum 10 s** |
+| **Voicemail detection** | Off | Detects an answering machine and decides what to do |
+
+Turning on voicemail detection lets you pick an **action**:
+
+- **Leave Static Message** — a fixed text you write.
+- **Generate from Prompt** — the AI drafts the message from your instruction.
+- **Hang Up** — disconnects without leaving anything.
+
+<Note>
+  The helper text on these toggles **disappears once you turn them on**. If you need to re-read what one does, switch it off for a moment.
+</Note>
+
+## AI Features
+
+The **AI Features** button in the top bar. This is what the agent does **after** hanging up.
+
+<Info>
+  **📷 Screenshot needed** — the AI Features modal with its three sections.
+
+  Save to `/images/en/voice-agents/configure-ai-features.png`
+</Info>
+
+### Transcription
+
+| Mode | When to use it |
+| --- | --- |
+| **Fast** (default) | Real-time conversations where latency matters most |
+| **Accurate** | When critical data has to be captured exactly |
+
+The other two features depend on the quality of this transcription.
+
+### AI client auto-creation
+
+Off by default. When enabled, it extracts data from the call and **creates the contact record**.
+
+- **Sources**: transcript (on), request variables (on), call metadata (off).
+- **Fields**: phone always; first and last name on; email and company off.
+- **Tags**: you can apply tags to created contacts, and optionally to updated ones.
+- **Advanced**: a custom extraction prompt, and permission to update existing contacts.
+
+### AI follow-up detection
+
+Off by default. Analyses the call and flags whether it **needs follow-up**.
+
+It requires a **detection prompt** describing what conditions justify one. You can include the disposition tag in the analysis and set a retry threshold.
+
+## Disposition tags
+
+The fifth settings group. These are the categories each call is classified into when it ends — _Interested_, _No answer_, _Call back_ — and they're classified by **Dialtu's own AI**, not the provider's.
+
+- They are **account-wide templates**: creating or editing one affects every agent, and they save instantly, without waiting for you to save the agent.
+- Each has a **type**: `Standard`, `Retry` or `No Answer`.
+- The **Analysis Prompt** (max 500 characters) is optional but **significantly improves accuracy**: describe when the tag applies.
+- A tag can be marked as the **default for not-connected calls**, and there can only be one per type.
+
+## Next step
+
+<Card title="Tools" icon="screwdriver-wrench" href="/en/voice-agents/create-tools">
+  Give the agent real actions during the call.
+</Card>

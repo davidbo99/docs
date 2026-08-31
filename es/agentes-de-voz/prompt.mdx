@@ -4,4 +4,126 @@ description: "Cómo se le dan instrucciones al agente y cómo se personalizan"
 icon: "pen-to-square"
 ---
 
-Contenido en preparación.
+El prompt es **un único documento** en la columna central del editor. Ahí va todo: quién es el agente, cómo saluda, qué debe conseguir y qué no puede hacer.
+
+<Info>
+  **📷 Captura pendiente** — el editor de prompt con contenido y la bandeja de variables abierta.
+
+  Guardar en `/images/es/agentes-de-voz/prompt-editor.png`
+</Info>
+
+## Cómo estructurarlo
+
+El editor sugiere tres secciones. No son campos separados — son solo encabezados dentro del mismo documento:
+
+```markdown
+## Contexto
+Eres Mila, y llamas de parte de [tu empresa]. Vendemos [producto] a [tipo de cliente].
+Hablas por teléfono, así que sé breve y natural.
+
+## Flujo de llamada
+1. Saluda y di tu nombre y de parte de quién llamas.
+2. Confirma que hablas con la persona correcta.
+3. Explica el motivo en una frase.
+4. Si muestra interés, ofrece agendar una cita.
+5. Despídete confirmando el siguiente paso.
+
+## Reglas
+- Nunca menciones precios que no estén en este documento.
+- Si preguntan algo que no sabes, dilo y ofrece que te llame una persona.
+- Si piden que no les llames más, discúlpate, confírmalo y termina la llamada.
+```
+
+<Warning>
+  **El saludo va aquí.** Los agentes de voz **no tienen un campo de primer mensaje**. Si no escribes cómo debe abrir la llamada, el agente improvisará.
+</Warning>
+
+<Tip>
+  Escribe para ser **escuchado, no leído**. Frases cortas, sin listas largas y sin markdown complejo en lo que el agente vaya a decir en voz alta.
+</Tip>
+
+## La plantilla
+
+El botón **Usar Plantilla** rellena el documento con un guion de atención al cliente ya estructurado, con marcadores `[NOMBRE DE LA EMPRESA]` que debes sustituir.
+
+Si ya escribiste algo, te pedirá confirmación antes de reemplazarlo.
+
+<Warning>
+  **La plantilla en español está incompleta.** La versión en inglés incluye un bloque de salvaguardas de IA (reglas contra jailbreak y alucinaciones) que **falta en la versión en español**.
+
+  Si trabajas en español, añade tus propias reglas de seguridad a mano, o copia el bloque desde la plantilla en inglés.
+</Warning>
+
+## El editor
+
+| Función | Cómo |
+| --- | --- |
+| **Formato** | Negrita, cursiva, encabezado y lista con viñetas en la barra superior |
+| **Pegar texto** | Se conserva el formato; si el texto pegado parece markdown, se convierte solo |
+| **Buscar** | `Ctrl` / `Cmd` \+ `F` dentro del documento |
+| **Insertar variable** | Botón **Insertar Variable**, o escribe `{{` o `[[` |
+| **Detectar variables** | Recorre el documento y registra las que encuentre |
+
+## Variables
+
+Hay dos tipos, con sintaxis distinta:
+
+<AccordionGroup>
+  <Accordion title="Variables de cliente — {{nombre}}">
+    Se sustituyen por datos reales del contacto al que se llama.
+
+    Las que resuelven automáticamente son las del contacto: nombre, nombre de pila, correo y teléfono, con sus alias. Si el dato no existe, se sustituye por un texto neutro en lugar de dejar un hueco.
+  </Accordion>
+
+  <Accordion title="Variables globales — [[nombre]]">
+    Pensadas para valores fijos de tu operación.
+
+    <Warning>
+      **Las variables globales no se sustituyen por ningún valor.** No existe un campo donde definir su contenido: llegan al agente tal cual están escritas.
+
+      Úsalas como etiquetas o recordatorios para ti, no como datos. Si necesitas que un valor llegue al agente, escríbelo directamente en el prompt.
+    </Warning>
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  Las sintaxis `(( ))` y `<< >>` son de una versión anterior del editor y ya no se usan. Si las ves en un agente antiguo, puedes reemplazarlas.
+</Note>
+
+### La bandeja de variables
+
+Debajo del documento. Muestra las variables declaradas, permite crear nuevas con **\+ Añadir** (tipo, nombre, color y descripción), arrastrarlas al texto y **Limpiar Sin Usar** para quitar las que ya no aparecen.
+
+### La fecha, automática
+
+Dialtu añade siempre al final del prompt un bloque con el **día de la semana, la fecha, la hora y la zona horaria** actuales. No tienes que hacer nada: el agente sabe qué día es.
+
+## Las FAQ
+
+El botón **FAQ** de la barra superior abre una lista de preguntas y respuestas. Se añaden **después del prompt**, como respaldo para lo que el agente no tenga cubierto en el guion.
+
+- No hay límite de cantidad ni de longitud.
+- **Ninguna puede quedar a medias**: si guardas con una pregunta sin respuesta, el agente no se guarda y se reabre el modal.
+- Las FAQ **cuentan para el precio por minuto**, porque forman parte del prompt que se envía.
+
+<Note>
+  **No hay base de conocimiento.** No se pueden subir documentos ni PDF. Las FAQ son simplemente más texto del prompt, así que conviene mantenerlas cortas y concretas.
+</Note>
+
+## Atlas, en el propio editor
+
+La primera pestaña del panel derecho. Puedes pedirle cambios en lenguaje natural —"haz el tono más cálido", "añade una FAQ sobre horarios"— y los aplica sobre el agente.
+
+En modo creación **Atlas puede crear el agente entero** por ti a partir de una descripción.
+
+<Warning>
+  **Atlas consume créditos**, a diferencia del panel de prueba, que es gratuito.
+</Warning>
+
+Si Atlas modifica el agente mientras tienes cambios sin guardar, aparece un aviso que te deja elegir entre **Recargar** o **Conservar mis cambios**.
+
+## Siguiente paso
+
+<Card title="Voz, llamada y funciones de IA" icon="sliders" href="/es/agentes-de-voz/configurar">
+  Cómo suena el agente y qué hace al terminar la llamada.
+</Card>

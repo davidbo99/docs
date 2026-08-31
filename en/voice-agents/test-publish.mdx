@@ -4,23 +4,121 @@ description: "The test panel, and how an agent goes live"
 icon: "circle-play"
 ---
 
-{/* Template: Step-by-step guide. */}
+## Test Call
 
-\[Verify your agent works and activate it for real calls.\]
+The second tab of the right panel. It's a **text chat**, not a voice call: you type as if you were the caller and walk the flow.
 
-## Steps
+<Info>
+  **📷 Screenshot needed** — the Test Call tab with a test conversation and a tool execution.
 
-<Steps>
-  <Step title="Make a test call">
-    \[How to test the agent on yourself.\]
-  </Step>
-  <Step title="Review the transcript">
-    \[What to check to catch errors.\]
-  </Step>
-  <Step title="Publish the agent">
-  </Step>
-</Steps>
+  Save to `/images/en/voice-agents/test-panel.png`
+</Info>
 
 <Warning>
-  \[Remember to review call limits and legal compliance before publishing.\]
+  **Attached tools run for real.** This is not a simulation:
+
+  - A **calendar or integration** tool that writes will **create, move or cancel a real appointment**.
+  - A **transfer** dials a real number.
+  - **Send WhatsApp Template** sends a real WhatsApp message.
+  - **End Call** ends the test session.
+
+  Use test data, or temporarily detach the tools that write.
 </Warning>
+
+### When you can test
+
+The panel requires three things:
+
+<Check>
+  The agent must be **created** — you can't test before saving it the first time.
+</Check>
+
+<Check>
+  It must be **synced** with Aurora.
+</Check>
+
+<Check>
+  There must be **no unsaved changes.** The test runs against the saved configuration, not what's on screen.
+</Check>
+
+<Note>
+  That last one trips people up most: if you edit the prompt and test without saving, you'd be testing the previous version. That's why the panel blocks and asks you to save first.
+</Note>
+
+### Cost and limits
+
+<Check>
+  **It's free.** The test panel consumes no credits — it's a text conversation, not voice minutes.
+</Check>
+
+It's capped at **60 turns per hour** per user. When you hit it you'll see _"Test chat limit reached for this hour"_.
+
+<Note>
+  Testing requires **write permissions** on agents, precisely because tools run for real and can create records in your connected systems.
+</Note>
+
+### What you'll see
+
+Tool calls appear as expandable cards showing the **arguments** the agent used and the **result**. It's the fastest way to see why the agent chose to use — or not use — a tool.
+
+If the agent hangs up, the conversation ends and you have to **Reset** to test again.
+
+## Summary
+
+The third tab. A checklist of what's still missing — name, description, model, language, voice and prompt — and a recap of the configuration: per-minute price, assigned number, direction, transcription mode, voicemail detection, tools and tags.
+
+Useful as a final check before activating.
+
+## The per-minute price
+
+In the top bar, next to the name. It recalculates as you edit and covers the model, the voice and the length of the prompt.
+
+<Warning>
+  **The prompt affects the price.** A very long prompt can exceed the model's token limit, and beyond that the per-minute rate **scales upward**. The chip's token bar fills up, but **no explicit warning appears**.
+
+  If you see the bar maxed out, shorten the prompt or the FAQs.
+</Warning>
+
+<Note>
+  FAQs count towards this calculation, because they're sent alongside the prompt.
+</Note>
+
+## Activating the agent
+
+<Warning>
+  **Saving publishes immediately.** There's no server-side draft and no version history: when you press **Update Agent**, the agent handling live calls changes at that moment.
+</Warning>
+
+The only lifecycle control is the **Active / Paused** toggle in the top bar.
+
+| State | What it means |
+| --- | --- |
+| **Active** | Receives and places calls normally |
+| **Paused** | **Takes no inbound calls at all**, not even as the number's default agent |
+
+<Tip>
+  For big changes to a live agent, **duplicate** it, work on the copy, test it, then swap which one is active.
+</Tip>
+
+<Warning>
+  When you **duplicate** an agent, the copy loses part of its provider-side configuration — the prompt and the voice settings — until you **save it once**. Always open the copy and press save before using it.
+</Warning>
+
+## Import and export
+
+From the agent list you can **export** an agent to JSON (choosing which tools to include) and **import** it later. Importing an Aurora agent makes the phone number **mandatory**, and an inbound one also needs a schedule.
+
+## What doesn't exist
+
+So you don't go looking:
+
+- **Version history** or rolling back to an earlier configuration.
+- **Knowledge base** or document upload.
+- **Call recording**, **maximum duration** or **retries** as agent settings.
+- **Analytics inside the agent** — per-agent metrics live under **Analytics**, filtered by that agent.
+
+## Back to the start
+
+<Card title="Introduction to voice agents" icon="microphone" href="/en/voice-agents/introduction">
+  The full path through this section.
+</Card>

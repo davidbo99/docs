@@ -4,20 +4,154 @@ description: "Idioma, voz, silencio, buzón de voz y lo que el agente extrae al 
 icon: "sliders"
 ---
 
-{/* Plantilla: Guía paso a paso. */}
+Todo lo que define **cómo suena** el agente y **cómo se comporta** durante y después de la llamada.
 
-\[Personaliza cómo suena y se comporta tu agente durante las llamadas.\]
+## Idioma y voz
 
-## Pasos
+<Info>
+  **📷 Captura pendiente** — el grupo Configuración de Voz desplegado, con idioma, voz y los tres controles avanzados.
 
-<Steps>
-  <Step title="Elige la voz">
-    \[Cómo seleccionar idioma y voz.\]
-  </Step>
-  <Step title="Ajusta el tono y el ritmo">
-    \[Parámetros de personalidad y velocidad.\]
-  </Step>
-  <Step title="Define reglas de la conversación">
-    \[Qué puede y qué no puede hacer el agente.\]
-  </Step>
-</Steps>
+  Guardar en `/images/es/agentes-de-voz/configurar-voz.png`
+</Info>
+
+### Idioma
+
+Cuatro opciones: **Inglés**, **Español (Latinoamérica)**, **Español (España)** y **Multilenguaje**.
+
+<Warning>
+  Cambiar el idioma **borra la voz seleccionada**, porque las voces están filtradas por idioma. Elige siempre el idioma primero.
+</Warning>
+
+**Multilenguaje** permite que el agente cambie de idioma según el interlocutor. Úsalo solo si lo necesitas: un agente con idioma fijo suele sonar más consistente.
+
+### La voz
+
+La lista se filtra por el idioma elegido, y cada tarjeta indica el género y permite escuchar una muestra.
+
+<Note>
+  **Las voces premium no están marcadas en este selector.** Algunas voces cuestan **2,5 créditos por minuto adicionales**, pero ese dato solo se ve en el módulo **Voces**, no aquí. Si el coste te importa, revisa la voz allí antes de asignarla.
+
+  El precio de la barra superior **sí** incluye el recargo, pero sin desglosarlo.
+</Note>
+
+### Controles avanzados
+
+Tres deslizadores, todos con valor por defecto **1.0**:
+
+| Control | Rango | Qué hace |
+| --- | --- | --- |
+| **Temperatura de Voz** | 0 – 2 | Estabilidad. Más bajo = más consistente; más alto = más variación |
+| **Velocidad de Voz** | 0,5 – 2 | Ritmo del habla |
+| **Volumen** | 0 – 2 | Nivel de salida |
+
+<Tip>
+  Para llamadas de negocio, bajar ligeramente la velocidad (0,9) suele mejorar la comprensión, sobre todo con números y direcciones.
+</Tip>
+
+## Comunicación: número y horario
+
+### El número
+
+Se elige en el grupo **Comunicación**. Un agente puede tener varios números y un número puede servir a varios agentes.
+
+### Agente entrante
+
+Activa **Agente Entrante** para que reciba llamadas. Al activarlo se **borra el número seleccionado** y se recarga la lista, porque los números elegibles cambian.
+
+### Enrutamiento por horario
+
+Solo para agentes entrantes. Define en qué franjas atiende, con hasta **4 franjas por día**.
+
+| Concepto | Qué significa |
+| --- | --- |
+| **Preajustes rápidos** | Mañana, Laboral, Tarde, Fuera de horario. **Reemplazan** el horario actual |
+| **Zona horaria** | Las franjas se evalúan en esta zona, no en la del cliente |
+| **Agente predeterminado** | Atiende lo que ningún otro agente cubre. Marcarlo **borra su horario** |
+| **Conflictos** | Si tu franja choca con otro agente en el mismo número, el editor lo avisa y **no deja guardar** |
+
+<Warning>
+  Si un número **no tiene agente predeterminado**, las llamadas fuera de horario **no se enrutan a nadie**. El editor lo avisa, pero permite guardar.
+</Warning>
+
+<Note>
+  **Un agente pausado no atiende llamadas**, ni siquiera siendo el predeterminado del número.
+</Note>
+
+<Info>
+  **📷 Captura pendiente** — el modal de enrutamiento por horario con varias franjas configuradas.
+
+  Guardar en `/images/es/agentes-de-voz/configurar-horario.png`
+</Info>
+
+## Voz y llamada
+
+Cuarto grupo de ajustes.
+
+| Ajuste | Por defecto | Qué hace |
+| --- | --- | --- |
+| **Normalizar para Habla** | Desactivado | Lee números y fechas en forma hablada ("veinticinco" en vez de "25") |
+| **Finalizar Llamada Después del Silencio** | 600 s | Cuelga tras ese silencio del interlocutor. **Mínimo 10 s** |
+| **Detección de buzón de voz** | Desactivado | Detecta si contestó un buzón y decide qué hacer |
+
+Al activar la detección de buzón se elige una **acción**:
+
+- **Dejar Mensaje Estático** — un texto fijo que escribes.
+- **Generar desde Prompt** — la IA redacta el mensaje según una indicación tuya.
+- **Colgar** — corta sin dejar mensaje.
+
+<Note>
+  Los textos de ayuda de estos interruptores **desaparecen al activarlos**. Si necesitas releer qué hace uno, apágalo un momento.
+</Note>
+
+## Funciones de IA
+
+El botón **Funciones de IA** de la barra superior. Es lo que el agente hace **después** de colgar.
+
+<Info>
+  **📷 Captura pendiente** — el modal Funciones de IA con las tres secciones.
+
+  Guardar en `/images/es/agentes-de-voz/configurar-funciones-ia.png`
+</Info>
+
+### Transcripción
+
+| Modo | Cuándo usarlo |
+| --- | --- |
+| **Rápido** (por defecto) | Conversaciones en tiempo real donde importa la latencia |
+| **Preciso** | Cuando hay que capturar datos críticos con exactitud |
+
+Las otras dos funciones dependen de la calidad de esta transcripción.
+
+### Creación automática de clientes
+
+Desactivada por defecto. Cuando se activa, extrae datos de la llamada y **crea la ficha del contacto**.
+
+- **Fuentes**: transcripción (activada), variables de la solicitud (activada), metadatos de la llamada (desactivada).
+- **Campos**: teléfono siempre; nombre y apellido activados; correo y empresa desactivados.
+- **Etiquetas**: puedes aplicar etiquetas a los contactos creados, y opcionalmente a los actualizados.
+- **Avanzado**: un prompt de extracción propio, y permitir que actualice contactos existentes.
+
+### Detección de seguimiento
+
+Desactivada por defecto. Analiza la llamada y marca si **requiere seguimiento**.
+
+Necesita un **prompt de detección** donde describas qué condiciones lo justifican. Puedes incluir la etiqueta de disposición en el análisis y marcar un umbral de reintentos.
+
+## Etiquetas de disposición
+
+Quinto grupo de ajustes. Son las categorías con las que se clasifica cada llamada al terminar —_Interesado_, _No contesta_, _Volver a llamar_— y las clasifica **la IA de Dialtu**, no el proveedor.
+
+- Son **plantillas de toda la cuenta**: crearlas o editarlas afecta a todos los agentes, y se guardan al instante, sin esperar a que guardes el agente.
+- Cada una tiene un **tipo**: `Standard`, `Retry` o `No Answer`.
+- El **Prompt de Análisis** (máximo 500 caracteres) es opcional pero **mejora mucho la precisión**: describe cuándo aplica la etiqueta.
+- Una etiqueta puede marcarse como **predeterminada para no conectadas**, y solo puede haber una por tipo.
+
+<Note>
+  Los nombres de los **tipos** aparecen en inglés (`Standard`, `Retry`, `No Answer`) también en la interfaz en español.
+</Note>
+
+## Siguiente paso
+
+<Card title="Herramientas" icon="screwdriver-wrench" href="/es/agentes-de-voz/crear-herramientas">
+  Dale al agente acciones reales durante la llamada.
+</Card>

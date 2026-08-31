@@ -4,27 +4,90 @@ description: "What Dialtu voice agents are and what they can do"
 icon: "microphone"
 ---
 
-{/* Template: Concept. */}
+A voice agent answers and places **phone calls** using AI. It listens, replies out loud, runs actions mid-call — querying your system, booking an appointment, transferring to a person — and when it hangs up it leaves the conversation classified and transcribed.
 
-A voice agent is \[definition: an AI agent that places or answers calls for you\].
+<Info>
+  **📷 Screenshot needed** — the full voice agent editor, showing the three columns.
 
-## What it's for
+  Save to `/images/en/voice-agents/editor-overview.png`
+</Info>
 
-\[Use cases: qualify leads, schedule, reminders, support...\]
+## The engine: Aurora
 
-## How it works
+New voice agents use the **Aurora** engine. It's the only one available: the previous engine, **Solara**, is marked _Not available_ when creating an agent and remains active only for agents that already used it.
 
-- **\[Voice and behavior\]**: \[how it talks and its personality\].
-- **\[Tools\]**: \[actions it can run during the call\].
+This whole section describes **Aurora** agents.
 
-## Start here
+## What a voice agent can do
 
 <CardGroup cols={2}>
-  <Card title="Create an agent" icon="plus" href="/en/voice-agents/create-agent">
-    Create your first voice agent.
+  <Card title="Answer inbound calls" icon="phone-arrow-down-left">
+    With time-based routing: several agents can share one number as long as their hours don't overlap.
   </Card>
 
-  <Card title="Create tools" icon="screwdriver-wrench" href="/en/voice-agents/create-tools">
-    Give your agent actions.
+  <Card title="Place calls" icon="phone-arrow-up-right">
+    From campaigns, from Salesflow, or one at a time.
+  </Card>
+
+  <Card title="Run actions" icon="screwdriver-wrench">
+    Call an API, book on your calendar, transfer the call, hang up — or even send a WhatsApp mid-call.
+  </Card>
+
+  <Card title="Classify and extract" icon="tags">
+    On hang-up it tags the call, can create the contact automatically, and can detect whether follow-up is needed.
+  </Card>
+</CardGroup>
+
+## The editor at a glance
+
+Creating or opening an agent drops you straight into the editor. **There's no step-by-step wizard** — it's a single screen with three columns.
+
+| Column | What's in it |
+| --- | --- |
+| **Settings** (left) | Five collapsible groups: engine, voice, communication, speech & call, and disposition tags |
+| **Prompt** (centre) | A single document holding the agent's instructions |
+| **Right panel** | Three tabs: **Atlas**, **Test Call** and **Summary** |
+
+The top bar holds the name, the **Active / Paused** state, the estimated per-minute price, and the **FAQ**, **Tools** and **AI Features** buttons.
+
+Both side columns collapse, and the editor remembers how you left them.
+
+## What to know before you start
+
+<Warning>
+  **Saving publishes immediately.** There is no server-side draft: the moment you press _Update Agent_, the agent in production changes.
+
+  The **Draft saved** chip you see in the editor is an autosave **in your browser**, not a server-side version. It only stops you losing your typing if you close the tab.
+</Warning>
+
+<Note>
+  There's also **no version history** — you can't roll back to an earlier configuration. If you're making big changes to an agent that's handling live calls, consider **duplicating** it and working on the copy.
+</Note>
+
+## Suggested path
+
+<CardGroup cols={2}>
+  <Card title="Create your first voice agent" icon="plus" href="/en/voice-agents/create-agent">
+    The minimum fields to get an agent that can call.
+  </Card>
+
+  <Card title="The prompt and variables" icon="pen-to-square" href="/en/voice-agents/prompt">
+    How you instruct it and how to personalise per customer.
+  </Card>
+
+  <Card title="Voice, call and AI features" icon="sliders" href="/en/voice-agents/configure">
+    Language, voice, silence, voicemail, and post-call extraction.
+  </Card>
+
+  <Card title="Tools" icon="screwdriver-wrench" href="/en/voice-agents/create-tools">
+    The seven tool types and how they attach to an agent.
+  </Card>
+
+  <Card title="Test and activate" icon="circle-play" href="/en/voice-agents/test-publish">
+    The test panel and how an agent goes live.
+  </Card>
+
+  <Card title="Phone numbers" icon="phone" href="/en/getting-started/phone-numbers">
+    How to get the number the agent needs in order to call.
   </Card>
 </CardGroup>

@@ -4,29 +4,101 @@ description: "From zero to a voice agent ready to call"
 icon: "plus"
 ---
 
-{/* Template: Step-by-step guide. */}
-
-\[By the end you'll have a voice agent created and ready to configure.\]
+By the end you'll have a saved Aurora agent with a voice and a number assigned, ready to test.
 
 ## Before you start
 
-- \[Requirement: access to the Voice agents module.\]
+<Check>
+  **Agent** write permissions. Without them you'll see the section but no buttons.
+</Check>
+
+<Check>
+  An available **phone number**. If you don't have one, [ask support](/en/getting-started/phone-numbers) — the agent can be created without one, but it won't be able to place or receive calls.
+</Check>
+
+<Check>
+  A clear idea of **what the call should achieve**: qualify, book, remind, support.
+</Check>
 
 ## Steps
 
 <Steps>
-  <Step title="Create the agent">
-    \[From **Voice agents**, click **\[button\]**.\]
+  <Step title="Open the editor" icon="plus">
+    In the sidebar, **Voice → Agents**, and press create. Choose **Aurora**.
+
+    You land straight in the editor — there's no step-by-step wizard.
+
+    <Info>
+      **📷 Screenshot needed** — the engine selection modal, with Aurora available and Solara marked _Not available_.
+
+      Save to `/images/en/voice-agents/create-01-engine.png`
+    </Info>
   </Step>
-  <Step title="Define its goal">
-    \[Describe what the agent should achieve on the call.\]
+  <Step title="Name and description" icon="pen">
+    In the top bar. **Both are required** — the agent won't save without a description, even though only your team sees it.
   </Step>
-  <Step title="Write the base script">
+  <Step title="Pick the engine model" icon="microchip">
+    First settings group, **Select Engine Model**. It's the only one that starts open, because it's required.
+
+    Each option shows its **price per minute**, and that price feeds the estimate in the top bar.
+
+    <Tip>
+      Start with a cheaper model. You can change it later and compare the per-minute cost right in the list.
+    </Tip>
+  </Step>
+  <Step title="Language and voice" icon="waveform">
+    **Voice Configuration** group. Language first — there are four options: English, Spanish (Latin America), Spanish (Spain) and Multilingual.
+
+    <Warning>
+      **Choose the language before the voice.** Voices are filtered by language, and changing the language afterwards **clears the selected voice**.
+    </Warning>
+
+    Then the **voice**, from the list filtered by that language. Each card lets you play a sample.
+
+    <Info>
+      **📷 Screenshot needed** — the Voice Configuration group with a language chosen and the voice list.
+
+      Save to `/images/en/voice-agents/create-02-voice.png`
+    </Info>
+  </Step>
+  <Step title="Assign the number" icon="phone">
+    **Communication** group. Pick the **Phone Number**.
+
+    If the agent will **receive** calls, turn on **Inbound Agent** and set its **schedule**. See [Voice, call and AI features](/en/voice-agents/configure).
+
+    <Note>
+      Without a number the agent still saves, and you'll see an amber notice: _"The agent can be created, but it won't receive or place calls until a number is set in Communication."_
+    </Note>
+  </Step>
+  <Step title="Write the prompt" icon="pen-to-square">
+    The centre column. It's the only required content field, and where **everything** the agent needs to know and do goes — including the opening greeting.
+
+    <Card title="The prompt and variables" icon="pen-to-square" href="/en/voice-agents/prompt">
+      How to structure it, templates, and per-customer personalisation.
+    </Card>
+  </Step>
+  <Step title="Save" icon="circle-check">
+    Press **Create Agent**. If something's missing, the editor tells you and **opens the settings group containing the error**, ringed in red.
+
+    The required fields are: name, description, engine model, language, voice and prompt.
   </Step>
 </Steps>
 
+## What you don't configure here
+
+These don't exist as agent settings, and people look for them:
+
+| What you're looking for | Where it actually is |
+| --- | --- |
+| **Greeting or first message** | In the prompt. There's no separate field. |
+| **Transfer to a person** | It's a **tool**, not a setting |
+| **Hang up** | Also a **tool** |
+| **Maximum call duration** | Not configurable |
+| **Call recording** | Not configurable on Aurora |
+| **Retries** | In campaigns and disposition tags, not on the agent |
+
 ## Next step
 
-<Card title="Create tools" icon="screwdriver-wrench" href="/en/voice-agents/create-tools">
-  Give your agent actions.
+<Card title="The prompt and variables" icon="pen-to-square" href="/en/voice-agents/prompt">
+  You have the agent. Now tell it what to say.
 </Card>

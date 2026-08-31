@@ -4,19 +4,140 @@ description: "Los siete tipos de herramienta que puede usar un agente de voz"
 icon: "screwdriver-wrench"
 ---
 
-{/* Plantilla: Guía paso a paso. */}
+Una herramienta es una **acción que el agente puede ejecutar durante la llamada**: consultar una API, agendar una cita, transferir, colgar o enviar un WhatsApp.
 
-\[Las herramientas permiten que el agente ejecute acciones durante la llamada, como agendar o consultar datos.\]
+<Info>
+  **📷 Captura pendiente** — el constructor de herramientas, con los tipos disponibles.
 
-## Pasos
+  Guardar en `/images/es/agentes-de-voz/herramientas-constructor.png`
+</Info>
+
+## Cómo funcionan
+
+Las herramientas son una **biblioteca de la cuenta**, no del agente. Se crean una vez en **Voz → Herramientas** y luego se **adjuntan** a los agentes que las necesiten. Una misma herramienta puede servir a varios agentes.
 
 <Steps>
-  <Step title="Crea una herramienta">
-    \[Desde el agente, abre **Herramientas** y haz clic en **\[botón\]**.\]
+  <Step title="Créala">
+    En **Voz → Herramientas**, elige el tipo y configúrala.
   </Step>
-  <Step title="Configura qué hace">
-    \[Define la acción: por ejemplo, llamar a una API o escribir en una base de datos.\]
+  <Step title="Adjúntala">
+    En el editor del agente, botón **Herramientas** → añadir.
   </Step>
-  <Step title="Conecta la herramienta al agente">
+  <Step title="Mapea los parámetros">
+    Conecta cada parámetro de la herramienta con una variable de tu prompt.
   </Step>
 </Steps>
+
+<Warning>
+  **El tipo no se puede cambiar después de crear la herramienta.** Si te equivocas, hay que crear otra.
+</Warning>
+
+## La descripción es el disparador
+
+Es el campo más importante y el que más se subestima: **la IA decide cuándo usar la herramienta leyendo su descripción**.
+
+<Tip>
+  No describas _qué hace_ la herramienta, describe **cuándo debe usarse**.
+
+  Flojo: `Consulta el estado del pedido.` Bueno: `Úsala cuando el cliente pregunte por un pedido y haya dado un número de pedido.
+  No la uses si solo pregunta por plazos de envío en general.`
+</Tip>
+
+## Los siete tipos
+
+<AccordionGroup>
+  <Accordion title="API — llamar a un servicio externo" icon="code">
+    Método, URL, parámetros, cabeceras y cuerpo. Las respuestas se mapean con rutas JSON (`cliente.id`, `datos[0].nombre`) y esos valores quedan disponibles como variables de salida.
+
+    Cualquier `{{token}}` que escribas en la URL, los parámetros o las cabeceras **se convierte en una variable de entrada** que la IA rellenará.
+
+    Opciones avanzadas: tiempo de espera (por defecto 120 s), un **mensaje mientras se ejecuta** y un **mensaje al terminar** (activado por defecto).
+
+    <Note>
+      La petición siempre se envía como `application/json`, aunque definas otra cabecera.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Transferencia — pasar la llamada a una persona" icon="phone-arrow-right">
+    Destino en formato E.164 (`+[país][número]`), con extensión opcional.
+
+    Dos modos:
+
+    - **Transferencia Fría** — traspaso directo, el agente sale de la llamada.
+    - **Transferencia Cálida** — el agente presenta al cliente y espera a que conteste una persona. Permite música en espera, un mensaje privado para quien recibe y otro público para el cliente.
+  </Accordion>
+
+  <Accordion title="Fin de llamada — colgar" icon="phone-slash">
+    Un solo campo importante: el **prompt disparador**, donde describes cuándo debe terminar la conversación. Opcionalmente, un mensaje justo antes de colgar.
+
+    <Tip>
+      Mantén el disparador estrecho. Colgar de más corta a los clientes a mitad de frase — "el cliente confirma que quedó resuelto" funciona mejor que "la conversación parece terminada".
+    </Tip>
+
+    <Note>
+      Los textos de ayuda de esta herramienta están redactados para chat ("antes de que termine el chat") porque el componente se comparte con WhatsApp y SMS. En una llamada significa colgar.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Cambio de agente — pasar a otro agente" icon="arrows-repeat">
+    Traspasa la llamada a **otro agente de voz**, que continúa la misma conversación en lugar de empezar de cero. Puedes elegir a qué agentes se atribuye el análisis posterior.
+  </Accordion>
+
+  <Accordion title="Calendario — consultar y agendar" icon="calendar">
+    Sobre el calendario nativo de Dialtu. Ocho operaciones, separadas entre lectura y escritura:
+
+    **Lectura:** listar servicios, listar profesionales, listar tipos de cita, consultar disponibilidad, listar las citas del cliente. **Escritura:** agendar, reprogramar y cancelar una cita.
+
+    Ajustes: **horarios a ofrecer** (1–20, por defecto 5), **días a consultar** (1–30, por defecto 7) y si envía un **mensaje de confirmación**.
+
+    <Warning>
+      Agendar y reprogramar solo funcionan bien si el agente **también** puede consultar disponibilidad. Activa las lecturas junto con las escrituras — nada te obliga a hacerlo, pero sin ellas el agente agenda a ciegas.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Integración — un sistema conectado" icon="plug">
+    Hoy hay **un solo proveedor disponible: AgendaPro**, con diez operaciones (seis de consulta y cuatro que modifican datos reales).
+
+    <Warning>
+      **No hay pantalla para conectar integraciones tú mismo.** La conexión la realiza el equipo de Dialtu. En el constructor solo verás un indicador de estado — si dice _Sin conexión_, pide a tu contacto en Dialtu que la vincule antes de salir a producción.
+    </Warning>
+
+    <Tip>
+      En una llamada el agente lee los resultados en voz alta, así que mantén el conjunto de operaciones pequeño: cada capacidad extra es una cosa más a la que puede recurrir a mitad de conversación.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Enviar plantilla de WhatsApp" icon="whatsapp">
+    Un agente de voz puede enviar una **plantilla de WhatsApp aprobada** durante la llamada — útil para mandar un enlace, una confirmación o una ubicación mientras se habla.
+
+    Cada variable de la plantilla se rellena desde el **contexto del servidor** (automático, la IA no lo ve) o como un **argumento de la IA**.
+
+    <Tip>
+      Usa contexto del servidor para todo lo que el modelo no deba inventar.
+    </Tip>
+  </Accordion>
+</AccordionGroup>
+
+## Adjuntar y mapear
+
+El botón **Herramientas** del editor abre la lista de las adjuntas. Al seleccionar una, cada parámetro se puede mapear a una **variable del prompt**.
+
+Dos comportamientos que conviene conocer:
+
+<Check>
+  Al **quitar** una herramienta, sus variables se limpian del prompt automáticamente — el texto queda, pero sin las llaves `{{ }}`.
+</Check>
+
+<Check>
+  Al **renombrar** una variable en la herramienta, el prompt se reescribe solo.
+</Check>
+
+<Note>
+  En el panel de herramientas adjuntas, las de tipo Calendario, Integración y Plantilla de WhatsApp aparecen con la etiqueta **API**. Es un error visual conocido: la herramienta funciona correctamente, solo está mal etiquetada.
+</Note>
+
+## Siguiente paso
+
+<Card title="Probar y activar" icon="circle-play" href="/es/agentes-de-voz/probar-publicar">
+  Prueba el agente antes de dejarlo atendiendo llamadas.
+</Card>

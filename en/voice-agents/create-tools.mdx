@@ -4,19 +4,140 @@ description: "The seven tool types a voice agent can use"
 icon: "screwdriver-wrench"
 ---
 
-{/* Template: Step-by-step guide. */}
+A tool is an **action the agent can run during the call**: query an API, book an appointment, transfer, hang up, or send a WhatsApp.
 
-\[Tools let the agent run actions during the call, such as scheduling or looking up data.\]
+<Info>
+  **📷 Screenshot needed** — the tool builder, showing the available types.
 
-## Steps
+  Save to `/images/en/voice-agents/tools-builder.png`
+</Info>
+
+## How they work
+
+Tools are an **account-wide library**, not per agent. You create one once under **Voice → Tools**, then **attach** it to whichever agents need it. The same tool can serve many agents.
 
 <Steps>
-  <Step title="Create a tool">
-    \[From the agent, open **Tools** and click **\[button\]**.\]
+  <Step title="Create it">
+    Under **Voice → Tools**, pick the type and configure it.
   </Step>
-  <Step title="Configure what it does">
-    \[Define the action: e.g. call an API or write to a database.\]
+  <Step title="Attach it">
+    In the agent editor, the **Tools** button → add.
   </Step>
-  <Step title="Connect the tool to the agent">
+  <Step title="Map the parameters">
+    Connect each of the tool's parameters to a variable in your prompt.
   </Step>
 </Steps>
+
+<Warning>
+  **The type can't be changed after the tool is created.** If you pick wrong, you have to create another.
+</Warning>
+
+## The description is the trigger
+
+It's the most important field and the most underestimated: **the AI decides when to use a tool by reading its description**.
+
+<Tip>
+  Don't describe _what_ the tool does, describe **when it should be used**.
+
+  Weak: `Checks order status.` Strong: `Use when the customer asks about an order and has given an order number. Do not use
+  if they're only asking about shipping times in general.`
+</Tip>
+
+## The seven types
+
+<AccordionGroup>
+  <Accordion title="API — call an external service" icon="code">
+    Method, URL, parameters, headers and body. Responses are mapped with JSON paths (`customer.id`, `data[0].name`) and those values become output variables.
+
+    Any `{{token}}` you write in the URL, parameters or headers **becomes an input variable** for the AI to fill.
+
+    Advanced options: timeout (120 s by default), a **message while it runs**, and a **message after it finishes** (on by default).
+
+    <Note>
+      The request is always sent as `application/json`, even if you set another header.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Transfer — hand the call to a person" icon="phone-arrow-right">
+    Destination in E.164 format (`+[country][number]`), with an optional extension.
+
+    Two modes:
+
+    - **Cold Transfer** — direct handoff, the agent drops out.
+    - **Warm Transfer** — the agent introduces the caller and waits for a human to pick up. Supports hold music, a private message for whoever answers, and a public one for the caller.
+  </Accordion>
+
+  <Accordion title="End Call — hang up" icon="phone-slash">
+    One field that matters: the **trigger prompt**, describing when the conversation should end. Optionally, a message right before hanging up.
+
+    <Tip>
+      Keep the trigger narrow. Ending too eagerly cuts customers off mid-thought — "customer confirms it's resolved" works better than "conversation seems done".
+    </Tip>
+
+    <Note>
+      This tool's helper text is worded for chat ("before the chat ends") because the component is shared with WhatsApp and SMS. On a call it means hanging up.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Agent Swap — hand off to another agent" icon="arrows-repeat">
+    Passes the call to **another voice agent**, which continues the same conversation rather than starting fresh. You can choose which agents the post-call analysis is attributed to.
+  </Accordion>
+
+  <Accordion title="Calendar — check and book" icon="calendar">
+    Against Dialtu's native calendar. Eight operations, split between reads and writes:
+
+    **Reads:** list services, list professionals, list appointment types, check availability, list the customer's appointments. **Writes:** book, reschedule and cancel an appointment.
+
+    Settings: **times to offer** (1–20, default 5), **days to look ahead** (1–30, default 7), and whether it **sends a confirmation message**.
+
+    <Warning>
+      Booking and rescheduling only work well if the agent **can also check availability**. Enable the reads alongside the writes — nothing forces you to, but without them the agent books blind.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Integration — a connected system" icon="plug">
+    Today there is **one provider available: AgendaPro**, with ten operations (six reads and four that modify real data).
+
+    <Warning>
+      **There's no screen for you to connect integrations yourself.** The Dialtu team makes the connection. In the builder you'll only see a status indicator — if it says _Not connected_, ask your Dialtu contact to link it before going live.
+    </Warning>
+
+    <Tip>
+      On a call the agent reads results aloud, so keep the set of operations small: every extra capability is one more thing it may reach for mid-conversation.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Send WhatsApp Template" icon="whatsapp">
+    A voice agent can send an **approved WhatsApp template** during the call — useful for sending a link, a confirmation or a location while talking.
+
+    Each template variable is filled either from **server context** (automatic, never shown to the AI) or as an **AI argument**.
+
+    <Tip>
+      Use server context for anything the model shouldn't invent.
+    </Tip>
+  </Accordion>
+</AccordionGroup>
+
+## Attaching and mapping
+
+The editor's **Tools** button opens the list of attached tools. Selecting one lets you map each parameter to a **prompt variable**.
+
+Two behaviours worth knowing:
+
+<Check>
+  **Removing** a tool cleans its variables out of the prompt automatically — the words stay, but the `{{ }}` braces go.
+</Check>
+
+<Check>
+  **Renaming** a variable on the tool rewrites the prompt in place.
+</Check>
+
+<Note>
+  In the attached-tools panel, Calendar, Integration and WhatsApp Template tools all display an **API** label. It's a known display bug: the tool works correctly, it's just mislabelled.
+</Note>
+
+## Next step
+
+<Card title="Test and activate" icon="circle-play" href="/en/voice-agents/test-publish">
+  Test the agent before leaving it to handle calls.
+</Card>
