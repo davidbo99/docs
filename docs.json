@@ -3,14 +3,11 @@
   "theme": "mint",
   "name": "Dialtu",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#6633FF",
+    "light": "#9966FF",
+    "dark": "#5229CC"
   },
-  "favicon": {
-    "light": "/images/favicon.ico",
-    "dark": "/favicon.svg"
-  },
+  "favicon": "/favicon.svg",
   "navigation": {
     "languages": [
       {
@@ -168,8 +165,9 @@
     ]
   },
   "logo": {
-    "light": "/images/Dialtufulllogopng.png",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://www.dialtu.com"
   },
   "navbar": {
     "primary": {
@@ -192,9 +190,7 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://www.linkedin.com/company/dialtu"
     }
   },
   "description": "Documentación de Dialtu, la plataforma de automatización comercial con IA"
