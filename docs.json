@@ -106,7 +106,8 @@
                   "es/plantillas/referencia",
                   "es/plantillas/troubleshooting",
                   "es/plantillas/notas-version"
-                ]
+                ],
+                "hidden": true
               }
             ]
           }
@@ -208,7 +209,8 @@
                   "en/templates/reference",
                   "en/templates/troubleshooting",
                   "en/templates/release-notes"
-                ]
+                ],
+                "hidden": true
               }
             ]
           }
