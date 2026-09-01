@@ -10,11 +10,17 @@ Una herramienta es una **acción que el agente puede ejecutar durante el chat**.
 **biblioteca de la cuenta**: se crean una vez en **Chat → WhatsApp → Herramientas** y se
 adjuntan a los agentes que las necesiten.
 
-<Info>
-  **📷 Captura pendiente** — el modal de herramientas del agente, con una adjunta.
+El botón **Herramientas** de la barra superior abre la biblioteca. Marca las que este agente
+deba tener; el contador de abajo lleva la cuenta de la selección.
 
-  Guardar en `/images/es/agentes-de-whatsapp/herramientas-modal.png`
-</Info>
+<Frame caption="La biblioteca de la cuenta — marca las que necesite este agente">
+  <img src="/images/es/agentes-de-whatsapp/herramientas-modal.png" alt="Modal Herramientas con book_appointment, agendapro_scheduling, transfer_to_human, end_chat y check_order_status junto a sus distintivos de tipo" />
+</Frame>
+
+Cada fila muestra el **nombre** de la herramienta, su **descripción** y un distintivo para todo
+lo que tenga comportamiento especial — `HANDOFF`, `END CHAT` o el método HTTP de una
+herramienta de API. El buscador y el filtro **Todos los Tipos** empiezan a importar cuando la
+biblioteca crece.
 
 ### Tipos disponibles en WhatsApp
 
@@ -60,11 +66,9 @@ Hoy hay **un proveedor disponible: AgendaPro**.
 
 Segunda pestaña del panel derecho. Escribes como si fueras el cliente.
 
-<Info>
-  **📷 Captura pendiente** — la pestaña Probar con una conversación y el aviso de herramientas reales.
-
-  Guardar en `/images/es/agentes-de-whatsapp/probar-panel.png`
-</Info>
+<Frame caption="Probando el borrador en pantalla, con el aviso de herramientas reales arriba">
+  <img src="/images/es/agentes-de-whatsapp/probar-panel.png" alt="Pestaña Probar con el aviso de que se prueba contra el borrador actual, la advertencia de que las herramientas de API e integración se ejecutan de verdad, el selector Probar como contacto y una conversación con el agente" />
+</Frame>
 
 <Warning>
   **Las herramientas de API, integración y calendario se ejecutan de verdad.** Una herramienta
@@ -76,8 +80,9 @@ de plantillas se muestran como tarjetas terminales, porque necesitan una sesión
 
 <Check>**Es gratis.** El panel de prueba no consume créditos, y a diferencia del de voz funciona **antes de guardar**: prueba tu borrador en pantalla.</Check>
 
-Tiene un límite de uso por hora. Además puedes elegir **probar como un contacto real**, para
-ver cómo responde con su memoria y su historial.
+Tiene un límite de uso por hora. **Probar como contacto** viene en *Nadie en particular*; si
+eliges un contacto real, verás cómo responde con su memoria y sus conversaciones anteriores.
+**Reiniciar** limpia el hilo y empieza de cero.
 
 ## Resumen
 
