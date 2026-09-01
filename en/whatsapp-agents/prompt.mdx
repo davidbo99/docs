@@ -7,11 +7,13 @@ icon: "pen-to-square"
 The prompt is **a single document** in the centre column. Everything goes there: who the agent
 is, how it opens, what it should achieve, and what it must not do.
 
-<Info>
-  **📷 Screenshot needed** — the prompt editor with content and the variables tray.
+<Frame caption="One document, with the variables tray along the bottom">
+  <img src="/images/en/whatsapp-agents/prompt-editor.png" alt="Prompt editor with an Identity and Context section, a Conversation Flow section, and the variables tray showing Company Name and First Name" />
+</Frame>
 
-  Save to `/images/en/whatsapp-agents/prompt-editor.png`
-</Info>
+The toolbar gives you bold, italic, headings and lists, plus **Insert Variable** and **Detect
+Variables** — the latter scans what you've written and registers any tokens it finds. Pasting
+from a document keeps its formatting.
 
 ## How to structure it
 
@@ -48,6 +50,10 @@ before replacing it.
 </Warning>
 
 ## Variables
+
+The tray under the editor lists every variable the document uses. Client variables show as
+green chips, global ones with the `[[ ]]` marker, and **Clean Unused** drops any that no longer
+appear in the text.
 
 <AccordionGroup>
   <Accordion title="Client variables — {{name}}">

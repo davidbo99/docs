@@ -9,11 +9,16 @@ icon: "screwdriver-wrench"
 A tool is an **action the agent can run during the chat**. They're an **account-wide library**:
 created once under **Chat → WhatsApp → Tools**, then attached to whichever agents need them.
 
-<Info>
-  **📷 Screenshot needed** — the agent's tools modal, with one attached.
+The **Tools** button in the top bar opens the library. Tick the ones this agent should have;
+the counter at the bottom tracks the selection.
 
-  Save to `/images/en/whatsapp-agents/tools-modal.png`
-</Info>
+<Frame caption="The account's tool library — tick what this agent needs">
+  <img src="/images/en/whatsapp-agents/tools-modal.png" alt="Tools modal listing book_appointment, agendapro_scheduling, transfer_to_human, end_chat and check_order_status with their type badges" />
+</Frame>
+
+Each row shows the tool's **name**, its **description**, and a badge for anything with special
+behaviour — `HANDOFF`, `END CHAT`, or the HTTP method for an API tool. The search box and the
+**All Types** filter matter once the library grows.
 
 ### Types available on WhatsApp
 
@@ -59,11 +64,9 @@ There's currently **one provider available: AgendaPro**.
 
 The second tab of the right panel. You type as if you were the customer.
 
-<Info>
-  **📷 Screenshot needed** — the Test tab with a conversation and the real-tools warning.
-
-  Save to `/images/en/whatsapp-agents/test-panel.png`
-</Info>
+<Frame caption="Testing the draft on screen, with the real-tools warning at the top">
+  <img src="/images/en/whatsapp-agents/test-panel.png" alt="Test tab showing the draft notice, the API and integration tools run for real warning, the Test as contact selector and a conversation with the agent" />
+</Frame>
 
 <Warning>
   **API, integration and calendar tools run for real.** A calendar tool that writes will **book a
@@ -75,8 +78,9 @@ as terminal cards, because they need a real session.
 
 <Check>**It's free.** The test panel consumes no credits, and unlike the voice one it works **before you save**: it tests the draft on your screen.</Check>
 
-There's an hourly usage limit. You can also **test as a real contact**, to see how it responds
-with their memory and history.
+There's an hourly usage limit. **Test as contact** defaults to *Nobody in particular*; picking a
+real contact shows how the agent responds with their memory and past conversations. **Reset**
+clears the thread and starts over.
 
 ## Summary
 
