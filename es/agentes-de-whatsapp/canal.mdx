@@ -6,11 +6,9 @@ icon: "sliders"
 
 ## Canal de WhatsApp
 
-<Info>
-  **📷 Captura pendiente** — el grupo Canal de WhatsApp desplegado, con número, tipo, enrutamiento y audiencia.
-
-  Guardar en `/images/es/agentes-de-whatsapp/canal-grupo.png`
-</Info>
+<Frame caption="Número, tipo de agente, enrutamiento y los filtros de audiencia">
+  <img src="/images/es/agentes-de-whatsapp/canal-grupo.png" alt="Grupo Canal de WhatsApp desplegado con el selector de número, el tipo de agente, el enrutamiento y los campos de etiquetas incluidas y excluidas" />
+</Frame>
 
 ### Número y tipo
 
@@ -32,6 +30,18 @@ Obligatorio para agentes entrantes y omnicanal. Dos formas:
 
 Varios agentes pueden compartir un número si sus horarios **no se solapan**. Si chocan, el
 editor lo avisa y no deja guardar.
+
+**Editar horario** abre la ventana de enrutamiento: una zona horaria, la casilla **Agente
+predeterminado**, cuatro preajustes rápidos y una fila por día.
+
+<Frame caption="Enrutamiento por horario: zona horaria, preajustes y una fila por día">
+  <img src="/images/es/agentes-de-whatsapp/enrutamiento-modal.png" alt="Modal Enrutamiento por horario con zona horaria, la casilla Agente predeterminado, preajustes rápidos y franjas de lunes a viernes de 9 AM a 5 PM" />
+</Frame>
+
+<Tip>
+  Los **preajustes rápidos** — Mañana, Laboral, Tarde, Fuera de horario — **reemplazan** el
+  horario actual en lugar de sumarse a él. Aplícalos primero y luego ajusta cada día.
+</Tip>
 
 <Warning>
   Si un número **no tiene agente predeterminado**, los mensajes fuera de horario **no se
@@ -71,6 +81,10 @@ Limita a qué clientes atiende este agente, según sus **etiquetas**:
 
 Tercer grupo de ajustes. Define **cómo escribe** el agente.
 
+<Frame caption="Estilo, longitud y agrupación, con una vista previa en vivo del estilo Natural">
+  <img src="/images/es/agentes-de-whatsapp/comportamiento-grupo.png" alt="Grupo Comportamiento de conversación con el estilo Natural seleccionado, la vista previa de mensajes divididos, la longitud de respuesta y la agrupación de mensajes" />
+</Frame>
+
 ### Estilo de conversación
 
 | Estilo | Qué hace |
@@ -78,9 +92,12 @@ Tercer grupo de ajustes. Define **cómo escribe** el agente.
 | **Estándar** | Una sola respuesta por turno |
 | **Natural** | Divide la respuesta en varios mensajes, como escribiría una persona |
 
+Al elegir **Natural**, el panel muestra una **vista previa** de cómo se vería la conversación
+partida en varios mensajes.
+
 <Check>
   **El estilo Natural no cuesta más.** No se cobra por mensaje dividido: se factura la
-  respuesta, no los trozos.
+  respuesta, no los trozos. El propio editor lo dice bajo el selector.
 </Check>
 
 ### Longitud de respuesta
@@ -93,7 +110,8 @@ funcionar mejor — los bloques largos se leen mal en el móvil.
 Activada por defecto. Cuando un cliente envía varios mensajes seguidos, el agente **espera a
 que termine** antes de responder, en lugar de contestar a cada línea suelta.
 
-La **ventana de agrupación** define cuántos segundos espera.
+La **ventana de agrupación** define cuántos segundos espera tras el último mensaje del cliente.
+Por defecto, **5 segundos**.
 
 <Tip>
   Déjala activada. Sin ella, un cliente que escribe "Hola" / "tengo una duda" / "sobre mi
@@ -102,7 +120,15 @@ La **ventana de agrupación** define cuántos segundos espera.
 
 ## Etiquetas de disposición
 
-Último grupo. Clasifican la conversación al cerrarse.
+Clasifican la conversación al cerrarse. Están al **final del grupo Seguimiento y Re-contacto**,
+detrás de **Gestionar** — no en un grupo propio.
+
+Cada etiqueta lleva un **nombre**, un **color** y un **prompt de análisis**: los criterios que
+se envían al modelo cuando clasifica la conversación.
+
+<Frame caption="Crear una etiqueta: nombre, color y los criterios con los que el modelo clasifica">
+  <img src="/images/es/agentes-de-whatsapp/etiquetas-disposicion.png" alt="Modal Etiquetas de Disposición creando la etiqueta CLIENT SCHEDULED, sobre una lista de etiquetas ya configuradas con el distintivo AI" />
+</Frame>
 
 <Note>
   En WhatsApp solo está disponible el tipo **Standard**. Los tipos *Retry* y *No Answer* son
@@ -110,7 +136,8 @@ La **ventana de agrupación** define cuántos segundos espera.
 </Note>
 
 Como en voz, son **plantillas de toda la cuenta**: se guardan al instante y afectan a todos
-los agentes.
+los agentes. Marcar la casilla de una etiqueta en este modal es lo que la asocia a **este**
+agente; el contador de abajo indica cuántas lleva.
 
 ## Siguiente paso
 

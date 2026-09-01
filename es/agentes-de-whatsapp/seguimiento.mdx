@@ -7,11 +7,14 @@ icon: "bell"
 El grupo **Seguimiento y Re-contacto** reúne cinco comportamientos. Se activan por separado,
 pero **algunos se excluyen entre sí**, así que conviene leerlos juntos.
 
-<Info>
-  **📷 Captura pendiente** — el grupo Seguimiento y Re-contacto con sus interruptores.
+<Frame caption="Cada comportamiento es un interruptor; el engranaje abre su configuración">
+  <img src="/images/es/agentes-de-whatsapp/seguimiento-grupo.png" alt="Grupo Seguimiento y Re-contacto con los interruptores de configuración de recordatorios, secuencia de seguimiento, cierre de conversación, exclusión y atención humana" />
+</Frame>
 
-  Guardar en `/images/es/agentes-de-whatsapp/seguimiento-grupo.png`
-</Info>
+<Note>
+  Los recordatorios aparecen aquí como **Configuración de Recordatorios**, con un resumen del
+  ritmo actual debajo. Las **etiquetas de disposición** están al final de este mismo grupo.
+</Note>
 
 <Warning>
   **Los recordatorios y el cierre automático son incompatibles.** Si activas los recordatorios,
@@ -29,10 +32,18 @@ Vuelven a escribir al cliente que **no respondió**.
 Un solo mensaje y ritmo para toda la secuencia: cuántos recordatorios (1–10, por defecto 3) y
 cada cuánto (por defecto 60 minutos).
 
+<Frame caption="Modo simple: una cantidad, un intervalo y una estrategia de mensaje">
+  <img src="/images/es/agentes-de-whatsapp/recordatorios-simple.png" alt="Modal Recordatorios automáticos en modo Simple con dos recordatorios cada hora y la estrategia Guiar a la IA" />
+</Frame>
+
 ### Modo avanzado
 
 Hasta **5 pasos**, cada uno con su propio retraso y mensaje. Un paso nuevo empieza con 1 día
 de espera.
+
+<Frame caption="Modo avanzado: retraso y mensaje propios en cada paso">
+  <img src="/images/es/agentes-de-whatsapp/recordatorios-avanzado.png" alt="Modal Recordatorios automáticos en modo Avanzado mostrando el Paso 1 con su retraso y su mensaje, y el botón Añadir otro paso" />
+</Frame>
 
 <Note>
   En modo avanzado, el número máximo de recordatorios **se ignora**: el límite es la cantidad
@@ -91,6 +102,19 @@ generado por IA o un texto fijo.
 Distinta de los recordatorios: se dispara **después de resolver** la conversación, y envía
 **plantillas de Meta aprobadas**.
 
+<Frame caption="El agente que envía, el prompt de detección y los datos con los que decide la IA">
+  <img src="/images/es/agentes-de-whatsapp/secuencia-seguimiento.png" alt="Modal Secuencia de Seguimiento con el selector de agente, el prompt de detección, las opciones de detección, los datos que se envían a la IA y el período de enfriamiento" />
+</Frame>
+
+El **prompt de detección** es lo que decide si hace falta un seguimiento. El panel de al lado
+enumera exactamente qué recibe la IA para juzgar: la transcripción completa, el resumen de la
+sesión, la etiqueta de disposición y los metadatos.
+
+<Note>
+  Si desmarcas **Incluir etiqueta de disposición en el análisis**, ese dato aparece tachado en
+  la lista de la derecha: es la forma de ver qué se le está enviando realmente al modelo.
+</Note>
+
 - Cada paso necesita una **plantilla aprobada** — no hay texto libre.
 - **Retraso mínimo de 24 horas** por paso. Es una validación: si pones menos, no guarda.
 - Un **período de enfriamiento** evita repetir seguimientos al mismo cliente.
@@ -123,6 +147,14 @@ Distinta de los recordatorios: se dispara **después de resolver** la conversaci
 ## Cierre de conversación
 
 Cierra sesiones tras un período de inactividad, con un mensaje **generado por IA** o **estático**.
+
+<Frame caption="El tiempo de inactividad en minutos y cómo se redacta la despedida">
+  <img src="/images/es/agentes-de-whatsapp/cierre-conversacion.png" alt="Modal Cierre de Conversación con 50 minutos de inactividad y el tipo de mensaje Generado por IA seleccionado" />
+</Frame>
+
+<Note>
+  Un tiempo de inactividad de `0` desactiva el cierre automático.
+</Note>
 
 <Warning>
   Recuerda: **si los recordatorios están activados, esto no se ejecuta**.

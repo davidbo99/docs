@@ -7,11 +7,13 @@ icon: "pen-to-square"
 El prompt es **un único documento** en la columna central. Ahí va todo: quién es el agente,
 cómo abre la conversación, qué debe conseguir y qué no puede hacer.
 
-<Info>
-  **📷 Captura pendiente** — el editor de prompt con contenido y la bandeja de variables.
+<Frame caption="Un solo documento, con la bandeja de variables abajo">
+  <img src="/images/es/agentes-de-whatsapp/prompt-editor.png" alt="Editor de prompt con una sección de Identidad y Contexto, otra de Flujo de Conversación y la bandeja de variables con Company Name y First Name" />
+</Frame>
 
-  Guardar en `/images/es/agentes-de-whatsapp/prompt-editor.png`
-</Info>
+La barra de herramientas ofrece negrita, cursiva, títulos y listas, además de **Insertar
+Variable** y **Detectar Variables** — esta última revisa lo escrito y registra los tokens que
+encuentre. Si pegas texto desde un documento, se conserva el formato.
 
 ## Cómo estructurarlo
 
@@ -48,6 +50,10 @@ confirmación antes de reemplazarlo.
 </Warning>
 
 ## Variables
+
+La bandeja bajo el editor lista todas las variables que usa el documento. Las de cliente
+aparecen como fichas verdes, las globales con la marca `[[ ]]`, y **Limpiar Sin Usar** descarta
+las que ya no aparecen en el texto.
 
 <AccordionGroup>
   <Accordion title="Variables de cliente — {{nombre}}">

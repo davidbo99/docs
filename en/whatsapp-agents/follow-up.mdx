@@ -107,6 +107,11 @@ The **detection prompt** is what decides whether a follow-up is warranted. The p
 lists exactly what the AI is given to judge on: the full transcript, the session summary, the
 disposition tag and the session metadata.
 
+<Note>
+  Unticking **Include disposition tag in analysis** strikes that item out of the list on the
+  right — it's how you see what's actually being sent to the model.
+</Note>
+
 - Every step needs an **approved template** — there's no free-form follow-up.
 - **Minimum 24-hour delay** per step. It's a validation: less than that won't save.
 - A **cool-down period** prevents repeat follow-ups to the same customer.

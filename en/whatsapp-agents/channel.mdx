@@ -79,6 +79,10 @@ Limits which customers this agent serves, based on their **tags**:
 
 The third settings group. Defines **how the agent writes**.
 
+<Frame caption="Style, length and batching, with a live preview of the Natural style">
+  <img src="/images/en/whatsapp-agents/behaviour-group.png" alt="Conversation Behavior group with the Natural style selected, a preview of split messages, the response length selector and message batching" />
+</Frame>
+
 ### Conversation style
 
 | Style | What it does |
@@ -86,9 +90,11 @@ The third settings group. Defines **how the agent writes**.
 | **Standard** | One reply per turn |
 | **Natural** | Splits the reply across several messages, the way a person types |
 
+Picking **Natural** shows a **preview** of how the conversation looks once the reply is split.
+
 <Check>
   **Natural style doesn't cost more.** You aren't charged per split message — the reply is
-  billed, not the pieces.
+  billed, not the pieces. The editor says so under the selector.
 </Check>
 
 ### Response length
@@ -101,7 +107,8 @@ better — long blocks read badly on a phone.
 On by default. When a customer sends several messages in a row, the agent **waits for them to
 finish** instead of answering each line separately.
 
-The **batching window** sets how many seconds it waits.
+The **batching window** sets how many seconds it waits after the customer's last message.
+Default **5 seconds**.
 
 <Tip>
   Leave it on. Without it, a customer typing "Hi" / "quick question" / "about my order" gets
