@@ -7,11 +7,14 @@ icon: "bell"
 The **Follow-up & Engagement** group bundles five behaviours. They're toggled separately, but
 **some are mutually exclusive**, so it's worth reading them together.
 
-<Info>
-  **📷 Screenshot needed** — the Follow-up & Engagement group with its toggles.
+<Frame caption="Each behaviour is a toggle; the gear opens its configuration">
+  <img src="/images/en/whatsapp-agents/follow-up-group.png" alt="Follow-up & Engagement group with the nudge configuration, follow-up sequence, conversation closing, opt-out and human handling toggles, and disposition tags at the bottom" />
+</Frame>
 
-  Save to `/images/en/whatsapp-agents/follow-up-group.png`
-</Info>
+<Note>
+  Reminders appear here as **Nudge Configuration**, with a summary of the current cadence
+  underneath. **Disposition tags** live at the bottom of this same group.
+</Note>
 
 <Warning>
   **Reminders and auto-closing are incompatible.** If you enable reminders, idle auto-close
@@ -29,9 +32,17 @@ These re-contact a customer who **didn't reply**.
 One message and cadence for the whole sequence: how many reminders (1–10, default 3) and how
 often (default 60 minutes).
 
+<Frame caption="Simple mode: one count, one interval, one message strategy">
+  <img src="/images/en/whatsapp-agents/reminders-simple.png" alt="Automatic reminders modal in Simple mode with three reminders every hour and automatic message generation" />
+</Frame>
+
 ### Advanced mode
 
 Up to **5 steps**, each with its own delay and message. A new step starts at 1 day.
+
+<Frame caption="Advanced mode: per-step delay and per-step message">
+  <img src="/images/en/whatsapp-agents/reminders-advanced.png" alt="Automatic reminders modal in Advanced mode showing step 1 with its delay and message strategy, and the Add another step button" />
+</Frame>
 
 <Note>
   In advanced mode the maximum reminder count is **ignored**: the cap is the number of steps.
@@ -88,6 +99,14 @@ message.
 Different from reminders: it fires **after the conversation is resolved**, and sends **approved
 Meta templates**.
 
+<Frame caption="The sending agent, the detection prompt, and what the AI sees when it decides">
+  <img src="/images/en/whatsapp-agents/follow-up-sequence.png" alt="Follow-up Sequence modal with the sending agent selector, detection prompt, detection options, the data sent to the AI, and the cool-down period" />
+</Frame>
+
+The **detection prompt** is what decides whether a follow-up is warranted. The panel beside it
+lists exactly what the AI is given to judge on: the full transcript, the session summary, the
+disposition tag and the session metadata.
+
 - Every step needs an **approved template** — there's no free-form follow-up.
 - **Minimum 24-hour delay** per step. It's a validation: less than that won't save.
 - A **cool-down period** prevents repeat follow-ups to the same customer.
@@ -120,6 +139,14 @@ Meta templates**.
 ## Conversation closing
 
 Closes sessions after a period of inactivity, with an **AI-generated** or **static** message.
+
+<Frame caption="Idle timeout in minutes, and how the goodbye is written">
+  <img src="/images/en/whatsapp-agents/conversation-closing.png" alt="Conversation Closing modal with a 50 minute idle timeout and the AI Generated closing message type selected" />
+</Frame>
+
+<Note>
+  An idle timeout of `0` disables the auto-close.
+</Note>
 
 <Warning>
   Remember: **if reminders are on, this never runs**.

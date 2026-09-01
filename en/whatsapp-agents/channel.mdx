@@ -6,11 +6,9 @@ icon: "sliders"
 
 ## WhatsApp channel
 
-<Info>
-  **📷 Screenshot needed** — the WhatsApp Channel group expanded, with number, type, routing and audience.
-
-  Save to `/images/en/whatsapp-agents/channel-group.png`
-</Info>
+<Frame caption="Number, agent type, routing and the audience filters">
+  <img src="/images/en/whatsapp-agents/channel-group.png" alt="WhatsApp Channel group expanded with the phone number selector, agent type, routing and the include and exclude tag fields" />
+</Frame>
 
 ### Number and type
 
@@ -31,6 +29,18 @@ Required for inbound and omnichannel agents. Two ways:
 
 Several agents can share a number as long as their schedules **don't overlap**. If they clash,
 the editor warns you and blocks the save.
+
+**Edit schedule** opens the routing window: a timezone, the **Default agent** tick, four quick
+presets, and one row per day.
+
+<Frame caption="Time-based routing: timezone, presets and one row per day">
+  <img src="/images/en/whatsapp-agents/routing-modal.png" alt="Time-Based Routing modal with timezone, the Default Agent checkbox, quick presets and Monday to Friday ranges from 9 AM to 5 PM" />
+</Frame>
+
+<Tip>
+  The **quick presets** — Morning, Business, Evening, After Hours — **replace** the current
+  schedule rather than adding to it. Set them first, then adjust individual days.
+</Tip>
 
 <Warning>
   If a number has **no default agent**, messages outside scheduled hours **aren't routed to
@@ -100,7 +110,15 @@ The **batching window** sets how many seconds it waits.
 
 ## Disposition tags
 
-The last group. They classify the conversation when it closes.
+They classify the conversation when it closes. You'll find them at the **bottom of the
+Follow-up & Engagement group**, behind **Manage** — not in a group of their own.
+
+Each tag carries a **name**, a **colour**, and an **analysis prompt**: the criteria sent to the
+model when it classifies the conversation.
+
+<Frame caption="Creating a tag: name, colour and the criteria the model classifies against">
+  <img src="/images/en/whatsapp-agents/disposition-tags.png" alt="Disposition Tags modal creating a tag named CLIENT SCHEDULED with a colour and an analysis prompt" />
+</Frame>
 
 <Note>
   On WhatsApp only the **Standard** type is available. *Retry* and *No Answer* are call-specific
@@ -108,7 +126,7 @@ The last group. They classify the conversation when it closes.
 </Note>
 
 As with voice, these are **account-wide templates**: they save instantly and affect every
-agent.
+agent. Ticking one in this modal is what attaches it to **this** agent.
 
 ## Next step
 
