@@ -277,5 +277,13 @@
       "linkedin": "https://www.linkedin.com/company/dialtu"
     }
   },
-  "description": "Documentación de Dialtu, la plataforma de automatización comercial con IA"
+  "description": "Documentación de Dialtu, la plataforma de automatización comercial con IA",
+  "seo": {
+    "indexing": "navigable",
+    "metatags": {
+      "og:site_name": "Dialtu Documentation",
+      "og:type": "website",
+      "twitter:card": "summary_large_image"
+    }
+  }
 }
