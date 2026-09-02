@@ -23,11 +23,9 @@ Hay **tres** dominios en juego, y solo dos los configuras tú.
 **Configuración → Personalización → Dominios personalizados.** Nosotros aprovisionamos el
 certificado y la CDN; tú agregas dos registros DNS en tu proveedor.
 
-<Info>
-  **📷 Captura pendiente** — la sub-pestaña Dominios personalizados con un dominio en proceso y sus registros DNS.
-
-  Guardar en `/images/es/organizaciones/dominios-personalizados.png`
-</Info>
+<Frame caption="Escribir el dominio — los subdominios funcionan en cualquier sitio, los raíz no">
+  <img src="/images/es/organizaciones/agregar-dominio.png" alt="Modal Agregar dominio personalizado explicando que los subdominios funcionan con cualquier proveedor DNS mientras que los dominios raíz requieren Cloudflare, Route 53 o DNSimple" />
+</Frame>
 
 <Steps>
   <Step title="Escribe el dominio" icon="keyboard">
@@ -40,18 +38,22 @@ certificado y la CDN; tú agregas dos registros DNS en tu proveedor.
     </Warning>
   </Step>
 
-  <Step title="Agrega los dos registros DNS" icon="list-check">
-    Recibes dos CNAME:
+  <Step title="Agrega los registros DNS, según aparezcan" icon="list-check">
+    En total hacen falta dos CNAME, pero **el panel los muestra por etapas**:
 
-    | Propósito | Qué hace |
+    | Propósito | Cuándo aparece |
     |---|---|
-    | **Validación de certificado** | Demuestra que el dominio es tuyo, para emitir el certificado |
-    | **Dominio personalizado → CDN** | Apunta tu dirección a la aplicación |
+    | **Validación de certificado** | De inmediato, en *Validación DNS* |
+    | **Dominio personalizado → CDN** | Cuando el certificado ya se emitió |
+
+    <Frame caption="Esperando DNS — el registro de validación, con el progreso encima">
+      <img src="/images/es/organizaciones/dominios-personalizados.png" alt="Sub-pestaña Dominios personalizados con un dominio esperando DNS, el indicador de cuatro pasos y el CNAME de validación de certificado" />
+    </Frame>
 
     <Warning>
-      **Agrega los dos.** Poner solo el de validación es el error más común: el certificado se
-      emite y la configuración se queda en *Desplegando CDN* para siempre, esperando que el
-      segundo registro resuelva.
+      **Vuelve por el segundo registro.** Si agregas el CNAME de validación y te olvidas, el
+      certificado se emite y la configuración se queda en *Propagación CDN* indefinidamente,
+      esperando un registro que nadie ha puesto.
     </Warning>
   </Step>
 
@@ -82,11 +84,9 @@ deja de servir tu espacio. La dirección `tunombre.dialtu.com` sigue funcionando
 **Configuración → Personalización → Dominio de envío.** Por defecto las invitaciones salen de
 una dirección de la plataforma. Verifica un dominio una vez y todas saldrán como tú.
 
-<Info>
-  **📷 Captura pendiente** — la sub-pestaña Dominio de envío con la tabla de registros DNS.
-
-  Guardar en `/images/es/organizaciones/dominio-envio.png`
-</Info>
+<Frame caption="Los seis registros, cada uno con su botón de copiar">
+  <img src="/images/es/organizaciones/dominio-envio.png" alt="Sub-pestaña Dominio de envío con una dirección con DNS pendiente y sus tres CNAME de DKIM, el MX de MAIL FROM, el SPF y el DMARC" />
+</Frame>
 
 Das una **dirección de origen** — `invitaciones@tuempresa.com` — y opcionalmente un **nombre de
 origen**. A cambio recibes hasta **seis registros DNS**:

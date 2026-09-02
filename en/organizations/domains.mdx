@@ -23,11 +23,9 @@ There are **three** domains in play, and only two of them are yours to configure
 **Settings → Customization → Custom domains.** We provision the certificate and the CDN; you
 add two DNS records at your registrar.
 
-<Info>
-  **📷 Screenshot needed** — the Custom domains sub-tab with a domain being set up and its DNS records.
-
-  Save to `/images/en/organizations/custom-domains.png`
-</Info>
+<Frame caption="Entering the domain — subdomains work anywhere, apex domains don't">
+  <img src="/images/en/organizations/add-domain.png" alt="Add a custom domain modal explaining that subdomains work with any DNS provider while apex domains need Cloudflare, Route 53 or DNSimple" />
+</Frame>
 
 <Steps>
   <Step title="Enter the domain" icon="keyboard">
@@ -40,18 +38,22 @@ add two DNS records at your registrar.
     </Warning>
   </Step>
 
-  <Step title="Add both DNS records" icon="list-check">
-    You get two CNAMEs:
+  <Step title="Add the DNS records, as they appear" icon="list-check">
+    Two CNAMEs are needed in all, but **the panel reveals them one stage at a time**:
 
-    | Purpose | What it does |
+    | Purpose | When it appears |
     |---|---|
-    | **Certificate validation** | Proves you own the domain, so the certificate can be issued |
-    | **Custom domain → CDN** | Points your address at the app |
+    | **Certificate validation** | Straight away, at *DNS validation* |
+    | **Custom domain → CDN** | Once the certificate has been issued |
+
+    <Frame caption="Awaiting DNS — the validation record, with a progress tracker above it">
+      <img src="/images/en/organizations/custom-domains.png" alt="Custom domains sub-tab with a domain awaiting DNS, a four-step tracker and the certificate validation CNAME record" />
+    </Frame>
 
     <Warning>
-      **Add both.** Adding only the validation record is the single most common mistake — the
-      certificate issues, then setup sits at *Deploying CDN* forever waiting for the second
-      record to resolve.
+      **Come back for the second record.** If you add the validation CNAME and walk away, the
+      certificate issues and setup then sits at *CDN propagation* indefinitely, waiting for an
+      alias record nobody has added.
     </Warning>
   </Step>
 
@@ -82,11 +84,9 @@ serving your workspace. The `yourname.dialtu.com` address keeps working througho
 **Settings → Customization → Sending domain.** By default invitations come from a platform
 address. Verify a domain once and every invite goes out as you.
 
-<Info>
-  **📷 Screenshot needed** — the Sending domain sub-tab with the DNS records table.
-
-  Save to `/images/en/organizations/sending-domain.png`
-</Info>
+<Frame caption="All six records, each with a copy button">
+  <img src="/images/en/organizations/sending-domain.png" alt="Sending domain sub-tab with an address pending DNS and its three DKIM CNAMEs, MAIL FROM MX, SPF and DMARC records" />
+</Frame>
 
 You give a **From address** — `invites@yourcompany.com` — and optionally a **From name**. In
 return you get up to **six DNS records** to add:
