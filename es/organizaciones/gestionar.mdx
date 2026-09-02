@@ -7,12 +7,6 @@ icon: "plus"
 Al terminar esta página habrás creado una organización, invitado a su primer administrador y
 sabrás qué hace cada acción de la lista.
 
-<Info>
-  **📷 Captura pendiente** — la pestaña Organizaciones: la tira de estadísticas y la tabla.
-
-  Guardar en `/images/es/organizaciones/lista-organizaciones.png`
-</Info>
-
 ## Crear una
 
 **Organizaciones → Crear organización.** Un asistente de dos pasos.
@@ -46,11 +40,22 @@ sabrás qué hace cada acción de la lista.
   </Step>
 </Steps>
 
-<Info>
-  **📷 Captura pendiente** — el asistente Crear organización, primer paso.
+<Frame caption="Paso 1 — nombre, slug, plan y el interruptor de recarga automática">
+  <img src="/images/es/organizaciones/asistente-crear.png" alt="Asistente Crear organización, paso 1, con nombre visible, slug, desplegable de plan y la casilla de recarga automática mensual" />
+</Frame>
 
-  Guardar en `/images/es/organizaciones/asistente-crear.png`
-</Info>
+<Frame caption="Paso 2 — el primer administrador, y listo">
+  <img src="/images/es/organizaciones/asistente-crear-2.png" alt="Asistente Crear organización, paso 2, pidiendo el correo del primer administrador" />
+</Frame>
+
+<Note>
+  **El asistente todavía dice "subtenant"** — en el título, en el botón y en el mensaje de
+  confirmación. Es el nombre interno antiguo de una organización. El campo del plan aparece como
+  *ID del plan de facturación*, pero es un desplegable normal con tus planes.
+
+  Además, el texto de ayuda del plan y la casilla de recarga automática **se muestran en inglés**
+  aunque la interfaz esté en español: son cadenas que faltan por traducir.
+</Note>
 
 <Warning>
   **Tu plan limita cuántas organizaciones puedes tener.** Al llegar al tope, la creación se
@@ -77,6 +82,10 @@ el pool**. La tabla lista cada organización con su plan, créditos, recarga aut
 </Warning>
 
 ## Qué puedes hacer en cada fila
+
+<Frame caption="La tira de estadísticas, la tabla y todas las acciones de una fila">
+  <img src="/images/es/organizaciones/acciones-fila.png" alt="Tabla de organizaciones con el menú de una fila abierto: abrir espacio, editar, gestionar usuarios, recargar, otorgar, reducir permiso y eliminar" />
+</Frame>
 
 <Columns cols={2}>
   <Card title="Abrir espacio en nueva pestaña" icon="arrow-up-right-from-square">

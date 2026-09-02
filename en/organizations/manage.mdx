@@ -7,12 +7,6 @@ icon: "plus"
 By the end of this page you'll have created an organization, invited its first admin, and know
 what every action on the list does.
 
-<Info>
-  **📷 Screenshot needed** — the Organizations tab: the stat strip and the table of organizations.
-
-  Save to `/images/en/organizations/organizations-list.png`
-</Info>
-
 ## Creating one
 
 **Organizations → Create organization.** A two-step wizard.
@@ -46,11 +40,19 @@ what every action on the list does.
   </Step>
 </Steps>
 
-<Info>
-  **📷 Screenshot needed** — the Create organization wizard, first step.
+<Frame caption="Step 1 — name, slug, plan and the auto-refill switch">
+  <img src="/images/en/organizations/create-wizard.png" alt="Create organization wizard step 1 with display name, slug, billing plan dropdown and the monthly auto-refill checkbox" />
+</Frame>
 
-  Save to `/images/en/organizations/create-wizard.png`
-</Info>
+<Frame caption="Step 2 — the first admin, and you're done">
+  <img src="/images/en/organizations/create-wizard-2.png" alt="Create organization wizard step 2 asking for the first admin email" />
+</Frame>
+
+<Note>
+  **The wizard still says "subtenant"** — in its title, its button, and the confirmation
+  message. It's the old internal name for an organization. The plan field is labelled
+  *Billing plan ID* but is an ordinary dropdown of your plans.
+</Note>
 
 <Warning>
   **Your plan caps how many organizations you can have.** Hit the limit and creation is refused
@@ -77,6 +79,10 @@ status.
 </Warning>
 
 ## What you can do to a row
+
+<Frame caption="The stat strip, the table, and every action available on a row">
+  <img src="/images/en/organizations/row-actions.png" alt="Organizations table with a row menu open showing open workspace, edit, manage users, refill, grant, reduce allowance and soft-delete" />
+</Frame>
 
 <Columns cols={2}>
   <Card title="Open workspace in new tab" icon="arrow-up-right-from-square">
