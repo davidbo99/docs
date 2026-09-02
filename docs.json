@@ -97,6 +97,21 @@
                 ]
               },
               {
+                "group": "Organizaciones",
+                "icon": "building",
+                "pages": [
+                  "es/organizaciones/introduccion",
+                  "es/organizaciones/gestionar",
+                  "es/organizaciones/planes-de-facturacion",
+                  "es/organizaciones/creditos",
+                  "es/organizaciones/telefonos",
+                  "es/organizaciones/personas",
+                  "es/organizaciones/marca",
+                  "es/organizaciones/dominios",
+                  "es/organizaciones/solucion-de-problemas"
+                ]
+              },
+              {
                 "group": "Plantillas",
                 "icon": "copy",
                 "pages": [
@@ -197,6 +212,21 @@
                       "en/channels/whatsapp/troubleshooting"
                     ]
                   }
+                ]
+              },
+              {
+                "group": "Organizations",
+                "icon": "building",
+                "pages": [
+                  "en/organizations/introduction",
+                  "en/organizations/manage",
+                  "en/organizations/billing-plans",
+                  "en/organizations/credits",
+                  "en/organizations/phones",
+                  "en/organizations/people",
+                  "en/organizations/branding",
+                  "en/organizations/domains",
+                  "en/organizations/troubleshooting"
                 ]
               },
               {
