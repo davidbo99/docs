@@ -4,36 +4,120 @@ description: "Qué hacer cuando la conexión con WhatsApp falla o se queda a med
 icon: "circle-question"
 ---
 
-<Info>
-  **Página en construcción.** Estamos preparando este contenido.
-</Info>
+Casi todos los problemas de conexión vienen de la ventana de Meta: se bloqueó, se cerró antes de
+tiempo o sigue esperando algo. Busca abajo el mensaje que estás viendo.
 
-{/* PENDIENTE DE REDACTAR. Esquema propuesto — un <AccordionGroup> con un caso por acordeón:
+## Durante la conexión
 
-  - "Tu navegador bloqueó la ventana de conexión"
-  → permitir ventanas emergentes y reintentar
+<AccordionGroup>
+  <Accordion title="Tu navegador bloqueó la ventana de registro" icon="ban">
+    Dialtu abre el registro de Meta en una ventana emergente y el navegador la detuvo.
 
-  - "El registro fue cancelado"
-  → se cerró la ventana de Meta antes de terminar
+    **Solución:** permite las ventanas emergentes para este sitio y vuelve a pulsar **Conectar
+    WhatsApp**. En Chrome, el icono de ventana bloqueada aparece al final de la barra de
+    direcciones.
+  </Accordion>
 
-  - "Seguimos esperando a Meta"
-  → mantener la ventana abierta; la página se actualiza sola
+  <Accordion title="El registro fue cancelado" icon="circle-xmark">
+    La ventana de Meta se cerró antes de terminar los pasos.
 
-  - "No recibimos respuesta de Meta"
-  → recargar en un minuto para verificar antes de reintentar
+    **Solución:** empieza de nuevo y complétalos hasta el final. De un intento cancelado no queda
+    nada guardado, así que no hay que limpiar nada antes.
+  </Accordion>
 
-  - "Tu cuenta de WhatsApp está vinculada en Meta pero aún no está activa en Dialtu"
-  → botón "Finalizar conexión"
+  <Accordion title="Seguimos esperando a Meta" icon="hourglass">
+    Meta todavía no ha confirmado.
 
-  - Coexistencia: "Esperando aprobación en WhatsApp Business"
-  → abrir la app en el teléfono y aprobar
+    **Deja abierta la ventana de Meta.** La página se actualiza sola en cuanto llega la conexión;
+    no hace falta recargar ni pulsar nada.
+  </Accordion>
 
-  - El número aparece como "Pendiente" y no pasa a "Conectado"
+  <Accordion title="Nunca recibimos respuesta de Meta" icon="satellite-dish">
+    Dialtu dejó de recibir señales de Meta a mitad del proceso.
 
-  - No veo la sección WhatsApp en el menú
-  → permisos / rol del usuario
+    **Solución:** si completaste todos los pasos en la ventana de Meta, espera un minuto y
+    recarga esta página antes de reintentar — la conexión suele llegar con retraso. Si sigue sin
+    aparecer, empieza de nuevo.
+  </Accordion>
 
-  - El agente no responde aunque el número esté conectado
-  → agente pausado, sin enrutamiento, o fuera de horario
-  */}
+  <Accordion title="Dialtu se actualizó mientras esta página estaba abierta" icon="rotate">
+    Salió una versión nueva a mitad de sesión, así que la página y el servidor ya no coinciden.
 
+    **Solución:** recarga la página y vuelve a conectar.
+  </Accordion>
+
+  <Accordion title="No pudimos completar la conexión con Meta" icon="triangle-exclamation">
+    El fallo genérico. Inténtalo una vez más — si se repite, contacta con soporte en lugar de
+    reintentar muchas veces.
+  </Accordion>
+</AccordionGroup>
+
+## Atascado justo después de conectar
+
+<AccordionGroup>
+  <Accordion title="Vinculado en Meta pero aún no activo en Dialtu" icon="link-slash">
+    Aprobaste la conexión en tu teléfono, pero la autorización final nunca llegó a Dialtu. Es el
+    estado a medias más habitual.
+
+    **Solución:** la cuenta muestra un botón **Finalizar conexión**. Púlsalo — no hace falta
+    empezar de cero.
+  </Accordion>
+
+  <Accordion title="Esperando aprobación en WhatsApp Business" icon="mobile">
+    Solo en Coexistencia. Meta está esperando a que apruebes el vínculo **en el teléfono**.
+
+    **Solución:** abre **WhatsApp Business** en el teléfono que tiene ese número y aprueba la
+    solicitud. No cierres la ventana de Meta mientras lo haces.
+
+    Si se agota el tiempo, vuelve a iniciar la conexión.
+  </Accordion>
+
+  <Accordion title="Un número se queda en Pendiente" icon="clock">
+    El número llegó a Dialtu pero Meta no ha terminado de registrarlo. Unos minutos es normal.
+
+    **Solución:** recarga la página pasados unos minutos. Si no pasa a **Conectado** en una hora,
+    contacta con soporte indicando el número: suele significar que el registro falló del lado de
+    Meta.
+  </Accordion>
+</AccordionGroup>
+
+## Con el número ya conectado
+
+<AccordionGroup>
+  <Accordion title="No veo WhatsApp en el menú" icon="eye-slash">
+    Es un problema de permisos, no de conexión. **Solo los Admin ven WhatsApp de fábrica**:
+    ninguno de los roles Member, Sales o Support lo incluye.
+
+    **Solución:** pide a un administrador que te haga Admin, o que cree un rol personalizado que
+    incluya los permisos de WhatsApp.
+  </Accordion>
+
+  <Accordion title="El agente no responde aunque el número esté conectado" icon="robot">
+    La conexión está bien; algo del agente lo está frenando. Revisa, en este orden:
+
+    - Que el agente esté **Activo**, no pausado.
+    - Que su **enrutamiento** cubra la hora actual, o que sea el agente predeterminado del número.
+    - Que el cliente no quede excluido por los filtros de **audiencia** del agente.
+    - Que la cuenta todavía tenga **créditos**.
+
+    <Note>
+      Si un número no tiene agente predeterminado, los mensajes fuera del horario de todos los
+      agentes **no se enrutan a nadie**.
+    </Note>
+  </Accordion>
+
+  <Accordion title="La Coexistencia dejó de funcionar al cabo de un tiempo" icon="mobile-screen">
+    La Coexistencia necesita que la app de WhatsApp Business siga instalada en el teléfono y se
+    abra al menos **una vez cada 14 días**. Si el teléfono se formateó, se perdió o simplemente
+    nadie lo tocó demasiado tiempo, el vínculo puede caerse.
+
+    **Solución:** vuelve a conectar. Si nadie de tu equipo va a usar ese teléfono con
+    regularidad, considera [Cloud API](/es/canales/whatsapp/modo-onboarding) en su lugar.
+  </Accordion>
+</AccordionGroup>
+
+## Si sigues atascado
+
+<Card title="Contactar con soporte" icon="life-ring" href="mailto:support@dialtu.com">
+  Incluye el número y el mensaje exacto que ves en pantalla.
+</Card>

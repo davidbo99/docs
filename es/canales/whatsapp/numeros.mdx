@@ -4,28 +4,88 @@ description: "Gestiona tus números conectados y edita el perfil que ven tus cli
 icon: "phone"
 ---
 
-<Info>
-  **Página en construcción.** Estamos preparando este contenido.
-</Info>
+Una vez conectada una cuenta, sus números aparecen en **Configuración → WhatsApp Business**.
+Ahí revisas la salud de cada número y editas la ficha de empresa que ven tus clientes en el
+chat.
 
-{/* PENDIENTE DE REDACTAR. Esquema propuesto:
+## La tabla de números
 
-  ## La tabla de números
-  Columnas: Número · Nombre · Estado · Calidad · Acciones
+Abre una cuenta conectada para ver su tabla **Números de Teléfono**.
 
-  ## Estados
-  Conectado · Pendiente · Desconectado — qué significa cada uno y qué hacer
+| Columna | Qué te dice |
+|---|---|
+| **Número** | El número en formato internacional |
+| **Nombre** | El nombre verificado que aprobó Meta |
+| **Estado** | **Conectado**, **Pendiente** o **Desconectado** |
+| **Calidad** | La calificación de Meta: **Alta**, **Media**, **Baja** o **Desconocida** |
+| **Acciones** | **Editar Perfil** |
 
-  ## Calidad del número
-  Alto / Medio / Bajo / Desconocido — cómo la calcula Meta y cómo protegerla
+<Note>
+  Un número en **Pendiente** todavía no terminó de registrarse en Meta. Es normal durante los
+  primeros minutos tras conectar — si se queda ahí, ver
+  [Solución de problemas](/es/canales/whatsapp/solucion-de-problemas).
+</Note>
 
-  ## Editar el perfil del teléfono
-  Campos: Acerca de · Descripción · Dirección · Correo electrónico · Sitios web ·
-  Categoría · Foto de perfil
+### Sobre la calificación de calidad
 
-  ## Agregar más números
+La calidad la determina **Meta**, no Dialtu. Refleja cómo reaccionan quienes reciben tus
+mensajes: los bloqueos y los reportes la bajan, la interacción la sostiene.
 
-  ## Desconectar una cuenta
-  Qué pasa con los agentes y las conversaciones al desconectar
-  */}
+<Warning>
+  **Vale la pena vigilar la calidad.** Un número que cae a **Baja** puede ver reducidos sus
+  límites de mensajería por parte de Meta, y los problemas repetidos pueden llevar a
+  restricciones. Si baja, revisa qué estás enviando y a quién antes de seguir enviando.
+</Warning>
 
+<Note>
+  Que aparezca **Desconocida** normalmente solo significa que el número es demasiado nuevo para
+  que Meta lo haya calificado.
+</Note>
+
+## Editar el perfil de empresa
+
+**Editar Perfil** en cualquier fila abre **Editar Perfil del Teléfono**: los datos que ve un
+cliente al tocar el nombre de tu negocio en WhatsApp.
+
+| Campo | Notas |
+|---|---|
+| **Acerca de** | La línea corta que aparece en la cabecera del chat |
+| **Descripción** | Una descripción más larga del negocio |
+| **Dirección** | Tu dirección física |
+| **Correo** | Una dirección de contacto |
+| **Sitios web** | Hasta dos — el segundo es opcional |
+| **Categoría** | La categoría del negocio, elegida de una lista |
+| **Foto de perfil** | Sube una imagen o indica una URL pública |
+
+**Foto de perfil:** PNG, JPEG o WebP, **de menos de 5 MB**. Puedes subir el archivo directamente
+o pegar una URL accesible públicamente para que Meta la descargue.
+
+<Tip>
+  **Acerca de** es la línea que de verdad lee la gente: va justo debajo de tu nombre en la
+  cabecera del chat. Limítala a qué haces y cuándo respondes.
+</Tip>
+
+<Note>
+  Los cambios de perfil van a Meta, así que pueden tardar un momento en verse. Los campos
+  pertenecen **al número**, no a Dialtu: el mismo perfil se muestra dondequiera que se use ese
+  número.
+</Note>
+
+## Agregar otro número
+
+Una cuenta de WhatsApp Business puede tener varios números. **Agregar Número de Teléfono** en la
+cuenta inicia el mismo flujo de Meta que usaste para conectar el primero.
+
+<Card title="Conectar tu cuenta de WhatsApp Business" icon="link" href="/es/canales/whatsapp/conectar">
+  El proceso completo de conexión, paso a paso.
+</Card>
+
+## Desconectar
+
+**Desconectar** en una cuenta la desvincula de Dialtu. Si tienes varias cuentas conectadas, solo
+afecta a la que elijas: las demás siguen funcionando.
+
+<Warning>
+  Desconectar detiene la llegada de mensajes a tus agentes. Las conversaciones existentes se
+  conservan en Dialtu, pero no entra nada nuevo por ese número hasta volver a conectarlo.
+</Warning>

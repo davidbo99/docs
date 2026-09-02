@@ -4,36 +4,117 @@ description: "What to do when the WhatsApp connection fails or gets stuck halfwa
 icon: "circle-question"
 ---
 
-<Info>
-  **Page under construction.** We're preparing this content.
-</Info>
+Most connection problems come from the Meta window — it was blocked, closed early, or is still
+waiting on something. Find the message you're seeing below.
 
-{/* TO BE WRITTEN. Proposed outline — an <AccordionGroup> with one case per accordion:
+## During the connection
 
-- "Your browser blocked the connection window"
-  → allow popups and retry
+<AccordionGroup>
+  <Accordion title="Your browser blocked the signup window" icon="ban">
+    Dialtu opens Meta's signup in a pop-up, and the browser stopped it.
 
-- "Signup was cancelled"
-  → the Meta window was closed before finishing
+    **Fix:** allow pop-ups for this site, then click **Connect WhatsApp** again. In Chrome the
+    blocked-pop-up icon sits at the right-hand end of the address bar.
+  </Accordion>
 
-- "Still waiting for Meta"
-  → keep the window open; the page refreshes itself
+  <Accordion title="Signup was cancelled" icon="circle-xmark">
+    The Meta window was closed before the steps were finished.
 
-- "We didn't hear back from Meta"
-  → reload in a minute to check before retrying
+    **Fix:** start again and work through to the end. Nothing is saved from a cancelled attempt,
+    so there's nothing to clean up first.
+  </Accordion>
 
-- "Your WhatsApp account is linked on Meta but not yet active in Dialtu"
-  → the "Finish connection" button
+  <Accordion title="Still waiting for Meta" icon="hourglass">
+    Meta hasn't confirmed yet.
 
-- Coexistence: "Waiting for approval in WhatsApp Business"
-  → open the app on the phone and approve
+    **Keep the Meta window open.** The page updates by itself as soon as the connection comes
+    through — you don't need to refresh or click anything.
+  </Accordion>
 
-- The number stays "Pending" and never reaches "Connected"
+  <Accordion title="We never received a response from Meta" icon="satellite-dish">
+    Dialtu stopped hearing from Meta partway through.
 
-- I don't see the WhatsApp section in the menu
-  → permissions / user role
+    **Fix:** if you finished every step in the Meta window, wait about a minute and reload this
+    page before retrying — the connection often lands late. If it's still missing after that,
+    start again.
+  </Accordion>
 
-- The agent doesn't reply even though the number is connected
-  → agent paused, no routing, or outside its schedule
-*/}
+  <Accordion title="Dialtu was updated while this page was open" icon="rotate">
+    A new version shipped mid-session, so the page and the server no longer agree.
 
+    **Fix:** reload the page and connect again.
+  </Accordion>
+
+  <Accordion title="We couldn't complete the connection with Meta" icon="triangle-exclamation">
+    The generic failure. Try once more — if it keeps happening, contact support rather than
+    retrying repeatedly.
+  </Accordion>
+</AccordionGroup>
+
+## Stuck just after connecting
+
+<AccordionGroup>
+  <Accordion title="Linked on Meta but not yet active in Dialtu" icon="link-slash">
+    You approved the connection on your phone, but the final authorization never reached Dialtu.
+    This is the most common half-finished state.
+
+    **Fix:** the account shows a **Finish connection** button. Click it — no need to start over.
+  </Accordion>
+
+  <Accordion title="Waiting for WhatsApp Business approval" icon="mobile">
+    Coexistence only. Meta is waiting for you to approve the link **on the phone**.
+
+    **Fix:** open **WhatsApp Business** on the phone holding that number and approve the
+    request. Don't close the Meta window while you do it.
+
+    If it times out, start the connection again.
+  </Accordion>
+
+  <Accordion title="A number stays on Pending" icon="clock">
+    The number reached Dialtu but Meta hasn't finished registering it. A few minutes is normal.
+
+    **Fix:** reload the page after a few minutes. If it hasn't moved to **Connected** after an
+    hour, contact support with the number — it usually means registration failed on Meta's side.
+  </Accordion>
+</AccordionGroup>
+
+## After the number is connected
+
+<AccordionGroup>
+  <Accordion title="I can't see WhatsApp in the menu" icon="eye-slash">
+    A permissions problem, not a connection one. **Only Admins see WhatsApp by default** — none
+    of the Member, Sales or Support roles include it.
+
+    **Fix:** ask an administrator to make you an Admin, or to create a custom role that includes
+    the WhatsApp permissions.
+  </Accordion>
+
+  <Accordion title="The agent doesn't reply even though the number is connected" icon="robot">
+    The connection is fine — something on the agent is stopping it. Check, in order:
+
+    - The agent is **Active**, not paused.
+    - Its **routing** covers the current time, or it's set as the number's default agent.
+    - The customer isn't excluded by the agent's **audience** tag filters.
+    - The account still has **credits**.
+
+    <Note>
+      If a number has no default agent, messages outside every agent's scheduled hours are
+      **not routed to anyone**.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Coexistence stopped working after a while" icon="mobile-screen">
+    Coexistence needs the WhatsApp Business app to stay installed on the phone and be opened at
+    least **once every 14 days**. If the phone was wiped, lost, or simply left alone too long,
+    the link can drop.
+
+    **Fix:** reconnect. If nobody on your team uses that phone regularly, consider
+    [Cloud API](/en/channels/whatsapp/onboarding-mode) instead.
+  </Accordion>
+</AccordionGroup>
+
+## Still stuck
+
+<Card title="Contact support" icon="life-ring" href="mailto:support@dialtu.com">
+  Include the number, and the exact message you're seeing on screen.
+</Card>

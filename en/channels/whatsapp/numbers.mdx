@@ -4,27 +4,85 @@ description: "Manage your connected numbers and edit the profile your customers 
 icon: "phone"
 ---
 
-<Info>
-  **Page under construction.** We're preparing this content.
-</Info>
-
-{/* TO BE WRITTEN. Proposed outline:
+Once an account is connected, its numbers appear under **Settings → WhatsApp Business**. This
+is where you check a number's health and edit the business card your customers see in chat.
 
 ## The numbers table
-Columns: Number · Name · Status · Quality · Actions
 
-## Statuses
-Connected · Pending · Disconnected — what each means and what to do
+Open a connected account to see its **Phone Numbers** table.
 
-## Number quality
-High / Medium / Low / Unknown — how Meta calculates it and how to protect it
+| Column | What it tells you |
+|---|---|
+| **Number** | The number in international format |
+| **Name** | The verified name Meta approved for it |
+| **Status** | **Connected**, **Pending** or **Disconnected** |
+| **Quality** | Meta's rating: **High**, **Medium**, **Low** or **Unknown** |
+| **Actions** | **Edit Profile** |
 
-## Editing the phone profile
-Fields: About · Description · Address · Email · Websites · Category · Profile photo
+<Note>
+  A number sitting at **Pending** hasn't finished registering with Meta yet. That's normal for a
+  few minutes after connecting — see [Troubleshooting](/en/channels/whatsapp/troubleshooting) if
+  it stays there.
+</Note>
 
-## Adding more numbers
+### About the quality rating
 
-## Disconnecting an account
-What happens to agents and conversations when you disconnect
-*/}
+Quality is **Meta's** judgement, not Dialtu's. It reflects how recipients have reacted to your
+messages — blocks and "report" taps push it down, engagement holds it up.
 
+<Warning>
+  **Quality is worth watching.** A number that falls to **Low** can have its messaging limits
+  cut by Meta, and repeated problems can get it restricted. If it drops, look at what you're
+  sending and to whom before sending more.
+</Warning>
+
+<Note>
+  Showing **Unknown** usually just means the number is too new for Meta to have rated it.
+</Note>
+
+## Editing the business profile
+
+**Edit Profile** on any row opens **Edit Phone Profile** — the details customers see when they
+tap your business name in WhatsApp.
+
+| Field | Notes |
+|---|---|
+| **About** | The short line shown in the chat header |
+| **Description** | A longer description of the business |
+| **Address** | Your physical address |
+| **Email** | A contact address |
+| **Websites** | Up to two — the second is optional |
+| **Category** | The business category, picked from a list |
+| **Profile Picture** | Upload an image, or give a public image URL |
+
+**Profile picture:** PNG, JPEG or WebP, **under 5 MB**. You can upload a file directly, or paste
+a publicly reachable URL for Meta to fetch.
+
+<Tip>
+  **About** is the line most customers actually read — it sits right under your name in the chat
+  header. Keep it to what you do and when you reply.
+</Tip>
+
+<Note>
+  Profile changes go to Meta, so they can take a moment to appear for customers. The fields
+  belong to **the number**, not to Dialtu — the same profile shows wherever that number is used.
+</Note>
+
+## Adding another number
+
+A WhatsApp Business Account can hold several numbers. **Add Phone Number** on the account starts
+the same Meta flow you used to connect the first one.
+
+<Card title="Connect your WhatsApp Business account" icon="link" href="/en/channels/whatsapp/connect">
+  The full connection process, step by step.
+</Card>
+
+## Disconnecting
+
+**Disconnect** on an account unlinks it from Dialtu. Where you have more than one account
+connected, it only affects the one you chose — the others keep working.
+
+<Warning>
+  Disconnecting stops messages flowing to your agents. Existing conversations stay in Dialtu,
+  but nothing new arrives on that number until it's connected again.
+</Warning>
