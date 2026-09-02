@@ -1,0 +1,192 @@
+---
+title: "Personas y accesos"
+description: "Invitar usuarios, qué puede hacer cada rol y cómo alguien pertenece a varias organizaciones"
+icon: "users"
+---
+
+Hay **dos formas distintas** de que alguien entre en una organización, y funcionan diferente.
+Saber cuál estás usando evita mucha confusión con los roles.
+
+## Las dos vías de invitación
+
+<Tabs>
+  <Tab title="Tú invitas a una organización" icon="building">
+    Desde **Organizaciones → el menú de la fila → Gestionar usuarios**.
+
+    <Warning>
+      **Todo el que entra por aquí queda como administrador** de esa organización. Este modal no
+      tiene selector de rol.
+
+      Puedes cambiarle el rol después desde la lista de miembros del mismo modal — pero solo
+      cuando haya iniciado sesión al menos una vez.
+    </Warning>
+
+    Úsalo para entregarle a un cliente nuevo las llaves de su espacio.
+
+    <Info>
+      **📷 Captura pendiente** — el modal Gestionar usuarios con la lista de miembros y el campo de invitación.
+
+      Guardar en `/images/es/organizaciones/gestionar-usuarios.png`
+    </Info>
+  </Tab>
+
+  <Tab title="Ellos invitan a su equipo" icon="users">
+    Dentro de su espacio: **Configuración → Gestión de usuarios → Invitaciones**.
+
+    Hasta **20 direcciones** a la vez, separadas por espacios, comas o puntos y coma.
+
+    <Note>
+      **Todo el que entra por aquí queda como Member** — el rol de solo lectura por defecto.
+      Aquí tampoco hay selector de rol; los roles se asignan después.
+    </Note>
+
+    La lista de pendientes ofrece **Reenviar** y **Revocar**. Ambas se ejecutan de inmediato, sin
+    diálogo de confirmación.
+  </Tab>
+</Tabs>
+
+## Cómo es la invitación
+
+El correo lleva tu logo, tu color y el nombre de tu empresa: quien lo recibe ve tu marca, no la
+de Dialtu. Le lleva a una página donde define nombre y contraseña, o continúa con Google.
+
+<Check>
+  **Los enlaces de invitación duran 72 horas.** Pasado ese plazo la página muestra que expiró y
+  tendrás que reenviarla.
+</Check>
+
+Las contraseñas necesitan al menos **10 caracteres**, con mayúscula, minúscula, un número y un
+símbolo. Hay dos rechazos que se señalan aparte: una contraseña que ya se usó antes y otra que
+aparece en una filtración conocida.
+
+<Note>
+  Si la persona **ya tiene cuenta** en tu plataforma, no se envía correo: simplemente se le
+  agrega, y el nuevo espacio aparece en su selector la próxima vez que entre.
+</Note>
+
+## Roles
+
+Cada espacio trae cuatro roles:
+
+| Rol | Qué puede hacer |
+|---|---|
+| **Admin** | Todo. Se salta las comprobaciones de permisos |
+| **Member** | Solo lectura en casi todos los módulos. El rol por defecto |
+| **Sales** | Módulos de ventas, con permisos de escritura |
+| **Support** | Módulos de soporte, con escritura limitada |
+
+<Tip>
+  Puedes crear los tuyos. **Configuración → Gestión de usuarios → Roles → Crear rol** te da una
+  lista de permisos agrupada por área. Los roles del sistema se pueden editar pero no eliminar,
+  y todo el mundo debe tener siempre al menos un rol.
+</Tip>
+
+<Warning>
+  **WhatsApp es solo para administradores de fábrica.** Ni Member, ni Sales, ni Support incluyen
+  los permisos de WhatsApp, así que quien no sea Admin no verá la sección en absoluto.
+
+  Para dar acceso a alguien que no es administrador, crea un rol personalizado que incluya los
+  permisos de WhatsApp.
+</Warning>
+
+## Una persona, varias organizaciones
+
+<Check>
+  **Un solo inicio de sesión cubre todas las organizaciones de tu marca.** El mismo correo, la
+  misma contraseña, el mismo acceso con Google. Por detrás cada espacio guarda su propio
+  registro, pero el usuario nunca lo ve.
+</Check>
+
+Se mueven entre espacios con el **selector, arriba en la barra lateral**. Solo se vuelve
+pulsable cuando pertenecen a más de uno; con uno solo muestra el nombre y ya.
+
+<Note>
+  **El selector se oculta cuando la barra lateral está colapsada.** Si alguien dice que no lo
+  encuentra, suele ser por eso: que expanda la barra.
+</Note>
+
+También hay una página completa de selección en **Seleccionar cuenta**, en el menú de perfil. Es
+donde aterrizan al iniciar sesión quienes pertenecen a varios espacios, y es la página a usar
+cuando acaban de ser invitados y el espacio nuevo aún no aparece: se refresca sola cada pocos
+segundos mientras espera.
+
+Dos consecuencias que conviene saber:
+
+- **Los roles son por organización.** La misma persona puede ser Admin en una y Member en otra.
+- **Quitarla de una no cambia nada en las demás.** El acceso se revoca solo en ese espacio.
+
+<Note>
+  Quien trabaja con **dos socios de marca blanca distintos** tiene dos cuentas separadas, aunque
+  use el mismo correo. Son plataformas distintas, con credenciales distintas: el selector no
+  mostrará ambas.
+</Note>
+
+## Pendiente de ingreso
+
+Alguien invitado que aún no ha iniciado sesión aparece como **Pendiente de ingreso** en la lista
+de miembros, sin rol.
+
+<Warning>
+  **No puedes asignarle un rol hasta que entre una primera vez.** La interfaz te lo dirá:
+  *"Este miembro aún no ha iniciado sesión; su rol se podrá definir cuando acepte la
+  invitación."*
+
+  Invita primero, asigna el rol después.
+</Warning>
+
+## Entrar al espacio de un cliente
+
+Puedes trabajar dentro de cualquier organización que hayas creado: se te agrega automáticamente
+al crearla.
+
+<Steps>
+  <Step title="Ábrela directamente" icon="arrow-up-right-from-square">
+    **Organizaciones → el menú de la fila → Abrir espacio en nueva pestaña.**
+  </Step>
+
+  <Step title="O usa el selector" icon="repeat">
+    Toda organización a la que pertenezcas está en el selector de espacios, junto al tuyo.
+  </Step>
+</Steps>
+
+<Note>
+  **Esto no es invisible.** Apareces en la lista de miembros de esa organización como cualquier
+  otro. Si un cliente pregunta quién tiene acceso, ahí te verá.
+</Note>
+
+Hay cosas que siguen vetadas incluso para ti: no puedes otorgar Super Admin, no puedes editar ni
+quitar a alguien cuyo acceso abarca varios espacios, y nadie puede cambiarse el rol a sí mismo.
+
+## Cuando alguien no puede entrar
+
+<AccordionGroup>
+  <Accordion title="La organización dice Invitación de admin pendiente" icon="triangle-exclamation">
+    La invitación del primer administrador falló durante la creación y la organización quedó
+    atascada. **Nadie puede iniciar sesión en ella** hasta resolverlo.
+
+    Arréglalo desde **el menú de la fila → Reintentar invitación de admin**.
+  </Accordion>
+
+  <Accordion title="Dicen que el enlace expiró" icon="clock">
+    Los enlaces duran 72 horas. Reenvía desde **Gestionar usuarios**, o desde Configuración →
+    Gestión de usuarios → Invitaciones si es una invitación de equipo normal.
+  </Accordion>
+
+  <Accordion title="No aparecen en la lista de miembros" icon="user-slash">
+    Tres posibilidades: se les quitó y no han vuelto a entrar (reaparecen en su siguiente inicio
+    de sesión), aún no han entrado y estás mirando la lista equivocada, o tienen un rol interno
+    de Dialtu que se te oculta.
+  </Accordion>
+
+  <Accordion title="Restablecer la contraseña acaba en una página de error" icon="key">
+    Es una aspereza conocida. Si un restablecimiento iniciado desde el correo termina en error,
+    la contraseña normalmente **sí** se cambió: entra directo a la dirección de tu panel con la
+    contraseña nueva, en lugar de seguir el enlace de esa página.
+  </Accordion>
+</AccordionGroup>
+
+## Siguiente paso
+
+<Card title="Marca" icon="palette" href="/es/organizaciones/marca">
+  Haz que la página de login y los correos sean tuyos.
+</Card>

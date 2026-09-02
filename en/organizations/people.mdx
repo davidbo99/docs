@@ -1,0 +1,193 @@
+---
+title: "People and access"
+description: "Inviting users, what roles can do, and how one person belongs to several organizations"
+icon: "users"
+---
+
+There are **two different ways** someone gets into an organization, and they behave
+differently. Knowing which one you're using saves a lot of confusion about roles.
+
+## The two invitation paths
+
+<Tabs>
+  <Tab title="You invite into an organization" icon="building">
+    From **Organizations → the row's menu → Manage users**.
+
+    <Warning>
+      **Everyone invited this way becomes an Admin** of that organization. There's no role
+      picker in this modal.
+
+      You can change their role afterwards from the member list in the same modal — but only
+      once they've signed in at least once.
+    </Warning>
+
+    Use this to hand a new client the keys to their own workspace.
+
+    <Info>
+      **📷 Screenshot needed** — the Manage users modal with the member list and invite field.
+
+      Save to `/images/en/organizations/manage-users.png`
+    </Info>
+  </Tab>
+
+  <Tab title="They invite their own team" icon="users">
+    Inside their workspace: **Settings → User Management → Invitations**.
+
+    Up to **20 email addresses** at a time, separated by spaces, commas or semicolons.
+
+    <Note>
+      **Everyone invited this way becomes a Member** — the read-only default role. There's no
+      role picker here either; roles are assigned afterwards.
+    </Note>
+
+    The pending list offers **Resend** and **Revoke**. Both fire immediately, with no
+    confirmation dialog.
+  </Tab>
+</Tabs>
+
+## What the invitation looks like
+
+The email is branded with your logo, your colour and your company name — the recipient sees
+your brand, not Dialtu's. It lands them on a page where they set a name and password, or
+continue with Google.
+
+<Check>
+  **Invitation links last 72 hours.** After that the page shows an expired state and they'll
+  need you to resend it.
+</Check>
+
+Passwords need at least **10 characters**, including an uppercase letter, a lowercase letter, a
+number and a symbol. Two rejections are called out specifically: a password they've used
+before, and one that's turned up in a known breach.
+
+<Note>
+  If the person **already has an account** in your platform, no email is sent — they're simply
+  added, and the new workspace appears in their switcher next time they sign in.
+</Note>
+
+## Roles
+
+Four roles ship with every workspace:
+
+| Role | What it can do |
+|---|---|
+| **Admin** | Everything. Bypasses permission checks entirely |
+| **Member** | Read-only across most modules. The default for new invitees |
+| **Sales** | Sales modules, with write access |
+| **Support** | Support modules, with limited write access |
+
+<Tip>
+  You can build your own. **Settings → User Management → Roles → Create Role** gives you a
+  checklist of permissions grouped by area. System roles can be edited but not deleted, and
+  everyone must always hold at least one role.
+</Tip>
+
+<Warning>
+  **WhatsApp is Admin-only out of the box.** None of Member, Sales or Support carry the
+  WhatsApp permissions, so anyone who isn't an Admin will not see the WhatsApp section at all.
+
+  To give a non-admin access, create a custom role that includes the WhatsApp permissions.
+</Warning>
+
+## One person, several organizations
+
+<Check>
+  **One login covers every organization under your brand.** Same email, same password, same
+  Google sign-in. Behind the scenes each workspace keeps its own record, but the user never
+  sees that.
+</Check>
+
+They move between workspaces with the **switcher at the top of the sidebar**. It only becomes
+clickable when they belong to more than one — with a single workspace it just shows the name.
+
+<Note>
+  **The switcher is hidden when the sidebar is collapsed.** If someone says they can't find it,
+  that's usually why — expand the sidebar.
+</Note>
+
+There's also a full-page picker at **Select account**, in the profile menu. That's what people
+land on after signing in when they belong to several workspaces, and it's the page to use when
+someone has just been invited and the new workspace hasn't appeared yet — it refreshes itself
+every few seconds while it waits.
+
+Two consequences worth knowing:
+
+- **Roles are per organization.** The same person can be an Admin in one and a Member in
+  another.
+- **Removing them from one changes nothing elsewhere.** Access is revoked only for that
+  workspace.
+
+<Note>
+  Someone who works with **two different whitelabel partners** has two separate accounts, even
+  with the same email address. Different platforms, different credentials — the switcher will
+  not show both.
+</Note>
+
+## Pending sign-in
+
+A person who's been invited but hasn't signed in yet shows as **Pending sign-in** in the member
+list, with no role.
+
+<Warning>
+  **You can't set their role until they've signed in once.** The interface will tell you:
+  *"This member has not signed in yet; their role can be set once they accept the invite."*
+
+  Invite first, assign the role after.
+</Warning>
+
+## Getting into a client's workspace
+
+You can work inside any organization you created — you're added to it automatically when you
+create it.
+
+<Steps>
+  <Step title="Open it directly" icon="arrow-up-right-from-square">
+    **Organizations → the row's menu → Open workspace in new tab.**
+  </Step>
+
+  <Step title="Or use the switcher" icon="repeat">
+    Every organization you belong to is in the workspace switcher, alongside your own.
+  </Step>
+</Steps>
+
+<Note>
+  **This isn't invisible.** You appear in that organization's member list like anyone else. If
+  a client asks who has access, they can see you there.
+</Note>
+
+Some things stay off-limits even to you: you can't grant Super Admin, you can't edit or remove
+someone whose access spans several workspaces, and nobody can change their own role.
+
+## When someone can't get in
+
+<AccordionGroup>
+  <Accordion title="The organization says Admin invite pending" icon="triangle-exclamation">
+    The first admin's invitation failed during creation, and the organization is stuck. **Nobody
+    can sign in to it** until it's resolved.
+
+    Fix it from **the row's menu → Retry admin invite**.
+  </Accordion>
+
+  <Accordion title="They say the link has expired" icon="clock">
+    Links last 72 hours. Resend from **Manage users**, or from Settings → User Management →
+    Invitations for a regular team invite.
+  </Accordion>
+
+  <Accordion title="They're not in the member list at all" icon="user-slash">
+    Three possibilities: they were removed and haven't signed in since (they reappear on their
+    next login), they haven't signed in yet and you're looking in the wrong place, or they hold
+    a Dialtu staff role that's hidden from you.
+  </Accordion>
+
+  <Accordion title="Password reset leaves them on an error page" icon="key">
+    A known rough edge. If a reset started from an email link ends on an error, the password
+    itself has usually been changed successfully — go to your dashboard address directly and
+    sign in with the new password rather than following the link on that page.
+  </Accordion>
+</AccordionGroup>
+
+## Next step
+
+<Card title="Branding" icon="palette" href="/en/organizations/branding">
+  Make the login page and the emails yours.
+</Card>

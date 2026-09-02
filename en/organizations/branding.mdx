@@ -1,0 +1,136 @@
+---
+title: "Branding"
+description: "Your logo, your colours, your words — across the app, the login page and your emails"
+icon: "palette"
+---
+
+Everything here lives under **Settings → Customization**, and it belongs to **you**, not to
+your organizations. Your clients inherit your brand; they can't change it and they never see
+this section.
+
+<Warning>
+  **A new account starts Dialtu-purple with no logo.** Nothing is pre-filled for you. Setting
+  your colours and uploading a logo should be the first thing you do — before you invite anyone,
+  because invitation emails carry your branding.
+</Warning>
+
+<Info>
+  **📷 Screenshot needed** — Settings → Customization, showing the sub-tabs.
+
+  Save to `/images/en/organizations/customization-tabs.png`
+</Info>
+
+## Brand
+
+Five things, all optional except the name.
+
+| Field | What it's for |
+|---|---|
+| **Logo** | Your wordmark. Top navigation, the login page, email headers |
+| **Isotype** | The square mark. Collapsed sidebar and the login hero. Falls back to your logo |
+| **Favicon** | The browser tab |
+| **Workspace name** | Top navigation, the browser tab title, and emails to your users |
+| **Support email** | Where your users reach you. Leave it blank to hide the link entirely |
+
+**Images: SVG, PNG, JPG or WebP, up to 2 MB.** The favicon also accepts ICO. Wide formats work
+best for the logo.
+
+<Tip>
+  Upload a **PNG or JPG** and you get a crop step, which exports a clean transparent PNG at the
+  right size — 600×200 for the logo, 512×512 for the isotype, 256×256 for the favicon. SVG and
+  ICO files are used exactly as you upload them, with no crop step.
+</Tip>
+
+<Info>
+  **📷 Screenshot needed** — the Brand sub-tab with a logo uploaded.
+
+  Save to `/images/en/organizations/brand-panel.png`
+</Info>
+
+<Note>
+  If you upload no favicon, your users get an automatically generated tile — the first letter
+  of your workspace name on your primary colour. They never see the Dialtu mark.
+</Note>
+
+## Theme
+
+Three colours drive everything: **Primary**, **Secondary** and **Accent**. The rest of the
+palette — around forty variables in all — is derived automatically unless you turn that off.
+
+<Columns cols={2}>
+  <Card title="Generate palette from colour" icon="wand-magic-sparkles">
+    Paste one hex value and get a full palette built around it.
+  </Card>
+
+  <Card title="Harmony presets" icon="circle-half-stroke">
+    Complementary, analogous, triadic or tetradic.
+  </Card>
+</Columns>
+
+Open **Advanced variables** to set any of the remaining colours by hand. You can save several
+named themes and keep two pointers: the **active** theme, which everyone sees, and the
+**default**, which *Reset* returns to.
+
+<Info>
+  **📷 Screenshot needed** — the Theme sub-tab with the colour editor and contrast check.
+
+  Save to `/images/en/organizations/theme-panel.png`
+</Info>
+
+### Where your colours end up
+
+<Check>
+  **Save the theme once and your primary and accent colours follow you everywhere** — the
+  dashboard, the hosted login page, and your invitation emails. There's no second place to
+  set them.
+</Check>
+
+Only primary and accent cross over. Surface, text and status colours stay in the dashboard.
+
+### About the contrast check
+
+The editor shows live WCAG AA pass/fail badges as you pick colours.
+
+<Warning>
+  **They're advice, not a gate.** A theme that fails contrast still saves. Read the badges —
+  nothing else will stop you shipping a palette your users struggle to read.
+</Warning>
+
+<Note>
+  There's no separate dark-mode palette. One set of colours serves both modes.
+</Note>
+
+## Brandable texts
+
+Override wording in the interface, per language. Use it for the vocabulary your industry
+expects — renaming things your clients call something else.
+
+## What you can't change
+
+<AccordionGroup>
+  <Accordion title="The marketing copy on the login page" icon="lock">
+    The headline and strapline beside the sign-in form are fixed, brand-neutral English. They
+    don't mention Dialtu, but you can't edit them or translate them.
+  </Accordion>
+
+  <Accordion title="Your favicon on the login page" icon="star">
+    The favicon applies to the **dashboard tab only**. The hosted login page doesn't currently
+    pick it up, even though the panel reads as though it does.
+  </Accordion>
+
+  <Accordion title="Your subdomain" icon="link">
+    The `yourname.dialtu.com` address is fixed at setup and can't be renamed afterwards. If you
+    want a different address, attach [a domain of your own](/en/organizations/domains).
+  </Accordion>
+
+  <Accordion title="Branding per organization" icon="building">
+    Your organizations all share your brand. There's no per-client logo or palette — they sign
+    in through your login page, under your name.
+  </Accordion>
+</AccordionGroup>
+
+## Next step
+
+<Card title="Domains" icon="globe" href="/en/organizations/domains">
+  Put the app on your own web address and send invitations from your own domain.
+</Card>

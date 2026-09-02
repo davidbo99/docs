@@ -1,0 +1,138 @@
+---
+title: "Domains"
+description: "Put the app on your own address, and send invitations from your own domain"
+icon: "globe"
+---
+
+There are **three** domains in play, and only two of them are yours to configure.
+
+| Domain | What it is | Who sets it up |
+|---|---|---|
+| `yourname.dialtu.com` | Works from day one | Automatic |
+| `app.yourcompany.com` | Your own address for the app | **You**, two DNS records |
+| Sign-in | Where the login form is served | Automatic, shared, brand-neutral |
+
+<Note>
+  The sign-in address is a **neutral domain** that carries no Dialtu branding, shared across
+  partners. Your users pass through it during login — the page itself shows your logo and
+  colours. You don't configure it and there are no DNS records for it.
+</Note>
+
+## Your own app domain
+
+**Settings → Customization → Custom domains.** We provision the certificate and the CDN; you
+add two DNS records at your registrar.
+
+<Info>
+  **📷 Screenshot needed** — the Custom domains sub-tab with a domain being set up and its DNS records.
+
+  Save to `/images/en/organizations/custom-domains.png`
+</Info>
+
+<Steps>
+  <Step title="Enter the domain" icon="keyboard">
+    Something like `app.yourcompany.com`.
+
+    <Warning>
+      **Use a subdomain, not your bare domain.** Most registrars — GoDaddy, Namecheap — reject
+      CNAME records at the apex. The panel will make you tick a box to confirm your DNS
+      supports CNAME flattening or ALIAS records if you insist.
+    </Warning>
+  </Step>
+
+  <Step title="Add both DNS records" icon="list-check">
+    You get two CNAMEs:
+
+    | Purpose | What it does |
+    |---|---|
+    | **Certificate validation** | Proves you own the domain, so the certificate can be issued |
+    | **Custom domain → CDN** | Points your address at the app |
+
+    <Warning>
+      **Add both.** Adding only the validation record is the single most common mistake — the
+      certificate issues, then setup sits at *Deploying CDN* forever waiting for the second
+      record to resolve.
+    </Warning>
+  </Step>
+
+  <Step title="Wait" icon="hourglass">
+    The status moves through **Awaiting DNS → Validating → Cert issued → Deploying CDN →
+    Live**.
+
+    You can close the page — it carries on in the background. CDN deployment usually takes
+    **5 to 15 minutes**.
+  </Step>
+</Steps>
+
+<Check>
+  Once it's **Live**, invitation emails start pointing at your address instead of the
+  `dialtu.com` one, automatically.
+</Check>
+
+<Note>
+  If the DNS records aren't in place within **72 hours**, the setup is marked failed. **Check
+  status** resets it and tries again — no need to start over.
+</Note>
+
+Removing a domain takes about **25 minutes** to fully unwind, after which that address stops
+serving your workspace. The `yourname.dialtu.com` address keeps working throughout.
+
+## Sending invitations from your own domain
+
+**Settings → Customization → Sending domain.** By default invitations come from a platform
+address. Verify a domain once and every invite goes out as you.
+
+<Info>
+  **📷 Screenshot needed** — the Sending domain sub-tab with the DNS records table.
+
+  Save to `/images/en/organizations/sending-domain.png`
+</Info>
+
+You give a **From address** — `invites@yourcompany.com` — and optionally a **From name**. In
+return you get up to **six DNS records** to add:
+
+| Type | How many | Purpose |
+|---|---|---|
+| CNAME | 3 | DKIM signing |
+| MX | 1 | Return path for bounces |
+| TXT | 1 | SPF alignment |
+| TXT | 1 | DMARC policy |
+
+Add them, click **Verify**, and the status moves **Pending DNS → Verifying → Verified**. DNS
+changes can take up to an hour to propagate.
+
+<Check>
+  **Nothing changes until the domain is verified.** The sender address only switches once
+  verification succeeds, so a half-finished setup can't break your invitations.
+</Check>
+
+<Note>
+  Remove the identity and invitations revert to the platform sender. You never need SMTP
+  credentials — verification is all that's required.
+</Note>
+
+### If you see a sandbox warning
+
+A banner saying email is in limited or sandbox mode means invitations to new recipients may
+not deliver. That's an account-level limit on the environment, not something you can fix —
+contact Dialtu.
+
+## What's branded and what isn't
+
+<AccordionGroup>
+  <Accordion title="Invitation emails — fully branded" icon="envelope">
+    Your logo, your primary colour, your company name, and a link to your address. This is the
+    email your clients actually receive, so it's the one that matters most.
+  </Accordion>
+
+  <Accordion title="Password reset emails — partly" icon="key">
+    They come **from your address** once your sending domain is verified, but the body uses the
+    stock template — no logo, no colours. The web pages they lead to *are* branded.
+  </Accordion>
+</AccordionGroup>
+
+## Next step
+
+<Card title="People and access" icon="users" href="/en/organizations/people">
+  Now invite someone and see the branding in action.
+</Card>

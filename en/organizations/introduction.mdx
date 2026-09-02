@@ -1,0 +1,146 @@
+---
+title: "What whitelabel is"
+description: "Run Dialtu under your own brand, with a separate workspace for each of your clients"
+icon: "building"
+---
+
+Whitelabel turns your Dialtu account into a platform of your own. You get your own branding,
+your own login page, your own pricing — and a separate **organization** for each client you
+serve.
+
+By the end of this page you'll understand the two levels you're working with, what's kept
+apart between them, and what's shared.
+
+<Info>
+  **📷 Screenshot needed** — the Organizations page with several organizations listed.
+
+  Save to `/images/en/organizations/organizations-tab.png`
+</Info>
+
+## The two levels
+
+<Columns cols={2}>
+  <Card title="Your account" icon="briefcase">
+    Where you work, and where you manage everything below. Your credits, your plans, your
+    branding, your phone numbers.
+  </Card>
+
+  <Card title="An organization" icon="building">
+    One client. Its own users, its own plan, its own credit allowance, its own data.
+  </Card>
+</Columns>
+
+Your own workspace behaves like an organization in most respects — it's where your own agents,
+conversations and contacts live — but it's the one place the Organizations menu is visible.
+
+<Note>
+  Becoming a whitelabel partner is **not self-serve**. Dialtu sets it up for you: your own
+  database, your own login page, and your branding. Talk to your Dialtu contact to get started.
+
+  Once you're set up, **creating organizations is entirely your own** — no request needed.
+</Note>
+
+## What's separated
+
+Each organization's data is separated **by the database itself**, not by filtering in the app.
+Contacts, conversations, calls, agents, pipelines, phone numbers and users belonging to one
+organization are invisible from another.
+
+<Check>
+  A client of yours cannot see another client. They can't see you, either — and they never see
+  that Dialtu is underneath.
+</Check>
+
+As the partner, you see **metadata** across your organizations: name, plan, credit balance,
+status, members, and pool activity. You don't get a combined inbox or a cross-organization
+call list.
+
+<Tip>
+  You can still **open an organization's workspace** and work inside it — you're a member of
+  every organization you create. It's a deliberate switch, not a shared view.
+</Tip>
+
+## What's shared
+
+Three things cross the boundary, and each surprises people:
+
+<AccordionGroup>
+  <Accordion title="Concurrent calls are one pool for everyone" icon="phone">
+    Your Dialtu plan sets a ceiling on simultaneous calls, and **every organization draws from
+    it**, plus your own workspace.
+
+    Per-organization limits are sub-limits *within* that ceiling, and you're allowed to
+    oversubscribe them deliberately. Setting four organizations to 10 concurrent calls each
+    does **not** give you 40 lines.
+  </Accordion>
+
+  <Accordion title="Credits come from one prepaid pool" icon="coins">
+    You hold a single pool. Each organization gets an allowance — a spending ceiling — and the
+    pool is only drawn down as they actually consume.
+
+    See [Credits and the shared pool](/en/organizations/credits).
+  </Accordion>
+
+  <Accordion title="Phone numbers live in your pool" icon="hashtag">
+    Numbers belong to you and are assigned to an organization, or pulled back. Deleting an
+    organization does not release its number.
+  </Accordion>
+</AccordionGroup>
+
+## Where everything lives
+
+| What | Where |
+|---|---|
+| Organizations, credits, plans, phone numbers | **Organizations** in the sidebar |
+| Logo, colours, domains, brandable text | **Settings → Customization** |
+| Members of one organization | The **Manage users** action on its row |
+
+The Organizations page has four tabs: **Organizations**, **Pool & Credits**, **Billing Plans**
+and **Phones**.
+
+<Note>
+  The menu is only visible from your own workspace, and only with the right permissions. People
+  inside an organization never see it — or the Customization settings.
+</Note>
+
+## What's in this section
+
+<Columns cols={2}>
+  <Card title="Create and manage organizations" icon="plus" href="/en/organizations/manage">
+    The wizard, the row actions, and switching between workspaces.
+  </Card>
+
+  <Card title="Credits and the shared pool" icon="coins" href="/en/organizations/credits">
+    Topping up, granting allowances, and what happens when either runs out.
+  </Card>
+
+  <Card title="Billing plans" icon="tags" href="/en/organizations/billing-plans">
+    Build what you sell and set your margin.
+  </Card>
+
+  <Card title="Branding" icon="palette" href="/en/organizations/branding">
+    Logo, colours, and the login page.
+  </Card>
+
+  <Card title="Domains" icon="globe" href="/en/organizations/domains">
+    Your own web address, and sending email as you.
+  </Card>
+
+  <Card title="People and access" icon="users" href="/en/organizations/people">
+    Inviting users, roles, and belonging to more than one organization.
+  </Card>
+
+  <Card title="Phone numbers" icon="hashtag" href="/en/organizations/phones">
+    Assigning numbers to organizations and taking them back.
+  </Card>
+
+  <Card title="Troubleshooting" icon="wrench" href="/en/organizations/troubleshooting">
+    The things that actually go wrong, and what to do.
+  </Card>
+</Columns>
+
+## A note on wording
+
+You may still see the word **subtenant** in a few places — error messages, some toasts, the odd
+tooltip. It's the old internal name for the same thing. Wherever you see it, read
+**organization**.

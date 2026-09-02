@@ -1,0 +1,123 @@
+---
+title: "Billing plans"
+description: "Build the plans you sell, set your own rates, and see your margin as you go"
+icon: "tags"
+---
+
+Billing plans are where you decide **what your organizations get and what it costs them**. You
+author them yourself, they exist only in your account, and the prices are yours to set.
+
+<Info>
+  **📷 Screenshot needed** — the Billing Plans tab with a few plans listed.
+
+  Save to `/images/en/organizations/plans-tab.png`
+</Info>
+
+## How pricing works
+
+Dialtu charges you a **wholesale** rate. You set a **retail** rate for your organizations. The
+difference is your margin, and the plan editor shows it while you type.
+
+<Warning>
+  **Retail can never go below wholesale.** Every rate field has a floor, labelled with your own
+  cost, and the plan won't save if you go under it.
+</Warning>
+
+Your wholesale rates are set by Dialtu for your account specifically. You can see them in the
+plan editor — they're shown as **Your cost** next to each field — but you can't change them.
+
+## Creating a plan
+
+**Organizations → Billing Plans → Create billing plan**. A three-step editor.
+
+<Steps>
+  <Step title="Name and headline price" icon="tag">
+    A name and description your organizations will see, plus:
+
+    - **Monthly price ($)** — informational only. Dialtu never charges your organizations;
+      you bill them yourself, outside the platform.
+    - **Monthly credits included** — the allowance the plan grants each cycle. This one is
+      real, and it's what the monthly reset sets the balance to.
+  </Step>
+
+  <Step title="Choose the features" icon="sliders">
+    Four cards, **all on by default** — **Voice Agents**, **SMS**, **WhatsApp** and **Insight
+    Agents**. Click to toggle.
+
+    <Note>
+      A feature you switch off is **hidden entirely** from organizations on that plan — not
+      shown-but-disabled. This is what makes real tiering possible.
+    </Note>
+  </Step>
+
+  <Step title="Set the rates" icon="microchip">
+    One tab per rate-bearing feature you enabled — Voice, SMS, WhatsApp. *Insight Agents has no
+    rates, so it produces no tab.*
+
+    Each tab holds a grid with **one row per AI model**, showing **Your cost**, your price, and
+    a live **Margin** badge. Every field starts pre-filled at your wholesale floor, so a plan is
+    valid from the moment you open it — you're marking up from cost, not building from zero.
+
+    Two tabs add flat fields on top of the grid:
+
+    - **Voice** — minimum credits per call
+    - **SMS** — credits per base SMS, and per AI-completion SMS
+  </Step>
+</Steps>
+
+<Note>
+  **Some costs sit outside your plan entirely.** Premium voice engines carry a per-minute
+  surcharge, and phone numbers carry carrier costs — monthly, per call minute, and per SMS.
+  Both are billed on top of the rates you set here.
+</Note>
+
+<Info>
+  **📷 Screenshot needed** — the plan editor on the model pricing step, with the cost and margin columns.
+
+  Save to `/images/en/organizations/plan-editor-margin.png`
+</Info>
+
+## What you can't set
+
+| | Why |
+|---|---|
+| **Call rate limits** | Inherited from your own Dialtu plan |
+| **Wholesale rates** | Set by Dialtu, per partner |
+| **Phone number rates** | Pass-through from the carrier — view-only |
+
+<Note>
+  Phone rates are visible from the Phones tab, but the modal is read-only: *"Rates are managed
+  by the platform and are not editable here."*
+</Note>
+
+## Editing, deactivating, deleting
+
+Each plan card carries three actions, and the middle one is the useful one:
+
+| Action | What happens |
+|---|---|
+| **Edit** | Reopens the wizard. Nothing is locked, even with organizations on the plan |
+| **Deactivate** | The plan stops appearing when you create new organizations. Existing ones keep it |
+| **Delete** | Removes it from the picker. Data is kept |
+
+<Tip>
+  **Deactivate is what you usually want** when you retire a plan. It stops new sales without
+  touching the clients already on it. Tick **Show inactive** to see deactivated plans again.
+</Tip>
+
+Changes to **included credits** take effect at the next monthly reset, not immediately.
+
+<Warning>
+  **A plan in use can't be deleted.** You'll get *"Plan is still assigned to organizations.
+  Reassign them first."* Move every organization onto another plan before deleting.
+</Warning>
+
+## Your own plan
+
+The plan attached to your own workspace is your **Dialtu** tier — Solo, Starter, Pro or
+Enterprise — not one of yours. It doesn't appear in this catalogue, and it's what sets your
+wholesale rates and your **maximum number of organizations**.
+
+<Card title="Credits and the shared pool" icon="coins" href="/en/organizations/credits">
+  How the money actually moves once a plan is assigned.
+</Card>

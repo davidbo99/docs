@@ -1,0 +1,125 @@
+---
+title: "Planes de facturación"
+description: "Arma los planes que vendes, define tus tarifas y mira tu margen mientras lo haces"
+icon: "tags"
+---
+
+Los planes de facturación son donde decides **qué reciben tus organizaciones y cuánto les
+cuesta**. Los creas tú, existen solo en tu cuenta y los precios los pones tú.
+
+<Info>
+  **📷 Captura pendiente** — la pestaña Planes de Facturación con algunos planes listados.
+
+  Guardar en `/images/es/organizaciones/pestana-planes.png`
+</Info>
+
+## Cómo funcionan los precios
+
+Dialtu te cobra una tarifa **mayorista**. Tú fijas una tarifa **de venta** para tus
+organizaciones. La diferencia es tu margen, y el editor te la muestra mientras escribes.
+
+<Warning>
+  **El precio de venta nunca puede quedar por debajo del mayorista.** Cada campo tiene un
+  mínimo, etiquetado con tu propio costo, y el plan no se guarda si lo bajas de ahí.
+</Warning>
+
+Tus tarifas mayoristas las define Dialtu específicamente para tu cuenta. Puedes verlas en el
+editor — aparecen como **Tu costo** junto a cada campo — pero no puedes cambiarlas.
+
+## Crear un plan
+
+**Organizaciones → Planes de Facturación → Crear plan de facturación.** Un editor de tres pasos.
+
+<Steps>
+  <Step title="Nombre y precio de cabecera" icon="tag">
+    Un nombre y una descripción que verán tus organizaciones, más:
+
+    - **Precio mensual ($)** — solo informativo. Dialtu nunca le cobra a tus organizaciones:
+      les facturas tú, fuera de la plataforma.
+    - **Créditos mensuales incluidos** — el permiso que otorga el plan cada ciclo. Este sí es
+      real, y es el valor al que la renovación mensual restablece el saldo.
+  </Step>
+
+  <Step title="Elige las funcionalidades" icon="sliders">
+    Cuatro tarjetas, **todas activadas por defecto** — **Agentes de Voz**, **SMS**,
+    **WhatsApp** y **Agentes de Análisis**. Se activan y desactivan con un clic.
+
+    <Note>
+      Una funcionalidad que apagues queda **oculta por completo** para las organizaciones con
+      ese plan: no aparece deshabilitada. Eso es lo que permite una escala de planes real.
+    </Note>
+  </Step>
+
+  <Step title="Define las tarifas" icon="microchip">
+    Una pestaña por cada funcionalidad con tarifas que hayas activado — Voz, SMS, WhatsApp.
+    *Agentes de Análisis no tiene tarifas, así que no genera pestaña.*
+
+    Cada pestaña tiene una cuadrícula con **una fila por modelo de IA**, mostrando **Tu costo**,
+    tu precio y una insignia de **Margen** en vivo. Todos los campos vienen precargados con tu
+    mínimo mayorista, así que el plan es válido desde que lo abres: partes de tu costo y aplicas
+    margen, no empiezas de cero.
+
+    Dos pestañas añaden campos fijos sobre la cuadrícula:
+
+    - **Voz** — créditos mínimos por llamada
+    - **SMS** — créditos por SMS base y por SMS de completado con IA
+  </Step>
+</Steps>
+
+<Note>
+  **Algunos costos quedan fuera de tu plan.** Los motores de voz premium añaden un recargo por
+  minuto, y los números telefónicos tienen costos del operador — mensual, por minuto de llamada
+  y por SMS. Ambos se cobran además de las tarifas que definas aquí.
+</Note>
+
+<Info>
+  **📷 Captura pendiente** — el editor de planes en el paso de modelos, con las columnas de costo y margen.
+
+  Guardar en `/images/es/organizaciones/editor-plan-margen.png`
+</Info>
+
+## Lo que no puedes definir
+
+| | Por qué |
+|---|---|
+| **Límites de llamadas** | Se heredan de tu propio plan de Dialtu |
+| **Tarifas mayoristas** | Las define Dialtu, por socio |
+| **Tarifas de números** | Se trasladan tal cual desde el operador: solo lectura |
+
+<Note>
+  Las tarifas de los números se ven desde la pestaña Teléfonos, pero el modal es de solo
+  lectura: *"Las tarifas son administradas por la plataforma y no son editables aquí."*
+</Note>
+
+## Editar, desactivar, eliminar
+
+Cada tarjeta de plan tiene tres acciones, y la del medio es la útil:
+
+| Acción | Qué hace |
+|---|---|
+| **Editar** | Reabre el asistente. Nada queda bloqueado, aunque ya tenga organizaciones |
+| **Desactivar** | El plan deja de aparecer al crear organizaciones. Las que ya lo tienen lo conservan |
+| **Eliminar** | Lo quita del selector. Los datos se conservan |
+
+<Tip>
+  **Desactivar suele ser lo que quieres** al retirar un plan: corta las altas nuevas sin tocar a
+  los clientes que ya lo tienen. Marca **Mostrar inactivos** para volver a verlos.
+</Tip>
+
+Los cambios en **créditos incluidos** se aplican en la siguiente renovación mensual, no al
+instante.
+
+<Warning>
+  **Un plan en uso no se puede eliminar.** Verás *"El plan sigue asignado a organizaciones.
+  Reasígnalas primero."* Mueve cada organización a otro plan antes de borrarlo.
+</Warning>
+
+## Tu propio plan
+
+El plan de tu propio espacio de trabajo es tu nivel de **Dialtu** — Solo, Starter, Pro o
+Enterprise — no uno de los tuyos. No aparece en este catálogo, y es el que define tus tarifas
+mayoristas y tu **número máximo de organizaciones**.
+
+<Card title="Créditos y pool compartido" icon="coins" href="/es/organizaciones/creditos">
+  Cómo se mueve el dinero de verdad una vez asignado el plan.
+</Card>

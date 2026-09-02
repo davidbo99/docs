@@ -1,0 +1,205 @@
+---
+title: "Créditos y pool compartido"
+description: "Cómo funciona el pool, cómo funcionan los permisos y por qué no son lo mismo"
+icon: "coins"
+---
+
+Al terminar esta página sabrás dónde viven realmente tus créditos, qué ocurre cuando le das
+créditos a una organización y qué hacer cuando algo se agota.
+
+## Dos saldos, no uno
+
+Esta es la parte que todo el mundo confunde, así que conviene aclararla antes que nada.
+
+| | **Tu pool** | **El permiso de una organización** |
+|---|---|---|
+| Qué es | Créditos reales, prepagados, que le compraste a Dialtu | Un **tope de gasto**. No es dinero |
+| Cuándo se mueve | Solo cuando la organización consume algo | Nunca: es un número que tú fijas |
+| A qué precio | Precio **mayorista** de Dialtu para ti | Tu precio **de venta** para ellos |
+
+<Warning>
+  **Otorgar un permiso no saca créditos de tu pool.** Sube un techo. El pool solo baja después,
+  a medida que la organización usa el servicio.
+
+  Una organización con 5.000 créditos todavía no te ha costado nada.
+</Warning>
+
+Cada consumo genera **dos apuntes**: el permiso de la organización baja a tu precio de venta, y
+tu pool baja al precio mayorista de Dialtu. La diferencia es tu margen.
+
+<Info>
+  **📷 Captura pendiente** — la pestaña Pool y Créditos, con el saldo, la recarga automática y la concurrencia.
+
+  Guardar en `/images/es/organizaciones/pestana-pool.png`
+</Info>
+
+<Warning>
+  **Dos números, los dos llamados créditos.** La cifra **Créditos en el pool** de la pestaña
+  *Organizaciones* es la suma de lo que has otorgado a tus organizaciones, no el saldo de tu
+  pool.
+
+  Tu saldo real es el número grande de arriba en **Pool y Créditos**. Ese es el que hay que
+  vigilar.
+</Warning>
+
+## Recargar tu pool
+
+**Organizaciones → Pool y Créditos → Recargar.**
+
+Cada crédito cuesta **$0,01**, y puedes comprar entre **100** y **5.000.000** de una vez, con
+atajos para 10.000, 50.000, 100.000 y 500.000. El cargo va a tu tarjeta registrada, y el pool se
+acredita cuando Stripe confirma el pago, normalmente en menos de cinco segundos.
+
+<Note>
+  Si tu tarjeta pide 3-D Secure, la verificación aparece dentro del modal. Y si la confirmación
+  tarda, el modal se cierra con *"Pago capturado — el saldo se actualizará en breve"*: el dinero
+  ya se cobró y los créditos llegan detrás. No pagues dos veces.
+</Note>
+
+<Info>
+  **📷 Captura pendiente** — el modal Recargar pool, con el monto y el total a cobrar.
+
+  Guardar en `/images/es/organizaciones/modal-recarga.png`
+</Info>
+
+<Note>
+  También se puede pagar por transferencia, pero eso no es autoservicio: contacta con Dialtu y
+  los créditos se aplican manualmente a tu pool.
+</Note>
+
+### Recarga automática
+
+Para que el pool no se quede seco a mitad de una conversación, configura una recarga
+automática:
+
+| Campo | Qué hace |
+|---|---|
+| **Umbral (créditos)** | Por debajo de esto, cargamos a tu tarjeta |
+| **Objetivo de recarga (créditos)** | Hasta aquí volvemos a subir el pool |
+| **Tope mensual ($USD)** | Un límite duro de cuánto cobramos al mes |
+
+El umbral debe ser **menor** que el objetivo, y ambos deben estar definidos. Al alcanzar el tope
+mensual, el cargo se omite y aparece un apunte **Auto-recarga limitada** en tu actividad — vale
+la pena vigilarlo, porque a partir de ahí el pool solo baja.
+
+<Note>
+  Guardar el diálogo de configuración **activa la recarga automática**, sin importar cómo
+  estuviera el interruptor de la tarjeta. Para desactivarla, usa el interruptor, no el diálogo.
+</Note>
+
+<Info>
+  **📷 Captura pendiente** — el modal de recarga automática con umbral, objetivo y tope mensual.
+
+  Guardar en `/images/es/organizaciones/modal-auto-recarga.png`
+</Info>
+
+### Mover tus propios créditos
+
+Si ya tienes créditos en tu saldo personal, **Mover créditos** los pasa entre ese saldo y el
+pool, en cualquier dirección. Son créditos que ya son tuyos, así que no hay cargo ni tarjeta de
+por medio.
+
+## Dar créditos a una organización
+
+En la pestaña **Organizaciones**, el menú de cada fila ofrece tres acciones:
+
+<Columns cols={3}>
+  <Card title="Otorgar permiso" icon="plus">
+    Sube el tope en el monto que elijas.
+  </Card>
+
+  <Card title="Recargar permiso" icon="rotate">
+    Lo mismo, con el monto del plan ya rellenado.
+  </Card>
+
+  <Card title="Reducir permiso" icon="minus">
+    Baja el tope. No puede quedar por debajo de lo que les queda.
+  </Card>
+</Columns>
+
+<Info>
+  **📷 Captura pendiente** — el modal Otorgar permiso, con el saldo actual y el campo de monto.
+
+  Guardar en `/images/es/organizaciones/otorgar-permiso.png`
+</Info>
+
+<Warning>
+  **Necesitas un método de pago registrado para otorgar un permiso.** Sin una tarjeta guardada,
+  la operación se rechaza — aunque otorgar no te cobre nada.
+</Warning>
+
+### La renovación mensual
+
+Si una organización tiene **Recarga automática mensual** activada, un plan asignado y estado
+activo, su permiso se **restablece** a los créditos incluidos del plan en cada ciclo.
+
+<Warning>
+  **Es un restablecimiento, no una suma.** Los créditos sin usar no se acumulan: el saldo se
+  sobrescribe. Un otorgamiento puntual que hayas hecho a mitad de ciclo también se borra en la
+  siguiente renovación.
+</Warning>
+
+Las organizaciones suspendidas o sin plan quedan fuera de la renovación.
+
+## Cuando se acaban los créditos
+
+<AccordionGroup>
+  <Accordion title="Una organización llega a cero" icon="building">
+    Se detiene todo el trabajo de IA de esa organización: llamadas de voz, respuestas de
+    WhatsApp y SMS, Atlas, el orquestador de Salesflow, los informes de Insight y la memoria de
+    contacto comprueban el permiso antes de ejecutarse.
+
+    El saldo puede quedar levemente en negativo si había un proceso en curso. Para reactivar el
+    servicio, otorga o recarga su permiso — o espera a la renovación mensual.
+  </Accordion>
+
+  <Accordion title="Tu pool llega a cero" icon="triangle-exclamation">
+    Tus organizaciones **siguen funcionando**. Dialtu no las corta a mitad de una conversación.
+
+    El consumo se registra como **Uso — pool agotado** en tu actividad, se te notifica y el
+    importe queda pendiente. Las llamadas nuevas pueden bloquearse antes de empezar, pero lo que
+    ya está en curso se liquida.
+
+    Los correos de aviso están limitados a uno al día, así que trata el primero como la señal.
+  </Accordion>
+</AccordionGroup>
+
+## Leer la actividad
+
+La pestaña Pool y Créditos tiene **dos listados separados**, y la distinción importa:
+
+| Listado | Qué contiene |
+|---|---|
+| **Transacciones del pool** | Créditos reales: recargas, uso y transferencias con tu saldo personal |
+| **Cambios de permiso** | Los topes virtuales que has otorgado, recargado o reducido |
+
+Ambos se filtran por rango de fechas, por organización y por lo que generó el cargo — Voz, SMS,
+WhatsApp, Atlas, Insight, Salesflow AI, o recargas y transferencias. El uso se agrupa **por
+organización y por día**, con desglose por funcionalidad.
+
+<Info>
+  **📷 Captura pendiente** — el listado de actividad del pool con el filtro de tipo abierto.
+
+  Guardar en `/images/es/organizaciones/actividad-pool.png`
+</Info>
+
+<Note>
+  **No hay exportación.** De momento el listado no se puede descargar en CSV ni Excel, y no
+  existe un informe de analítica entre organizaciones: la analítica siempre es de un solo
+  espacio de trabajo.
+</Note>
+
+## Qué ve la organización
+
+Casi nada de lo anterior. Dentro de su espacio tienen una página **de solo lectura**, *Plan y
+Actividad*, en Configuración: nombre del plan, créditos mensuales, créditos disponibles, cuándo
+se renueva el permiso y su actividad reciente.
+
+No pueden comprar créditos, ni cambiar de plan, ni ver tu pool. La página les dice que
+contacten con su administrador — es decir, contigo.
+
+## Siguiente paso
+
+<Card title="Planes de facturación" icon="tags" href="/es/organizaciones/planes-de-facturacion">
+  Define los precios que pagan tus organizaciones.
+</Card>

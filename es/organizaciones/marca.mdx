@@ -1,0 +1,138 @@
+---
+title: "Marca"
+description: "Tu logo, tus colores, tus palabras — en la app, en el login y en tus correos"
+icon: "palette"
+---
+
+Todo esto vive en **Configuración → Personalización**, y es **tuyo**, no de tus organizaciones.
+Tus clientes heredan tu marca; no pueden cambiarla y nunca ven esta sección.
+
+<Warning>
+  **Una cuenta nueva arranca en morado Dialtu y sin logo.** No hay nada precargado. Definir tus
+  colores y subir un logo debería ser lo primero que hagas — antes de invitar a nadie, porque
+  los correos de invitación llevan tu marca.
+</Warning>
+
+<Info>
+  **📷 Captura pendiente** — Configuración → Personalización, con sus sub-pestañas.
+
+  Guardar en `/images/es/organizaciones/pestanas-personalizacion.png`
+</Info>
+
+## Marca
+
+Cinco cosas, todas opcionales salvo el nombre.
+
+| Campo | Para qué sirve |
+|---|---|
+| **Logo** | Tu logotipo horizontal. Barra superior, login y cabecera de correos |
+| **Isotipo** | La marca cuadrada. Barra lateral colapsada y hero del login. Si falta, se usa el logo |
+| **Favicon** | La pestaña del navegador |
+| **Nombre del workspace** | Barra superior, título de la pestaña y correos a tus usuarios |
+| **Correo de soporte** | Dónde te contactan. Déjalo vacío para ocultar el enlace |
+
+**Imágenes: SVG, PNG, JPG o WebP, hasta 2 MB.** El favicon también acepta ICO. Para el logo,
+los formatos anchos funcionan mejor.
+
+<Tip>
+  Si subes un **PNG o JPG** aparece un paso de recorte, que exporta un PNG transparente en el
+  tamaño correcto — 600×200 el logo, 512×512 el isotipo, 256×256 el favicon. Los archivos SVG e
+  ICO se usan tal cual, sin recorte.
+</Tip>
+
+<Info>
+  **📷 Captura pendiente** — la sub-pestaña Marca con un logo subido.
+
+  Guardar en `/images/es/organizaciones/panel-marca.png`
+</Info>
+
+<Note>
+  Si no subes favicon, tus usuarios ven una imagen generada automáticamente: la primera letra
+  del nombre de tu workspace sobre tu color primario. Nunca ven la marca de Dialtu.
+</Note>
+
+## Tema
+
+Tres colores lo gobiernan todo: **Primario**, **Secundario** y **Acento**. El resto de la
+paleta — unas cuarenta variables — se deriva automáticamente, salvo que lo desactives.
+
+<Columns cols={2}>
+  <Card title="Generar paleta desde un color" icon="wand-magic-sparkles">
+    Pega un valor hexadecimal y obtén una paleta completa construida a su alrededor.
+  </Card>
+
+  <Card title="Preajustes de armonía" icon="circle-half-stroke">
+    Complementaria, análoga, triádica o tetrádica.
+  </Card>
+</Columns>
+
+Abre **Variables avanzadas** para definir a mano cualquiera de los colores restantes. Puedes
+guardar varios temas con nombre y mantener dos punteros: el tema **activo**, que ve todo el
+mundo, y el **predeterminado**, al que vuelve *Restablecer*.
+
+<Info>
+  **📷 Captura pendiente** — la sub-pestaña Tema con el editor de color y la verificación de contraste.
+
+  Guardar en `/images/es/organizaciones/panel-tema.png`
+</Info>
+
+### Dónde acaban tus colores
+
+<Check>
+  **Guarda el tema una vez y tus colores primario y acento te siguen a todas partes** — el
+  panel, la página de inicio de sesión y tus correos de invitación. No hay un segundo sitio
+  donde configurarlos.
+</Check>
+
+Solo cruzan el primario y el acento. Los colores de superficie, texto y estados se quedan en el
+panel.
+
+### Sobre la verificación de contraste
+
+El editor muestra en vivo si cumples WCAG AA mientras eliges colores.
+
+<Warning>
+  **Son un consejo, no una barrera.** Un tema que falla el contraste se guarda igual. Lee los
+  avisos: nada más va a impedirte publicar una paleta que tus usuarios no puedan leer.
+</Warning>
+
+<Note>
+  No hay una paleta separada para modo oscuro. El mismo conjunto de colores sirve para ambos
+  modos.
+</Note>
+
+## Textos personalizables
+
+Sobrescribe palabras de la interfaz, por idioma. Úsalo para el vocabulario que espera tu sector,
+renombrando lo que tus clientes llaman de otra manera.
+
+## Lo que no puedes cambiar
+
+<AccordionGroup>
+  <Accordion title="El texto comercial de la página de login" icon="lock">
+    El titular y el subtítulo junto al formulario son fijos, en inglés y neutros de marca. No
+    mencionan a Dialtu, pero no puedes editarlos ni traducirlos.
+  </Accordion>
+
+  <Accordion title="Tu favicon en la página de login" icon="star">
+    El favicon se aplica **solo a la pestaña del panel**. La página de inicio de sesión no lo
+    toma, aunque el panel dé a entender lo contrario.
+  </Accordion>
+
+  <Accordion title="Tu subdominio" icon="link">
+    La dirección `tunombre.dialtu.com` se fija al crear la cuenta y no se puede renombrar
+    después. Si quieres otra dirección, conecta
+    [un dominio propio](/es/organizaciones/dominios).
+  </Accordion>
+
+  <Accordion title="Marca por organización" icon="building">
+    Todas tus organizaciones comparten tu marca. No hay logo ni paleta por cliente: entran por
+    tu página de login, bajo tu nombre.
+  </Accordion>
+</AccordionGroup>
+
+## Siguiente paso
+
+<Card title="Dominios" icon="globe" href="/es/organizaciones/dominios">
+  Pon la app en tu propia dirección web y envía invitaciones desde tu dominio.
+</Card>

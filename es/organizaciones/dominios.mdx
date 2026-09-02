@@ -1,0 +1,139 @@
+---
+title: "Dominios"
+description: "Pon la app en tu propia dirección y envía invitaciones desde tu dominio"
+icon: "globe"
+---
+
+Hay **tres** dominios en juego, y solo dos los configuras tú.
+
+| Dominio | Qué es | Quién lo configura |
+|---|---|---|
+| `tunombre.dialtu.com` | Funciona desde el primer día | Automático |
+| `app.tuempresa.com` | Tu propia dirección para la app | **Tú**, con dos registros DNS |
+| El de inicio de sesión | Donde se sirve el formulario de login | Automático, compartido, neutro |
+
+<Note>
+  La dirección de inicio de sesión es un **dominio neutro** sin marca de Dialtu, compartido
+  entre socios. Tus usuarios pasan por él al entrar — la página muestra tu logo y tus colores.
+  No lo configuras y no tiene registros DNS.
+</Note>
+
+## Tu propio dominio para la app
+
+**Configuración → Personalización → Dominios personalizados.** Nosotros aprovisionamos el
+certificado y la CDN; tú agregas dos registros DNS en tu proveedor.
+
+<Info>
+  **📷 Captura pendiente** — la sub-pestaña Dominios personalizados con un dominio en proceso y sus registros DNS.
+
+  Guardar en `/images/es/organizaciones/dominios-personalizados.png`
+</Info>
+
+<Steps>
+  <Step title="Escribe el dominio" icon="keyboard">
+    Algo como `app.tuempresa.com`.
+
+    <Warning>
+      **Usa un subdominio, no tu dominio raíz.** La mayoría de proveedores — GoDaddy, Namecheap
+      — rechazan registros CNAME en la raíz. Si insistes, el panel te obliga a marcar una
+      casilla confirmando que tu DNS soporta CNAME flattening o registros ALIAS.
+    </Warning>
+  </Step>
+
+  <Step title="Agrega los dos registros DNS" icon="list-check">
+    Recibes dos CNAME:
+
+    | Propósito | Qué hace |
+    |---|---|
+    | **Validación de certificado** | Demuestra que el dominio es tuyo, para emitir el certificado |
+    | **Dominio personalizado → CDN** | Apunta tu dirección a la aplicación |
+
+    <Warning>
+      **Agrega los dos.** Poner solo el de validación es el error más común: el certificado se
+      emite y la configuración se queda en *Desplegando CDN* para siempre, esperando que el
+      segundo registro resuelva.
+    </Warning>
+  </Step>
+
+  <Step title="Espera" icon="hourglass">
+    El estado avanza por **Esperando DNS → Validando → Certificado emitido → Desplegando CDN →
+    Activo**.
+
+    Puedes cerrar la página: el proceso continúa en segundo plano. El despliegue de la CDN suele
+    tardar **entre 5 y 15 minutos**.
+  </Step>
+</Steps>
+
+<Check>
+  Cuando queda **Activo**, los correos de invitación pasan a apuntar a tu dirección en lugar de
+  a la de `dialtu.com`, automáticamente.
+</Check>
+
+<Note>
+  Si los registros DNS no aparecen en **72 horas**, la configuración se marca como fallida.
+  **Verificar estado** la reinicia y vuelve a intentarlo: no hace falta empezar de cero.
+</Note>
+
+Quitar un dominio tarda unos **25 minutos** en deshacerse del todo, tras lo cual esa dirección
+deja de servir tu espacio. La dirección `tunombre.dialtu.com` sigue funcionando mientras tanto.
+
+## Enviar invitaciones desde tu dominio
+
+**Configuración → Personalización → Dominio de envío.** Por defecto las invitaciones salen de
+una dirección de la plataforma. Verifica un dominio una vez y todas saldrán como tú.
+
+<Info>
+  **📷 Captura pendiente** — la sub-pestaña Dominio de envío con la tabla de registros DNS.
+
+  Guardar en `/images/es/organizaciones/dominio-envio.png`
+</Info>
+
+Das una **dirección de origen** — `invitaciones@tuempresa.com` — y opcionalmente un **nombre de
+origen**. A cambio recibes hasta **seis registros DNS**:
+
+| Tipo | Cuántos | Propósito |
+|---|---|---|
+| CNAME | 3 | Firma DKIM |
+| MX | 1 | Ruta de retorno para rebotes |
+| TXT | 1 | Alineación SPF |
+| TXT | 1 | Política DMARC |
+
+Agrégalos, pulsa **Verificar**, y el estado avanza por **DNS pendiente → Verificando →
+Verificado**. Los cambios de DNS pueden tardar hasta una hora en propagarse.
+
+<Check>
+  **Nada cambia hasta que el dominio está verificado.** La dirección de origen solo se cambia
+  cuando la verificación tiene éxito, así que una configuración a medias no puede romper tus
+  invitaciones.
+</Check>
+
+<Note>
+  Si quitas la identidad, las invitaciones vuelven al remitente de la plataforma. Nunca
+  necesitas credenciales SMTP: basta con la verificación.
+</Note>
+
+### Si ves un aviso de modo limitado
+
+Un aviso de envío en modo limitado o *sandbox* significa que las invitaciones a destinatarios
+nuevos pueden no entregarse. Es un límite de la cuenta en ese entorno, no algo que puedas
+arreglar: contacta con Dialtu.
+
+## Qué lleva tu marca y qué no
+
+<AccordionGroup>
+  <Accordion title="Correos de invitación — con tu marca completa" icon="envelope">
+    Tu logo, tu color primario, el nombre de tu empresa y un enlace a tu dirección. Es el correo
+    que tus clientes reciben de verdad, así que es el que más importa.
+  </Accordion>
+
+  <Accordion title="Correos de restablecimiento de contraseña — a medias" icon="key">
+    Salen **desde tu dirección** una vez verificado tu dominio de envío, pero el cuerpo usa la
+    plantilla estándar: sin logo ni colores. Las páginas web a las que llevan sí llevan tu marca.
+  </Accordion>
+</AccordionGroup>
+
+## Siguiente paso
+
+<Card title="Personas y accesos" icon="users" href="/es/organizaciones/personas">
+  Invita a alguien y comprueba tu marca en acción.
+</Card>

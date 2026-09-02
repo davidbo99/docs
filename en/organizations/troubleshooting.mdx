@@ -1,0 +1,192 @@
+---
+title: "Troubleshooting"
+description: "The things that actually go wrong, and what to do about each"
+icon: "wrench"
+---
+
+## Organizations
+
+<AccordionGroup>
+  <Accordion title="An organization says Admin invite pending and nobody can sign in" icon="triangle-exclamation">
+    The first admin's invitation failed while the organization was being created. The
+    organization exists but **its members are blocked from signing in entirely** — this isn't a
+    cosmetic warning.
+
+    **Fix:** the row's menu → **Retry admin invite**.
+  </Accordion>
+
+  <Accordion title="Creating an organization is refused" icon="ban">
+    You've hit the maximum number of organizations on your own Dialtu plan. Your own workspace
+    doesn't count toward the limit, so the number you see in the list is the number that counts.
+
+    **Fix:** upgrade your plan, or delete an organization you no longer serve.
+  </Accordion>
+
+  <Accordion title="I deleted an organization but its phone number is gone too" icon="hashtag">
+    Deleting doesn't release numbers. The number is still assigned to the deleted organization.
+
+    **Fix:** contact Dialtu to recover it. Next time, move the number back to your pool
+    **before** deleting.
+  </Accordion>
+
+  <Accordion title="I need to rename an organization's slug" icon="pen">
+    You can't. The slug is fixed at creation; only the display name can change.
+
+    **Workaround:** create a new organization with the right slug and move the users across.
+    There's no data migration between organizations, so do this early or not at all.
+  </Accordion>
+</AccordionGroup>
+
+## Credits
+
+<AccordionGroup>
+  <Accordion title="A client says their AI has stopped responding" icon="robot">
+    Check their **Credits** column. At zero, all AI work stops — calls, WhatsApp and SMS
+    replies, Atlas, Salesflow's orchestrator, Insight briefs.
+
+    **Fix:** Grant or Refill their allowance, or wait for the monthly reset.
+  </Accordion>
+
+  <Accordion title="Granting an allowance is refused" icon="credit-card">
+    You need a **default payment method on file**, even though granting an allowance doesn't
+    charge you.
+
+    **Fix:** add a card to your account, then retry.
+  </Accordion>
+
+  <Accordion title="Credits I granted vanished at the start of the month" icon="calendar">
+    Working as designed, though it surprises everyone. The monthly refresh **resets** the
+    allowance to the plan's included credits — it doesn't add to it. A one-off grant made
+    mid-cycle is overwritten, and unused credits don't carry over.
+
+    **If you need a permanent increase**, move that organization to a plan with more included
+    credits rather than granting extra each month.
+  </Accordion>
+
+  <Accordion title="My pool went negative" icon="arrow-trend-down">
+    Your organizations kept working after the pool emptied — Dialtu doesn't cut clients off
+    mid-conversation. The usage shows in your feed as **Usage — pool exhausted** and the amount
+    is owed.
+
+    **Fix:** top up. Then set auto-refill so it doesn't recur — and check whether you hit your
+    auto-refill **monthly cap**, which silently stops the top-ups.
+  </Accordion>
+
+  <Accordion title="Auto-refill has stopped firing" icon="rotate">
+    Most likely the monthly cap. Look for an **Auto-refill capped** entry in the pool feed.
+
+    Also check: the threshold has to be **lower** than the target, and a card must be on file.
+  </Accordion>
+</AccordionGroup>
+
+## Domains
+
+<AccordionGroup>
+  <Accordion title="My domain is stuck at Deploying CDN" icon="hourglass">
+    Nearly always the **second DNS record**. The certificate validates off the first one, so
+    setup gets that far with only one record in place — then waits indefinitely for the alias
+    record pointing at the CDN.
+
+    **Fix:** add the second CNAME. Deployment finishes 5–15 minutes after it resolves.
+  </Accordion>
+
+  <Accordion title="My domain setup says Failed" icon="circle-xmark">
+    The DNS records weren't found within 72 hours.
+
+    **Fix:** add the records, then **Check status** — it resets and retries. You don't need to
+    start over.
+  </Accordion>
+
+  <Accordion title="My registrar won't accept a CNAME on my main domain" icon="ban">
+    Expected — most registrars reject CNAMEs at the apex.
+
+    **Fix:** use a subdomain like `app.yourcompany.com`. Only override this if your DNS provider
+    supports CNAME flattening or ALIAS records.
+  </Accordion>
+
+  <Accordion title="Invitations still link to the dialtu.com address" icon="link">
+    The switch happens when the domain goes **Live**, not when you add it.
+  </Accordion>
+</AccordionGroup>
+
+## People
+
+<AccordionGroup>
+  <Accordion title="I can't set someone's role" icon="user-lock">
+    They haven't signed in yet. Roles can only be assigned after a first sign-in — until then
+    they show as **Pending sign-in**.
+
+    **Fix:** wait for them to accept, then set the role.
+  </Accordion>
+
+  <Accordion title="Someone can't find WhatsApp in the menu" icon="whatsapp">
+    They're not an Admin. None of the built-in Member, Sales or Support roles include WhatsApp
+    access, so the section is hidden entirely.
+
+    **Fix:** make them an Admin, or create a custom role that includes the WhatsApp permissions.
+  </Accordion>
+
+  <Accordion title="An invitation never arrived" icon="envelope">
+    Three common causes:
+
+    - **They already have an account** on your platform — no email is sent; the workspace just
+      appears in their switcher.
+    - **The link expired** — they last 72 hours. Resend it.
+    - **A sandbox warning** on your Sending domain tab means delivery to new recipients is
+      limited. Contact Dialtu.
+  </Accordion>
+
+  <Accordion title="Password reset ends on an error page" icon="key">
+    A known rough edge. The password has usually been changed successfully despite the error.
+
+    **Fix:** go to your dashboard address directly and sign in with the new password, rather
+    than following the link on the error page.
+  </Accordion>
+
+  <Accordion title="Someone isn't in the member list" icon="user-slash">
+    Either they were removed and haven't signed in since — they reappear after their next
+    login — or they haven't accepted their invitation yet and you're looking at the wrong list.
+  </Accordion>
+</AccordionGroup>
+
+## Capacity
+
+<AccordionGroup>
+  <Accordion title="Calls are being rejected even though limits look fine" icon="phone-slash">
+    Concurrent calls are **one shared pool** across all your organizations plus your own
+    workspace. Per-organization limits divide that pool; they don't add to it.
+
+    If four organizations are each set to 10 and your plan allows 20, you are deliberately
+    oversubscribed — and on a busy afternoon, calls will be turned away.
+
+    **Fix:** upgrade your plan for real capacity, or lower the per-organization limits so they
+    fit within it.
+  </Accordion>
+</AccordionGroup>
+
+## Branding
+
+<AccordionGroup>
+  <Accordion title="My login page is still Dialtu purple" icon="palette">
+    Nothing is pre-filled — new accounts start on default colours with no logo.
+
+    **Fix:** Settings → Customization. Set the theme and upload a logo. Both push to the login
+    page automatically.
+  </Accordion>
+
+  <Accordion title="My favicon shows in the app but not on the login page" icon="star">
+    A known limitation. The favicon currently applies to the dashboard tab only, despite the
+    panel implying otherwise. Nothing you can do — the logo and colours do reach the login page.
+  </Accordion>
+
+  <Accordion title="A client wants their own logo inside their workspace" icon="building">
+    Not possible. Organizations inherit your brand — that's the point of the model. There's no
+    per-organization branding.
+  </Accordion>
+</AccordionGroup>
+
+## Still stuck
+
+<Card title="Contact support" icon="life-ring" href="mailto:support@dialtu.com">
+  Include the organization name and, where relevant, what the status column says.
+</Card>

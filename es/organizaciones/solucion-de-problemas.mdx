@@ -1,0 +1,195 @@
+---
+title: "Solución de problemas"
+description: "Lo que se rompe de verdad, y qué hacer en cada caso"
+icon: "wrench"
+---
+
+## Organizaciones
+
+<AccordionGroup>
+  <Accordion title="Una organización dice Invitación de admin pendiente y nadie puede entrar" icon="triangle-exclamation">
+    La invitación del primer administrador falló mientras se creaba la organización. La
+    organización existe, pero **sus miembros no pueden iniciar sesión** — no es un aviso
+    cosmético.
+
+    **Solución:** el menú de la fila → **Reintentar invitación de admin**.
+  </Accordion>
+
+  <Accordion title="No me deja crear una organización" icon="ban">
+    Llegaste al máximo de organizaciones de tu plan de Dialtu. Tu propio espacio no cuenta para
+    el límite, así que el número que ves en la lista es el que cuenta.
+
+    **Solución:** mejora tu plan, o elimina una organización que ya no atiendes.
+  </Accordion>
+
+  <Accordion title="Eliminé una organización y su número desapareció" icon="hashtag">
+    Eliminar no libera los números. El número sigue asignado a la organización eliminada.
+
+    **Solución:** contacta con Dialtu para recuperarlo. La próxima vez, devuelve el número a tu
+    pool **antes** de eliminar.
+  </Accordion>
+
+  <Accordion title="Necesito cambiar el slug de una organización" icon="pen">
+    No se puede. El slug se fija al crearla; solo cambia el nombre visible.
+
+    **Alternativa:** crea una organización nueva con el slug correcto y mueve a los usuarios. No
+    hay migración de datos entre organizaciones, así que hazlo pronto o no lo hagas.
+  </Accordion>
+</AccordionGroup>
+
+## Créditos
+
+<AccordionGroup>
+  <Accordion title="Un cliente dice que su IA dejó de responder" icon="robot">
+    Mira su columna **Créditos**. En cero se detiene todo el trabajo de IA: llamadas, respuestas
+    de WhatsApp y SMS, Atlas, el orquestador de Salesflow, los informes de Insight.
+
+    **Solución:** otorga o recarga su permiso, o espera a la renovación mensual.
+  </Accordion>
+
+  <Accordion title="No me deja otorgar un permiso" icon="credit-card">
+    Necesitas un **método de pago registrado**, aunque otorgar un permiso no te cobre nada.
+
+    **Solución:** agrega una tarjeta a tu cuenta y vuelve a intentarlo.
+  </Accordion>
+
+  <Accordion title="Los créditos que otorgué desaparecieron a principio de mes" icon="calendar">
+    Funciona así por diseño, aunque sorprende a todo el mundo. La renovación mensual
+    **restablece** el permiso a los créditos incluidos del plan; no los suma. Un otorgamiento
+    puntual a mitad de ciclo se sobrescribe, y los créditos sin usar no se acumulan.
+
+    **Si necesitas un aumento permanente**, mueve esa organización a un plan con más créditos
+    incluidos en lugar de otorgarle extra cada mes.
+  </Accordion>
+
+  <Accordion title="Mi pool quedó en negativo" icon="arrow-trend-down">
+    Tus organizaciones siguieron funcionando después de vaciarse el pool — Dialtu no corta a los
+    clientes a mitad de conversación. El consumo aparece en tu listado como **Uso — pool
+    agotado** y el importe queda pendiente.
+
+    **Solución:** recarga. Después activa la recarga automática para que no se repita — y
+    comprueba si llegaste a tu **tope mensual**, que detiene las recargas en silencio.
+  </Accordion>
+
+  <Accordion title="La recarga automática dejó de ejecutarse" icon="rotate">
+    Lo más probable es el tope mensual. Busca un apunte **Auto-recarga limitada** en el listado
+    del pool.
+
+    Comprueba también que el umbral sea **menor** que el objetivo y que haya una tarjeta
+    registrada.
+  </Accordion>
+</AccordionGroup>
+
+## Dominios
+
+<AccordionGroup>
+  <Accordion title="Mi dominio se quedó en Desplegando CDN" icon="hourglass">
+    Casi siempre es el **segundo registro DNS**. El certificado se valida con el primero, así que
+    la configuración llega hasta ahí con un solo registro — y después espera indefinidamente el
+    registro que apunta a la CDN.
+
+    **Solución:** agrega el segundo CNAME. El despliegue termina entre 5 y 15 minutos después de
+    que resuelva.
+  </Accordion>
+
+  <Accordion title="Mi dominio dice Falló" icon="circle-xmark">
+    Los registros DNS no aparecieron en 72 horas.
+
+    **Solución:** agrega los registros y pulsa **Verificar estado** — se reinicia y vuelve a
+    intentarlo. No hace falta empezar de cero.
+  </Accordion>
+
+  <Accordion title="Mi proveedor no acepta un CNAME en mi dominio principal" icon="ban">
+    Es lo esperado: la mayoría rechaza CNAME en la raíz.
+
+    **Solución:** usa un subdominio como `app.tuempresa.com`. Solo sáltate esto si tu proveedor
+    soporta CNAME flattening o registros ALIAS.
+  </Accordion>
+
+  <Accordion title="Las invitaciones siguen apuntando a la dirección dialtu.com" icon="link">
+    El cambio ocurre cuando el dominio queda **Activo**, no cuando lo agregas.
+  </Accordion>
+</AccordionGroup>
+
+## Personas
+
+<AccordionGroup>
+  <Accordion title="No puedo asignarle un rol a alguien" icon="user-lock">
+    Todavía no ha iniciado sesión. Los roles solo se asignan tras el primer ingreso; hasta
+    entonces aparece como **Pendiente de ingreso**.
+
+    **Solución:** espera a que acepte y luego define el rol.
+  </Accordion>
+
+  <Accordion title="Alguien no encuentra WhatsApp en el menú" icon="whatsapp">
+    No es administrador. Ninguno de los roles Member, Sales o Support incluye acceso a WhatsApp,
+    así que la sección se oculta por completo.
+
+    **Solución:** hazlo Admin, o crea un rol personalizado que incluya los permisos de WhatsApp.
+  </Accordion>
+
+  <Accordion title="La invitación nunca llegó" icon="envelope">
+    Tres causas habituales:
+
+    - **Ya tiene cuenta** en tu plataforma: no se envía correo; el espacio simplemente aparece en
+      su selector.
+    - **El enlace expiró**: duran 72 horas. Reenvíalo.
+    - **Un aviso de modo limitado** en tu pestaña Dominio de envío significa que la entrega a
+      destinatarios nuevos está restringida. Contacta con Dialtu.
+  </Accordion>
+
+  <Accordion title="Restablecer la contraseña termina en una página de error" icon="key">
+    Es una aspereza conocida. La contraseña normalmente **sí** se cambió, pese al error.
+
+    **Solución:** entra directo a la dirección de tu panel con la contraseña nueva, en lugar de
+    seguir el enlace de esa página.
+  </Accordion>
+
+  <Accordion title="Alguien no aparece en la lista de miembros" icon="user-slash">
+    O se le quitó y no ha vuelto a entrar — reaparece en su siguiente inicio de sesión — o
+    todavía no ha aceptado la invitación y estás mirando la lista equivocada.
+  </Accordion>
+</AccordionGroup>
+
+## Capacidad
+
+<AccordionGroup>
+  <Accordion title="Se rechazan llamadas aunque los límites parecen correctos" icon="phone-slash">
+    Las llamadas simultáneas son **un solo pool compartido** entre todas tus organizaciones más
+    tu propio espacio. Los límites por organización reparten ese pool; no lo amplían.
+
+    Si tienes cuatro organizaciones a 10 cada una y tu plan permite 20, estás sobresuscrito a
+    propósito — y una tarde ocupada, habrá llamadas rechazadas.
+
+    **Solución:** mejora tu plan para tener capacidad real, o baja los límites por organización
+    hasta que quepan dentro de él.
+  </Accordion>
+</AccordionGroup>
+
+## Marca
+
+<AccordionGroup>
+  <Accordion title="Mi página de login sigue en morado Dialtu" icon="palette">
+    No hay nada precargado: las cuentas nuevas arrancan con los colores por defecto y sin logo.
+
+    **Solución:** Configuración → Personalización. Define el tema y sube un logo. Ambos llegan
+    solos a la página de login.
+  </Accordion>
+
+  <Accordion title="Mi favicon aparece en la app pero no en el login" icon="star">
+    Es una limitación conocida. El favicon se aplica solo a la pestaña del panel, aunque el
+    panel dé a entender lo contrario. No hay nada que puedas hacer — el logo y los colores sí
+    llegan al login.
+  </Accordion>
+
+  <Accordion title="Un cliente quiere su propio logo dentro de su espacio" icon="building">
+    No es posible. Las organizaciones heredan tu marca: ese es el sentido del modelo. No hay
+    personalización por organización.
+  </Accordion>
+</AccordionGroup>
+
+## Si sigues atascado
+
+<Card title="Contactar con soporte" icon="life-ring" href="mailto:support@dialtu.com">
+  Incluye el nombre de la organización y, si aplica, lo que diga la columna de estado.
+</Card>

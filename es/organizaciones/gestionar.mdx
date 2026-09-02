@@ -1,0 +1,148 @@
+---
+title: "Crear y gestionar organizaciones"
+description: "Da de alta un cliente, controla su estado y trabaja dentro de su espacio"
+icon: "plus"
+---
+
+Al terminar esta página habrás creado una organización, invitado a su primer administrador y
+sabrás qué hace cada acción de la lista.
+
+<Info>
+  **📷 Captura pendiente** — la pestaña Organizaciones: la tira de estadísticas y la tabla.
+
+  Guardar en `/images/es/organizaciones/lista-organizaciones.png`
+</Info>
+
+## Crear una
+
+**Organizaciones → Crear organización.** Un asistente de dos pasos.
+
+<Steps>
+  <Step title="Nombre y plan" icon="tag">
+    - **Nombre visible** — lo que veis tú y tu cliente. Hasta 150 caracteres.
+    - **Slug** — el identificador corto, sugerido a partir del nombre. Minúsculas, números y
+      guiones.
+    - **Plan de facturación** — opcional, pero sin él no hay permiso mensual de créditos. El
+      desplegable muestra los créditos incluidos y el precio de cada plan.
+    - **Recarga automática mensual** — activada por defecto. Renueva su permiso cada ciclo.
+
+    <Warning>
+      **El slug no se puede cambiar después.** El nombre visible sí. Elígelo con eso en mente.
+    </Warning>
+  </Step>
+
+  <Step title="Invitar al primer administrador" icon="envelope">
+    Un correo electrónico — escríbelo, o elígelo de un desplegable con la gente que ya está en
+    tu cuenta. Entra como **administrador** de la nueva organización y recibe una invitación con
+    tu marca.
+
+    <Note>
+      **Este paso es opcional.** Puedes crear la organización vacía e invitar después desde
+      **Gestionar usuarios**.
+
+      A ti te agrega automáticamente en cualquier caso, así que puedes entrar al espacio sin
+      invitarte a ti mismo.
+    </Note>
+  </Step>
+</Steps>
+
+<Info>
+  **📷 Captura pendiente** — el asistente Crear organización, primer paso.
+
+  Guardar en `/images/es/organizaciones/asistente-crear.png`
+</Info>
+
+<Warning>
+  **Tu plan limita cuántas organizaciones puedes tener.** Al llegar al tope, la creación se
+  rechaza y se te propone mejorar el plan. Tu propio espacio no cuenta para ese límite.
+</Warning>
+
+## Leer la lista
+
+La tira superior muestra totales, cuántas están activas, cuántas fallaron y los **créditos en
+el pool**. La tabla lista cada organización con su plan, créditos, recarga automática y estado.
+
+| Estado | Qué significa |
+|---|---|
+| **Activo** | Funciona con normalidad |
+| **Invitación de admin pendiente** | La configuración no terminó: **nadie puede entrar** |
+| **Suspendido** | Queda fuera de la renovación mensual del permiso |
+| **Aprovisionamiento fallido** | La creación no se completó |
+| **Eliminado** | Oculto de la lista. Los datos se conservan |
+
+<Warning>
+  **"Invitación de admin pendiente" no es cosmético.** La organización existe, pero sus miembros
+  no pueden iniciar sesión hasta arreglarlo. Usa **Reintentar invitación de admin** en el menú
+  de la fila.
+</Warning>
+
+## Qué puedes hacer en cada fila
+
+<Columns cols={2}>
+  <Card title="Abrir espacio en nueva pestaña" icon="arrow-up-right-from-square">
+    Entrar a trabajar dentro de la organización.
+  </Card>
+
+  <Card title="Gestionar usuarios" icon="users">
+    Invitar personas, cambiar roles, revocar accesos.
+  </Card>
+
+  <Card title="Otorgar / Reducir permiso" icon="coins">
+    Ajustar su tope de créditos. Ver [Créditos](/es/organizaciones/creditos).
+  </Card>
+
+  <Card title="Editar organización" icon="pen">
+    Nombre visible, plan, límite de concurrencia y recarga automática.
+  </Card>
+</Columns>
+
+Hay dos más que solo aparecen cuando aplican: **Recargar permiso**, que requiere que la
+organización tenga un plan de facturación, y **Reintentar invitación de admin**, que solo se ve
+en una fila atascada.
+
+<Note>
+  El **slug** no se edita aquí, y **no hay forma de suspender una organización** desde la
+  interfaz: la columna de estado es de solo lectura.
+</Note>
+
+### Límites de concurrencia
+
+Puedes limitar cuántas llamadas simultáneas puede tener una organización. Dos cosas que
+entender:
+
+<Warning>
+  **Todas tus organizaciones comparten un único pool de llamadas simultáneas**, definido por tu
+  plan de Dialtu, más tu propio espacio. Un límite por organización es un **sub-límite dentro**
+  de ese pool, no capacidad extra.
+
+  Cuatro organizaciones a 10 cada una no dan 40 líneas. Puedes sobresuscribir a propósito,
+  apostando a que no todas llegarán al pico a la vez.
+</Warning>
+
+<Note>
+  Una organización necesita un plan antes de poder ponerle un límite de concurrencia, y el
+  límite nunca puede superar el techo de tu propio plan. Lo mismo vale para el resto de ajustes
+  por organización: solo pueden ser **menores** que lo que permite tu plan.
+</Note>
+
+## Eliminar
+
+<Warning>
+  **Eliminar es un borrado suave.** La organización desaparece de la lista y se cancela su
+  suscripción, pero **los datos se conservan** y los miembros mantienen sus registros de acceso.
+
+  Tómalo como archivar, no como borrar. Si un cliente necesita que sus datos se destruyan de
+  verdad, contacta con Dialtu.
+</Warning>
+
+<Note>
+  **Los números de teléfono no se liberan.** Un número asignado a una organización eliminada
+  sigue asignado. Devuélvelo antes a tu pool — ver
+  [Números de teléfono](/es/organizaciones/telefonos).
+</Note>
+
+## Siguiente paso
+
+<Card title="Planes de facturación" icon="tags" href="/es/organizaciones/planes-de-facturacion">
+  Define qué recibe cada organización y cuánto le cuesta.
+</Card>
