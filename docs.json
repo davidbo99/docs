@@ -59,6 +59,17 @@
                 "icon": "whatsapp",
                 "pages": [
                   "es/agentes-de-whatsapp/introduccion",
+                  {
+                    "group": "Conectar WhatsApp",
+                    "icon": "whatsapp",
+                    "pages": [
+                      "es/canales/whatsapp/requisitos",
+                      "es/canales/whatsapp/conectar",
+                      "es/canales/whatsapp/modo-onboarding",
+                      "es/canales/whatsapp/numeros",
+                      "es/canales/whatsapp/solucion-de-problemas"
+                    ]
+                  },
                   "es/agentes-de-whatsapp/crear-agente",
                   "es/agentes-de-whatsapp/prompt",
                   "es/agentes-de-whatsapp/canal",
@@ -75,25 +86,6 @@
                   "es/agentes-de-sms/crear-agente",
                   "es/agentes-de-sms/configuracion",
                   "es/agentes-de-sms/cumplimiento"
-                ]
-              },
-              {
-                "group": "Canales",
-                "icon": "comments",
-                "pages": [
-                  "es/canales/whatsapp",
-                  "es/canales/sms",
-                  {
-                    "group": "Conectar WhatsApp",
-                    "icon": "whatsapp",
-                    "pages": [
-                      "es/canales/whatsapp/requisitos",
-                      "es/canales/whatsapp/conectar",
-                      "es/canales/whatsapp/modo-onboarding",
-                      "es/canales/whatsapp/numeros",
-                      "es/canales/whatsapp/solucion-de-problemas"
-                    ]
-                  }
                 ]
               },
               {
@@ -177,6 +169,17 @@
                 "icon": "whatsapp",
                 "pages": [
                   "en/whatsapp-agents/introduction",
+                  {
+                    "group": "Connect WhatsApp",
+                    "icon": "whatsapp",
+                    "pages": [
+                      "en/channels/whatsapp/requirements",
+                      "en/channels/whatsapp/connect",
+                      "en/channels/whatsapp/onboarding-mode",
+                      "en/channels/whatsapp/numbers",
+                      "en/channels/whatsapp/troubleshooting"
+                    ]
+                  },
                   "en/whatsapp-agents/create-agent",
                   "en/whatsapp-agents/prompt",
                   "en/whatsapp-agents/channel",
@@ -193,25 +196,6 @@
                   "en/sms-agents/create-agent",
                   "en/sms-agents/configuration",
                   "en/sms-agents/compliance"
-                ]
-              },
-              {
-                "group": "Channels",
-                "icon": "comments",
-                "pages": [
-                  "en/channels/whatsapp",
-                  "en/channels/sms",
-                  {
-                    "group": "Connect WhatsApp",
-                    "icon": "whatsapp",
-                    "pages": [
-                      "en/channels/whatsapp/requirements",
-                      "en/channels/whatsapp/connect",
-                      "en/channels/whatsapp/onboarding-mode",
-                      "en/channels/whatsapp/numbers",
-                      "en/channels/whatsapp/troubleshooting"
-                    ]
-                  }
                 ]
               },
               {
